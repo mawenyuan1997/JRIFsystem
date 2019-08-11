@@ -1,0 +1,42 @@
+\documentclass[10pt]{article}
+\usepackage{mathtools} 
+
+\title{KAT in Jrif}
+
+\begin{document}
+\maketitle
+\begin{itemize}
+\item We use KAT expressions to specify reactive information flow policies. KAT expressions are more expressive than RIF automata, which are used in the Jrif implementation.
+\item Because the input alphabet of a KAT automaton is exponentially large (w.r.t., primitive tests),a simple equivalence algorithm (that goes through all alphabet) is not tractable in practice. Instead we need to use its symbolic version.
+\item We use the Antimirov's algorithm to convert KAT expressions into symbolic automata. See ``Symbolic Algorithms for Language Equivalence and Kleene Algebra with Tests'' (pous.pdf). With this algorithm, we do not need to normalize expressions.
+\item This algorithm is based on the idea of derivatives: ``Regular-expression derivatives reexamined'' (re-deriv.pdf
+).
+\item We first convert expressions to automata and then compare the restrictiveness of automata.
+\item For the conversion of expressions to automata we need to use ``smart constructors''. For example, when converting \emph{1e}, it suffices to convert \emph{e} and when converting \emph{0e}, it suffices to convert \emph{0}.
+\item We might need to use hashconsing of expressions to achieve a faster syntactic equivalence routine. For example, when using sets of expressions, we need to decide if a new element is already in the set to avoid duplication.
+\item Java might have a BDD libabry where leafs can be states.
+\item We could compute the product of syntactic automata as an ``apply'' function on BDDs.
+\item For an assignment $x:=y$, if the type of $x$ is $\{e_1,e_2\}$ and the type of $y$ is $e_y$, then the check $(e_1\geq e)\;\wedge\;(e_2\geq e_y)$ is more conservative than the check $e_1\sqcup e_2\geq e_y$.
+\item We are interested in the performance of the compilation. So, we could keep the first Brzozowski implementation for comparison reasons.
+\end{itemize}
+
+\section*{TODO}
+\begin{itemize}
+\item Create a GItHub repository for the source code and the notes.
+\item Antimirov's algorithm (see ``Partial derivatives of regular expressions and finite automaton constructions") 
+\begin{itemize}
+\item Go through paper's example of converting a regular expression into an NFA?
+\item Use Definition 2.4, Remark 2.7 (especially polints 3 and 4), (88)-(91), Remark 4.2, and paragraph above Section 4,  to implement the conversion algorithm to NFA.
+\end{itemize}
+\item See ``Kleene Algebra with Tests and Coq Tools for While Programs" to generalize the above conversion algorithm to KAT expressions.
+\item Refresh understanding of Pous paper (``Symbolic Algorithms for Language Equivalence and Kleene Algebra with Tests'').
+\begin{itemize}
+\item Use Section 4.2 from Pous to make the conversion algorithm (from KAt expressions to NFAs) symbolic.
+\item Use Section 3.2 from Pous and Section 4.2 from Antimirov to extend the conversion algorithm to produce DFAs.
+\item Use Section 3.2 from Pous to compare DFAs.
+\end{itemize}  
+\item Enrich notes with the theoretical background for KAT and authorization strings.
+\item Come up with policies that take advantage of the expressive power of KAT. We need to show that non-determinism is useful. If non-determinism is useful, then we could restrict the syntax of KAT (i.e., guarded KAT) and get more efficient procedures for converting to automata and for comparison.
+\end{itemize}
+
+\end{document}
