@@ -1,4 +1,6 @@
-package KAT;
+package KAToperator;
+
+import KAT.*;
 
 public interface KATexpressionVisitor {
     Object visit(PrimitiveAction expr);

@@ -1,5 +1,7 @@
 package KAT;
 
+import KAToperator.KATexpressionVisitor;
+
 public class OneTest extends TestExpression {
     public OneTest() {}
 

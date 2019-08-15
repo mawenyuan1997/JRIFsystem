@@ -1,8 +1,10 @@
 package KAT;
 
+import KAToperator.KATexpressionVisitor;
+
 public class StarExpression implements KATexpression {
 
-    KATexpression p;
+    public KATexpression p;
 
     public StarExpression(KATexpression expr) {
         this.p = expr;

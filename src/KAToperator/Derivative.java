@@ -1,6 +1,6 @@
-package KAT;
+package KAToperator;
 
-import com.sun.tools.corba.se.idl.constExpr.Plus;
+import KAT.*;
 
 import java.util.HashMap;
 

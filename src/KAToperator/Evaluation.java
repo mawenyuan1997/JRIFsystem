@@ -1,4 +1,6 @@
-package KAT;
+package KAToperator;
+
+import KAT.*;
 
 import java.util.HashMap;
 

@@ -1,4 +1,7 @@
 import KAT.*;
+import KAToperator.Derivative;
+import KAToperator.Evaluation;
+import KAToperator.Simplify;
 
 import java.util.ArrayList;
 import java.util.HashMap;

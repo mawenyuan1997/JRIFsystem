@@ -1,8 +1,10 @@
 package KAT;
 
+import KAToperator.KATexpressionVisitor;
+
 public class ConcatTest extends TestExpression {
 
-    TestExpression left, right;
+    public TestExpression left, right;
 
     public ConcatTest(TestExpression p, TestExpression q) {
         left = p;

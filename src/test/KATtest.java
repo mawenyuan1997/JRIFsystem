@@ -1,6 +1,10 @@
 package test;
 
 import KAT.*;
+import KAToperator.Derivative;
+import KAToperator.Evaluation;
+import KAToperator.KATprinter;
+import KAToperator.Simplify;
 
 import java.util.HashMap;
 

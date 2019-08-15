@@ -1,8 +1,10 @@
 package KAT;
 
+import KAToperator.KATexpressionVisitor;
+
 public class PrimitiveAction implements KATexpression{
 
-    String id;
+    public String id;
 
     public PrimitiveAction(String str) {
         id = str;

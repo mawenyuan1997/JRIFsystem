@@ -1,8 +1,10 @@
 package KAT;
 
+import KAToperator.KATexpressionVisitor;
+
 public class PrimitiveTest extends TestExpression {
 
-    String id;
+    public String id;
 
     public PrimitiveTest(String str) {
         id = str;

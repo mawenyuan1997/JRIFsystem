@@ -1,8 +1,10 @@
 package KAT;
 
+import KAToperator.KATexpressionVisitor;
+
 public class PlusTest extends TestExpression {
 
-    TestExpression left, right;
+    public TestExpression left, right;
 
     public PlusTest(TestExpression p, TestExpression q) {
         left = p;

@@ -1,8 +1,10 @@
 package KAT;
 
+import KAToperator.KATexpressionVisitor;
+
 public class PlusExpression implements KATexpression {
 
-    KATexpression left, right;
+    public KATexpression left, right;
     public PlusExpression(KATexpression p, KATexpression q) {
         left = p;
         right = q;

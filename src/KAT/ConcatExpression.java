@@ -1,8 +1,10 @@
 package KAT;
 
+import KAToperator.KATexpressionVisitor;
+
 public class ConcatExpression implements KATexpression {
 
-    KATexpression left,right;
+    public KATexpression left,right;
 
     public ConcatExpression(KATexpression p, KATexpression q) {
         left = p;

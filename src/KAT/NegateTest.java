@@ -1,8 +1,10 @@
 package KAT;
 
+import KAToperator.KATexpressionVisitor;
+
 public class NegateTest extends TestExpression {
 
-    TestExpression test;
+    public TestExpression test;
 
     public NegateTest(TestExpression expr) {
         test = expr;

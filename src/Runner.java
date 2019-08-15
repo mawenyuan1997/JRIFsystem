@@ -1,4 +1,5 @@
 import KAT.*;
+import KAToperator.KATprinter;
 
 import java.util.ArrayList;
 import java.util.HashMap;

@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/parser.iml" filepath="$PROJECT_DIR$/parser.iml" />
+      <module fileurl="file://$PROJECT_DIR$/KATautomata.iml" filepath="$PROJECT_DIR$/KATautomata.iml" />
     </modules>
   </component>
 </project>
