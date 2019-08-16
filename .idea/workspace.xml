@@ -2,30 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="abc0c21f-9c25-424c-8d60-52b3ee40e2f0" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/KAToperator/PartialDerivative.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/BDD/BDDnode.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/BDD/Util.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/KAT/ConcatExpression.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/KAT/ConcatExpression.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/KAT/ConcatTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/KAT/ConcatTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/KAT/Derivative.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/KAToperator/Derivative.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/KAT/Evaluation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/KAToperator/Evaluation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/KAT/KATexpression.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/KAT/KATexpression.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/KAT/KATexpressionVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/KAToperator/KATexpressionVisitor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/KAT/KATprinter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/KAToperator/KATprinter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/KAT/NegateTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/KAT/NegateTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/KAT/OneTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/KAT/OneTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/KAT/PlusExpression.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/KAT/PlusExpression.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/KAT/PlusTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/KAT/PlusTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/KAT/PrimitiveAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/KAT/PrimitiveAction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/KAT/PrimitiveTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/KAT/PrimitiveTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/KAT/Simplify.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/KAToperator/Simplify.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/KAT/StarExpression.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/KAT/StarExpression.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/KAT/TestExpression.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/KAT/TestExpression.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/KAT/ZeroTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/KAT/ZeroTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/KATautomata.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/KATautomata.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Runner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Runner.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/KATtest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/KATtest.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -63,11 +42,33 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/KAToperator/Derivative.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="18" column="13" lean-forward="true" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+            <state relative-caret-position="330">
+              <caret line="24" column="5" lean-forward="true" selection-start-line="24" selection-start-column="5" selection-end-line="24" selection-end-column="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/BDD/BDDnode.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="334">
+              <caret line="31" column="1" lean-forward="true" selection-start-line="31" selection-start-column="1" selection-end-line="31" selection-end-column="1" />
+              <folding>
+                <element signature="e#315#316#0" expanded="true" />
+                <element signature="e#341#342#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/BDD/Util.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="225">
+              <caret line="15" column="5" selection-start-line="15" selection-start-column="5" selection-end-line="15" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -96,6 +97,9 @@
         <option value="$PROJECT_DIR$/src/KAT/PrimitiveTest.java" />
         <option value="$PROJECT_DIR$/src/KAT/StarExpression.java" />
         <option value="$PROJECT_DIR$/src/test/KATtest.java" />
+        <option value="$PROJECT_DIR$/src/BDD/Node.java" />
+        <option value="$PROJECT_DIR$/src/BDD/BDDnode.java" />
+        <option value="$PROJECT_DIR$/src/BDD/Util.java" />
       </list>
     </option>
   </component>
@@ -121,6 +125,12 @@
               <item name="KATautomata" type="b2602c69:ProjectViewProjectNode" />
               <item name="KATautomata" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="KATautomata" type="b2602c69:ProjectViewProjectNode" />
+              <item name="KATautomata" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="BDD" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="KATautomata" type="b2602c69:ProjectViewProjectNode" />
@@ -155,7 +165,7 @@
     <property name="Repository.Attach.Sources" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1565894695837" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1565933202737" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
   </component>
@@ -203,8 +213,16 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1565888024449</updated>
-      <workItem from="1565888027165" duration="3181000" />
+      <workItem from="1565888027165" duration="6972000" />
     </task>
+    <task id="LOCAL-00001" summary="refactor">
+      <created>1565894824101</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1565894824102</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -216,7 +234,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="3181000" />
+    <option name="totallyTimeSpent" value="6972000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="109" y="24" width="1257" height="812" extended-state="0" />
@@ -233,7 +251,7 @@
       <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" />
       <window_info anchor="bottom" id="Version Control" />
-      <window_info anchor="bottom" id="Terminal" />
+      <window_info anchor="bottom" id="Terminal" weight="0.32916668" />
       <window_info anchor="bottom" id="Event Log" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
@@ -255,6 +273,10 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="refactor" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/KAT/ConcatExpression.java">
@@ -362,13 +384,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/KAToperator/PartialDerivative.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="32" lean-forward="true" selection-start-line="2" selection-start-column="32" selection-end-line="2" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/KAT/StarExpression.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
@@ -378,8 +393,33 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/KAToperator/Derivative.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="18" column="13" lean-forward="true" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+        <state relative-caret-position="330">
+          <caret line="24" column="5" lean-forward="true" selection-start-line="24" selection-start-column="5" selection-end-line="24" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/KAToperator/PartialDerivative.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="32" lean-forward="true" selection-start-line="2" selection-start-column="32" selection-end-line="2" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/BDD/BDDnode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="334">
+          <caret line="31" column="1" lean-forward="true" selection-start-line="31" selection-start-column="1" selection-end-line="31" selection-end-column="1" />
+          <folding>
+            <element signature="e#315#316#0" expanded="true" />
+            <element signature="e#341#342#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/BDD/Util.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="5" selection-start-line="15" selection-start-column="5" selection-end-line="15" selection-end-column="5" />
         </state>
       </provider>
     </entry>
