@@ -22,4 +22,9 @@ public class StarExpression implements KATexpression {
         StarExpression e = (StarExpression) o;
         return this.p.equals(e.p);
     }
+
+    @Override
+    public int hashCode() {
+        return p.hashCode();
+    }
 }

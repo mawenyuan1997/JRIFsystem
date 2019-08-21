@@ -21,4 +21,9 @@ public class PrimitiveTest extends TestExpression {
         PrimitiveTest e = (PrimitiveTest) o;
         return this.id.equals(e.id);
     }
+
+    @Override
+    public int hashCode() {
+        return id.hashCode();
+    }
 }

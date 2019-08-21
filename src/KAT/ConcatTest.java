@@ -22,4 +22,9 @@ public class ConcatTest extends TestExpression {
         ConcatTest e = (ConcatTest) o;
         return this.left.equals(e.left) && this.right.equals(e.right);
     }
+
+    @Override
+    public int hashCode() {
+        return left.hashCode() * 31 + right.hashCode();
+    }
 }

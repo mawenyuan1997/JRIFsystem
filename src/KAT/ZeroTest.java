@@ -15,4 +15,9 @@ public class ZeroTest extends TestExpression {
         if (o instanceof ZeroTest) return true;
         return false;
     }
+
+    @Override
+    public int hashCode() {
+        return 0;
+    }
 }

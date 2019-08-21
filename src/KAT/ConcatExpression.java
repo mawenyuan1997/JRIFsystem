@@ -23,4 +23,9 @@ public class ConcatExpression implements KATexpression {
         ConcatExpression e = (ConcatExpression) o;
         return this.left.equals(e.left) && this.right.equals(e.right);
     }
+
+    @Override
+    public int hashCode() {
+        return left.hashCode() * 31 + right.hashCode();
+    }
 }

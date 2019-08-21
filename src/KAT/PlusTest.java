@@ -23,4 +23,9 @@ public class PlusTest extends TestExpression {
         return this.left.equals(e.left) && this.right.equals(e.right) ||
                 this.left.equals(e.right) && this.right.equals(e.left);
     }
+
+    @Override
+    public int hashCode() {
+        return left.hashCode() * 31 + right.hashCode();
+    }
 }

@@ -1,12 +1,10 @@
 package test;
 
 import KAT.*;
-import KAToperator.Derivative;
-import KAToperator.Evaluation;
-import KAToperator.KATprinter;
-import KAToperator.Simplify;
+import KAToperator.*;
 
 import java.util.HashMap;
+import java.util.HashSet;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -31,7 +29,7 @@ class KATtest {
     }
 
     @org.junit.jupiter.api.Test
-    void testD() {
+    void testDerivative() {
         atom.put("A", true);
         atom.put("B", false);
         atom.put("C", false);
@@ -80,4 +78,38 @@ class KATtest {
         assert(e1.equals(e2));
     }
 
+    @org.junit.jupiter.api.Test
+    void testPartialDerivative() {
+        atom.put("A", true);
+        atom.put("B", false);
+        atom.put("C", false);
+        Evaluation E = new Evaluation(atom);
+        KATexpression e1 = new ConcatExpression(
+                new ConcatExpression(
+                        new PrimitiveTest("A"),
+                        new PrimitiveAction("p")
+                ),
+                new PrimitiveTest("B")
+        );
+        KATexpression e2 = new ConcatExpression(
+                new ConcatExpression(
+                        new PrimitiveTest("A"),
+                        new PrimitiveAction("p")
+                ),
+                new PrimitiveTest("C")
+        );
+        KATexpression expr = new PlusExpression(e1, e2);
+        PartialDerivative D = new PartialDerivative(atom, "p");
+        System.out.println((HashSet<KATexpression>) expr.accept(D));
+        HashSet<KATexpression> set = (HashSet<KATexpression>) expr.accept(D);
+
+        assert(set.contains(new ConcatExpression(
+                new OneTest(),
+                new PrimitiveTest("B")
+        )));
+        assert(set.contains(new ConcatExpression(
+                new OneTest(),
+                new PrimitiveTest("C")
+        )));
+    }
 }

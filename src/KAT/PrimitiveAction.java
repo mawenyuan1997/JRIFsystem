@@ -22,4 +22,9 @@ public class PrimitiveAction implements KATexpression{
         PrimitiveAction e = (PrimitiveAction) o;
         return this.id.equals(e.id);
     }
+
+    @Override
+    public int hashCode() {
+        return id.hashCode();
+    }
 }

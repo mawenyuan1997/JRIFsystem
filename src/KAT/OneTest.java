@@ -15,4 +15,9 @@ public class OneTest extends TestExpression {
         if (o instanceof OneTest) return true;
         return false;
     }
+
+    @Override
+    public int hashCode() {
+        return 1;
+    }
 }

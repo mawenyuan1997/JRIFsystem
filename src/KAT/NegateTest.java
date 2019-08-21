@@ -21,4 +21,9 @@ public class NegateTest extends TestExpression {
         NegateTest e = (NegateTest) o;
         return this.test.equals(e.test);
     }
+
+    @Override
+    public int hashCode() {
+        return test.hashCode();
+    }
 }
