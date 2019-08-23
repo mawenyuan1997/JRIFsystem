@@ -36,5 +36,50 @@
 \item Enrich notes with the theoretical background for KAT and authorization strings.
 \item Come up with policies that take advantage of the expressive power of KAT. We need to show that non-determinism is useful. If non-determinism is useful, then we could restrict the syntax of KAT (i.e., guarded KAT) and get more efficient procedures for converting to automata and for comparison.
 \end{itemize}
-
+\newpage
+\begin{minipage}{0.45\textwidth}
+Regular expression:\\
+\begin{align*}
+    l\odot 0&=\emptyset\\
+    l\odot \lambda&= l\\
+    \emptyset\odot t&=\emptyset\\
+    \{\langle x,0\rangle\}\odot t&=\{\langle x,0\rangle\}\\
+    \{\langle x,\lambda\rangle\}\odot t&=\{\langle x,t\rangle\}\\
+    \{\langle x,p\rangle\}\odot t&=\{\langle x,p\cdot t\rangle\}\\
+    (l\cup l')\odot t&=(l\odot t)\cup (l'\odot t)
+\end{align*}
+\begin{align*}
+    lf(0)&=\emptyset\\
+    lf(\lambda)&=\emptyset\\
+    lf(x)&=\{\langle x,\lambda\rangle\}\\
+    lf(r+t)&=lf(r)\cup lf(t)\\
+    lf(r^*)&=lf(r)\odot r^*\\
+    lf(r_0\cdot t)&=lf(r_0)\odot t\\
+    lf(r_1\cdot t)&=lf(r_1)\odot t\cup lf(t)
+\end{align*}
+$r_1$ contains $\lambda$. $r_0$ does not.
+\end{minipage}%
+\hfill
+\begin{minipage}{0.45\textwidth}
+KAT expression:\\
+\begin{align*}
+    l\odot 0&=\emptyset\\
+    l\odot 1&= l\\
+    \emptyset\odot t&=\emptyset\\
+    \{\langle \alpha p,0\rangle\}\odot t&=\{\langle \alpha p,0\rangle\}\\
+    \{\langle \alpha p,1\rangle\}\odot t&=\{\langle \alpha p,t\rangle\}\\
+    \{\langle \alpha p,p\rangle\}\odot t&=\{\langle \alpha p,p\cdot t\rangle\}\\
+    (l\cup l')\odot t&=(l\odot t)\cup (l'\odot t)
+\end{align*}
+\begin{align*}
+    lf(0)&=\emptyset\\
+    lf(1)&=\emptyset\\
+    lf(b)&=\emptyset\\
+    lf(p)&=\{\langle \alpha p,1\rangle|\alpha\in At\}\\
+    lf(r+t)&=lf(r)\cup lf(t)\\
+    lf(r^*)&=lf(r)\odot r^*\\
+    lf(r\cdot t)&=lf(r)\odot t\\
+    &\cup \{\langle \alpha p,t'\rangle|\langle \alpha p,t'\rangle\in lf(t), E_{\alpha}(r)=1\}
+\end{align*}
+\end{minipage}%
 \end{document}

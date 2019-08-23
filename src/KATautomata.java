@@ -2,6 +2,7 @@ import KAT.*;
 import KAToperator.Derivative;
 import KAToperator.Evaluation;
 import KAToperator.Simplify;
+import util.AtomAction;
 
 import java.util.ArrayList;
 import java.util.HashMap;

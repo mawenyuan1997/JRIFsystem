@@ -1,3 +1,5 @@
+package util;
+
 import java.util.HashMap;
 
 public class AtomAction {
@@ -7,6 +9,10 @@ public class AtomAction {
     public AtomAction(HashMap<String, Boolean> atom, String action) {
         this.atom = new HashMap<>(atom);
         this.action = action;
+    }
+
+    public HashMap<String, Boolean> getAtom() {
+        return atom;
     }
 
     @Override
@@ -22,6 +28,6 @@ public class AtomAction {
 
     @Override
     public int hashCode() {
-        return atom.hashCode() + action.hashCode();
+        return atom.hashCode()*31 + action.hashCode();
     }
 }
