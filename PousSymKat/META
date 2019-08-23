@@ -1,0 +1,6 @@
+name = "symkat"
+description = "Symbolic Algorithms for Kleene algebra with Tests (KAT)"
+requires = "safa"
+version = "1.4"
+archive(byte) = "symkat.cma"
+archive(native) = "symkat.cmxa"
