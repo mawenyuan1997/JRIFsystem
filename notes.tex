@@ -9,6 +9,7 @@
 \item We use KAT expressions to specify reactive information flow policies. KAT expressions are more expressive than RIF automata, which are used in the Jrif implementation.
 \item Because the input alphabet of a KAT automaton is exponentially large (w.r.t., primitive tests),a simple equivalence algorithm (that goes through all alphabet) is not tractable in practice. Instead we need to use its symbolic version.
 \item We use the Antimirov's algorithm to convert KAT expressions into symbolic automata. See ``Symbolic Algorithms for Language Equivalence and Kleene Algebra with Tests'' (pous.pdf) and ``Partial derivatives of regular expressions and finite automaton constructions" (antimirov.pdf). With this algorithm, we do not need to normalize expressions.
+\item There is not an algorithm that creates linear forms of KAT expressions, in an analogous way that Antimirov (antimirov.pdf) computes linear forms for regular expression, in order to compute partial derivatives. But the Pous algorithm for symbolic partial derivatives for KAT expressions seems to have the same desirable effect: isolates atoms and actions that actually appear in the KAT expression, instead of performing exhaustive search on all possible atom-action pairs (as it is being done with the derivatives algorithm).
 \item This algorithm is based on the idea of derivatives: ``Regular-expression derivatives reexamined'' (re-deriv.pdf
 ).
 \item We first convert expressions to automata and then compare the restrictiveness of automata.
