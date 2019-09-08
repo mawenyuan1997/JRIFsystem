@@ -1,9 +1,11 @@
-/* BDD.java
+/* SyKAT.BDD.java
  * 
  * LightBDD is a library for handling Reduced Ordered Binary Decision Diagrams.
  * 
  */
-package BDD;
+package SyKAT.BDD;
+
+import SyKAT.SyKATexpression;
 
 import java.util.HashMap;
 
@@ -16,7 +18,7 @@ import java.util.HashMap;
  * 
  * @author Eric 'Siggy' Scott
  */
-public class BDD extends Executable implements Graph
+public class BDD extends Executable implements Graph, SyKATexpression
 {   
     /* If you add fields, don't forget to update the copy constructor! */
     private BDDTree tree;
@@ -49,12 +51,12 @@ public class BDD extends Executable implements Graph
     }
     
     /**
-     * Builds a BDD out of the specified boolean function.
+     * Builds a SyKAT.BDD out of the specified boolean function.
      * 
      * Based on Anderson (1997).
      * 
      * @param f Function to clone
-     * @param output The function may be multi-output, but a BDD has only one output.  This selects one. 
+     * @param output The function may be multi-output, but a SyKAT.BDD has only one output.  This selects one.
      */
     public BDD(Executable f, int output)
     {
@@ -191,7 +193,7 @@ public class BDD extends Executable implements Graph
     }
        
     /**
-     * Build a BDD by *applying* the specified boolean operator to two preexisting
+     * Build a SyKAT.BDD by *applying* the specified boolean operator to two preexisting
      * BDDs.
      * 
      */
@@ -203,8 +205,8 @@ public class BDD extends Executable implements Graph
     }
     
     /**
-     *  Build a BDD by *restricting* (fixing or, rather, ignoring) one of the
-     *  inputs of a pre-existing BDD.
+     *  Build a SyKAT.BDD by *restricting* (fixing or, rather, ignoring) one of the
+     *  inputs of a pre-existing SyKAT.BDD.
      */
     public BDD(BDD x, int inputToFix, boolean value)
     {
@@ -227,7 +229,7 @@ public class BDD extends Executable implements Graph
     }
     
     /**
-     * Build a BDD by composing f1 and f2.
+     * Build a SyKAT.BDD by composing f1 and f2.
      * 
      * @param var The output of f2 is fed into the varth input of f1
      * @param f1 "Female" function
@@ -319,7 +321,7 @@ public class BDD extends Executable implements Graph
     }
     
     /**
-     *  Test whether this is equal to the reference BDD.  Runs a DFS-based
+     *  Test whether this is equal to the reference SyKAT.BDD.  Runs a DFS-based
      *  rooted directed acyclic graph isomorphism algorithm, which
      *  is linear in the number of nodes.
      */
@@ -360,7 +362,7 @@ public class BDD extends Executable implements Graph
     }
     
     /**
-     * Execute the boolean function represented by this BDD.
+     * Execute the boolean function represented by this SyKAT.BDD.
      */
     @Override
     public boolean[] execute(boolean[] input)
@@ -376,7 +378,7 @@ public class BDD extends Executable implements Graph
     }
     
     /**
-     * Reduce this BDD into a compact representation.  Normally, BDDs
+     * Reduce this SyKAT.BDD into a compact representation.  Normally, BDDs
      * have memory complexity exponential in the number of inputs.  Reducing
      * them collapses isomorphic subgraphs (i.e. eliminates redundancy in the
      * decision tree) to make it much more compact.
@@ -388,7 +390,7 @@ public class BDD extends Executable implements Graph
     
     
     /**
-     * Build a new BDD by applying a boolean operator to two existing ones.
+     * Build a new SyKAT.BDD by applying a boolean operator to two existing ones.
      * See Anderson (1997) for an explanation of this algorithm.
      */
     private void apply(HashMap dynamicProgrammingMemory, BooleanOperator op, BDDTree xTree, BDDTree yTree, int xIndex, int yIndex)
@@ -418,7 +420,7 @@ public class BDD extends Executable implements Graph
     
     
     /**
-     * Build a new BDD by restricting one of the inputs of a pre-existing one.
+     * Build a new SyKAT.BDD by restricting one of the inputs of a pre-existing one.
      */
     private int restrict(BDDTree xTree, int currentIndex, int inputToFix, boolean value, HashMap<Integer, Integer> dpMemory)
     {
@@ -445,7 +447,7 @@ public class BDD extends Executable implements Graph
     }
     
     /**
-     * Combination function for a bottom-up assembly of a BDD tree.
+     * Combination function for a bottom-up assembly of a SyKAT.BDD tree.
      * Again, see Anderson (1997) to understand why we do it this way.
      */
     private int mk(Node node)

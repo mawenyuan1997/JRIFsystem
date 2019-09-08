@@ -1,10 +1,10 @@
-package BDD;
+package SyKAT.BDD;
 
 import java.util.ArrayList;
 import java.util.Collections;
 
 /**
- * BDD objects are multi-input, single-output.  MultiBDDs use multiple BDD's to
+ * SyKAT.BDD objects are multi-input, single-output.  MultiBDDs use multiple SyKAT.BDD's to
  * provide a multi-input to multi-output function.
  * 
  * @author Eric 'Siggy' Scott
@@ -22,7 +22,7 @@ public class MultiBDD extends Executable
     }
     
     /**
-     * Initializes a one-output function (i.e., one BDD).  
+     * Initializes a one-output function (i.e., one SyKAT.BDD).
      */
     public MultiBDD(BDD.Function function)
     {

@@ -27,7 +27,7 @@ type test =
   | Bot
   | Prd of key
 
-(** Conversion to Boolean BDD *)
+(** Conversion to Boolean SyKAT.BDD *)
 val test_to_formula: test -> formula
 
 (** generic KAT constructors *)

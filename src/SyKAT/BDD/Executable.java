@@ -1,4 +1,4 @@
-package BDD;
+package SyKAT.BDD;
 
 import java.util.ArrayList;
 

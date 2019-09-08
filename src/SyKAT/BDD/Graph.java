@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package BDD;
+package SyKAT.BDD;
 
 /**
  * Graph objects can return dot code, which can be used by Graphviz to generate

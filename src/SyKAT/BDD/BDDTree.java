@@ -1,13 +1,13 @@
-package BDD;
+package SyKAT.BDD;
 
 import java.util.HashMap;
 import java.util.ArrayList;
 
 /**
- * Data structure for storing a BDD.  Just a wrapper so that BDD only has
+ * Data structure for storing a SyKAT.BDD.  Just a wrapper so that SyKAT.BDD only has
  * one object to keep track of rather than two (an ArrayList and HashMap).
  * 
- * Implicitly, the root is the last node in the ArrayList, because the BDD tree
+ * Implicitly, the root is the last node in the ArrayList, because the SyKAT.BDD tree
  * is always built from the bottom-up.
  * 
  * @author Eric 'Siggy' Scott
@@ -38,7 +38,7 @@ public class BDDTree
     }
     
     /**
-     *  Create a BDD for a constant boolean value (i.e. zero inputs).
+     *  Create a SyKAT.BDD for a constant boolean value (i.e. zero inputs).
      */
     public BDDTree(boolean value)
     {
@@ -136,7 +136,7 @@ public class BDDTree
     }
     
     /**
-     *  Test whether this is equal to the reference BDD.  Runs a DFS-based
+     *  Test whether this is equal to the reference SyKAT.BDD.  Runs a DFS-based
      *  rooted directed acyclic graph isomorphism algorithm, which
      *  is linear in the number of nodes.
      */

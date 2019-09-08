@@ -14,7 +14,7 @@
 \item We first convert expressions to automata and then compare the restrictiveness of automata.
 \item For the conversion of expressions to automata we need to use ``smart constructors''. For example, when converting \emph{1e}, it suffices to convert \emph{e} and when converting \emph{0e}, it suffices to convert \emph{0}.
 \item We might need to use hashconsing of expressions to achieve a faster syntactic equivalence routine. For example, when using sets of expressions, we need to decide if a new element is already in the set to avoid duplication.
-\item Java might have a BDD libabry where leafs can be states.
+\item Java might have a SyKAT.BDD libabry where leafs can be states.
 \item We could compute the product of syntactic automata as an ``apply'' function on BDDs.
 \item For an assignment $x:=y$, if the type of $x$ is $\{e_1,e_2\}$ and the type of $y$ is $e_y$, then the check $(e_1\geq e)\;\wedge\;(e_2\geq e_y)$ is more conservative than the check $e_1\sqcup e_2\geq e_y$.
 \item We are interested in the performance of the compilation. So, we could keep the first Brzozowski implementation for comparison reasons.
@@ -27,7 +27,7 @@
 \item Implement function KAT$\rightarrow$SyKAT. So, we need to (i) find an algorithm that converts expressions on tests to Boolean BDDs and to (ii) find JAVA structures to implement BDDs. We could look at the implementation of Pous for some help (PousSymKat directory):\\
 http://perso.ens-lyon.fr/damien.pous/symbolickat/
 \begin{itemize}
-\item To convert a boolean expression into a boolean BDD we use Figure 2 of pous.pdf inductively on the boolean expression. See 19-bdds.pdf for a nice schematic explanation of the algorithm.
+\item To convert a boolean expression into a boolean SyKAT.BDD we use Figure 2 of pous.pdf inductively on the boolean expression. See 19-bdds.pdf for a nice schematic explanation of the algorithm.
 \end{itemize}
 \item Use Section 4.2 from Pous to make the conversion algorithm (from KAt expressions to NFAs) symbolic.
 \item Use Section 3.2 from Pous and Section 4.2 from Antimirov to extend the conversion algorithm to produce DFAs.

@@ -1,4 +1,4 @@
-package BDD;
+package SyKAT.BDD;
 
 public class Example
 {
@@ -15,13 +15,13 @@ public class Example
 	System.out.println("Custom function " + myFunction.getName() + " has the following truth table:");
 	System.out.println(myFunction.printTruthTable());
 
-	System.out.println("Building BDD...");
+	System.out.println("Building SyKAT.BDD...");
 	final BDD myBDD = new BDD(myFunction, 0);
 
-	System.out.println("The BDD has the following truth table (should be identical):");
+	System.out.println("The SyKAT.BDD has the following truth table (should be identical):");
 	System.out.println(myBDD.printTruthTable());
 
-	System.out.println("And the BDD represents the function with the folowing graph:");
+	System.out.println("And the SyKAT.BDD represents the function with the folowing graph:");
 	System.out.println(myBDD.toDot("My_BDD"));
     }
 }
