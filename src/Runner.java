@@ -9,6 +9,7 @@ import java.util.HashSet;
 import java.util.List;
 
 public class Runner {
+    /*
     public static void main(String[] args) {
         HashMap<String, Boolean> atom = new HashMap<>();
         atom.put("A", true);
@@ -33,4 +34,5 @@ public class Runner {
         PartialDerivative D = new PartialDerivative(atom, "p");
         System.out.println(expr.accept(D));
     }
+    */
 }

@@ -6,6 +6,7 @@
 package SyKAT.BDD;
 
 import SyKAT.SyKATexpression;
+import SyKAToperator.SyKATexpressionVisitor;
 
 import java.util.HashMap;
 
@@ -84,7 +85,10 @@ public class BDD extends Executable implements Graph, SyKATexpression
             return mk(new Node(lowChild, highChild, inputIndex));
         }
     }
-    
+
+    @Override
+    public Object accept(SyKATexpressionVisitor visitor) { return visitor.visit(this); }
+
     public enum Function { TRUE, FALSE, NOT, NAND, AND, OR, XOR, SHUNT, TEST1, TEST2, TEST3, TEST4, TEST5, XOR_POSTCAT2, XOR_PRECAT2 };
     /**
      *  Constructor for pre-defined functions

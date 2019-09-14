@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class KATtest {
 
     HashMap<String, Boolean> atom = new HashMap<>();
-
+/*
     @org.junit.jupiter.api.Test
     void testE() {
 
@@ -112,4 +112,5 @@ class KATtest {
                 new PrimitiveTest("C")
         )));
     }
+    */
 }
