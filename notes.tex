@@ -25,7 +25,7 @@
 \begin{itemize}
 \item Follow Pous paper (``Symbolic Algorithms for Language Equivalence and Kleene Algebra with Tests'').
 \begin{itemize}
-\item Implement function KAT$\rightarrow$SyKAT. So, we need to (i) find an algorithm that converts expressions on tests to Boolean BDDs and to (ii) find JAVA structures to implement BDDs. We could look at the implementation of Pous for some help (PousSymKat directory):\\
+\item Implement function KAT$\rightarrow$SyKAT. So, we need to (i) find an algorithm that converts expressions on tests to Boolean BDDs and to (ii) find JAVA structures to implement BDDs (we used code from here: https://github.com/SigmaX/LightBDD/). We could look at the implementation of Pous for some help (PousSymKat directory):\\
 http://perso.ens-lyon.fr/damien.pous/symbolickat/
 \begin{itemize}
 \item To convert a boolean expression into a boolean SyKAT.BDD we use Figure 2 of pous.pdf inductively on the boolean expression. See 19-bdds.pdf for a nice schematic explanation of the algorithm.
