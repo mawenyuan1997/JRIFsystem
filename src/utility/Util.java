@@ -94,11 +94,28 @@ public class Util {
     }
 
 
-//    public static BDD actionToBDD(int index) {
-//        boolean[] bits = new boolean[numBitsForAction];
-//        for (int i = numBitsForAction - 1; i >= 0; i--) {
-//            bits[i] = (index & (1 << i)) != 0;
-//        }
-//
-//    }
+    public static boolean[] actionToBooleanArray(int index) {
+        boolean[] bits = new boolean[numBitsForAction];
+        for (int i = numBitsForAction - 1; i >= 0; i--) {
+            bits[i] = (index & (1 << i)) != 0;
+        }
+        return bits;
+    }
+
+    public static BDD actionToBDD(int index) {
+        boolean[] bits = actionToBooleanArray(index);
+        BooleanFunction f = new BooleanFunction("action", numBitsForAction, 1) {
+            @Override
+            public boolean[] execute(boolean[] input) {
+                boolean f = false;
+                assert input.length == numBitsForAction;
+                for (int i = 0; i < numBitsForAction; i++) {
+                    if (input[i] != bits[i]) return new boolean[]{false};
+                }
+                return new boolean[]{true};
+            }
+        };
+        final BDD node = new BDD(f, 0);
+        return node;
+    }
 }

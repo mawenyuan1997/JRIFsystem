@@ -2,6 +2,7 @@ package SyKAT;
 
 import SyKAT.BDD.BDD;
 import SyKAToperator.SyKATexpressionVisitor;
+import utility.Util;
 
 public class Primitive implements SyKATexpression {
     public String id;
@@ -11,7 +12,7 @@ public class Primitive implements SyKATexpression {
     public Primitive(String str, int i) {
         id = str;
         index = i;
-//        bdd = utility.Util.actionToBDD(i);
+        bdd = Util.actionToBDD(i);
     }
 
     @Override
