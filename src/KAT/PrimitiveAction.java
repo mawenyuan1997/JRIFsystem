@@ -5,9 +5,11 @@ import KAToperator.KATexpressionVisitor;
 public class PrimitiveAction implements KATexpression{
 
     public String id;
+    public int index;
 
-    public PrimitiveAction(String str) {
+    public PrimitiveAction(String str, int i) {
         id = str;
+        index = i;
     }
 
     @Override

@@ -1,12 +1,4 @@
-import KAT.*;
-import KAToperator.Evaluation;
-import KAToperator.KATprinter;
-import KAToperator.PartialDerivative;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
+package utility;
 
 public class Runner {
     /*

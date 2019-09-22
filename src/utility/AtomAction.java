@@ -1,9 +1,10 @@
-package util;
+package utility;
 
 import java.util.HashMap;
 
 public class AtomAction {
 
+    // deprecated definition
     private final HashMap<String, Boolean> atom;
     private final String action;
     public AtomAction(HashMap<String, Boolean> atom, String action) {

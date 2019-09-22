@@ -1,4 +1,4 @@
-package util;
+package utility;
 
 import KAT.ConcatExpression;
 import KAT.KATexpression;
@@ -9,6 +9,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Lin {
+
+    // deprecated
+
     public HashMap<AtomAction, KATexpression> lf;
 
     public Lin() { lf = new HashMap<>(); }

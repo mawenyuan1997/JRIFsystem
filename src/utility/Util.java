@@ -1,3 +1,5 @@
+package utility;
+
 import KAT.*;
 import SyKAT.*;
 import SyKAT.BDD.BDD;
@@ -6,6 +8,8 @@ import SyKAT.BDD.BooleanFunction;
 import java.util.Arrays;
 
 public class Util {
+    public static int numBitsForAction = 8;
+
     /**
      * return a boolean function from a KAT test
      * @param n number of principals
@@ -81,11 +85,20 @@ public class Util {
             return new Star(p);
         }
         if (expr instanceof PrimitiveAction) {
-            return new Primitive(((PrimitiveAction) expr).id);
+            return new Primitive(((PrimitiveAction) expr).id, ((PrimitiveAction) expr).index);
         }
         // test to BDD
         final BooleanFunction f = getFunction(n, (TestExpression) expr);
         final BDD node = new BDD(f, 0);
         return node;
     }
+
+
+//    public static BDD actionToBDD(int index) {
+//        boolean[] bits = new boolean[numBitsForAction];
+//        for (int i = numBitsForAction - 1; i >= 0; i--) {
+//            bits[i] = (index & (1 << i)) != 0;
+//        }
+//
+//    }
 }

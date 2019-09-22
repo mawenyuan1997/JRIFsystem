@@ -5,6 +5,7 @@ import KAT.PrimitiveTest;
 import SyKAT.BDD.BDD;
 import SyKAT.Concat;
 import SyKAT.SyKATexpression;
+import utility.Util;
 
 import java.util.HashMap;
 
@@ -17,7 +18,7 @@ class Utiltest {
         KATexpression expr = new ConcatExpression(
                 new ConcatExpression(
                         new PrimitiveTest("A",0),
-                        new PrimitiveAction("p")
+                        new PrimitiveAction("p", 0)
                 ),
                 new PrimitiveTest("B",1)
         );

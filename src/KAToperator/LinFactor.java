@@ -1,8 +1,8 @@
 package KAToperator;
 
 import KAT.*;
-import util.AtomAction;
-import util.Lin;
+import utility.AtomAction;
+import utility.Lin;
 
 import java.util.ArrayList;
 import java.util.HashMap;

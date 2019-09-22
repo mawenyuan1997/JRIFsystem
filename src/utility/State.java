@@ -1,6 +1,6 @@
-import KAT.KATexpression;
+package utility;
 
-import java.util.HashMap;
+import KAT.KATexpression;
 
 public class State {
 
