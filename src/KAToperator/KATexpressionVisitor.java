@@ -3,7 +3,7 @@ package KAToperator;
 import KAT.*;
 
 public interface KATexpressionVisitor {
-    Object visit(PrimitiveAction expr);
+    Object visit(Action expr);
     Object visit(PlusExpression expr);
     Object visit(ConcatExpression expr);
     Object visit(StarExpression expr);

@@ -1,9 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="abc0c21f-9c25-424c-8d60-52b3ee40e2f0" name="Default Changelist" comment="">
+    <list default="true" id="abc0c21f-9c25-424c-8d60-52b3ee40e2f0" name="Default Changelist" comment="Use primitive actions to represent an action">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SyKAT/Primitive.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SyKAT/Primitive.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/KAT/PrimitiveAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/KAT/Action.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/KAT/PrimitiveTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/KAT/PrimitiveTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/KAToperator/Derivative.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/KAToperator/Derivative.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/KAToperator/Evaluation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/KAToperator/Evaluation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/KAToperator/KATexpressionVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/KAToperator/KATexpressionVisitor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/KAToperator/KATprinter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/KAToperator/KATprinter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/KAToperator/LinFactor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/KAToperator/LinFactor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/KAToperator/PartialDerivative.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/KAToperator/PartialDerivative.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/KAToperator/Simplify.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SyKAT/Primitive.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SyKAToperator/Epsilon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SyKAToperator/Epsilon.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SyKAToperator/SyKATexpressionVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SyKAToperator/SyKATexpressionVisitor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/KATtest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/KATtest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/UtilTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/UtilTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utility/AtomAction.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utility/KATautomata.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utility/KATautomata.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utility/Lin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utility/Lin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utility/Runner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utility/Runner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utility/State.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utility/State.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/utility/Util.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utility/Util.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -21,14 +39,12 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/SyKAToperator/Epsilon.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="312">
-              <caret line="38" column="9" lean-forward="true" selection-start-line="33" selection-start-column="8" selection-end-line="38" selection-end-column="9" />
+            <state relative-caret-position="345">
+              <caret line="25" column="5" selection-start-line="25" selection-start-column="5" selection-end-line="25" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#303#304#0" expanded="true" />
                 <element signature="e#339#340#0" expanded="true" />
-                <element signature="e#1148#1149#0" expanded="true" />
-                <element signature="e#1198#1199#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -37,8 +53,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/utility/Util.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="427">
-              <caret line="112" column="38" selection-start-line="112" selection-start-column="38" selection-end-line="112" selection-end-column="38" />
+            <state relative-caret-position="-182">
+              <caret line="19" column="52" selection-start-line="19" selection-start-column="52" selection-end-line="19" selection-end-column="52" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -47,10 +63,87 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/SyKAToperator/SyKATexpressionVisitor.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="150">
+              <caret line="10" column="28" selection-start-line="10" selection-start-column="28" selection-end-line="10" selection-end-column="28" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/utility/KATautomata.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="15">
+              <caret line="1" selection-start-line="1" selection-end-line="1" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_144.jdk/Contents/Home/src.zip!/java/util/ArrayList.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="183">
+              <caret line="1248" selection-start-line="1248" selection-end-line="1248" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/KAToperator/PartialDerivative.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1305">
+              <caret line="87" column="2" selection-start-line="87" selection-start-column="2" selection-end-line="87" selection-end-column="2" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/KAToperator/KATprinter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="120">
+              <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/KAT/Action.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="105">
+              <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#239#240#0" expanded="true" />
+                <element signature="e#302#303#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/UtilTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="385">
-              <caret line="27" column="27" selection-start-line="27" selection-start-column="27" selection-end-line="27" selection-end-column="27" />
+            <state relative-caret-position="210">
+              <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/SyKAT/BDD/Util.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="565">
+              <caret line="56" column="21" selection-start-line="56" selection-start-column="18" selection-end-line="56" selection-end-column="21" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -89,39 +182,50 @@
         <option value="$PROJECT_DIR$/src/KAT/PlusTest.java" />
         <option value="$PROJECT_DIR$/src/KAT/StarExpression.java" />
         <option value="$PROJECT_DIR$/src/KAT/ZeroTest.java" />
-        <option value="$PROJECT_DIR$/src/KAToperator/PartialDerivative.java" />
         <option value="$PROJECT_DIR$/src/KAToperator/LinearFactor.java" />
         <option value="$PROJECT_DIR$/notes.tex" />
         <option value="$PROJECT_DIR$/src/util/Lin.java" />
         <option value="$PROJECT_DIR$/src/util/AtomAction.java" />
-        <option value="$PROJECT_DIR$/src/KAToperator/LinFactor.java" />
         <option value="$PROJECT_DIR$/src/BDD/Util.java" />
         <option value="$PROJECT_DIR$/src/BDD/BDD.java" />
         <option value="$PROJECT_DIR$/src/SyKAT/SyKATexpression.java" />
         <option value="$PROJECT_DIR$/src/SyKAT/Concat.java" />
-        <option value="$PROJECT_DIR$/src/SyKAToperator/SyKATexpressionVisitor.java" />
         <option value="$PROJECT_DIR$/src/SyKAT/Plus.java" />
         <option value="$PROJECT_DIR$/src/SyKAT/Star.java" />
         <option value="$PROJECT_DIR$/src/SyKAT/BDD/BDD.java" />
-        <option value="$PROJECT_DIR$/src/KAT/PrimitiveTest.java" />
         <option value="$PROJECT_DIR$/src/test/KATtest.java" />
         <option value="$PROJECT_DIR$/src/Runner.java" />
         <option value="$PROJECT_DIR$/src/SyKAToperator/epsilon.java" />
-        <option value="$PROJECT_DIR$/src/SyKAToperator/Epsilon.java" />
-        <option value="$PROJECT_DIR$/src/KAT/PrimitiveAction.java" />
         <option value="$PROJECT_DIR$/src/SyKAT/BDD/Util.java" />
         <option value="$PROJECT_DIR$/src/Util.java" />
-        <option value="$PROJECT_DIR$/src/test/UtilTest.java" />
         <option value="$PROJECT_DIR$/src/utility/AtomAction.java" />
-        <option value="$PROJECT_DIR$/src/utility/KATautomata.java" />
-        <option value="$PROJECT_DIR$/src/utility/Lin.java" />
+        <option value="$PROJECT_DIR$/src/KAT/PrimitiveTest.java" />
         <option value="$PROJECT_DIR$/src/SyKAT/Primitive.java" />
+        <option value="$PROJECT_DIR$/src/KAT/PrimitiveAction.java" />
+        <option value="$PROJECT_DIR$/src/utility/Lin.java" />
+        <option value="$PROJECT_DIR$/src/utility/State.java" />
+        <option value="$PROJECT_DIR$/src/KAToperator/LinFactor.java" />
+        <option value="$PROJECT_DIR$/src/KAT/Action.java" />
+        <option value="$PROJECT_DIR$/src/KAToperator/Derivative.java" />
+        <option value="$PROJECT_DIR$/src/KAToperator/Evaluation.java" />
+        <option value="$PROJECT_DIR$/src/KAToperator/KATprinter.java" />
+        <option value="$PROJECT_DIR$/src/KAToperator/PartialDerivative.java" />
+        <option value="$PROJECT_DIR$/src/SyKAToperator/Epsilon.java" />
+        <option value="$PROJECT_DIR$/src/SyKAToperator/SyKATexpressionVisitor.java" />
+        <option value="$PROJECT_DIR$/src/utility/KATautomata.java" />
+        <option value="$PROJECT_DIR$/src/test/UtilTest.java" />
         <option value="$PROJECT_DIR$/src/utility/Util.java" />
       </list>
     </option>
   </component>
+  <component name="MavenProjectNavigator">
+    <treeState>
+      <expand />
+      <select />
+    </treeState>
+  </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="156" />
+    <option name="x" value="101" />
     <option name="y" value="23" />
     <option name="width" value="1257" />
     <option name="height" value="812" />
@@ -134,8 +238,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -202,6 +304,8 @@
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -211,7 +315,7 @@
     <property name="Repository.Attach.Sources" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1569191063419" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1569775178089" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
   </component>
@@ -312,7 +416,9 @@
       <workItem from="1567356820844" duration="12015000" />
       <workItem from="1568430037993" duration="13521000" />
       <workItem from="1568642344266" duration="3759000" />
-      <workItem from="1569163025526" duration="6915000" />
+      <workItem from="1569163025526" duration="7821000" />
+      <workItem from="1569246872059" duration="3496000" />
+      <workItem from="1569718631406" duration="11301000" />
     </task>
     <task id="LOCAL-00001" summary="refactor">
       <created>1565894824101</created>
@@ -377,22 +483,17 @@
       <option name="project" value="LOCAL" />
       <updated>1569189608960</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="represent action by BDD">
+      <created>1569191122768</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1569191122768</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="Utiltest - 2019.09.14 at 12h 18m 50s.xml">
-      <configuration name="Utiltest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="Utiltest - 2019.09.14 at 12h 31m 37s.xml">
-      <configuration name="Utiltest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="Utiltest - 2019.09.14 at 12h 32m 21s.xml">
-      <configuration name="Utiltest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="Utiltest - 2019.09.14 at 12h 34m 05s.xml">
-      <configuration name="Utiltest" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="Utiltest - 2019.09.14 at 12h 35m 16s.xml">
       <configuration name="Utiltest" configurationId="JUnit" />
     </history-entry>
@@ -411,9 +512,21 @@
     <history-entry file="Utiltest - 2019.09.22 at 14h 55m 27s.xml">
       <configuration name="Utiltest" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="Utiltest - 2019.09.22 at 15h 24m 27s.xml">
+      <configuration name="Utiltest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="Utiltest - 2019.09.29 at 09h 28m 03s.xml">
+      <configuration name="Utiltest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="Utiltest - 2019.09.29 at 09h 29m 59s.xml">
+      <configuration name="Utiltest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="Utiltest - 2019.09.29 at 09h 32m 17s.xml">
+      <configuration name="Utiltest" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="60872000" />
+    <option name="totallyTimeSpent" value="76575000" />
   </component>
   <component name="TodoView" selected-index="4">
     <todo-panel id="selected-file">
@@ -425,10 +538,9 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="156" y="23" width="1257" height="812" extended-state="0" />
-    <editor active="true" />
+    <frame x="101" y="23" width="1257" height="812" extended-state="0" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49813432" visible="true" weight="0.22386831" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49813432" visible="true" weight="0.23045267" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -436,14 +548,14 @@
       <window_info id="Capture Tool" order="5" />
       <window_info id="Favorites" order="6" sideWeight="0.5018657" side_tool="true" weight="0.21399178" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" visible="true" weight="0.13055556" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.1736111" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.30277777" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.25277779" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.25555557" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" />
+      <window_info anchor="bottom" id="Version Control" order="8" weight="0.24444444" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Terminal" order="10" weight="0.2" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
@@ -454,7 +566,7 @@
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="right" id="Database" order="4" />
       <window_info anchor="right" id="Theme Preview" order="5" />
-      <window_info anchor="right" id="Maven" order="6" />
+      <window_info anchor="right" id="Maven" order="6" weight="0.32921812" />
       <window_info anchor="right" id="Capture Analysis" order="7" />
       <window_info anchor="right" id="Palette&#9;" order="8" />
     </layout>
@@ -472,30 +584,22 @@
     <MESSAGE value="add translate function that turns a KAT expr to SyKAT expr&#10;use boolean array to represent atom" />
     <MESSAGE value="add epsilon function for SyKAT" />
     <MESSAGE value="modify structure" />
-    <option name="LAST_COMMIT_MESSAGE" value="modify structure" />
+    <MESSAGE value="represent action by BDD" />
+    <option name="LAST_COMMIT_MESSAGE" value="represent action by BDD" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/utility/Util.java</url>
+          <line>50</line>
+          <properties />
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/KAToperator/Evaluation.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/KAToperator/Simplify.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/KAToperator/KATprinter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="18" column="54" lean-forward="true" selection-start-line="18" selection-start-column="54" selection-end-line="18" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/KAT/OneTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
@@ -563,28 +667,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/KAToperator/LinearFactor.java" />
-    <entry file="file://$PROJECT_DIR$/src/KAToperator/PartialDerivative.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="32" column="31" selection-start-line="32" selection-start-column="31" selection-end-line="32" selection-end-column="31" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1806#1807#0" expanded="true" />
-            <element signature="e#1857#1858#0" expanded="true" />
-            <element signature="e#1915#1916#0" expanded="true" />
-            <element signature="e#1966#1967#0" expanded="true" />
-            <element signature="e#2021#2022#0" expanded="true" />
-            <element signature="e#2072#2073#0" expanded="true" />
-            <element signature="e#2128#2129#0" expanded="true" />
-            <element signature="e#2179#2180#0" expanded="true" />
-            <element signature="e#2240#2241#0" expanded="true" />
-            <element signature="e#2291#2292#0" expanded="true" />
-            <element signature="e#2347#2348#0" expanded="true" />
-            <element signature="e#2398#2399#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/notes.tex">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1215">
@@ -593,27 +675,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/BDD/BDDnode.java" />
-    <entry file="file://$PROJECT_DIR$/src/KAToperator/LinFactor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-          <folding>
-            <element signature="e#2286#2287#0" expanded="true" />
-            <element signature="e#2318#2319#0" expanded="true" />
-            <element signature="e#2376#2377#0" expanded="true" />
-            <element signature="e#2408#2409#0" expanded="true" />
-            <element signature="e#2463#2464#0" expanded="true" />
-            <element signature="e#2495#2496#0" expanded="true" />
-            <element signature="e#2551#2552#0" expanded="true" />
-            <element signature="e#2583#2584#0" expanded="true" />
-            <element signature="e#2644#2645#0" expanded="true" />
-            <element signature="e#2676#2677#0" expanded="true" />
-            <element signature="e#2732#2733#0" expanded="true" />
-            <element signature="e#2764#2765#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/SyKAT/BDD/Graph.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
@@ -714,31 +775,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/KAToperator/Derivative.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="585">
-          <caret line="41" column="42" selection-start-line="41" selection-start-column="8" selection-end-line="41" selection-end-column="42" />
-          <folding>
-            <element signature="e#1977#1978#0" expanded="true" />
-            <element signature="e#2014#2015#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/SyKAT/BDD/BooleanOperator.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
           <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/SyKAToperator/SyKATexpressionVisitor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="19" selection-start-line="9" selection-start-column="19" selection-end-line="9" selection-end-column="19" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -773,38 +813,28 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/SyKAT/Star.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="88" selection-start-line="10" selection-start-column="3" selection-end-line="11" selection-end-column="88" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/KAT/PrimitiveTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
-          <caret line="9" column="36" selection-start-line="9" selection-start-column="36" selection-end-line="9" selection-end-column="36" />
+          <caret line="9" column="17" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
+          <folding>
+            <element signature="e#169#170#0" expanded="true" />
+            <element signature="e#193#194#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/KATtest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-512">
+        <state relative-caret-position="-688">
           <caret line="42" column="10" selection-start-line="36" selection-start-column="8" selection-end-line="42" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/KAT/PrimitiveAction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="18" selection-start-line="11" selection-start-column="18" selection-end-line="11" selection-end-column="18" />
-          <folding>
-            <element signature="e#595#596#0" expanded="true" />
-            <element signature="e#631#632#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/SyKAT/BDD/Util.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="406">
-          <caret line="56" column="21" selection-start-line="56" selection-start-column="18" selection-end-line="56" selection-end-column="21" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -815,17 +845,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/utility/KATautomata.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="89">
-          <caret line="13" column="17" selection-start-line="13" selection-start-column="17" selection-end-line="13" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/utility/Lin.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="24">
-          <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
+        <state relative-caret-position="780">
+          <caret line="52" column="6" selection-start-line="52" selection-start-column="6" selection-end-line="52" selection-end-column="6" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -842,21 +865,62 @@
     <entry file="file://$PROJECT_DIR$/src/utility/State.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="300">
-          <caret line="24" column="28" lean-forward="true" selection-start-line="24" selection-start-column="28" selection-end-line="24" selection-end-column="28" />
+          <caret line="20" column="9" lean-forward="true" selection-start-line="20" selection-start-column="9" selection-end-line="20" selection-end-column="9" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/SyKAT/Star.java">
+    <entry file="file://$PROJECT_DIR$/src/KAToperator/LinFactor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="88" selection-start-line="10" selection-start-column="3" selection-end-line="11" selection-end-column="88" />
+        <state relative-caret-position="337">
+          <caret line="72" column="27" lean-forward="true" selection-start-line="72" selection-start-column="27" selection-end-line="72" selection-end-column="27" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/KAToperator/Derivative.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1350">
+          <caret line="92" column="2" selection-start-line="92" selection-start-column="2" selection-end-line="92" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/KAToperator/Evaluation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="990">
+          <caret line="68" column="2" selection-start-line="68" selection-start-column="2" selection-end-line="68" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/KAToperator/KATprinter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/KAToperator/Simplify.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-636">
+          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/SyKAT/Primitive.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="34" lean-forward="true" selection-start-line="14" selection-start-column="34" selection-end-line="14" selection-end-column="34" />
+        <state relative-caret-position="90">
+          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/KAToperator/PartialDerivative.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1305">
+          <caret line="87" column="2" selection-start-line="87" selection-start-column="2" selection-end-line="87" selection-end-column="2" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -865,22 +929,66 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/SyKAToperator/Epsilon.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="312">
-          <caret line="38" column="9" lean-forward="true" selection-start-line="33" selection-start-column="8" selection-end-line="38" selection-end-column="9" />
+        <state relative-caret-position="345">
+          <caret line="25" column="5" selection-start-line="25" selection-start-column="5" selection-end-line="25" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#303#304#0" expanded="true" />
             <element signature="e#339#340#0" expanded="true" />
-            <element signature="e#1148#1149#0" expanded="true" />
-            <element signature="e#1198#1199#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/KAT/Action.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#239#240#0" expanded="true" />
+            <element signature="e#302#303#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SyKAT/BDD/Util.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="565">
+          <caret line="56" column="21" selection-start-line="56" selection-start-column="18" selection-end-line="56" selection-end-column="21" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SyKAToperator/SyKATexpressionVisitor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="28" selection-start-line="10" selection-start-column="28" selection-end-line="10" selection-end-column="28" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utility/KATautomata.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" selection-start-line="1" selection-end-line="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_144.jdk/Contents/Home/src.zip!/java/util/ArrayList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="183">
+          <caret line="1248" selection-start-line="1248" selection-end-line="1248" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/UtilTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="385">
-          <caret line="27" column="27" selection-start-line="27" selection-start-column="27" selection-end-line="27" selection-end-column="27" />
+        <state relative-caret-position="210">
+          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -889,8 +997,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/utility/Util.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="427">
-          <caret line="112" column="38" selection-start-line="112" selection-start-column="38" selection-end-line="112" selection-end-column="38" />
+        <state relative-caret-position="-182">
+          <caret line="19" column="52" selection-start-line="19" selection-start-column="52" selection-end-line="19" selection-end-column="52" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

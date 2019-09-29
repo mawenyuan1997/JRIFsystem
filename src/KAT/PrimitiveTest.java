@@ -5,11 +5,9 @@ import KAToperator.KATexpressionVisitor;
 public class PrimitiveTest extends TestExpression {
 
     public String id;
-    public int index;
 
-    public PrimitiveTest(String str,int i) {
+    public PrimitiveTest(String str) {
         id = str;
-        index = i;
     }
 
     public Object accept(KATexpressionVisitor visitor) {

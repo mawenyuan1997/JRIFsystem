@@ -3,7 +3,7 @@ package KAToperator;
 import KAT.*;
 
 import java.util.HashMap;
-
+/*
 public class Derivative implements KATexpressionVisitor {
 
     HashMap<String, Boolean> atom;
@@ -17,7 +17,7 @@ public class Derivative implements KATexpressionVisitor {
     }
 
     @Override
-    public Object visit(PrimitiveAction expr) {
+    public Object visit(Action expr) {
         if (expr.id.equals(action))
             return new OneTest();
         else
@@ -90,3 +90,4 @@ public class Derivative implements KATexpressionVisitor {
     }
 
 }
+*/

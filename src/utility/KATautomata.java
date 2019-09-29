@@ -1,18 +1,10 @@
 package utility;
 
-import KAT.*;
-import KAToperator.Derivative;
-import KAToperator.Evaluation;
-import KAToperator.Simplify;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 
 public class KATautomata {
 
     // deprecated
-
+    /*
     private HashMap<State, HashMap<AtomAction, State>> transition;
     private List<State> states;
     private State initial;
@@ -87,4 +79,5 @@ public class KATautomata {
     }
 
     public List<State> getStates() { return states; };
+    */
 }

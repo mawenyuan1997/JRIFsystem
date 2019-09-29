@@ -4,9 +4,8 @@ import KAT.*;
 
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.TreeSet;
 import java.util.stream.Collectors;
-
+/*
 public class PartialDerivative implements KATexpressionVisitor{
 
     HashMap<String, Boolean> atom;
@@ -20,7 +19,7 @@ public class PartialDerivative implements KATexpressionVisitor{
     }
 
     @Override
-    public Object visit(PrimitiveAction expr) {
+    public Object visit(Action expr) {
         HashSet<KATexpression> singleton = new HashSet<>();
         if (expr.id.equals(action))
             singleton.add(new OneTest());
@@ -86,3 +85,4 @@ public class PartialDerivative implements KATexpressionVisitor{
         return new HashSet<KATexpression>();
     }
 }
+*/

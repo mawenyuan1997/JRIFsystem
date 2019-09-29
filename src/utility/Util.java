@@ -6,17 +6,43 @@ import SyKAT.BDD.BDD;
 import SyKAT.BDD.BooleanFunction;
 
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.HashSet;
 
 public class Util {
-    public static int numBitsForAction = 8;
+    public String[] primTests;
+    public String[] primActions;
+    // mapping from primitive test to its index in primTest
+    public HashMap<String, Integer> primTestMapping;
+    // mapping from primitive action to its index in primActions
+    public HashMap<String, Integer> primActionMapping;
+    public int numOfTest;   // length of primTests
+    public int numOfAction; // length of primActions
+
+    public Util(String[] tests, String[] actions) {
+        primTests = tests.clone();
+        primActions = actions.clone();
+        primTestMapping = new HashMap<>();
+        primActionMapping = new HashMap<>();
+        for(int i=0; i<primTests.length; i++) {
+            primTestMapping.put(primTests[i], i);
+        }
+        for(int i=0; i<primActions.length; i++) {
+            primActionMapping.put(primActions[i], i);
+        }
+        numOfAction = primActions.length;
+        numOfTest = primTests.length;
+    }
 
     /**
      * return a boolean function from a KAT test
-     * @param n number of principals
+     * input of the function is a boolean array with values both
+     * for primTest and primAction (primTest first)
      * @param test
      * @return
      */
-    public static BooleanFunction getFunction(int n, TestExpression test) {
+    public BooleanFunction getFunction(TestExpression test) {
+        int n = numOfTest + numOfAction;
         if (test instanceof OneTest) {
             return new BooleanFunction("one", n, 1) {
                 public boolean[] execute(boolean[] input) {
@@ -25,37 +51,47 @@ public class Util {
             };
         }
         if (test instanceof ZeroTest) {
-            return new BooleanFunction("one", n, 1) {
+            return new BooleanFunction("zero", n, 1) {
                 public boolean[] execute(boolean[] input) {
                     return new boolean[]{false};
                 }
             };
         }
-        if (test instanceof PrimitiveTest) {
-            return new BooleanFunction("one", n, 1) {
+        if (test instanceof NegateTest) {
+            return new BooleanFunction("negate", n, 1) {
+                final BooleanFunction l = getFunction(((NegateTest) test).test);
                 public boolean[] execute(boolean[] input) {
-                    return new boolean[]{input[((PrimitiveTest) test).index]};
+                    boolean res = l.execute(input)[0];
+                    return new boolean[]{!res};
+                }
+            };
+        }
+        if (test instanceof PrimitiveTest) {
+            return new BooleanFunction("prim", n, 1) {
+                public boolean[] execute(boolean[] input) {
+                    String testId = ((PrimitiveTest) test).id;
+                    return new boolean[]{input[primTestMapping.get(testId)]};
                 }
             };
         }
         if (test instanceof ConcatTest) {
-            final BooleanFunction l = getFunction(n, ((ConcatTest) test).left);
-            final BooleanFunction r = getFunction(n, ((ConcatTest) test).right);
-            return new BooleanFunction("one", n, 1) {
+            final BooleanFunction l = getFunction(((ConcatTest) test).left);
+            final BooleanFunction r = getFunction(((ConcatTest) test).right);
+            return new BooleanFunction("cancat", n, 1) {
                 public boolean[] execute(boolean[] input) {
-                    boolean lres = l.execute(Arrays.copyOfRange(input,0,l.getNumInputs()))[0];
-                    boolean rres = r.execute(Arrays.copyOfRange(input,l.getNumInputs(),n))[0];
+                    boolean lres = l.execute(input)[0];
+                    boolean rres = r.execute(input)[0];
                     return new boolean[]{lres && rres};
                 }
             };
         }
         else  {// if (test instanceof PlusTest)
-            final BooleanFunction l = getFunction(n, ((PlusTest) test).left);
-            final BooleanFunction r = getFunction(n, ((PlusTest) test).right);
-            return new BooleanFunction("one", n, 1) {
+            final BooleanFunction l = getFunction(((PlusTest) test).left);
+            final BooleanFunction r = getFunction(((PlusTest) test).right);
+            return new BooleanFunction("plus", n, 1) {
                 public boolean[] execute(boolean[] input) {
-                    boolean lres = l.execute(Arrays.copyOfRange(input,0,l.getNumInputs()))[0];
-                    boolean rres = r.execute(Arrays.copyOfRange(input,l.getNumInputs(), n))[0];
+                    boolean lres = l.execute(input)[0];
+                    boolean rres = r.execute(input)[0];
                     return new boolean[]{lres || rres};
                 }
             };
@@ -65,56 +101,45 @@ public class Util {
 
     /**
      * translate a KAT expression to Symbolic KAT expression
-     * @param n number of principals
      * @param expr
      * @return
      */
-    public static SyKATexpression translate(int n, KATexpression expr) {
+    public SyKATexpression translate(KATexpression expr) {
         if (expr instanceof ConcatExpression) {
-            SyKATexpression l = translate(n, ((ConcatExpression) expr).left);
-            SyKATexpression r = translate(n, ((ConcatExpression) expr).right);
+            SyKATexpression l = translate(((ConcatExpression) expr).left);
+            SyKATexpression r = translate(((ConcatExpression) expr).right);
             return new Concat(l, r);
         }
         if (expr instanceof PlusExpression) {
-            SyKATexpression l = translate(n, ((PlusExpression) expr).left);
-            SyKATexpression r = translate(n, ((PlusExpression) expr).right);
+            SyKATexpression l = translate(((PlusExpression) expr).left);
+            SyKATexpression r = translate(((PlusExpression) expr).right);
             return new Plus(l, r);
         }
         if (expr instanceof StarExpression) {
-            SyKATexpression p = translate(n, ((StarExpression) expr).p);
+            SyKATexpression p = translate(((StarExpression) expr).p);
             return new Star(p);
         }
-        if (expr instanceof PrimitiveAction) {
-            return new Primitive(((PrimitiveAction) expr).id, ((PrimitiveAction) expr).index);
-        }
-        // test to BDD
-        final BooleanFunction f = getFunction(n, (TestExpression) expr);
-        final BDD node = new BDD(f, 0);
-        return node;
-    }
-
-
-    public static boolean[] actionToBooleanArray(int index) {
-        boolean[] bits = new boolean[numBitsForAction];
-        for (int i = numBitsForAction - 1; i >= 0; i--) {
-            bits[i] = (index & (1 << i)) != 0;
-        }
-        return bits;
-    }
-
-    public static BDD actionToBDD(int index) {
-        boolean[] bits = actionToBooleanArray(index);
-        BooleanFunction f = new BooleanFunction("action", numBitsForAction, 1) {
-            @Override
-            public boolean[] execute(boolean[] input) {
-                boolean f = false;
-                assert input.length == numBitsForAction;
-                for (int i = 0; i < numBitsForAction; i++) {
-                    if (input[i] != bits[i]) return new boolean[]{false};
+        if (expr instanceof Action) {
+            int n = numOfTest + numOfAction;
+            // input of the function is a boolean array with values both
+            // for primTest and primAction (primTest first)
+            BooleanFunction f = new BooleanFunction("action", n, 1) {
+                public boolean[] execute(boolean[] input) {
+                    HashSet<String> primSet = ((Action) expr).primActions;
+                    boolean[] actionInput = Arrays.copyOfRange(input, numOfTest, n);
+                    for(int i=0; i<primActions.length; i++) {
+                        if (primSet.contains(primActions[i]) != actionInput[i])
+                            return new boolean[]{false};
+                    }
+                    return new boolean[]{true};
                 }
-                return new boolean[]{true};
-            }
-        };
+            };
+            final BDD node = new BDD(f, 0);
+            return node;
+        }
+
+        // if expr instanceof TestExpression
+        final BooleanFunction f = getFunction((TestExpression) expr);
         final BDD node = new BDD(f, 0);
         return node;
     }

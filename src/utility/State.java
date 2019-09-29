@@ -3,7 +3,7 @@ package utility;
 import KAT.KATexpression;
 
 public class State {
-
+    /*
     KATexpression expr;
     public State(KATexpression e) {
         expr = e;
@@ -25,4 +25,5 @@ public class State {
         State s = (State) o;
         return this.expr.equals(s.expr);
     }
+    */
 }

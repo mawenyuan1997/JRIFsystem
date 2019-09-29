@@ -1,6 +1,6 @@
+import KAT.Action;
 import KAT.ConcatExpression;
 import KAT.KATexpression;
-import KAT.PrimitiveAction;
 import KAT.PrimitiveTest;
 import SyKAT.BDD.BDD;
 import SyKAT.Concat;
@@ -15,20 +15,30 @@ class Utiltest {
 
     @org.junit.jupiter.api.Test
     void testE() {
+        String[] primTests = new String[]{"A", "B", "C"};
+        String[] primActions = new String[]{"p1","p2","p3"};
+        Util util = new Util(primTests, primActions);
+        String[] action1 = new String[]{"p1"};
+        String[] action2 = new String[]{"p1", "p2"};
         KATexpression expr = new ConcatExpression(
                 new ConcatExpression(
-                        new PrimitiveTest("A",0),
-                        new PrimitiveAction("p", 0)
+                        new PrimitiveTest("A"),
+                        new Action(action1)
                 ),
-                new PrimitiveTest("B",1)
+                new ConcatExpression(
+                        new PrimitiveTest("B"),
+                        new Action(action2)
+                )
         );
-        SyKATexpression sy = Util.translate(2, expr);
-        assert (((Concat)sy).right instanceof BDD);
-        System.out.println(((BDD) ((Concat)sy).right).printTruthTable());
-        SyKATexpression l = ((Concat)sy).left;
-        assert (l instanceof Concat);
-        SyKATexpression ll = ((Concat)l).left;
-        assert (ll instanceof BDD);
-        System.out.println(((BDD) ll).printTruthTable());
+        SyKATexpression sy = util.translate(expr);
+        SyKATexpression testA = ((Concat)((Concat)sy).left).left;
+        SyKATexpression action1expr = ((Concat)((Concat)sy).left).right;
+        SyKATexpression action2expr = ((Concat)((Concat)sy).right).right;
+        assert (testA instanceof BDD);
+        System.out.println(((BDD) testA).printTruthTable());
+        assert (action1expr instanceof BDD);
+        System.out.println(((BDD) action1expr).printTruthTable());
+        assert (action2expr instanceof BDD);
+        System.out.println(((BDD) action2expr).printTruthTable());
     }
 }

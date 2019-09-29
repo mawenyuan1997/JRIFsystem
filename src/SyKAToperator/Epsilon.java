@@ -1,11 +1,9 @@
 package SyKAToperator;
 
 import SyKAT.BDD.BDD;
-import SyKAT.BDD.BooleanFunction;
 import SyKAT.BDD.BooleanOperator;
 import SyKAT.Concat;
 import SyKAT.Plus;
-import SyKAT.Primitive;
 import SyKAT.Star;
 
 public class Epsilon implements SyKATexpressionVisitor {
@@ -38,11 +36,6 @@ public class Epsilon implements SyKATexpressionVisitor {
             }
         };
         return new BDD(op, l, r);
-    }
-
-    @Override
-    public Object visit(Primitive expr) {
-        return new BDD(BDD.Function.FALSE);
     }
 
     @Override

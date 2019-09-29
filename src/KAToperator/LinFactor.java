@@ -1,15 +1,15 @@
 package KAToperator;
 
 import KAT.*;
-import utility.AtomAction;
 import utility.Lin;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
+/*
 public class LinFactor implements KATexpressionVisitor {
+
     private List<String> primtest;
 
     public LinFactor(List<String> l) {primtest = l;}
@@ -35,7 +35,7 @@ public class LinFactor implements KATexpressionVisitor {
     }
 
     @Override
-    public Object visit(PrimitiveAction expr) {
+    public Object visit(Action expr) {
         Lin lf = new Lin();
         for(HashMap<String, Boolean> a : allatoms()) {
             AtomAction ap = new AtomAction(a, expr.id);
@@ -106,3 +106,4 @@ public class LinFactor implements KATexpressionVisitor {
         return new Lin();
     }
 }
+*/

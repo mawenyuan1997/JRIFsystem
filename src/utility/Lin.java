@@ -12,6 +12,7 @@ public class Lin {
 
     // deprecated
 
+    /*
     public HashMap<AtomAction, KATexpression> lf;
 
     public Lin() { lf = new HashMap<>(); }
@@ -49,5 +50,6 @@ public class Lin {
         u.putAll(other.lf);
         return new Lin(u);
     }
+    */
 
 }

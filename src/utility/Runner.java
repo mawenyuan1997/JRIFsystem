@@ -11,14 +11,14 @@ public class Runner {
         KATexpression e1 = new ConcatExpression(
                 new ConcatExpression(
                         new PrimitiveTest("A"),
-                        new PrimitiveAction("p")
+                        new Action("p")
                 ),
                 new PrimitiveTest("B")
         );
         KATexpression e2 = new ConcatExpression(
                 new ConcatExpression(
                         new PrimitiveTest("A"),
-                        new PrimitiveAction("p")
+                        new Action("p")
                 ),
                 new PrimitiveTest("C")
         );

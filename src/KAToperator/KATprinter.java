@@ -4,8 +4,8 @@ import KAT.*;
 
 public class KATprinter implements KATexpressionVisitor {
     @Override
-    public Object visit(PrimitiveAction expr) {
-        return expr.id;
+    public Object visit(Action expr) {
+        return expr.primActions.toString();
     }
 
     @Override
