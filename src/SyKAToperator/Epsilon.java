@@ -9,6 +9,8 @@ import SyKAT.Star;
 public class Epsilon implements SyKATexpressionVisitor {
     @Override
     public Object visit(BDD expr) {
+        if (expr.isAction())
+            return new BDD(BDD.Function.FALSE);
         return new BDD(expr);
     }
 

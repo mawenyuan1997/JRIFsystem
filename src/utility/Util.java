@@ -134,13 +134,10 @@ public class Util {
                     return new boolean[]{true};
                 }
             };
-            final BDD node = new BDD(f, 0);
-            return node;
+            return new BDD(f, true);
         }
-
         // if expr instanceof TestExpression
         final BooleanFunction f = getFunction((TestExpression) expr);
-        final BDD node = new BDD(f, 0);
-        return node;
+        return new BDD(f, false);
     }
 }

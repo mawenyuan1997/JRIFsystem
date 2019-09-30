@@ -23,7 +23,8 @@ public class BDD extends Executable implements Graph, SyKATexpression
 {   
     /* If you add fields, don't forget to update the copy constructor! */
     private BDDTree tree;
-    
+    private boolean isForAction = false;
+
     /**
      *  Manual constructor
      */
@@ -31,7 +32,7 @@ public class BDD extends Executable implements Graph, SyKATexpression
     {
         this.tree = tree;
     }
-    
+
     /**
      * Deep copy constructor
      */
@@ -70,6 +71,11 @@ public class BDD extends Executable implements Graph, SyKATexpression
         assert(f.getNumOutputs() == 1);
         this.tree = new BDDTree(f.getNumInputs());
         buildThisFromFunction(f, 0, new boolean[f.getNumInputs()], 0);
+    }
+
+    public BDD(BooleanFunction f, boolean isForAction) {
+        this(f);
+        this.isForAction = isForAction;
     }
     
     private int buildThisFromFunction(Executable f, int output, boolean[] inputString, int inputIndex)
@@ -512,4 +518,6 @@ public class BDD extends Executable implements Graph, SyKATexpression
         }
             
     }
+
+    public boolean isAction() { return isForAction; }
 }
