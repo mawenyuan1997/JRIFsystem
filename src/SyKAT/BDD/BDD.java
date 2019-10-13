@@ -73,6 +73,11 @@ public class BDD extends Executable implements Graph, SyKATexpression
         buildThisFromFunction(f, 0, new boolean[f.getNumInputs()], 0);
     }
 
+    /**
+     * Build BDD for action
+     * @param f
+     * @param isForAction
+     */
     public BDD(BooleanFunction f, boolean isForAction) {
         this(f);
         this.isForAction = isForAction;

@@ -33,9 +33,7 @@ public class Epsilon implements SyKATexpressionVisitor {
         BDD r = (BDD) expr.right.accept(this);
         BooleanOperator op = new BooleanOperator() {
             @Override
-            public boolean operate(boolean x, boolean y) {
-                return x || y;
-            }
+            public boolean operate(boolean x, boolean y) { return x || y; }
         };
         return new BDD(op, l, r);
     }
