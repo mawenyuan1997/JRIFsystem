@@ -299,7 +299,7 @@ public class BDD extends Executable implements Graph, SyKATexpression
         // Special case: If f2 is a constant, just restrict.
         if (f2.isConstant())
         {
-            BDD f1_restricted = new BDD(f1, var, f2.tree.getRootNode().terminalValue);
+            BDD f1_restricted = new BDD(f1, var, (Boolean) f2.tree.getRootNode().terminalValue);
             this.tree = new BDDTree(f1_restricted.tree);
             return;
         }           
@@ -389,7 +389,7 @@ public class BDD extends Executable implements Graph, SyKATexpression
             if (currentNode.inputIndex == i)
                 currentNode = (input[i] ? tree.getNode(currentNode.high) : tree.getNode(currentNode.low));
         }
-        return new boolean[] { currentNode.terminalValue };
+        return new boolean[] { (Boolean) currentNode.terminalValue };
     }
     
     /**
@@ -422,7 +422,7 @@ public class BDD extends Executable implements Graph, SyKATexpression
         if (dynamicProgrammingMemory.containsKey(key))
             return (Integer) dynamicProgrammingMemory.get(key);
         else if (x.isTerminal() && y.isTerminal())
-            output = (op.operate(x.terminalValue, y.terminalValue) ? 1 : 0);
+            output = (op.operate((Boolean) x.terminalValue, (Boolean) y.terminalValue) ? 1 : 0);
         else if (x.inputIndex == y.inputIndex)
             output = mk(new Node(applyLoop(dynamicProgrammingMemory, op, xTree, yTree, x.low, y.low), applyLoop(dynamicProgrammingMemory, op, xTree, yTree, x.high, y.high), x.inputIndex));
         else if (x.inputIndex < y.inputIndex)
@@ -507,7 +507,7 @@ public class BDD extends Executable implements Graph, SyKATexpression
     {
         String currentName = prefix + "Node" + i + "_Var" + currentNode.inputIndex;
         if (currentNode.isTerminal())
-            return parentName + "->" + (currentNode.terminalValue ? "True" : "False") + (lowEdge ? "[style=dashed];\n" : ";\n");
+            return parentName + "->" + ((Boolean)currentNode.terminalValue ? "True" : "False") + (lowEdge ? "[style=dashed];\n" : ";\n");
         else
         {
             String output = "";

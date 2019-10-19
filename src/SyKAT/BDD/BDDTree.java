@@ -33,8 +33,8 @@ public class BDDTree
         this.nodes = new ArrayList();
         this.nodesHash = new HashMap();
         
-        addNode(new Node(false, numInputs), 0); // XXX Should these nodes be made static?
-        addNode(new Node(true, numInputs), 1);
+        addNode(new Node<>(false, numInputs), 0); // XXX Should these nodes be made static?
+        addNode(new Node<>(true, numInputs), 1);
     }
     
     /**
@@ -46,7 +46,7 @@ public class BDDTree
         this.nodes = new ArrayList();
         this.nodesHash = new HashMap();
         
-        addNode(new Node(value, 0), 0);
+        addNode(new Node<>(value, 0), 0);
     }
     
     /**
