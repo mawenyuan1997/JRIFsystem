@@ -6,7 +6,7 @@ package SyKAT.BDD;
  * 
  * @author Eric 'Siggy' Scott
  */
-public interface BooleanOperator
+public interface Operator<T>
 {
-    public boolean operate(boolean x, boolean y);
+    public T operate(T x, T y);
 }

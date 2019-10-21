@@ -34,12 +34,12 @@ public class Node<T>
     /**
      * Copy constructor 
      */
-    public Node(Node n)
+    public Node(Node<T> n)
     {
         this.low = n.low;
         this.high = n.high;
         this.inputIndex = n.inputIndex;
-        this.terminalValue = (T) n.terminalValue;
+        this.terminalValue = n.terminalValue;
     }
     
     public boolean isTerminal()

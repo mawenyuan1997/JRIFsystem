@@ -12,11 +12,11 @@ import java.util.ArrayList;
  * 
  * @author Eric 'Siggy' Scott
  */
-public class BDDTree
+public class BDDTree<T>
 {
     /* If you add fields, don't forget to update the copy constructor! */
-    private ArrayList<Node> nodes;
-    private HashMap<Node, Integer> nodesHash;
+    private ArrayList<Node<T>> nodes;
+    private HashMap<Node<T>, Integer> nodesHash;
     private int numInputs;
     
     /**
@@ -33,8 +33,8 @@ public class BDDTree
         this.nodes = new ArrayList();
         this.nodesHash = new HashMap();
         
-        addNode(new Node<>(false, numInputs), 0); // XXX Should these nodes be made static?
-        addNode(new Node<>(true, numInputs), 1);
+//        addNode(new Node<>(false, numInputs), 0); // XXX Should these nodes be made static?
+//        addNode(new Node<>(true, numInputs), 1);
     }
     
     /**
@@ -52,7 +52,7 @@ public class BDDTree
     /**
      * Do a deep copy on a pre-existing tree.
      */
-    public BDDTree(BDDTree t1)
+    public BDDTree(BDDTree<T> t1)
     {
         int sz = t1.nodes.size();
         this.numInputs = t1.numInputs;

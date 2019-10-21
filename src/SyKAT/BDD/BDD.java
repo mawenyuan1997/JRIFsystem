@@ -19,10 +19,10 @@ import java.util.HashMap;
  * 
  * @author Eric 'Siggy' Scott
  */
-public class BDD extends Executable implements Graph, SyKATexpression
+public class BDD<T> extends Executable implements SyKATexpression
 {   
     /* If you add fields, don't forget to update the copy constructor! */
-    private BDDTree tree;
+    private BDDTree<T> tree;
     private boolean isForAction = false;
 
     /**
@@ -212,7 +212,7 @@ public class BDD extends Executable implements Graph, SyKATexpression
      * BDDs.
      * 
      */
-    public BDD(BooleanOperator op, BDD x, BDD y)
+    public BDD(Operator op, BDD x, BDD y)
     {
         this.tree = new BDDTree(x.tree.getNumInputs());
         HashMap<Integer[], Integer> dynamicProgrammingMemory = new HashMap();
@@ -304,8 +304,8 @@ public class BDD extends Executable implements Graph, SyKATexpression
             return;
         }           
         
-        final BooleanOperator and = new BooleanOperator() {@Override public boolean operate(boolean x, boolean y) { return (x&y); }};
-        final BooleanOperator or = new BooleanOperator() {@Override public boolean operate(boolean x, boolean y) { return (x|y); }};
+        final Operator and = new Operator<Boolean>() {@Override public Boolean operate(Boolean x, Boolean y) { return (x&y); }};
+        final Operator or = new Operator<Boolean>() {@Override public Boolean operate(Boolean x, Boolean y) { return (x|y); }};
         
         BDD f1_restrictedHigh = new BDD(f1, var, true);
         BDD f1_restrictedLow = new BDD(f1, var, false);
@@ -386,9 +386,11 @@ public class BDD extends Executable implements Graph, SyKATexpression
         Node currentNode = tree.getNode(tree.getRootIndex());
         for (int i = 0; i < input.length; i++)
         {
+            System.out.println(""+currentNode.low+" "+currentNode.high+" "+currentNode.inputIndex);
             if (currentNode.inputIndex == i)
                 currentNode = (input[i] ? tree.getNode(currentNode.high) : tree.getNode(currentNode.low));
         }
+
         return new boolean[] { (Boolean) currentNode.terminalValue };
     }
     
@@ -405,24 +407,24 @@ public class BDD extends Executable implements Graph, SyKATexpression
     
     
     /**
-     * Build a new SyKAT.BDD by applying a boolean operator to two existing ones.
+     * Build a new SyKAT.BDD by applying a operator to two existing ones.
      * See Anderson (1997) for an explanation of this algorithm.
      */
-    private void apply(HashMap dynamicProgrammingMemory, BooleanOperator op, BDDTree xTree, BDDTree yTree, int xIndex, int yIndex)
+    private <T> void apply(HashMap dynamicProgrammingMemory, Operator<T> op, BDDTree xTree, BDDTree yTree, int xIndex, int yIndex)
     {
         int newRoot = applyLoop(dynamicProgrammingMemory, op, xTree, yTree, xIndex, yIndex);
         tree.setRootIndex(newRoot); // Required in the case that the new tree returns false for all inputs (without this line it returns all trues!)
     }
-    private int applyLoop(HashMap dynamicProgrammingMemory, BooleanOperator op, BDDTree xTree, BDDTree yTree, int xIndex, int yIndex)
+    private <T> int applyLoop(HashMap dynamicProgrammingMemory, Operator<T> op, BDDTree xTree, BDDTree yTree, int xIndex, int yIndex)
     {
         Integer[] key = new Integer[] {xIndex,yIndex};
-        Node x = xTree.getNode(xIndex);
-        Node y = yTree.getNode(yIndex);
+        Node<T> x = xTree.getNode(xIndex);
+        Node<T> y = yTree.getNode(yIndex);
         int output;
         if (dynamicProgrammingMemory.containsKey(key))
             return (Integer) dynamicProgrammingMemory.get(key);
         else if (x.isTerminal() && y.isTerminal())
-            output = (op.operate((Boolean) x.terminalValue, (Boolean) y.terminalValue) ? 1 : 0);
+            output = mk(new Node(op.operate(x.terminalValue, y.terminalValue), tree.getNumInputs()));
         else if (x.inputIndex == y.inputIndex)
             output = mk(new Node(applyLoop(dynamicProgrammingMemory, op, xTree, yTree, x.low, y.low), applyLoop(dynamicProgrammingMemory, op, xTree, yTree, x.high, y.high), x.inputIndex));
         else if (x.inputIndex < y.inputIndex)
@@ -465,16 +467,14 @@ public class BDD extends Executable implements Graph, SyKATexpression
      * Combination function for a bottom-up assembly of a SyKAT.BDD tree.
      * Again, see Anderson (1997) to understand why we do it this way.
      */
-    private int mk(Node node)
+    private int mk(Node<T> node)
     {
-        if (node.high == node.low)
-            return node.low;
-        else if (tree.contains(node))
+        if (tree.contains(node))
             return tree.getNodeIndex(node);
         else
             return tree.addNode(node);
     }
-    
+    /*
     @Override
     public String toDot(String name)
     {
@@ -523,6 +523,6 @@ public class BDD extends Executable implements Graph, SyKATexpression
         }
             
     }
-
+    */
     public boolean isAction() { return isForAction; }
 }

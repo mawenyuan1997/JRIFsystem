@@ -1,7 +1,7 @@
 package SyKAToperator;
 
 import SyKAT.BDD.BDD;
-import SyKAT.BDD.BooleanOperator;
+import SyKAT.BDD.Operator;
 import SyKAT.Concat;
 import SyKAT.Plus;
 import SyKAT.Star;
@@ -18,9 +18,9 @@ public class Epsilon implements SyKATexpressionVisitor {
     public Object visit(Concat expr) {
         BDD l = (BDD) expr.left.accept(this);
         BDD r = (BDD) expr.right.accept(this);
-        BooleanOperator op = new BooleanOperator() {
+        Operator<Boolean> op = new Operator<Boolean>() {
             @Override
-            public boolean operate(boolean x, boolean y) {
+            public Boolean operate(Boolean x, Boolean y) {
                 return x && y;
             }
         };
@@ -31,9 +31,9 @@ public class Epsilon implements SyKATexpressionVisitor {
     public Object visit(Plus expr) {
         BDD l = (BDD) expr.left.accept(this);
         BDD r = (BDD) expr.right.accept(this);
-        BooleanOperator op = new BooleanOperator() {
+        Operator<Boolean> op = new Operator<Boolean>() {
             @Override
-            public boolean operate(boolean x, boolean y) { return x || y; }
+            public Boolean operate(Boolean x, Boolean y) { return x || y; }
         };
         return new BDD(op, l, r);
     }
