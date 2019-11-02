@@ -8,6 +8,7 @@ package SyKAT.BDD;
 import SyKAT.SyKATexpression;
 import SyKAToperator.SyKATexpressionVisitor;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
@@ -19,7 +20,7 @@ import java.util.HashMap;
  * 
  * @author Eric 'Siggy' Scott
  */
-public class BDD<T> extends Executable implements SyKATexpression
+public class BDD<T> extends Executable<T> implements SyKATexpression
 {   
     /* If you add fields, don't forget to update the copy constructor! */
     private BDDTree<T> tree;
@@ -28,7 +29,7 @@ public class BDD<T> extends Executable implements SyKATexpression
     /**
      *  Manual constructor
      */
-    public BDD(BDDTree tree)
+    public BDD(BDDTree<T> tree)
     {
         this.tree = tree;
     }
@@ -36,7 +37,7 @@ public class BDD<T> extends Executable implements SyKATexpression
     /**
      * Deep copy constructor
      */
-    public BDD(BDD x)
+    public BDD(BDD<T> x)
     {
         this(x, false);
     }
@@ -47,7 +48,7 @@ public class BDD<T> extends Executable implements SyKATexpression
      * @param x Function to copy
      * @param negation If true, builds the compliment of x
      */
-    public BDD(BDD x, boolean negation)
+    public BDD(BDD<T> x, boolean negation)
     {
         this.tree = (negation ? x.tree.BuildNegation() : new BDDTree(x.tree));
     }
@@ -58,19 +59,12 @@ public class BDD<T> extends Executable implements SyKATexpression
      * Based on Anderson (1997).
      * 
      * @param f Function to clone
-     * @param output The function may be multi-output, but a SyKAT.BDD has only one output.  This selects one.
      */
-    public BDD(Executable f, int output)
-    {
-        this.tree = new BDDTree(f.getNumInputs());
-        buildThisFromFunction(f, output, new boolean[f.getNumInputs()], 0);
-    }
     
     public BDD(BooleanFunction f)
     {
-        assert(f.getNumOutputs() == 1);
         this.tree = new BDDTree(f.getNumInputs());
-        buildThisFromFunction(f, 0, new boolean[f.getNumInputs()], 0);
+        buildThisFromFunction(f, new boolean[f.getNumInputs()], 0);
     }
 
     /**
@@ -83,16 +77,19 @@ public class BDD<T> extends Executable implements SyKATexpression
         this.isForAction = isForAction;
     }
     
-    private int buildThisFromFunction(Executable f, int output, boolean[] inputString, int inputIndex)
+    private int buildThisFromFunction(Executable f, boolean[] inputString, int inputIndex)
     {
-        if (inputIndex == f.getNumInputs())
-            return (f.execute(inputString)[output] ? 1 : 0);
+        if (inputIndex == f.getNumInputs()) {
+            Node leaf = new Node(-1, -1, inputIndex);
+            leaf.terminalValue = f.execute(inputString);
+            return mk(leaf);
+        }
         else
         {
             inputString[inputIndex] = false;
-            int lowChild = buildThisFromFunction(f, output, inputString, inputIndex + 1);
+            int lowChild = buildThisFromFunction(f, inputString, inputIndex + 1);
             inputString[inputIndex] = true;
-            int highChild = buildThisFromFunction(f, output, inputString, inputIndex + 1);
+            int highChild = buildThisFromFunction(f, inputString, inputIndex + 1);
             return mk(new Node(lowChild, highChild, inputIndex));
         }
     }
@@ -100,119 +97,14 @@ public class BDD<T> extends Executable implements SyKATexpression
     @Override
     public Object accept(SyKATexpressionVisitor visitor) { return visitor.visit(this); }
 
-    public enum Function { TRUE, FALSE, NOT, NAND, AND, OR, XOR, SHUNT, TEST1, TEST2, TEST3, TEST4, TEST5, XOR_POSTCAT2, XOR_PRECAT2 };
-    /**
-     *  Constructor for pre-defined functions
-     */
-    public BDD(Function function)
-    {
-        
-        switch (function)
-        {
-            default:
-            case TRUE:
-                this.tree = new BDDTree(true);
-                break;
-                
-            case FALSE:
-                this.tree = new BDDTree(false);
-                break;
-            
-            case NOT:
-                this.tree = new BDDTree(1);
-                tree.addNode(new Node(1, 0, 0));
-                break;
-                
-            case NAND:
-                this.tree = new BDDTree(2);
-                int highNodeNAND = tree.addNode(new Node(1, 0, 1));
-                tree.addNode(new Node(1, highNodeNAND, 0));
-                break;
-                
-            case AND:
-                this.tree = new BDDTree(2);
-                int highNodeAND = tree.addNode(new Node(0, 1, 1));
-                tree.addNode(new Node(0, highNodeAND, 0));
-                break;
-                
-            case OR:
-                this.tree = new BDDTree(2);
-                int lowNodeOR = tree.addNode(new Node(0, 1, 1));
-                tree.addNode(new Node(lowNodeOR, 1, 0));
-                break;
-                
-            case XOR:
-                this.tree = new BDDTree(2);
-                int lowNodeXOR = tree.addNode(new Node(0, 1, 1));
-                int highNodeXOR = tree.addNode(new Node(1, 0, 1));
-                tree.addNode(new Node(lowNodeXOR, highNodeXOR, 0));
-                break;
-                
-            case SHUNT:
-                this.tree = new BDDTree(1);
-                tree.addNode(new Node(0, 1, 0));
-                break;
-            
-            case TEST1:
-                this.tree = new BDDTree(2);
-                tree.addNode(new Node(0,1, 1));
-                break;
-                
-            case TEST2: // Corresponds to the example Anderson applies restrict() to
-                this.tree = new BDDTree(3);
-                int x3 = tree.addNode(new Node(0, 1, 2));
-                int x2a = tree.addNode(new Node(1, x3, 1));
-                int x2b = tree.addNode(new Node(x3, 1, 1));
-                tree.addNode(new Node(x2a, x2b, 0));
-                break;
-                
-            case TEST3: // Corresponds to Anderson's application of restrict() to TEST2
-                this.tree = new BDDTree(3);
-                x3 = tree.addNode(new Node(0, 1, 2));
-                tree.addNode(new Node(1, x3, 0));
-                break;
-                
-            case TEST4: // From Anderson's example of apply()
-                this.tree = new BDDTree(5);
-                int n2 = tree.addNode(new Node(1, 0, 4));
-                int n3 = tree.addNode(new Node(n2, 0, 3));
-                int n4 = tree.addNode(new Node(0, n2, 3));
-                int n5 = tree.addNode(new Node(n3, n4, 2));
-                int n6 = tree.addNode(new Node(n5, 0, 1));
-                int n7 = tree.addNode(new Node(0, n5, 1));
-                tree.addNode(new Node(n6, n7, 0));
-                break;
-                
-            case TEST5: // From Anderson's example of apply()
-                this.tree = new BDDTree(5);
-                n2 = tree.addNode(new Node(1, 0, 4));
-                n3 = tree.addNode(new Node(n2, 0, 2));
-                n4 = tree.addNode(new Node(0, n2, 2));
-                tree.addNode(new Node(n3, n4, 0));
-                break;
-                
-            case XOR_POSTCAT2:
-                this.tree = new BDDTree(4);
-                n2 = tree.addNode(new Node(0, 1, 1));
-                n3 = tree.addNode(new Node(1, 0, 1));
-                tree.addNode(new Node(n2, n3, 0));
-                break;
-                
-            case XOR_PRECAT2:
-                this.tree = new BDDTree(4);
-                n2 = tree.addNode(new Node(0, 1, 3));
-                n3 = tree.addNode(new Node(1, 0, 3));
-                tree.addNode(new Node(n2, n3, 2));
-                break;
-        }
-    }
+
        
     /**
      * Build a SyKAT.BDD by *applying* the specified boolean operator to two preexisting
      * BDDs.
      * 
      */
-    public BDD(Operator op, BDD x, BDD y)
+    public BDD(Operator op, BDD<T> x, BDD<T> y)
     {
         this.tree = new BDDTree(x.tree.getNumInputs());
         HashMap<Integer[], Integer> dynamicProgrammingMemory = new HashMap();
@@ -323,13 +215,7 @@ public class BDD<T> extends Executable implements SyKATexpression
     {
         return this.tree.getNumInputs();
     }
-    
-    @Override
-    public int getNumOutputs()
-    {
-        return 1;
-    }
-    
+
     public BDDTree getTree()
     {
         return this.tree;
@@ -380,10 +266,10 @@ public class BDD<T> extends Executable implements SyKATexpression
      * Execute the boolean function represented by this SyKAT.BDD.
      */
     @Override
-    public boolean[] execute(boolean[] input)
+    public T execute(boolean[] input)
     {
         assert(input.length == this.tree.getNumInputs());
-        Node currentNode = tree.getNode(tree.getRootIndex());
+        Node<T> currentNode = tree.getNode(tree.getRootIndex());
         for (int i = 0; i < input.length; i++)
         {
             System.out.println(""+currentNode.low+" "+currentNode.high+" "+currentNode.inputIndex);
@@ -391,7 +277,7 @@ public class BDD<T> extends Executable implements SyKATexpression
                 currentNode = (input[i] ? tree.getNode(currentNode.high) : tree.getNode(currentNode.low));
         }
 
-        return new boolean[] { (Boolean) currentNode.terminalValue };
+        return currentNode.terminalValue;
     }
     
     /**
@@ -410,12 +296,12 @@ public class BDD<T> extends Executable implements SyKATexpression
      * Build a new SyKAT.BDD by applying a operator to two existing ones.
      * See Anderson (1997) for an explanation of this algorithm.
      */
-    private <T> void apply(HashMap dynamicProgrammingMemory, Operator<T> op, BDDTree xTree, BDDTree yTree, int xIndex, int yIndex)
+    private <T> void apply(HashMap dynamicProgrammingMemory, Operator<T> op, BDDTree<T> xTree, BDDTree<T> yTree, int xIndex, int yIndex)
     {
         int newRoot = applyLoop(dynamicProgrammingMemory, op, xTree, yTree, xIndex, yIndex);
         tree.setRootIndex(newRoot); // Required in the case that the new tree returns false for all inputs (without this line it returns all trues!)
     }
-    private <T> int applyLoop(HashMap dynamicProgrammingMemory, Operator<T> op, BDDTree xTree, BDDTree yTree, int xIndex, int yIndex)
+    private <T> int applyLoop(HashMap dynamicProgrammingMemory, Operator<T> op, BDDTree<T> xTree, BDDTree<T> yTree, int xIndex, int yIndex)
     {
         Integer[] key = new Integer[] {xIndex,yIndex};
         Node<T> x = xTree.getNode(xIndex);

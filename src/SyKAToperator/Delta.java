@@ -1,16 +1,18 @@
 package SyKAToperator;
 
 import SyKAT.BDD.BDD;
+import SyKAT.BDD.BooleanBDDutil;
 import SyKAT.Concat;
 import SyKAT.Plus;
 import SyKAT.Star;
 
+import static SyKAT.BDD.BooleanBDDutil.BDDfromFunction;
+
 public class Delta implements SyKATexpressionVisitor {
     @Override
-    public Object visit(BDD expr) {
-        BDD bdd = (BDD) expr;
+    public Object visit(BDD bdd) {
         if (!bdd.isAction()) {
-            return new BDD(BDD.Function.FALSE);
+            return BDDfromFunction(BooleanBDDutil.Function.FALSE);
         }
         return null;
     }

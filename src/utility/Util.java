@@ -45,32 +45,32 @@ public class Util {
         int n = numOfTest + numOfAction;
         if (test instanceof OneTest) {
             return new BooleanFunction("one", n, 1) {
-                public boolean[] execute(boolean[] input) {
-                    return new boolean[]{true};
+                public Boolean execute(boolean[] input) {
+                    return true;
                 }
             };
         }
         if (test instanceof ZeroTest) {
             return new BooleanFunction("zero", n, 1) {
-                public boolean[] execute(boolean[] input) {
-                    return new boolean[]{false};
+                public Boolean execute(boolean[] input) {
+                    return false;
                 }
             };
         }
         if (test instanceof NegateTest) {
             return new BooleanFunction("negate", n, 1) {
                 final BooleanFunction l = getFunction(((NegateTest) test).test);
-                public boolean[] execute(boolean[] input) {
-                    boolean res = l.execute(input)[0];
-                    return new boolean[]{!res};
+                public Boolean execute(boolean[] input) {
+                    boolean res = l.execute(input);
+                    return !res;
                 }
             };
         }
         if (test instanceof PrimitiveTest) {
             return new BooleanFunction("prim", n, 1) {
-                public boolean[] execute(boolean[] input) {
+                public Boolean execute(boolean[] input) {
                     String testId = ((PrimitiveTest) test).id;
-                    return new boolean[]{input[primTestMapping.get(testId)]};
+                    return input[primTestMapping.get(testId)];
                 }
             };
         }
@@ -78,10 +78,10 @@ public class Util {
             final BooleanFunction l = getFunction(((ConcatTest) test).left);
             final BooleanFunction r = getFunction(((ConcatTest) test).right);
             return new BooleanFunction("cancat", n, 1) {
-                public boolean[] execute(boolean[] input) {
-                    boolean lres = l.execute(input)[0];
-                    boolean rres = r.execute(input)[0];
-                    return new boolean[]{lres && rres};
+                public Boolean execute(boolean[] input) {
+                    boolean lres = l.execute(input);
+                    boolean rres = r.execute(input);
+                    return lres && rres;
                 }
             };
         }
@@ -89,10 +89,10 @@ public class Util {
             final BooleanFunction l = getFunction(((PlusTest) test).left);
             final BooleanFunction r = getFunction(((PlusTest) test).right);
             return new BooleanFunction("plus", n, 1) {
-                public boolean[] execute(boolean[] input) {
-                    boolean lres = l.execute(input)[0];
-                    boolean rres = r.execute(input)[0];
-                    return new boolean[]{lres || rres};
+                public Boolean execute(boolean[] input) {
+                    boolean lres = l.execute(input);
+                    boolean rres = r.execute(input);
+                    return lres || rres;
                 }
             };
         }
@@ -124,14 +124,14 @@ public class Util {
             // input of the function is a boolean array with values both
             // for primTest and primAction (primTest first)
             BooleanFunction f = new BooleanFunction("action", n, 1) {
-                public boolean[] execute(boolean[] input) {
+                public Boolean execute(boolean[] input) {
                     HashSet<String> primSet = ((Action) expr).primActions;
                     boolean[] actionInput = Arrays.copyOfRange(input, numOfTest, n);
                     for(int i=0; i<primActions.length; i++) {
                         if (primSet.contains(primActions[i]) != actionInput[i])
-                            return new boolean[]{false};
+                            return false;
                     }
-                    return new boolean[]{true};
+                    return true;
                 }
             };
             return new BDD(f, true);

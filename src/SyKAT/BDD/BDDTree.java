@@ -15,14 +15,14 @@ import java.util.ArrayList;
 public class BDDTree<T>
 {
     /* If you add fields, don't forget to update the copy constructor! */
-    private ArrayList<Node<T>> nodes;
-    private HashMap<Node<T>, Integer> nodesHash;
-    private int numInputs;
+    public ArrayList<Node<T>> nodes;
+    public HashMap<Node<T>, Integer> nodesHash;
+    public int numInputs;
     
     /**
      * Empty constructor
      */
-    private BDDTree()
+    public BDDTree()
     {
         
     }
@@ -37,17 +37,7 @@ public class BDDTree<T>
 //        addNode(new Node<>(true, numInputs), 1);
     }
     
-    /**
-     *  Create a SyKAT.BDD for a constant boolean value (i.e. zero inputs).
-     */
-    public BDDTree(boolean value)
-    {
-        this.numInputs = 0;
-        this.nodes = new ArrayList();
-        this.nodesHash = new HashMap();
-        
-        addNode(new Node<>(value, 0), 0);
-    }
+
     
     /**
      * Do a deep copy on a pre-existing tree.
@@ -60,7 +50,7 @@ public class BDDTree<T>
         this.nodesHash = new HashMap(sz);
         for (int i = 0; i < sz; i++)
         {
-            Node n = new Node(t1.nodes.get(i));
+            Node<T> n = new Node(t1.nodes.get(i));
             this.nodes.add(n);
             this.nodesHash.put(n, i);
         }
@@ -79,7 +69,7 @@ public class BDDTree<T>
         
         for (int i = 0; i < nodes.size(); i++)
         {
-            Node n = new Node(nodes.get(i));
+            Node<T> n = new Node(nodes.get(i));
             if (n.low == 0)
                 n.low = 1;
             else if (n.low == 1)
@@ -129,7 +119,7 @@ public class BDDTree<T>
     {
         assert(nodeIndex < nodes.size());
         assert(nodes.size() > 0);
-        Node n = nodes.get(nodeIndex);
+        Node<T> n = nodes.get(nodeIndex);
         nodesHash.remove(n);
         n.inputIndex += difference;
         nodesHash.put(n, nodeIndex);
@@ -186,8 +176,8 @@ public class BDDTree<T>
               
         
         // If we haven't yet visited these nodes, see if the subgraphs are isomorphic.
-        Node thisNode = this.getNode(thisNodeIndex);
-        Node refNode = referenceTree.getNode(refNodeIndex);
+        Node<T> thisNode = this.getNode(thisNodeIndex);
+        Node<T> refNode = referenceTree.getNode(refNodeIndex);
         
         if (thisNode.inputIndex != refNode.inputIndex)
             return false;
@@ -226,7 +216,7 @@ public class BDDTree<T>
         }
     }
     
-    public Node getNode(int index)
+    public Node<T> getNode(int index)
     {
         return nodes.get(index);
     }
@@ -236,7 +226,7 @@ public class BDDTree<T>
         return nodesHash.get(n);
     }
     
-    public Node getRootNode()
+    public Node<T> getRootNode()
     {
         return nodes.get(getRootIndex());
     }
@@ -259,13 +249,13 @@ public class BDDTree<T>
     /**
      *  Careful!  addNode(Node) makes assumptions about the indices. 
      */
-    private void addNode(Node n, int index)
+    private void addNode(Node<T> n, int index)
     {
         nodes.add(index, n);
         nodesHash.put(n, index);
     }
     
-    public int addNode(Node n)
+    public int addNode(Node<T> n)
     {
         nodes.add(n);
         int index = nodes.size() - 1;
@@ -282,7 +272,7 @@ public class BDDTree<T>
         nodes.remove(index);
     }
     
-    public boolean contains(Node n)
+    public boolean contains(Node<T> n)
     {
         return nodesHash.containsKey(n);
     }

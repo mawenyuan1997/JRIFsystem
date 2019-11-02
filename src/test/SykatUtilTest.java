@@ -1,3 +1,4 @@
+package test;
 import KAT.Action;
 import KAT.ConcatExpression;
 import KAT.KATexpression;
@@ -8,9 +9,7 @@ import SyKAT.SyKATexpression;
 import utility.Util;
 
 import java.util.HashMap;
-
-class Utiltest {
-
+public class SykatUtilTest {
     HashMap<String, Boolean> atom = new HashMap<>();
 
     @org.junit.jupiter.api.Test
@@ -35,10 +34,7 @@ class Utiltest {
         SyKATexpression action1expr = ((Concat)((Concat)sy).left).right;
         SyKATexpression action2expr = ((Concat)((Concat)sy).right).right;
         assert (testA instanceof BDD);
-        System.out.println(((BDD) testA).printTruthTable());
         assert (action1expr instanceof BDD);
-        System.out.println(((BDD) action1expr).printTruthTable());
         assert (action2expr instanceof BDD);
-        System.out.println(((BDD) action2expr).printTruthTable());
     }
 }

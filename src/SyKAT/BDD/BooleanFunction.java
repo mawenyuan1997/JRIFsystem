@@ -4,7 +4,7 @@ package SyKAT.BDD;
  *
  * @author Eric 'Siggy' Scott
  */
-public abstract class BooleanFunction extends Executable
+public abstract class BooleanFunction extends Executable<Boolean>
 {
     protected String name;
     private int numInputs;
@@ -23,17 +23,12 @@ public abstract class BooleanFunction extends Executable
     }
     
     @Override
-    public abstract boolean[] execute(boolean[] input);
+    public abstract Boolean execute(boolean[] input);
     
     @Override
     public int getNumInputs()
     {
         return this.numInputs;
     }
-    
-    @Override
-    public int getNumOutputs()
-    {
-        return this.numOutputs;
-    }
+
 }
