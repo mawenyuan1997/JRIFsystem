@@ -11,10 +11,10 @@ package SyKAT.BDD;
 public class Node<T>
 {
     /* If you add fields, don't forget to update the copy constructor! */
-    int low; // Index for the table entry in BDDTree that points to the child
-    int high;
-    int inputIndex;
-    T terminalValue;
+    public int low; // Index for the table entry in BDDTree that points to the child
+    public int high;
+    public int inputIndex;
+    public T terminalValue;
     
     public Node(T value, int numInputs)
     {
