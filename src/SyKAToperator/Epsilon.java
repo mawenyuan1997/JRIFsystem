@@ -11,10 +11,10 @@ import static SyKAT.BDD.BooleanBDDutil.BDDfromFunction;
 
 public class Epsilon implements SyKATexpressionVisitor {
     @Override
-    public Object visit(BDD expr) {
+    public Object visit(BDD<Boolean> expr) {
         if (expr.isAction())
             return BDDfromFunction(BooleanBDDutil.Function.FALSE);
-        return new BDD(expr);
+        return new BDD<Boolean>(expr);
     }
 
     @Override
@@ -32,8 +32,8 @@ public class Epsilon implements SyKATexpressionVisitor {
 
     @Override
     public Object visit(Plus expr) {
-        BDD l = (BDD) expr.left.accept(this);
-        BDD r = (BDD) expr.right.accept(this);
+        BDD<Boolean> l = (BDD<Boolean>) expr.left.accept(this);
+        BDD<Boolean> r = (BDD<Boolean>) expr.right.accept(this);
         Operator<Boolean> op = new Operator<Boolean>() {
             @Override
             public Boolean operate(Boolean x, Boolean y) { return x || y; }

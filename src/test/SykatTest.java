@@ -7,12 +7,13 @@ import SyKAT.BDD.BDD;
 import SyKAT.Concat;
 import SyKAT.SyKATexpression;
 import SyKAToperator.Delta;
+import SyKAToperator.Epsilon;
 import utility.Util;
 
 import java.util.HashMap;
 import java.util.HashSet;
 
-public class SykatUtilTest {
+public class SykatTest {
     HashMap<String, Boolean> atom = new HashMap<>();
     String[] primTests = new String[]{"A", "B", "C"};
     String[] primActions = new String[]{"p1","p2","p3"};
@@ -30,12 +31,13 @@ public class SykatUtilTest {
             )
     );
     SyKATexpression sy = util.translate(expr);
+    SyKATexpression testA = ((Concat)((Concat)sy).left).left;
+    SyKATexpression action1expr = ((Concat)((Concat)sy).left).right;
+    SyKATexpression action2expr = ((Concat)((Concat)sy).right).right;
+    SyKATexpression ap1 = (Concat)((Concat)sy).left;
 
     @org.junit.jupiter.api.Test
-    void testE() {
-        SyKATexpression testA = ((Concat)((Concat)sy).left).left;
-        SyKATexpression action1expr = ((Concat)((Concat)sy).left).right;
-        SyKATexpression action2expr = ((Concat)((Concat)sy).right).right;
+    void testSyKatTranslate() {
         assert (testA instanceof BDD<?>);
         BDD<Boolean> bddA = (BDD<Boolean>) testA;
         assert (bddA.getNumInputs() == 3);
@@ -55,6 +57,37 @@ public class SykatUtilTest {
         assert (!bdda2.execute(new boolean[]{true, false, true}));
         assert (!bdda2.execute(new boolean[]{true, true, true}));
         assert (bdda2.execute(new boolean[]{true, true, false}));
+    }
+
+    @org.junit.jupiter.api.Test
+    void testEpsilon() {
+        Epsilon eps = new Epsilon();
+        assert (testA instanceof BDD<?>);
+        BDD<Boolean> bddA = (BDD<Boolean>) testA;
+        BDD<Boolean> epsA = (BDD<Boolean>) bddA.accept(eps);
+        assert (epsA.getNumInputs() == 3);
+        assert (epsA.execute(new boolean[]{true, false, true}));
+        assert (!epsA.execute(new boolean[]{false, true, false}));
+
+        assert (action1expr instanceof BDD<?>);
+        BDD<Boolean> bdda1 = (BDD<Boolean>) action1expr;
+        BDD<Boolean> epsa1 = (BDD<Boolean>) bdda1.accept(eps);
+        assert (epsa1.getNumInputs() == 0);
+        assert (!epsa1.execute(new boolean[]{true, false, true}));
+        assert (!epsa1.execute(new boolean[]{true, true, true}));
+
+        BDD<Boolean> epsap1 =  (BDD<Boolean>) ap1.accept(eps);
+        assert (epsap1.getNumInputs() == 3);
+        assert (!epsap1.execute(new boolean[]{true, false, true}));
+        assert (!epsap1.execute(new boolean[]{false, false, true}));
+
+        BDD<Boolean> epssy =  (BDD<Boolean>) sy.accept(eps);
+        assert (epssy.getNumInputs() == 3);
+        assert (!epssy.execute(new boolean[]{true, false, false}));
+        assert (!epssy.execute(new boolean[]{false, true, true}));
+
+
+
     }
 
     @org.junit.jupiter.api.Test

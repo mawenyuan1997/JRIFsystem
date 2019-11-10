@@ -95,9 +95,7 @@ public class BDD<T> extends Executable<T> implements SyKATexpression
     }
 
     @Override
-    public Object accept(SyKATexpressionVisitor visitor) { return visitor.visit(this); }
-
-
+    public Object accept(SyKATexpressionVisitor visitor) { return visitor.visit((BDD<Boolean>) this); }
        
     /**
      * Build a SyKAT.BDD by *applying* the specified boolean operator to two preexisting
@@ -106,109 +104,11 @@ public class BDD<T> extends Executable<T> implements SyKATexpression
      */
     public BDD(Operator op, BDD<T> x, BDD<T> y)
     {
-        this.tree = new BDDTree(x.tree.getNumInputs());
+        this.tree = new BDDTree(Integer.max(x.tree.getNumInputs(), y.tree.getRootIndex()));
         HashMap<Integer[], Integer> dynamicProgrammingMemory = new HashMap();
         apply(dynamicProgrammingMemory, op, x.tree, y.tree, x.tree.getRootIndex(), y.tree.getRootIndex());
     }
-    
-    /**
-     *  Build a SyKAT.BDD by *restricting* (fixing or, rather, ignoring) one of the
-     *  inputs of a pre-existing SyKAT.BDD.
-     */
-    public BDD(BDD x, int inputToFix, boolean value)
-    {
-        this.tree = new BDDTree(x.tree);
-        int newRoot = restrict(x.tree, x.tree.getRootIndex(), inputToFix, value, new HashMap<Integer, Integer>());
-        tree.setRootIndex(newRoot);
-    }
-    
-    /**
-     * Elementary composition.  If |f1| and |f2| are the number of inputs of the
-     * argument BDDs, the result has |f1| + |f2| - 1 inputs.
-     * 
-     * @param var The output of f2 is fed into the varth input of f1
-     * @param f1 "Female" function
-     * @param f2 "Male" function
-     */
-    public BDD(int var, BDD f1, BDD f2)
-    {
-        this(var, f1, f2, true);
-    }
-    
-    /**
-     * Build a SyKAT.BDD by composing f1 and f2.
-     * 
-     * @param var The output of f2 is fed into the varth input of f1
-     * @param f1 "Female" function
-     * @param f2 "Male" function
-     * @param autoConcatonate If true, does elementary composition.
-     *          If false, the inputs are unmodified, and the resulting
-     *          composition isn't as intuitive.  (To understand how it works,
-     *          have a good ponder of Shannon's Expansion).
-     */
-    public BDD(int var, BDD f1, BDD f2, boolean autoConcatonate)
-    {
-        assert(var < f1.getNumInputs());
-        f1 = new BDD(f1);
-        f2 = new BDD(f2);
-        if (autoConcatonate)
-        {
-            int oldF1NumInputs = f1.tree.getNumInputs();
-            f1.tree.preConcatonateInputs(f2.tree.getNumInputs());
-            var += f2.tree.getNumInputs(); // The varth input of f1 has moved
-            f2.tree.postConcatonateInputs(oldF1NumInputs);
-        }
-        
-        buildThisFromComposition(var, f1, f2);
-        
-        if (autoConcatonate)
-            this.tree.collapseInput(var);
-    }
-    
-    private void buildThisFromCompositionFast(int var, BDD f1, BDD f2)
-    {
-        // TODO The existing algorithm is O(m^2 n^2), where m and n are the
-        // number of nodes in f1 and f2, respectively.  An O(m^2 n) algorithm
-        // exists in Bryant.  It should be implemented here.
-    }
-    
-    private void buildThisFromComposition(int var, BDD f1, BDD f2)
-    {
-        
-        /* This algorithm uses the Shannon Expansion of boolean functions to
-         * express the composition in terms of apply() and restrict().  If
-         * f|var1=0 represents f.restrict(1, false), then the composition
-         * f1|var=f2 = (f2 & f1|var=1) | (!f2 & f1|var=0).
-         * 
-         * See Randall E. Bryant, "Graph-Based Algorithms for Boolean Function
-         * Manipulation," IEEE Transactions on Computers, 1986.
-         * 
-         * We simply run this expression.  This is not the fastest way to
-         * do composition, but it's easier to understand/implement int terms of
-         * apply() and restrict().
-         */
-        
-        // Special case: If f2 is a constant, just restrict.
-        if (f2.isConstant())
-        {
-            BDD f1_restricted = new BDD(f1, var, (Boolean) f2.tree.getRootNode().terminalValue);
-            this.tree = new BDDTree(f1_restricted.tree);
-            return;
-        }           
-        
-        final Operator and = new Operator<Boolean>() {@Override public Boolean operate(Boolean x, Boolean y) { return (x&y); }};
-        final Operator or = new Operator<Boolean>() {@Override public Boolean operate(Boolean x, Boolean y) { return (x|y); }};
-        
-        BDD f1_restrictedHigh = new BDD(f1, var, true);
-        BDD f1_restrictedLow = new BDD(f1, var, false);
-        BDD x = new BDD(and, f2, f1_restrictedHigh);
-        BDD f2_not = new BDD(f2, true);
-        BDD y = new BDD(and, f2_not, f1_restrictedLow);
-        
-        this.tree = new BDDTree(x.tree.getNumInputs());
-        HashMap<Integer[], Integer> dynamicProgrammingMemory = new HashMap();
-        apply(dynamicProgrammingMemory, or, x.tree, y.tree, x.tree.getRootIndex(), y.tree.getRootIndex());
-    }
+
    
     @Override
     public int getNumInputs()
@@ -242,55 +142,24 @@ public class BDD<T> extends Executable<T> implements SyKATexpression
         return hash;
     }
     
-    public boolean isConstant()
-    {
-        return (this.tree.getRootNode().isTerminal());
-    }
-    
-    public void preConcatonateInputs(int numInputsToAdd)
-    {
-        this.tree.preConcatonateInputs(numInputsToAdd);
-    }
-    
-    public void postConcatonateInputs(int numInputsToAdd)
-    {
-        this.tree.postConcatonateInputs(numInputsToAdd);
-    }
-    
-    public void collapseInput(int var)
-    {
-        this.tree.collapseInput(var);
-    }
-    
     /**
      * Execute the boolean function represented by this SyKAT.BDD.
      */
     @Override
     public T execute(boolean[] input)
     {
-        assert(input.length == this.tree.getNumInputs());
+        //assert(input.length == this.tree.getNumInputs());
         Node<T> currentNode = tree.getNode(tree.getRootIndex());
         for (int i = 0; i < input.length; i++)
         {
-            System.out.println(""+currentNode.low+" "+currentNode.high+" "+currentNode.inputIndex);
-            if (currentNode.inputIndex == i)
-                currentNode = (input[i] ? tree.getNode(currentNode.high) : tree.getNode(currentNode.low));
+            //System.out.println(""+currentNode.low+" "+currentNode.high+" "+currentNode.inputIndex);
+            //if (currentNode.inputIndex == i)
+            if (currentNode.isTerminal()) break;
+            currentNode = (input[i] ? tree.getNode(currentNode.high) : tree.getNode(currentNode.low));
         }
 
         return currentNode.terminalValue;
     }
-    
-    /**
-     * Reduce this SyKAT.BDD into a compact representation.  Normally, BDDs
-     * have memory complexity exponential in the number of inputs.  Reducing
-     * them collapses isomorphic subgraphs (i.e. eliminates redundancy in the
-     * decision tree) to make it much more compact.
-     */
-    public void reduce()
-    {
-        //TODO
-    }
-    
     
     /**
      * Build a new SyKAT.BDD by applying a operator to two existing ones.
@@ -306,11 +175,17 @@ public class BDD<T> extends Executable<T> implements SyKATexpression
         Integer[] key = new Integer[] {xIndex,yIndex};
         Node<T> x = xTree.getNode(xIndex);
         Node<T> y = yTree.getNode(yIndex);
+        System.out.println(""+x.low+"   "+y.low);
+        System.out.println(x.inputIndex);
         int output;
         if (dynamicProgrammingMemory.containsKey(key))
             return (Integer) dynamicProgrammingMemory.get(key);
         else if (x.isTerminal() && y.isTerminal())
             output = mk(new Node(op.operate(x.terminalValue, y.terminalValue), tree.getNumInputs()));
+        else if (x.isTerminal())
+            output = mk(new Node(applyLoop(dynamicProgrammingMemory, op, xTree, yTree, xIndex, y.low),applyLoop(dynamicProgrammingMemory, op, xTree, yTree, xIndex, y.high), x.inputIndex));
+        else if (y.isTerminal())
+            output = mk(new Node(applyLoop(dynamicProgrammingMemory, op, xTree, yTree, x.low, yIndex),applyLoop(dynamicProgrammingMemory, op, xTree, yTree, x.high, yIndex), x.inputIndex));
         else if (x.inputIndex == y.inputIndex)
             output = mk(new Node(applyLoop(dynamicProgrammingMemory, op, xTree, yTree, x.low, y.low), applyLoop(dynamicProgrammingMemory, op, xTree, yTree, x.high, y.high), x.inputIndex));
         else if (x.inputIndex < y.inputIndex)
@@ -320,35 +195,7 @@ public class BDD<T> extends Executable<T> implements SyKATexpression
         dynamicProgrammingMemory.put(key, output);
         return output;
     }
-    
-    
-    /**
-     * Build a new SyKAT.BDD by restricting one of the inputs of a pre-existing one.
-     */
-    private int restrict(BDDTree xTree, int currentIndex, int inputToFix, boolean value, HashMap<Integer, Integer> dpMemory)
-    {
-        /* We search for all nodes with Node.inputIndex = inputIndex and replace
-         * them with their low- or high-child depending on the parity of value.
-         * From Anderson (1997). */
-        if (dpMemory.containsKey(currentIndex))
-            return dpMemory.get(currentIndex);
-        
-        Node u = xTree.getNode(currentIndex);
-        int returnValue = 0;
-        
-        if (u.inputIndex > inputToFix)
-            returnValue = currentIndex;
-        else if (u.inputIndex < inputToFix)
-            returnValue = mk(new Node(restrict(xTree, u.low, inputToFix, value, dpMemory), restrict(xTree, u.high, inputToFix, value, dpMemory), u.inputIndex));
-        else if (!value)
-            returnValue = restrict(xTree, u.low, inputToFix, value, dpMemory);
-        else
-            returnValue = restrict(xTree, u.high, inputToFix, value, dpMemory);
-        
-        dpMemory.put(currentIndex, returnValue);
-        return returnValue;
-    }
-    
+
     /**
      * Combination function for a bottom-up assembly of a SyKAT.BDD tree.
      * Again, see Anderson (1997) to understand why we do it this way.
