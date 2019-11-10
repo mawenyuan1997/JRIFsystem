@@ -42,7 +42,7 @@ public class Util {
      * @return
      */
     public BooleanFunction getFunction(TestExpression test) {
-        int n = numOfTest + numOfAction;
+        int n = numOfTest;
         if (test instanceof OneTest) {
             return new BooleanFunction("one", n, 1) {
                 public Boolean execute(boolean[] input) {
@@ -120,15 +120,15 @@ public class Util {
             return new Star(p);
         }
         if (expr instanceof Action) {
-            int n = numOfTest + numOfAction;
+            int n = numOfAction;
             // input of the function is a boolean array with values both
             // for primTest and primAction (primTest first)
             BooleanFunction f = new BooleanFunction("action", n, 1) {
                 public Boolean execute(boolean[] input) {
                     HashSet<String> primSet = ((Action) expr).primActions;
-                    boolean[] actionInput = Arrays.copyOfRange(input, numOfTest, n);
+                    //boolean[] actionInput = Arrays.copyOfRange(input, numOfTest, n);
                     for(int i=0; i<primActions.length; i++) {
-                        if (primSet.contains(primActions[i]) != actionInput[i])
+                        if (primSet.contains(primActions[i]) != input[i])
                             return false;
                     }
                     return true;
