@@ -175,8 +175,6 @@ public class BDD<T> extends Executable<T> implements SyKATexpression
         Integer[] key = new Integer[] {xIndex,yIndex};
         Node<T> x = xTree.getNode(xIndex);
         Node<T> y = yTree.getNode(yIndex);
-        System.out.println(""+x.low+"   "+y.low);
-        System.out.println(x.inputIndex);
         int output;
         if (dynamicProgrammingMemory.containsKey(key))
             return (Integer) dynamicProgrammingMemory.get(key);

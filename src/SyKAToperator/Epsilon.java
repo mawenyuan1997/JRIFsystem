@@ -6,14 +6,18 @@ import SyKAT.Concat;
 import SyKAT.Plus;
 import SyKAT.Star;
 import SyKAT.BDD.BooleanBDDutil;
+import SyKAT.SyKATexpression;
 
-import static SyKAT.BDD.BooleanBDDutil.BDDfromFunction;
+import static SyKAT.BDD.BooleanBDDutil.singleBooleanBDD;
 
 public class Epsilon implements SyKATexpressionVisitor {
+    int numInputs;
+    public Epsilon(int num) {numInputs = num;}
     @Override
     public Object visit(BDD<Boolean> expr) {
-        if (expr.isAction())
-            return BDDfromFunction(BooleanBDDutil.Function.FALSE);
+        if (expr.isAction()) {
+            return singleBooleanBDD(false, numInputs);
+        }
         return new BDD<Boolean>(expr);
     }
 
@@ -43,6 +47,6 @@ public class Epsilon implements SyKATexpressionVisitor {
 
     @Override
     public Object visit(Star expr) {
-        return BDDfromFunction(BooleanBDDutil.Function.TRUE);
+        return singleBooleanBDD(true, numInputs);
     }
 }

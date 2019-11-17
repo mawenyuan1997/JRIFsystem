@@ -61,7 +61,7 @@ public class SykatTest {
 
     @org.junit.jupiter.api.Test
     void testEpsilon() {
-        Epsilon eps = new Epsilon();
+        Epsilon eps = new Epsilon(3);
         assert (testA instanceof BDD<?>);
         BDD<Boolean> bddA = (BDD<Boolean>) testA;
         BDD<Boolean> epsA = (BDD<Boolean>) bddA.accept(eps);
@@ -72,7 +72,7 @@ public class SykatTest {
         assert (action1expr instanceof BDD<?>);
         BDD<Boolean> bdda1 = (BDD<Boolean>) action1expr;
         BDD<Boolean> epsa1 = (BDD<Boolean>) bdda1.accept(eps);
-        assert (epsa1.getNumInputs() == 0);
+        assert (epsa1.getNumInputs() == 3);
         assert (!epsa1.execute(new boolean[]{true, false, true}));
         assert (!epsa1.execute(new boolean[]{true, true, true}));
 
@@ -86,21 +86,26 @@ public class SykatTest {
         assert (!epssy.execute(new boolean[]{true, false, false}));
         assert (!epssy.execute(new boolean[]{false, true, true}));
 
-
-
     }
 
     @org.junit.jupiter.api.Test
     void testDelta() {
-        Delta del = new Delta();
-//        BDD<HashSet<SyKATexpression>> dsy = (BDD<HashSet<SyKATexpression>>) sy.accept(del);
-//        assert (dsy.getNumInputs() == 6);
-//        KATexpression b2 = new ConcatExpression(
-//                        new PrimitiveTest("B"),
-//                        new Action(action2)
-//                );
-//        SyKATexpression syb2 = util.translate(expr);
-//        boolean[] test = new boolean[]{true, false, false, true, false, false};
-//        dsy.execute(test);
+        Delta del = new Delta(3,3);
+        KATexpression b = new PrimitiveTest("B");
+        SyKATexpression syb = util.translate(b);
+        assert syb instanceof BDD<?>;
+        BDD<HashSet<SyKATexpression>> dsyb = (BDD<HashSet<SyKATexpression>>) syb.accept(del);
+        assert (dsyb.getNumInputs() == 6);
+        boolean[] test = new boolean[]{true, true, false, true, true, false};
+        assert dsyb.execute(test).isEmpty();
+
+        b = new Action(action1);
+        syb = util.translate(b);
+        assert syb instanceof BDD<?>;
+        dsyb = (BDD<HashSet<SyKATexpression>>) syb.accept(del);
+        assert (dsyb.getNumInputs() == 6);
+        test = new boolean[]{true, false, false, true, false, false};
+        assert !dsyb.execute(test).isEmpty();
+        assert dsyb.execute(test).size() == 1;
     }
 }
