@@ -28,31 +28,26 @@ public class Delta implements SyKATexpressionVisitor {
             tree.nodes = new ArrayList();
             tree.nodesHash = new HashMap();
             HashSet<SyKATexpression> empty = new HashSet<SyKATexpression>();
-            tree.addNode(new Node<HashSet<SyKATexpression>>(empty, 0));
+            tree.addNode(new Node<HashSet<SyKATexpression>>(empty, this.numInputs));
             return new BDD<>(tree);
         }
-        BDDTree<HashSet<SyKATexpression>> deriBDDtree = new BDDTree<>();
+        BDDTree<HashSet<SyKATexpression>> deriBDDtree = new BDDTree<>(this.numInputs);
         BDDTree<Boolean> bddTree = bdd.getTree();
         deriBDDtree.numInputs = this.numInputs;
-        ArrayList<Node<HashSet<SyKATexpression>>> deriNodes = new ArrayList<>();
-        HashMap<Node<HashSet<SyKATexpression>>, Integer> deriNodesHash = new HashMap<>();
         for(Node<Boolean> node : bddTree.nodes) {
+            Node<HashSet<SyKATexpression>> n;
             if (node.isTerminal()) {
                 HashSet<SyKATexpression> set = new HashSet<>();
                 if (node.terminalValue) {
                     set.add(singleBooleanBDD(true, numAtom));
                 }
-                Node n = new Node<>(set, 0);
-                deriNodes.add(n);
-                deriNodesHash.put(n, bddTree.nodesHash.get(node));
+                n = new Node<>(set, this.numInputs);
             } else {
-                Node n = new Node<>(node.low, node.high, node.inputIndex);
-                deriNodes.add(n);
-                deriNodesHash.put(n, bddTree.nodesHash.get(node));
+                n = new Node<>(node.low, node.high,
+                        this.numAtom + node.inputIndex); // new index in [atom, action] input
             }
+            deriBDDtree.addNode(n);
         }
-        deriBDDtree.nodes = deriNodes;
-        deriBDDtree.nodesHash = deriNodesHash;
         return new BDD(deriBDDtree);
     }
 

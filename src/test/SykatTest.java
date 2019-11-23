@@ -13,6 +13,8 @@ import utility.Util;
 import java.util.HashMap;
 import java.util.HashSet;
 
+import static SyKAT.BDD.BooleanBDDutil.singleBooleanBDD;
+
 public class SykatTest {
     HashMap<String, Boolean> atom = new HashMap<>();
     String[] primTests = new String[]{"A", "B", "C"};
@@ -105,7 +107,11 @@ public class SykatTest {
         dsyb = (BDD<HashSet<SyKATexpression>>) syb.accept(del);
         assert (dsyb.getNumInputs() == 6);
         test = new boolean[]{true, false, false, true, false, false};
-        assert !dsyb.execute(test).isEmpty();
-        assert dsyb.execute(test).size() == 1;
+        HashSet<SyKATexpression> res = dsyb.execute(test);
+        assert res.size() == 1;
+        BDD<Boolean> trueBdd = singleBooleanBDD(true, 3);
+        assert res.contains(trueBdd);
+
+
     }
 }
