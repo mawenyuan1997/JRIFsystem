@@ -66,16 +66,6 @@ public class BDD<T> extends Executable<T> implements SyKATexpression
         this.tree = new BDDTree(f.getNumInputs());
         buildThisFromFunction(f, new boolean[f.getNumInputs()], 0);
     }
-
-    /**
-     * Build BDD for action
-     * @param f
-     * @param isForAction
-     */
-    public BDD(BooleanFunction f, boolean isForAction) {
-        this(f);
-        this.isForAction = isForAction;
-    }
     
     private int buildThisFromFunction(Executable f, boolean[] inputString, int inputIndex)
     {
@@ -94,9 +84,15 @@ public class BDD<T> extends Executable<T> implements SyKATexpression
         }
     }
 
-    @Override
-    public Object accept(SyKATexpressionVisitor visitor) { return visitor.visit((BDD<Boolean>) this); }
-       
+    /**
+     * Build BDD for action
+     * @param f
+     * @param isForAction
+     */
+    public BDD(BooleanFunction f, boolean isForAction) {
+        this(f);
+        this.isForAction = isForAction;
+    }
     /**
      * Build a SyKAT.BDD by *applying* the specified boolean operator to two preexisting
      * BDDs.
@@ -104,61 +100,10 @@ public class BDD<T> extends Executable<T> implements SyKATexpression
      */
     public BDD(Operator op, BDD<T> x, BDD<T> y)
     {
-        this.tree = new BDDTree(Integer.max(x.tree.getNumInputs(), y.tree.getRootIndex()));
+        assert x.tree.getNumInputs() == y.tree.getNumInputs();
+        this.tree = new BDDTree(x.tree.getNumInputs());
         HashMap<Integer[], Integer> dynamicProgrammingMemory = new HashMap();
         apply(dynamicProgrammingMemory, op, x.tree, y.tree, x.tree.getRootIndex(), y.tree.getRootIndex());
-    }
-
-   
-    @Override
-    public int getNumInputs()
-    {
-        return this.tree.getNumInputs();
-    }
-
-    public BDDTree getTree()
-    {
-        return this.tree;
-    }
-    
-    /**
-     *  Test whether this is equal to the reference SyKAT.BDD.  Runs a DFS-based
-     *  rooted directed acyclic graph isomorphism algorithm, which
-     *  is linear in the number of nodes.
-     */
-    @Override
-    public boolean equals(Object reference)
-    {
-        if (! (reference instanceof BDD))
-            return false;
-        return this.tree.equals(((BDD)reference).getTree());
-    }
-
-    @Override
-    public int hashCode()
-    {
-        int hash = 3;
-        hash = 47 * hash + (this.tree != null ? this.tree.hashCode() : 0);
-        return hash;
-    }
-    
-    /**
-     * Execute the boolean function represented by this SyKAT.BDD.
-     */
-    @Override
-    public T execute(boolean[] input)
-    {
-        //assert(input.length == this.tree.getNumInputs());
-        Node<T> currentNode = tree.getNode(tree.getRootIndex());
-        for (int i = 0; i < input.length; i++)
-        {
-            //System.out.println(""+currentNode.low+" "+currentNode.high+" "+currentNode.inputIndex);
-            //if (currentNode.inputIndex == i)
-            if (currentNode.isTerminal()) break;
-            currentNode = (input[i] ? tree.getNode(currentNode.high) : tree.getNode(currentNode.low));
-        }
-
-        return currentNode.terminalValue;
     }
     
     /**
@@ -167,6 +112,7 @@ public class BDD<T> extends Executable<T> implements SyKATexpression
      */
     private <T> void apply(HashMap dynamicProgrammingMemory, Operator<T> op, BDDTree<T> xTree, BDDTree<T> yTree, int xIndex, int yIndex)
     {
+        assert xTree.getNumInputs() == yTree.getNumInputs();
         int newRoot = applyLoop(dynamicProgrammingMemory, op, xTree, yTree, xIndex, yIndex);
         tree.setRootIndex(newRoot); // Required in the case that the new tree returns false for all inputs (without this line it returns all trues!)
     }
@@ -179,9 +125,9 @@ public class BDD<T> extends Executable<T> implements SyKATexpression
         if (dynamicProgrammingMemory.containsKey(key))
             return (Integer) dynamicProgrammingMemory.get(key);
         else if (x.isTerminal() && y.isTerminal())
-            output = mk(new Node(op.operate(x.terminalValue, y.terminalValue), tree.getNumInputs()));
+            output = mk(new Node(op.operate(x.terminalValue, y.terminalValue), xTree.getNumInputs()));
         else if (x.isTerminal())
-            output = mk(new Node(applyLoop(dynamicProgrammingMemory, op, xTree, yTree, xIndex, y.low),applyLoop(dynamicProgrammingMemory, op, xTree, yTree, xIndex, y.high), x.inputIndex));
+            output = mk(new Node(applyLoop(dynamicProgrammingMemory, op, xTree, yTree, xIndex, y.low),applyLoop(dynamicProgrammingMemory, op, xTree, yTree, xIndex, y.high), y.inputIndex));
         else if (y.isTerminal())
             output = mk(new Node(applyLoop(dynamicProgrammingMemory, op, xTree, yTree, x.low, yIndex),applyLoop(dynamicProgrammingMemory, op, xTree, yTree, x.high, yIndex), x.inputIndex));
         else if (x.inputIndex == y.inputIndex)
@@ -205,6 +151,62 @@ public class BDD<T> extends Executable<T> implements SyKATexpression
         else
             return tree.addNode(node);
     }
+
+    /**
+     * Execute the boolean function represented by this SyKAT.BDD.
+     */
+    @Override
+    public T execute(boolean[] input)
+    {
+        assert(input.length == this.tree.getNumInputs());
+        Node<T> currentNode = tree.getNode(tree.getRootIndex());
+        for (int i = 0; i < input.length; i++)
+        {
+//            System.out.println(""+currentNode.low+" "+currentNode.high+" "+currentNode.inputIndex);
+            if (currentNode.inputIndex == i)
+                currentNode = (input[i] ? tree.getNode(currentNode.high) : tree.getNode(currentNode.low));
+        }
+
+        return currentNode.terminalValue;
+    }
+    @Override
+    public int getNumInputs()
+    {
+        return this.tree.getNumInputs();
+    }
+
+    public boolean isAction() { return isForAction; }
+
+    public BDDTree getTree()
+    {
+        return this.tree;
+    }
+
+    /**
+     *  Test whether this is equal to the reference SyKAT.BDD.  Runs a DFS-based
+     *  rooted directed acyclic graph isomorphism algorithm, which
+     *  is linear in the number of nodes.
+     */
+    @Override
+    public boolean equals(Object reference)
+    {
+        if (! (reference instanceof BDD))
+            return false;
+        return this.tree.equals(((BDD)reference).getTree());
+    }
+
+    @Override
+    public int hashCode()
+    {
+        int hash = 3;
+        hash = 47 * hash + (this.tree != null ? this.tree.hashCode() : 0);
+        return hash;
+    }
+
+    @Override
+    public Object accept(SyKATexpressionVisitor visitor) { return visitor.visit((BDD<Boolean>) this); }
+
+
     /*
     @Override
     public String toDot(String name)
@@ -255,5 +257,4 @@ public class BDD<T> extends Executable<T> implements SyKATexpression
             
     }
     */
-    public boolean isAction() { return isForAction; }
 }

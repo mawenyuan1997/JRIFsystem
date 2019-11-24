@@ -23,17 +23,13 @@ public class Delta implements SyKATexpressionVisitor {
     @Override
     public Object visit(BDD bdd) {
         if (!bdd.isAction()) {
-            BDDTree<HashSet<SyKATexpression>> tree = new BDDTree<>();
-            tree.numInputs = this.numInputs;
-            tree.nodes = new ArrayList();
-            tree.nodesHash = new HashMap();
+            BDDTree<HashSet<SyKATexpression>> tree = new BDDTree<>(this.numInputs);
             HashSet<SyKATexpression> empty = new HashSet<SyKATexpression>();
             tree.addNode(new Node<HashSet<SyKATexpression>>(empty, this.numInputs));
             return new BDD<>(tree);
         }
         BDDTree<HashSet<SyKATexpression>> deriBDDtree = new BDDTree<>(this.numInputs);
         BDDTree<Boolean> bddTree = bdd.getTree();
-        deriBDDtree.numInputs = this.numInputs;
         for(Node<Boolean> node : bddTree.nodes) {
             Node<HashSet<SyKATexpression>> n;
             if (node.isTerminal()) {
@@ -59,7 +55,7 @@ public class Delta implements SyKATexpressionVisitor {
         BDD<HashSet<SyKATexpression>> dy = (BDD<HashSet<SyKATexpression>>) y.accept(this);
         Epsilon eps = new Epsilon(numAtom);
         BDD<Boolean> epsBDD = (BDD<Boolean>) x.accept(eps);
-        squareCross(epsBDD, dy, new boolean[dy.getNumInputs()], 0);
+        squareCross(epsBDD, dy, new boolean[this.numInputs], 0);
         BDD<HashSet<SyKATexpression>> left = squareDot(dx, y);
         BDD<HashSet<SyKATexpression>> right = dy;
         return union(left, right);
@@ -69,6 +65,7 @@ public class Delta implements SyKATexpressionVisitor {
     public Object visit(Plus expr) {
         BDD<HashSet<SyKATexpression>> l = (BDD<HashSet<SyKATexpression>>) expr.left.accept(this);
         BDD<HashSet<SyKATexpression>> r = (BDD<HashSet<SyKATexpression>>) expr.right.accept(this);
+//        System.out.println(l.execute(new boolean[]{true, false, false, true, false, false}).contains(singleBooleanBDD(true, 3)));
         return union(l, r);
     }
 
@@ -84,27 +81,20 @@ public class Delta implements SyKATexpressionVisitor {
                                           SyKATexpression y
                                           ) {
         BDDTree<HashSet<SyKATexpression>> bddTree = dx.getTree();
-        BDDTree<HashSet<SyKATexpression>> dxytree = new BDDTree<>();
-        dxytree.numInputs = this.numInputs;
-        ArrayList<Node<HashSet<SyKATexpression>>> deriNodes = new ArrayList<>();
-        HashMap<Node<HashSet<SyKATexpression>>, Integer> deriNodesHash = new HashMap<>();
+        BDDTree<HashSet<SyKATexpression>> dxytree = new BDDTree<>(this.numInputs);
         for(Node<HashSet<SyKATexpression>> node : bddTree.nodes) {
+            Node n;
             if (node.isTerminal()) {
                 HashSet<SyKATexpression> set = new HashSet<>();
                 for(SyKATexpression xp : node.terminalValue) {
                     set.add(new Concat(xp, y));
                 }
-                Node n = new Node<>(set, 0);
-                deriNodes.add(n);
-                deriNodesHash.put(n, bddTree.nodesHash.get(node));
+                n = new Node<>(set, node.inputIndex);
             } else {
-                Node n = new Node<>(node.low, node.high, node.inputIndex);
-                deriNodes.add(n);
-                deriNodesHash.put(n, bddTree.nodesHash.get(node));
+                n = new Node<>(node.low, node.high, node.inputIndex);
             }
+            dxytree.addNode(n);
         }
-        dxytree.nodes = deriNodes;
-        dxytree.nodesHash = deriNodesHash;
         return new BDD<>(dxytree);
     }
 
@@ -114,9 +104,9 @@ public class Delta implements SyKATexpressionVisitor {
                              int inputIndex
                              ) {
         if (inputIndex == this.numInputs) {
-            Boolean f = epsx.execute(Arrays.copyOfRange(input,0, epsx.getNumInputs()));
+            Boolean f = epsx.execute(Arrays.copyOfRange(input,0, this.numAtom));
             if (!f) {
-                HashSet<SyKATexpression> ter = dy.execute(Arrays.copyOfRange(input,epsx.getNumInputs(),this.numInputs));
+                HashSet<SyKATexpression> ter = dy.execute(input);
                 ter.clear();
             }
         } else {

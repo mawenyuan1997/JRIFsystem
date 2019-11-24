@@ -22,10 +22,7 @@ public class BDDTree<T>
     /**
      * Empty constructor
      */
-    public BDDTree()
-    {
-        
-    }
+    public BDDTree() { }
     
     public BDDTree(int numInputs)
     {
@@ -36,9 +33,7 @@ public class BDDTree<T>
 //        addNode(new Node<>(false, numInputs), 0); // XXX Should these nodes be made static?
 //        addNode(new Node<>(true, numInputs), 1);
     }
-    
 
-    
     /**
      * Do a deep copy on a pre-existing tree.
      */
