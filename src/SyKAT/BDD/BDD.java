@@ -70,8 +70,7 @@ public class BDD<T> extends Executable<T> implements SyKATexpression
     private int buildThisFromFunction(Executable f, boolean[] inputString, int inputIndex)
     {
         if (inputIndex == f.getNumInputs()) {
-            Node leaf = new Node(-1, -1, inputIndex);
-            leaf.terminalValue = f.execute(inputString);
+            Node leaf = new Node(f.execute(inputString), inputIndex);
             return mk(leaf);
         }
         else

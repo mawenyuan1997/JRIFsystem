@@ -2,6 +2,7 @@ package test;
 import KAT.*;
 import SyKAT.BDD.BDD;
 import SyKAT.Concat;
+import SyKAT.Star;
 import SyKAT.SyKATexpression;
 import SyKAToperator.Delta;
 import SyKAToperator.Epsilon;
@@ -84,11 +85,17 @@ public class SykatTest {
         assert (!epssy.execute(new boolean[]{true, false, false}));
         assert (!epssy.execute(new boolean[]{false, true, true}));
 
+        KATexpression b = new StarExpression(new Action(action1));
+        SyKATexpression syb = util.translate(b);
+        BDD<Boolean> s =  (BDD<Boolean>) syb.accept(eps);
+        assert (s.execute(new boolean[]{true, false, false}));
+        assert (s.execute(new boolean[]{false, true, true}));
     }
 
     @org.junit.jupiter.api.Test
     void testDelta() {
         Delta del = new Delta(3,3);
+
         KATexpression b = new PrimitiveTest("B");
         SyKATexpression syb = util.translate(b);
         assert syb instanceof BDD<?>;
@@ -110,11 +117,10 @@ public class SykatTest {
         syb = util.translate(b);
         dsyb = (BDD<HashSet<SyKATexpression>>) syb.accept(del);
         res = dsyb.execute(new boolean[]{true, false, false, true, false, false});
-        System.out.println(res.size());
         assert res.size() == 1;
         assert res.contains(trueBdd);
         res = dsyb.execute(new boolean[]{false, true, true, true, false, false});
-        assert res.contains(trueBdd);
+        assert res.isEmpty();
 
         b = new PlusExpression(new ConcatExpression(new PrimitiveTest("A"), new Action(action1)),
                                new ConcatExpression(new PrimitiveTest("B"), new Action(action2)));
@@ -127,5 +133,19 @@ public class SykatTest {
         res = dsyb.execute(new boolean[]{true, true, false, true, true, false});
         assert res.size() == 1;
         assert res.contains(trueBdd);
+
+        b = new StarExpression(new Action(action1));
+        syb = util.translate(b);
+        assert syb instanceof Star;
+        dsyb = (BDD<HashSet<SyKATexpression>>) syb.accept(del);
+        res = dsyb.execute(new boolean[]{true, false, false, true, false, false});
+        assert res.size() == 1;
+        for(SyKATexpression e : res) {
+            assert e instanceof Concat;
+            assert ((Concat) e).left instanceof BDD;
+            assert ((Concat) e).right instanceof Star;
+            assert ((Star)((Concat) e).right).p instanceof BDD;
+            assert (Boolean)((BDD)((Star)((Concat) e).right).p).execute(new boolean[]{true, false, false});
+        }
     }
 }

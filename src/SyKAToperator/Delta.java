@@ -29,22 +29,28 @@ public class Delta implements SyKATexpressionVisitor {
             return new BDD<>(tree);
         }
         BDDTree<HashSet<SyKATexpression>> deriBDDtree = new BDDTree<>(this.numInputs);
-        BDDTree<Boolean> bddTree = bdd.getTree();
-        for(Node<Boolean> node : bddTree.nodes) {
-            Node<HashSet<SyKATexpression>> n;
-            if (node.isTerminal()) {
-                HashSet<SyKATexpression> set = new HashSet<>();
-                if (node.terminalValue) {
-                    set.add(singleBooleanBDD(true, numAtom));
-                }
-                n = new Node<>(set, this.numInputs);
-            } else {
-                n = new Node<>(node.low, node.high,
-                        this.numAtom + node.inputIndex); // new index in [atom, action] input
-            }
-            deriBDDtree.addNode(n);
-        }
+        build(new boolean[this.numInputs], 0, bdd, deriBDDtree);
         return new BDD(deriBDDtree);
+    }
+
+    private int build(boolean[] input, int inputIndex, BDD<Boolean> bdd, BDDTree<HashSet<SyKATexpression>> deriBDDtree) {
+        if (inputIndex == this.numInputs) {
+            HashSet<SyKATexpression> set = new HashSet<>();
+            if (bdd.execute(Arrays.copyOfRange(input, numAtom, numInputs))) {
+                set.add(singleBooleanBDD(true, numAtom));
+            }
+            Node n = new Node<>(set, this.numInputs);
+            return deriBDDtree.addNode(n);
+        }
+        else
+        {
+            input[inputIndex] = false;
+            int lowChild = build(input, inputIndex + 1, bdd, deriBDDtree);
+            input[inputIndex] = true;
+            int highChild = build(input, inputIndex + 1, bdd, deriBDDtree);
+            Node n = new Node<>(lowChild, highChild, inputIndex);
+            return deriBDDtree.addNode(n);
+        }
     }
 
     @Override
