@@ -26,7 +26,7 @@ public class PlusExpression implements KATexpression {
 
     @Override
     public int hashCode() {
-        return left.hashCode() * 31 + right.hashCode();
+        return ("" + left.hashCode() + "+" + right.hashCode()).hashCode();
     }
 }
 

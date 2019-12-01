@@ -35,6 +35,8 @@ public class SykatTest {
     SyKATexpression action1expr = ((Concat)((Concat)sy).left).right;
     SyKATexpression action2expr = ((Concat)((Concat)sy).right).right;
     SyKATexpression ap1 = (Concat)((Concat)sy).left;
+    SyKATexpression bp2 = (Concat)((Concat)sy).right;
+    BDD<Boolean> trueBdd = singleBooleanBDD(true, 3);
 
     @org.junit.jupiter.api.Test
     void testSyKatTranslate() {
@@ -93,7 +95,7 @@ public class SykatTest {
     }
 
     @org.junit.jupiter.api.Test
-    void testDelta() {
+    void testDeltaSimple() {
         Delta del = new Delta(3,3);
 
         KATexpression b = new PrimitiveTest("B");
@@ -110,7 +112,6 @@ public class SykatTest {
         assert (dsyb.getNumInputs() == 6);
         HashSet<SyKATexpression> res = dsyb.execute(new boolean[]{true, false, false, true, false, false});
         assert res.size() == 1;
-        BDD<Boolean> trueBdd = singleBooleanBDD(true, 3);
         assert res.contains(trueBdd);
 
         b = new ConcatExpression(new PrimitiveTest("A"), new Action(action1));
@@ -147,5 +148,14 @@ public class SykatTest {
             assert ((Star)((Concat) e).right).p instanceof BDD;
             assert (Boolean)((BDD)((Star)((Concat) e).right).p).execute(new boolean[]{true, false, false});
         }
+    }
+
+    @org.junit.jupiter.api.Test
+    void testDeltaComplex() {
+        Delta del = new Delta(3,3);
+        BDD<HashSet<SyKATexpression>> dsyb = (BDD<HashSet<SyKATexpression>>) sy.accept(del);
+        HashSet<SyKATexpression> res = dsyb.execute(new boolean[]{true, false, false, true, false, false});
+        assert res.size() == 1;
+        assert res.contains(new Concat(trueBdd,bp2));
     }
 }

@@ -24,6 +24,6 @@ public class NegateTest extends TestExpression {
 
     @Override
     public int hashCode() {
-        return test.hashCode();
+        return ("-" + test.hashCode()).hashCode();
     }
 }

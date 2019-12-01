@@ -25,6 +25,6 @@ public class ConcatTest extends TestExpression {
 
     @Override
     public int hashCode() {
-        return left.hashCode() * 31 + right.hashCode();
+        return ("" + left.hashCode() + "*" + right.hashCode()).hashCode();
     }
 }

@@ -25,6 +25,6 @@ public class StarExpression implements KATexpression {
 
     @Override
     public int hashCode() {
-        return p.hashCode();
+        return ("@" + p.hashCode()).hashCode();
     }
 }
