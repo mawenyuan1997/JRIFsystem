@@ -155,8 +155,10 @@ public class BDDTree<T>
     private boolean equalsDFS(BDDTree referenceTree, int thisNodeIndex, int refNodeIndex)
     {   
         // Special case at terminals
-        if ((thisNodeIndex == 0 || thisNodeIndex == 1) && (refNodeIndex == 0 || refNodeIndex == 1))
-            return (this.getNode(thisNodeIndex).terminalValue == referenceTree.getNode(refNodeIndex).terminalValue);
+//        if ((thisNodeIndex == 0 || thisNodeIndex == 1) && (refNodeIndex == 0 || refNodeIndex == 1))
+//            return (this.getNode(thisNodeIndex).terminalValue == referenceTree.getNode(refNodeIndex).terminalValue);
+
+
         // Isomorphic nodes are visited together, so if their visted status is mismatched, they are not isomorphic. 
         if (visitedNodeLabels.containsKey(thisNodeIndex) != refVisitedNodeLabels.containsKey(refNodeIndex))
             return false;
@@ -173,7 +175,13 @@ public class BDDTree<T>
         // If we haven't yet visited these nodes, see if the subgraphs are isomorphic.
         Node<T> thisNode = this.getNode(thisNodeIndex);
         Node<T> refNode = referenceTree.getNode(refNodeIndex);
-        
+
+        if (thisNode.isTerminal() != refNode.isTerminal())
+            return false;
+
+        if (thisNode.isTerminal() && refNode.isTerminal()) {
+            return thisNode.terminalValue.equals(refNode.terminalValue);
+        }
         if (thisNode.inputIndex != refNode.inputIndex)
             return false;
         

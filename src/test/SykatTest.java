@@ -157,5 +157,16 @@ public class SykatTest {
         HashSet<SyKATexpression> res = dsyb.execute(new boolean[]{true, false, false, true, false, false});
         assert res.size() == 1;
         assert res.contains(new Concat(trueBdd,bp2));
+
+        KATexpression b = new ConcatExpression(new NegateTest(new PrimitiveTest("A")),
+                                               new ConcatExpression(new Action(action1),
+                                                                    new PrimitiveTest("A")
+                                                                   )
+                                              )
+                ;
+        SyKATexpression syb = util.translate(b);
+        dsyb = (BDD<HashSet<SyKATexpression>>) syb.accept(del);
+        assert dsyb.execute(new boolean[]{true, true, false, true, true, false}).isEmpty();
+        assert dsyb.execute(new boolean[]{false, true, false, true, true, false}).isEmpty();
     }
 }
