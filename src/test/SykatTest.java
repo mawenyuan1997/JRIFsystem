@@ -168,5 +168,14 @@ public class SykatTest {
         dsyb = (BDD<HashSet<SyKATexpression>>) syb.accept(del);
         assert dsyb.execute(new boolean[]{true, true, false, true, true, false}).isEmpty();
         assert dsyb.execute(new boolean[]{false, true, false, true, true, false}).isEmpty();
+        res = dsyb.execute(new boolean[]{false, false, false, true, false, false});
+        assert res.size() == 1;
+        for(SyKATexpression e : res) {
+            assert e instanceof Concat;
+            assert ((Concat) e).left.equals(trueBdd);
+            assert ((Concat) e).right instanceof BDD;
+            assert ((BDD<Boolean>) ((Concat) e).right).execute(new boolean[]{true, false, false});
+            assert !((BDD<Boolean>) ((Concat) e).right).execute(new boolean[]{false, false, false});
+        }
     }
 }

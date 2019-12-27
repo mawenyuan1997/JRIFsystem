@@ -61,9 +61,8 @@ public class Delta implements SyKATexpressionVisitor {
         BDD<HashSet<SyKATexpression>> dy = (BDD<HashSet<SyKATexpression>>) y.accept(this);
         Epsilon eps = new Epsilon(numAtom);
         BDD<Boolean> epsBDD = (BDD<Boolean>) x.accept(eps);
-        squareCross(epsBDD, dy, new boolean[this.numInputs], 0);
         BDD<HashSet<SyKATexpression>> left = squareDot(dx, y);
-        BDD<HashSet<SyKATexpression>> right = dy;
+        BDD<HashSet<SyKATexpression>> right = squareCross(epsBDD, dy);
         return union(left, right);
     }
 
@@ -104,23 +103,39 @@ public class Delta implements SyKATexpressionVisitor {
         return new BDD<>(dxytree);
     }
 
-    private void squareCross(BDD<Boolean> epsx,
-                             BDD<HashSet<SyKATexpression>> dy,
-                             boolean[] input,
-                             int inputIndex
-                             ) {
-        if (inputIndex == this.numInputs) {
-            Boolean f = epsx.execute(Arrays.copyOfRange(input,0, this.numAtom));
-            if (!f) {
-                HashSet<SyKATexpression> ter = dy.execute(input);
-                ter.clear();
+    private BDD<HashSet<SyKATexpression>> squareCross(BDD<Boolean> epsx,
+                                                      BDD<HashSet<SyKATexpression>> dy
+                                                     ) {
+        BDDTree<Boolean> eps = epsx.getTree();
+        BDDTree<HashSet<SyKATexpression>> epsSetTree = new BDDTree<>();
+        int sz = eps.nodes.size();
+        epsSetTree.numInputs = dy.getTree().numInputs;
+        epsSetTree.nodes = new ArrayList(sz);
+        epsSetTree.nodesHash = new HashMap(sz);
+        for (int i = 0; i < sz; i++)
+        {
+            Node<HashSet<SyKATexpression>> n;
+            Node<Boolean> t = eps.nodes.get(i);
+            if (t.isTerminal()) {
+                HashSet<SyKATexpression> s = new HashSet<>();
+                if (t.terminalValue) {
+                    s.add(singleBooleanBDD(true, dy.getTree().numInputs));
+                }
+                n = new Node<>(s, dy.getTree().numInputs);
+            } else {
+                n = new Node<>(t.low, t.high, t.inputIndex);
             }
-        } else {
-            input[inputIndex] = false;
-            squareCross(epsx, dy, input, inputIndex+1);
-            input[inputIndex] = true;
-            squareCross(epsx, dy, input, inputIndex+1);
+            epsSetTree.nodes.add(n);
+            epsSetTree.nodesHash.put(n, i);
         }
+        Operator<HashSet<SyKATexpression>> op = new Operator<HashSet<SyKATexpression>>() {
+            @Override
+            public HashSet<SyKATexpression> operate(HashSet<SyKATexpression> x, HashSet<SyKATexpression> y) {
+                if (x.isEmpty()) return new HashSet<>();
+                return y;
+            }
+        };
+        return new BDD(op, new BDD<>(epsSetTree), dy);
     }
 
 
