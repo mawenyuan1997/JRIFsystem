@@ -11,19 +11,29 @@ import SyKAToperator.Epsilon;
 import java.util.HashMap;
 import java.util.HashSet;
 
+import static SyKAT.BDD.BooleanBDDutil.singleBooleanBDD;
+
 public class SymDFA {
 
     public Util util;
     public HashMap<HashSet<SyKATexpression>, BDD<HashSet<SyKATexpression>>> transionBDD;
+    public HashMap<HashSet<SyKATexpression>, Boolean> states;
+    BDD<Boolean> trueBdd = singleBooleanBDD(true, 3);
     public SymDFA(Util u, SyKATexpression expr) {
+        util = u;
+        transionBDD = new HashMap<>();
+        states = new HashMap<>();
+        HashSet<SyKATexpression> empty = new HashSet<>();
+        states.put(empty, false);
         HashSet<SyKATexpression> initial = new HashSet<>();
         initial.add(expr);
+        if (expr.equals(trueBdd)) states.put(initial, true);
+        else states.put(initial, false);
         buildFrom(initial);
-        util = u;
     }
 
     public void buildFrom(HashSet<SyKATexpression> currState) {
-        if (transionBDD.containsKey(currState)) return;
+        if (transionBDD.containsKey(currState) || currState.isEmpty()) return;
         BDD<HashSet<SyKATexpression>> total = null;
         Operator<HashSet<SyKATexpression>> op = new Operator<HashSet<SyKATexpression>>() {
             @Override
@@ -46,6 +56,8 @@ public class SymDFA {
         BDDTree<HashSet<SyKATexpression>> tree = total.getTree();
         for(Node<HashSet<SyKATexpression>> n : tree.nodes) {
             if (n.isTerminal()) {
+                if (n.terminalValue.contains(trueBdd)) states.put(n.terminalValue, true);
+                else states.put(n.terminalValue, false);
                 buildFrom(n.terminalValue);
             }
         }
