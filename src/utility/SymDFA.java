@@ -10,30 +10,32 @@ import SyKAToperator.Epsilon;
 
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 
 import static SyKAT.BDD.BooleanBDDutil.singleBooleanBDD;
 
 public class SymDFA {
 
     public Util util;
-    public HashMap<HashSet<SyKATexpression>, BDD<HashSet<SyKATexpression>>> transionBDD;
-    public HashMap<HashSet<SyKATexpression>, Boolean> states;
+    public HashMap<HashSet<SyKATexpression>, BDD<HashSet<SyKATexpression>>> transition;
+    public HashSet<State> states;
+    State initial;
     BDD<Boolean> trueBdd = singleBooleanBDD(true, 3);
+
     public SymDFA(Util u, SyKATexpression expr) {
         util = u;
-        transionBDD = new HashMap<>();
-        states = new HashMap<>();
-        HashSet<SyKATexpression> empty = new HashSet<>();
-        states.put(empty, false);
-        HashSet<SyKATexpression> initial = new HashSet<>();
-        initial.add(expr);
-        if (expr.equals(trueBdd)) states.put(initial, true);
-        else states.put(initial, false);
+        transition = new HashMap<>();
+        states = new HashSet<>();
+        HashSet<SyKATexpression> init = new HashSet<>();
+        init.add(expr);
+        if (expr.equals(trueBdd)) initial = new State(init, true);
+        else initial = new State(init, false);
+        states.add(initial);
         buildFrom(initial);
     }
 
-    public void buildFrom(HashSet<SyKATexpression> currState) {
-        if (transionBDD.containsKey(currState) || currState.isEmpty()) return;
+    public void buildFrom(State currState) {
+        if (transition.containsKey(currState.set) || currState.set.isEmpty()) return;
         BDD<HashSet<SyKATexpression>> total = null;
         Operator<HashSet<SyKATexpression>> op = new Operator<HashSet<SyKATexpression>>() {
             @Override
@@ -44,7 +46,7 @@ public class SymDFA {
             }
         };
         Delta del = new Delta(util.numOfTest, util.numOfAction);
-        for(SyKATexpression expr : currState) {
+        for(SyKATexpression expr : currState.set) {
             BDD<HashSet<SyKATexpression>> bdd = (BDD<HashSet<SyKATexpression>>) expr.accept(del);
             if (total == null)
                 total = bdd;
@@ -52,14 +54,51 @@ public class SymDFA {
                 total = new BDD(op, total, bdd);
             }
         }
-        transionBDD.put(currState, total);
+        transition.put(currState.set, total);
         BDDTree<HashSet<SyKATexpression>> tree = total.getTree();
         for(Node<HashSet<SyKATexpression>> n : tree.nodes) {
             if (n.isTerminal()) {
-                if (n.terminalValue.contains(trueBdd)) states.put(n.terminalValue, true);
-                else states.put(n.terminalValue, false);
-                buildFrom(n.terminalValue);
+                State s;
+                if (n.terminalValue.contains(trueBdd)) s = new State(n.terminalValue, true);
+                else s = new State(n.terminalValue, false);
+                states.add(s);
+                buildFrom(s);
             }
         }
     }
+
+    public boolean isSmallerThan(SymDFA dfa) {
+        BDDTree xTree = transition.get(initial.set).getTree();
+        BDDTree yTree = transition.get(dfa.initial.set).getTree();
+
+        return check(initial, dfa.initial);
+    }
+
+    private boolean check(State x, State y) {
+
+        List<State[]> l =
+    }
+
+    private List<HashSet<SyKATexpression>[]> product(BDDTree xTree, BDDTree yTree, int xIndex, int yIndex) {
+        Node x = xTree.getNode(xIndex);
+        Node y = yTree.getNode(yIndex);
+        int output;
+        if (x.isTerminal() && y.isTerminal()) {
+            if
+        }
+
+        else if (x.isTerminal())
+            output = mk(new Node(applyLoop(dynamicProgrammingMemory, op, xTree, yTree, xIndex, y.low),applyLoop(dynamicProgrammingMemory, op, xTree, yTree, xIndex, y.high), y.inputIndex));
+        else if (y.isTerminal())
+            output = mk(new Node(applyLoop(dynamicProgrammingMemory, op, xTree, yTree, x.low, yIndex),applyLoop(dynamicProgrammingMemory, op, xTree, yTree, x.high, yIndex), x.inputIndex));
+        else if (x.inputIndex == y.inputIndex)
+            output = mk(new Node(applyLoop(dynamicProgrammingMemory, op, xTree, yTree, x.low, y.low), applyLoop(dynamicProgrammingMemory, op, xTree, yTree, x.high, y.high), x.inputIndex));
+        else if (x.inputIndex < y.inputIndex)
+            output = mk(new Node(applyLoop(dynamicProgrammingMemory, op, xTree, yTree, x.low, yIndex), applyLoop(dynamicProgrammingMemory, op, xTree, yTree, x.high, yIndex), x.inputIndex));
+        else //(x.inputIndex > y.inputIndex)
+            output = mk(new Node(applyLoop(dynamicProgrammingMemory, op, xTree, yTree, xIndex, y.low), applyLoop(dynamicProgrammingMemory, op, xTree, yTree, xIndex, y.high), y.inputIndex));
+        dynamicProgrammingMemory.put(key, output);
+        return output;
+    }
 }
+

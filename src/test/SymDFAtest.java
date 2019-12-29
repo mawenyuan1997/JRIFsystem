@@ -4,6 +4,7 @@ import KAT.*;
 import SyKAT.BDD.BDD;
 import SyKAT.SyKATexpression;
 import SyKAToperator.Delta;
+import utility.State;
 import utility.SymDFA;
 import utility.Util;
 
@@ -34,13 +35,11 @@ public class SymDFAtest {
     void testBuild() {
         SymDFA dfa = new SymDFA(util, sy);
         BDD<HashSet<SyKATexpression>> bdd = (BDD<HashSet<SyKATexpression>>) sy.accept(del);
-        assert dfa.states.containsKey(bdd.execute(new boolean[]{true, true, false, false, true, true}));
-        assert dfa.states.containsKey(bdd.execute(new boolean[]{false, true, false, false, true, true}));
-        assert dfa.states.containsKey(bdd.execute(new boolean[]{true, false, false, false, true, false}));
-        assert dfa.states.containsKey(bdd.execute(new boolean[]{true, false, true, false, false, true}));
-        assert dfa.states.get(bdd.execute(new boolean[]{true, false, true, true, true, false}));
-        assert dfa.states.get(bdd.execute(new boolean[]{true, false, true, true, false, false}));
-        assert !dfa.states.get(bdd.execute(new boolean[]{true, false, true, true, false, true}));
-        assert !dfa.states.get(bdd.execute(new boolean[]{false, false, true, true, false, false}));
+        assert dfa.states.contains(new State(bdd.execute(new boolean[]{true, true, false, false, true, true}),false));
+        assert dfa.states.contains(new State(bdd.execute(new boolean[]{false, true, false, false, true, true}), false));
+        assert dfa.states.contains(new State(bdd.execute(new boolean[]{true, false, false, true, true, false}), true));
+        assert dfa.states.contains(new State(bdd.execute(new boolean[]{true, false, true, false, false, true}), false));
+        assert dfa.states.contains(new State(bdd.execute(new boolean[]{true, false, true, true, true, false}), true));
+        assert dfa.states.contains(new State(bdd.execute(new boolean[]{true, false, true, true, false, false}), true));
     }
 }
