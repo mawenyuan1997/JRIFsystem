@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="abc0c21f-9c25-424c-8d60-52b3ee40e2f0" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/utility/State.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/SymDFAtest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/SymDFAtest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/utility/SymDFA.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utility/SymDFA.java" afterDir="false" />
@@ -22,8 +21,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/SyKAT/BDD/BDD.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="186">
-              <caret line="117" column="138" lean-forward="true" selection-start-line="117" selection-start-column="80" selection-end-line="117" selection-end-column="138" />
+            <state relative-caret-position="1318">
+              <caret line="200" column="23" selection-start-line="200" selection-start-column="23" selection-end-line="200" selection-end-column="23" />
             </state>
           </provider>
         </entry>
@@ -32,7 +31,7 @@
         <entry file="file://$PROJECT_DIR$/src/SyKAT/BDD/Operator.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="180">
-              <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
+              <caret line="12" selection-start-line="12" selection-end-line="12" />
             </state>
           </provider>
         </entry>
@@ -40,7 +39,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/SyKAT/BDD/BooleanBDDutil.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
+            <state relative-caret-position="120">
               <caret line="9" column="47" selection-start-line="9" selection-start-column="31" selection-end-line="9" selection-end-column="47" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -53,7 +52,7 @@
         <entry file="file://$PROJECT_DIR$/src/SyKAT/BDD/BDDTree.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="600">
-              <caret line="41" column="33" lean-forward="true" selection-start-line="41" selection-start-column="33" selection-end-line="41" selection-end-column="33" />
+              <caret line="41" column="33" selection-start-line="41" selection-start-column="33" selection-end-line="41" selection-end-column="33" />
             </state>
           </provider>
         </entry>
@@ -61,8 +60,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/SyKAToperator/Delta.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1769">
-              <caret line="129" column="9" lean-forward="true" selection-start-line="129" selection-start-column="9" selection-end-line="129" selection-end-column="9" />
+            <state relative-caret-position="240">
+              <caret line="41" column="53" lean-forward="true" selection-start-line="41" selection-start-column="53" selection-end-line="41" selection-end-column="53" />
             </state>
           </provider>
         </entry>
@@ -70,11 +69,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/utility/SymDFA.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1122">
-              <caret line="80" column="7" lean-forward="true" selection-start-line="78" selection-start-column="71" selection-end-line="80" selection-end-column="7" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="553">
+              <caret line="103" column="24" lean-forward="true" selection-start-line="103" selection-start-column="24" selection-end-line="103" selection-end-column="24" />
             </state>
           </provider>
         </entry>
@@ -83,19 +79,7 @@
         <entry file="file://$PROJECT_DIR$/src/SyKAT/Plus.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="375">
-              <caret line="27" column="5" lean-forward="true" selection-start-line="16" selection-start-column="4" selection-end-line="27" selection-end-column="5" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/utility/State.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="7" column="29" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="29" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+              <caret line="27" column="5" selection-start-line="16" selection-start-column="4" selection-end-line="27" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -103,8 +87,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/SymDFAtest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="377">
-              <caret line="42" column="119" selection-start-line="42" selection-start-column="119" selection-end-line="42" selection-end-column="119" />
+            <state relative-caret-position="394">
+              <caret line="54" column="16" selection-start-line="54" selection-start-column="16" selection-end-line="54" selection-end-column="16" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -115,8 +99,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/SykatTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="84">
-              <caret line="98" column="35" lean-forward="true" selection-start-line="98" selection-start-column="8" selection-end-line="98" selection-end-column="35" />
+            <state relative-caret-position="1290">
+              <caret line="98" column="35" selection-start-line="98" selection-start-column="8" selection-end-line="98" selection-end-column="35" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -161,7 +145,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="state" />
       </map>
     </option>
   </component>
@@ -229,8 +213,8 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="47" />
-    <option name="y" value="34" />
+    <option name="x" value="107" />
+    <option name="y" value="23" />
     <option name="width" value="1257" />
     <option name="height" value="812" />
   </component>
@@ -242,6 +226,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -254,18 +239,6 @@
               <item name="KATautomata" type="b2602c69:ProjectViewProjectNode" />
               <item name="KATautomata" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="KATautomata" type="b2602c69:ProjectViewProjectNode" />
-              <item name="KATautomata" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="KAT" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="KATautomata" type="b2602c69:ProjectViewProjectNode" />
-              <item name="KATautomata" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="KAToperator" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="KATautomata" type="b2602c69:ProjectViewProjectNode" />
@@ -302,7 +275,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -312,7 +284,7 @@
     <property name="Repository.Attach.Sources" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1577590412391" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1577678959440" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="Arquillian JUnit4" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.Arquillian JUnit4" value="" />
     <property name="create.test.in.the.same.root" value="true" />
@@ -418,10 +390,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.SymDFAtest" />
-        <item itemvalue="JUnit.SykatTest" />
-        <item itemvalue="JUnit.BDDtest" />
         <item itemvalue="JUnit.Utiltest" />
+        <item itemvalue="JUnit.SykatTest" />
         <item itemvalue="JUnit.KATtest (1)" />
+        <item itemvalue="JUnit.BDDtest" />
       </list>
     </recent_temporary>
   </component>
@@ -623,39 +595,39 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="SymDFAtest - 2019.12.27 at 18h 45m 02s.xml">
+    <history-entry file="SymDFAtest - 2019.12.29 at 21h 36m 41s.xml">
       <configuration name="SymDFAtest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="SymDFAtest - 2019.12.27 at 18h 45m 54s.xml">
+    <history-entry file="SymDFAtest - 2019.12.29 at 21h 38m 12s.xml">
       <configuration name="SymDFAtest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="SymDFAtest - 2019.12.27 at 18h 46m 39s.xml">
+    <history-entry file="SymDFAtest - 2019.12.29 at 22h 38m 31s.xml">
       <configuration name="SymDFAtest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="SymDFAtest - 2019.12.27 at 19h 01m 33s.xml">
+    <history-entry file="SymDFAtest - 2019.12.29 at 22h 41m 52s.xml">
       <configuration name="SymDFAtest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="SymDFAtest - 2019.12.27 at 19h 17m 14s.xml">
+    <history-entry file="SymDFAtest - 2019.12.29 at 22h 42m 21s.xml">
       <configuration name="SymDFAtest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="SymDFAtest - 2019.12.27 at 19h 18m 04s.xml">
+    <history-entry file="SymDFAtest - 2019.12.29 at 22h 44m 07s.xml">
       <configuration name="SymDFAtest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="SymDFAtest - 2019.12.27 at 19h 18m 31s.xml">
+    <history-entry file="SymDFAtest - 2019.12.29 at 22h 44m 46s.xml">
       <configuration name="SymDFAtest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="SymDFAtest - 2019.12.27 at 19h 18m 57s.xml">
+    <history-entry file="SymDFAtest - 2019.12.29 at 22h 52m 54s.xml">
       <configuration name="SymDFAtest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="SymDFAtest - 2019.12.27 at 19h 19m 11s.xml">
+    <history-entry file="SymDFAtest - 2019.12.29 at 23h 01m 21s.xml">
       <configuration name="SymDFAtest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="SymDFAtest - 2019.12.28 at 22h 33m 35s.xml">
+    <history-entry file="SymDFAtest - 2019.12.29 at 23h 05m 08s.xml">
       <configuration name="SymDFAtest" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="240539000" />
+    <option name="totallyTimeSpent" value="256338000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -667,10 +639,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="47" y="34" width="1257" height="812" extended-state="0" />
+    <frame x="107" y="23" width="1257" height="812" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49813432" visible="true" weight="0.24032922" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49813432" visible="true" weight="0.25679013" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -679,7 +651,7 @@
       <window_info id="Favorites" order="6" sideWeight="0.5018657" side_tool="true" weight="0.21399178" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.26527777" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49468893" visible="true" weight="0.20972222" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49468893" visible="true" weight="0.24583334" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -687,9 +659,9 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.24444444" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
-      <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.49848256" weight="0.16805555" />
+      <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.49848256" weight="0.16666667" />
       <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.5020576" side_tool="true" weight="0.16805555" />
-      <window_info anchor="bottom" id="Messages" order="12" sideWeight="0.49620637" weight="0.32777777" />
+      <window_info anchor="bottom" id="Messages" order="12" sideWeight="0.49620637" weight="0.16944444" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -744,9 +716,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/KATautomata.iml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/KATautomata.iml" />
     <entry file="file://$PROJECT_DIR$/src/SyKAT/BDD/Graph.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
@@ -981,58 +951,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/SyKAT/BDD/BooleanBDDutil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="47" selection-start-line="9" selection-start-column="31" selection-end-line="9" selection-end-column="47" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/SyKAToperator/Delta.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1769">
-          <caret line="129" column="9" lean-forward="true" selection-start-line="129" selection-start-column="9" selection-end-line="129" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/SykatTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
-          <caret line="98" column="35" lean-forward="true" selection-start-line="98" selection-start-column="8" selection-end-line="98" selection-end-column="35" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utility/State.java" />
     <entry file="file://$PROJECT_DIR$/src/SyKAT/BDD/Operator.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
-          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
+          <caret line="12" selection-start-line="12" selection-end-line="12" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/SyKAT/BDD/BDD.java">
+    <entry file="file://$PROJECT_DIR$/src/SyKAT/BDD/BooleanBDDutil.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="186">
-          <caret line="117" column="138" lean-forward="true" selection-start-line="117" selection-start-column="80" selection-end-line="117" selection-end-column="138" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/SyKAT/Plus.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="27" column="5" lean-forward="true" selection-start-line="16" selection-start-column="4" selection-end-line="27" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/utility/State.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="29" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="29" />
+        <state relative-caret-position="120">
+          <caret line="9" column="47" selection-start-line="9" selection-start-column="31" selection-end-line="9" selection-end-column="47" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1042,24 +972,52 @@
     <entry file="file://$PROJECT_DIR$/src/SyKAT/BDD/BDDTree.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="600">
-          <caret line="41" column="33" lean-forward="true" selection-start-line="41" selection-start-column="33" selection-end-line="41" selection-end-column="33" />
+          <caret line="41" column="33" selection-start-line="41" selection-start-column="33" selection-end-line="41" selection-end-column="33" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/utility/SymDFA.java">
+    <entry file="file://$PROJECT_DIR$/src/SyKAT/Plus.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1122">
-          <caret line="80" column="7" lean-forward="true" selection-start-line="78" selection-start-column="71" selection-end-line="80" selection-end-column="7" />
+        <state relative-caret-position="375">
+          <caret line="27" column="5" selection-start-line="16" selection-start-column="4" selection-end-line="27" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/SykatTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1290">
+          <caret line="98" column="35" selection-start-line="98" selection-start-column="8" selection-end-line="98" selection-end-column="35" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/SyKAToperator/Delta.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="41" column="53" lean-forward="true" selection-start-line="41" selection-start-column="53" selection-end-line="41" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SyKAT/BDD/BDD.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1318">
+          <caret line="200" column="23" selection-start-line="200" selection-start-column="23" selection-end-line="200" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utility/SymDFA.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="553">
+          <caret line="103" column="24" lean-forward="true" selection-start-line="103" selection-start-column="24" selection-end-line="103" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/SymDFAtest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="377">
-          <caret line="42" column="119" selection-start-line="42" selection-start-column="119" selection-end-line="42" selection-end-column="119" />
+        <state relative-caret-position="394">
+          <caret line="54" column="16" selection-start-line="54" selection-start-column="16" selection-end-line="54" selection-end-column="16" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
