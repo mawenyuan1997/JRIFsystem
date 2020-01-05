@@ -5,7 +5,6 @@ import SyKAT.BDD.BDD;
 import SyKAT.SyKATexpression;
 import SyKAT.Plus;
 import SyKAToperator.Delta;
-import utility.State;
 import utility.SymDFA;
 import utility.Util;
 
@@ -47,7 +46,7 @@ public class SymDFAtest {
     }
 
     @org.junit.jupiter.api.Test
-    void testCompare() {
+    void testCompareBasic() {
         SymDFA dfa = new SymDFA(util, sy);
         assert dfa.isSmallerThan(dfa);
         SymDFA dfa2 = new SymDFA(util, ((Plus) sy).right);
@@ -59,4 +58,46 @@ public class SymDFAtest {
         assert !dfa2.isSmallerThan(dfa3);
         assert !dfa3.isSmallerThan(dfa2);
     }
+
+    @org.junit.jupiter.api.Test
+    void testCompare1() {
+        KATexpression e1 = new StarExpression(new PlusExpression(new Action(action1), new Action(action2)));
+        KATexpression e2 = new ConcatExpression(new StarExpression(new Action(action1)),
+                new StarExpression(new ConcatExpression(new Action(action2), new StarExpression(new Action(action2)))));
+        KATexpression e3 = new StarExpression(new ConcatExpression(new PlusExpression(new OneTest(), new Action(action1)),
+                new PlusExpression(new OneTest(), new Action(action2))));
+        SymDFA dfa1 = new SymDFA(util, util.translate(e1));
+        SymDFA dfa2 = new SymDFA(util, util.translate(e2));
+        SymDFA dfa3 = new SymDFA(util, util.translate(e3));
+        assert dfa2.isSmallerThan(dfa1);
+        assert dfa1.isSmallerThan(dfa2);
+        assert dfa2.isSmallerThan(dfa3);
+        assert dfa3.isSmallerThan(dfa2);
+    }
+
+    @org.junit.jupiter.api.Test
+    void testCompare2() {
+        KATexpression pp = new ConcatExpression(new Action(action1), new Action(action1));
+        KATexpression ppp = new ConcatExpression(new ConcatExpression(new Action(action1), new Action(action1)), new Action(action1));
+        KATexpression e1 = new ConcatExpression(new StarExpression(pp), new StarExpression(ppp));
+        KATexpression e2 = new ConcatExpression(new StarExpression(ppp), new StarExpression(pp));
+        SymDFA dfa1 = new SymDFA(util, util.translate(e1));
+        SymDFA dfa2 = new SymDFA(util, util.translate(e2));
+        assert dfa2.isSmallerThan(dfa1);
+        assert dfa1.isSmallerThan(dfa2);
+    }
+
+    @org.junit.jupiter.api.Test
+    void testCompare3() {
+        KATexpression pp = new ConcatExpression(new Action(action1), new Action(action1));
+        KATexpression ppp = new ConcatExpression(new ConcatExpression(new Action(action1), new Action(action1)), new Action(action1));
+        KATexpression e1 = new PlusExpression(new StarExpression(pp), new StarExpression(new Action(action1)));
+        KATexpression e2 = new PlusExpression(new StarExpression(ppp), new StarExpression(new Action(action1)));
+        SymDFA dfa1 = new SymDFA(util, util.translate(e1));
+        SymDFA dfa2 = new SymDFA(util, util.translate(e2));
+        assert dfa2.isSmallerThan(dfa1);
+        assert dfa1.isSmallerThan(dfa2);
+    }
+
+
 }

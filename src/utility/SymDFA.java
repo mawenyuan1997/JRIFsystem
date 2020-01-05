@@ -8,10 +8,7 @@ import SyKAT.SyKATexpression;
 import SyKAToperator.Delta;
 import SyKAToperator.Epsilon;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
+import java.util.*;
 
 import static SyKAT.BDD.BooleanBDDutil.singleBooleanBDD;
 
@@ -70,9 +67,44 @@ public class SymDFA {
      * @return
      */
     public boolean isSmallerThan(SymDFA dfa) {
+//        HashSet<HashSet<SyKATexpression>[]> r = new HashSet<>();
+//        Queue<HashSet<SyKATexpression>[]> todo = new LinkedList<>();
+//        HashSet<SyKATexpression>[] temp = new HashSet[2];
+//        temp[0] = initial;
+//        temp[1] = dfa.initial;
+//        todo.add(temp);
+//        while(!todo.isEmpty()) {
+//            System.out.println(r.size());
+//            HashSet<SyKATexpression>[] cur = todo.poll();
+//            if (r.contains(cur)) continue;
+//            if (states.get(cur[0]) && !dfa.states.get(cur[1])) return false;
+//            if (!cur[0].isEmpty() && !cur[1].isEmpty())
+//                addNext(todo, dfa, cur[0], cur[1], new boolean[util.numOfAction+util.numOfTest],0);
+//            r.add(cur);
+//        }
+//        return true;
         HashMap<HashSet<SyKATexpression>[], Boolean> checked = new HashMap<>();
         return check(initial, dfa.initial, dfa, checked);
     }
+
+    private void addNext(Queue<HashSet<SyKATexpression>[]> todo, SymDFA dfa, HashSet<SyKATexpression> x, HashSet<SyKATexpression> y
+            , boolean[] input, int index) {
+        if (index == util.numOfAction+util.numOfTest) {
+            HashSet<SyKATexpression> xnext = transition.get(x).execute(input);
+            HashSet<SyKATexpression> ynext = dfa.transition.get(y).execute(input);
+            HashSet<SyKATexpression>[] temp = new HashSet[2];
+            temp[0] = xnext;
+            temp[1] = ynext;
+            todo.add(temp);
+        } else {
+            input[index] = true;
+            addNext(todo, dfa, x, y, input,index+1);
+            input[index] = false;
+            addNext(todo, dfa, x, y, input,index+1);
+        }
+    }
+
+
 
     private boolean check(HashSet<SyKATexpression> x, HashSet<SyKATexpression> y, SymDFA dfa, HashMap<HashSet<SyKATexpression>[], Boolean> checked) {
         BDDTree xTree = transition.get(x).getTree();
