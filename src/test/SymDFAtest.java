@@ -47,6 +47,7 @@ public class SymDFAtest {
 
     @org.junit.jupiter.api.Test
     void testCompareBasic() {
+        // q < ap+q, ap < ap+q
         SymDFA dfa = new SymDFA(util, sy);
         assert dfa.isSmallerThan(dfa);
         SymDFA dfa2 = new SymDFA(util, ((Plus) sy).right);
@@ -61,6 +62,7 @@ public class SymDFAtest {
 
     @org.junit.jupiter.api.Test
     void testCompare1() {
+        // (p+q)* = p*(qp*)* = ((1+p)(1+q))*
         KATexpression e1 = new StarExpression(new PlusExpression(new Action(action1), new Action(action2)));
         KATexpression e2 = new ConcatExpression(new StarExpression(new Action(action1)),
                 new StarExpression(new ConcatExpression(new Action(action2), new StarExpression(new Action(action2)))));
@@ -77,6 +79,7 @@ public class SymDFAtest {
 
     @org.junit.jupiter.api.Test
     void testCompare2() {
+        // (pp)*(ppp)* = (ppp)*(pp)*
         KATexpression pp = new ConcatExpression(new Action(action1), new Action(action1));
         KATexpression ppp = new ConcatExpression(new ConcatExpression(new Action(action1), new Action(action1)), new Action(action1));
         KATexpression e1 = new ConcatExpression(new StarExpression(pp), new StarExpression(ppp));
@@ -89,6 +92,7 @@ public class SymDFAtest {
 
     @org.junit.jupiter.api.Test
     void testCompare3() {
+        //  (pp)*+p* = (ppp)*+p*
         KATexpression pp = new ConcatExpression(new Action(action1), new Action(action1));
         KATexpression ppp = new ConcatExpression(new ConcatExpression(new Action(action1), new Action(action1)), new Action(action1));
         KATexpression e1 = new PlusExpression(new StarExpression(pp), new StarExpression(new Action(action1)));
@@ -99,5 +103,18 @@ public class SymDFAtest {
         assert dfa1.isSmallerThan(dfa2);
     }
 
+    @org.junit.jupiter.api.Test
+    void testCompare4() {
+        // ap!b+(b!aq)* < (b!aq+ap!b)*
+        KATexpression p = new Action(action1), q = new Action(action2);
+        TestExpression a = new PrimitiveTest("A"), b = new PrimitiveTest("B");
+        KATexpression e1 = new ConcatExpression(a, new ConcatExpression(p, new NegateTest(b)));
+        KATexpression e2 = new ConcatExpression(b, new ConcatExpression(new NegateTest(a), q));
+        KATexpression l = new PlusExpression(e1, new StarExpression(e2));
+        KATexpression r = new StarExpression(new PlusExpression(e1, e2));
+        SymDFA dfa1 = new SymDFA(util, util.translate(l));
+        SymDFA dfa2 = new SymDFA(util, util.translate(r));
+        assert dfa1.isSmallerThan(dfa2);
+    }
 
 }

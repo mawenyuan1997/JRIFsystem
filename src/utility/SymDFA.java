@@ -64,6 +64,23 @@ public class SymDFA {
      * @return
      */
     public boolean isSmallerThan(SymDFA dfa) {
+        // simple algorithm
+//        HashSet<StatePair> r = new HashSet<>();
+//        Queue<StatePair> todo = new LinkedList<>();
+//        StatePair temp = new StatePair(initial, dfa.initial);
+//        todo.add(temp);
+//        while(!todo.isEmpty()) {
+//            StatePair cur = todo.poll();
+//            if (r.contains(cur)) continue;
+//            State s1 = cur.getFirst(), s2 = cur.getSecond();
+//            if (states.get(s1) && !dfa.states.get(s2)) return false;
+//            if (!s1.isEmpty() && !s2.isEmpty())
+//                addNext(todo, dfa, s1, s2, new boolean[util.numOfAction+util.numOfTest],0);
+//            r.add(cur);
+//        }
+//        return true;
+
+        // bdd algorithm
         HashSet<StatePair> r = new HashSet<>();
         Queue<StatePair> todo = new LinkedList<>();
         StatePair temp = new StatePair(initial, dfa.initial);
@@ -72,14 +89,15 @@ public class SymDFA {
             StatePair cur = todo.poll();
             if (r.contains(cur)) continue;
             State s1 = cur.getFirst(), s2 = cur.getSecond();
-            if (states.get(s1) && !dfa.states.get(s2)) return false;
-            if (!s1.isEmpty() && !s2.isEmpty())
-                addNext(todo, dfa, s1, s2, new boolean[util.numOfAction+util.numOfTest],0);
+            if (states.get(s1) && (s2.isEmpty() || !dfa.states.get(s2))) return false;
+            if (!s1.isEmpty() && !s2.isEmpty()) {
+                BDDTree xTree = transition.get(s1).getTree();
+                BDDTree yTree = dfa.transition.get(s2).getTree();
+                product(xTree, yTree, xTree.getRootIndex(), yTree.getRootIndex(), todo);
+            }
             r.add(cur);
         }
         return true;
-//        HashMap<HashSet<SyKATexpression>[], Boolean> checked = new HashMap<>();
-//        return check(initial, dfa.initial, dfa, checked);
     }
 
     private void addNext(Queue<StatePair> todo, SymDFA dfa, State x, State y
@@ -97,51 +115,28 @@ public class SymDFA {
         }
     }
 
-
-
-    private boolean check(HashSet<SyKATexpression> x, HashSet<SyKATexpression> y, SymDFA dfa, HashMap<HashSet<SyKATexpression>[], Boolean> checked) {
-        BDDTree xTree = transition.get(x).getTree();
-        BDDTree yTree = dfa.transition.get(y).getTree();
-        HashSet<SyKATexpression>[] key = new HashSet[] {x, y};
-        if (checked.containsKey(key)) return checked.get(key);
-        HashSet<HashSet<SyKATexpression>[]> next = new HashSet<>();
-        if (!product(xTree, yTree, xTree.getRootIndex(), yTree.getRootIndex(), next, dfa)) {
-            checked.put(key, false);
-            return false;
-        }
-
-        else {
-            for(HashSet<SyKATexpression>[] pair : next) {
-                if (!check(pair[0], pair[1], dfa, checked)) return false;
-            }
-            checked.put(key, true);
-            return true;
-        }
-    }
-
-    private boolean product(BDDTree xTree, BDDTree yTree, int xIndex, int yIndex, HashSet<HashSet<SyKATexpression>[]> next, SymDFA dfa) {
+    private void product(BDDTree xTree, BDDTree yTree, int xIndex, int yIndex, Queue<StatePair> queue) {
         Node x = xTree.getNode(xIndex);
         Node y = yTree.getNode(yIndex);
-        int output;
         if (x.isTerminal() && y.isTerminal()) {
-            HashSet<SyKATexpression>[] pair = new HashSet[2];
-            pair[0] = (HashSet<SyKATexpression>) x.terminalValue;
-            pair[1] = (HashSet<SyKATexpression>) y.terminalValue;
-            if (!pair[0].isEmpty() && !pair[1].isEmpty())
-                next.add(pair);
-            if (states.get(x.terminalValue) && !dfa.states.get(y.terminalValue))
-                return false;
-            return true;
-        } else if (x.isTerminal())
-            return product(xTree, yTree, xIndex, y.low, next, dfa) && product(xTree, yTree, xIndex, y.high, next, dfa);
-        else if (y.isTerminal())
-            return product(xTree, yTree, x.low, yIndex, next, dfa) && product(xTree, yTree, x.high, yIndex, next, dfa);
-        else if (x.inputIndex == y.inputIndex)
-            return product(xTree, yTree, x.low, y.low, next, dfa) && product(xTree, yTree, x.high, y.high, next, dfa);
-        else if (x.inputIndex < y.inputIndex)
-            return product(xTree, yTree, x.low, yIndex, next, dfa) && product(xTree, yTree, x.high, yIndex, next, dfa);
-        else //(x.inputIndex > y.inputIndex)
-            return product(xTree, yTree, xIndex, y.low, next, dfa) && product(xTree, yTree, xIndex, y.high, next, dfa);
+            StatePair pair = new StatePair((State) x.terminalValue, (State) y.terminalValue);
+            queue.add(pair);
+        } else if (x.isTerminal()) {
+            product(xTree, yTree, xIndex, y.low, queue);
+            product(xTree, yTree, xIndex, y.high, queue);
+        } else if (y.isTerminal()) {
+            product(xTree, yTree, x.low, yIndex, queue);
+            product(xTree, yTree, x.high, yIndex, queue);
+        } else if (x.inputIndex == y.inputIndex) {
+            product(xTree, yTree, x.low, y.low, queue);
+            product(xTree, yTree, x.high, y.high, queue);
+        } else if (x.inputIndex < y.inputIndex) {
+            product(xTree, yTree, x.low, yIndex, queue);
+            product(xTree, yTree, x.high, yIndex, queue);
+        } else {//(x.inputIndex > y.inputIndex)
+            product(xTree, yTree, xIndex, y.low, queue);
+            product(xTree, yTree, xIndex, y.high, queue);
+        }
     }
 }
 
