@@ -205,7 +205,10 @@ public class BDD<T> extends Executable<T> implements SyKATexpression
     @Override
     public Object accept(SyKATexpressionVisitor visitor) { return visitor.visit((BDD<Boolean>) this); }
 
-
+    public String toString() {
+        if (isAction()) return "BDDAction";
+        return "BDDTest";
+    }
     /*
     @Override
     public String toDot(String name)

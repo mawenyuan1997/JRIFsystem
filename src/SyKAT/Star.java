@@ -23,4 +23,8 @@ public class Star implements SyKATexpression {
         Star e = (Star) o;
         return this.p.equals(e.p);
     }
+
+    public String toString() {
+        return "(" + p.toString() + ")*";
+    }
 }

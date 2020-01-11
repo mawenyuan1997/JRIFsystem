@@ -26,4 +26,8 @@ public class Plus implements SyKATexpression {
         Plus e = (Plus) o;
         return this.left.equals(e.left) && this.right.equals(e.right);
     }
+
+    public String toString() {
+        return "(" + left.toString() + ")+(" + right.toString() + ")";
+    }
 }

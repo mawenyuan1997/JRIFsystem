@@ -6,6 +6,7 @@ import SyKAT.Star;
 import SyKAT.SyKATexpression;
 import SyKAToperator.Delta;
 import SyKAToperator.Epsilon;
+import utility.State;
 import utility.Util;
 
 import java.util.HashMap;
@@ -101,47 +102,47 @@ public class SykatTest {
         KATexpression b = new PrimitiveTest("B");
         SyKATexpression syb = util.translate(b);
         assert syb instanceof BDD<?>;
-        BDD<HashSet<SyKATexpression>> dsyb = (BDD<HashSet<SyKATexpression>>) syb.accept(del);
+        BDD<State> dsyb = (BDD<State>) syb.accept(del);
         assert (dsyb.getNumInputs() == 6);
         assert dsyb.execute(new boolean[]{true, true, false, true, true, false}).isEmpty();
 
         b = new Action(action1);
         syb = util.translate(b);
         assert syb instanceof BDD<?>;
-        dsyb = (BDD<HashSet<SyKATexpression>>) syb.accept(del);
+        dsyb = (BDD<State>) syb.accept(del);
         assert (dsyb.getNumInputs() == 6);
-        HashSet<SyKATexpression> res = dsyb.execute(new boolean[]{true, false, false, true, false, false});
+        State res = dsyb.execute(new boolean[]{true, false, false, true, false, false});
         assert res.size() == 1;
-        assert res.contains(trueBdd);
+        assert res.has(trueBdd);
 
         b = new ConcatExpression(new PrimitiveTest("A"), new Action(action1));
         syb = util.translate(b);
-        dsyb = (BDD<HashSet<SyKATexpression>>) syb.accept(del);
+        dsyb = (BDD<State>) syb.accept(del);
         res = dsyb.execute(new boolean[]{true, false, false, true, false, false});
         assert res.size() == 1;
-        assert res.contains(trueBdd);
+        assert res.has(trueBdd);
         res = dsyb.execute(new boolean[]{false, true, true, true, false, false});
         assert res.isEmpty();
 
         b = new PlusExpression(new ConcatExpression(new PrimitiveTest("A"), new Action(action1)),
                                new ConcatExpression(new PrimitiveTest("B"), new Action(action2)));
         syb = util.translate(b);
-        dsyb = (BDD<HashSet<SyKATexpression>>) syb.accept(del);
+        dsyb = (BDD<State>) syb.accept(del);
         res = dsyb.execute(new boolean[]{true, false, true, true, false, false});
         assert res.size() == 1;
-        assert res.contains(trueBdd);
-        dsyb = (BDD<HashSet<SyKATexpression>>) syb.accept(del);
+        assert res.has(trueBdd);
+        dsyb = (BDD<State>) syb.accept(del);
         res = dsyb.execute(new boolean[]{true, true, false, true, true, false});
         assert res.size() == 1;
-        assert res.contains(trueBdd);
+        assert res.has(trueBdd);
 
         b = new StarExpression(new Action(action1));
         syb = util.translate(b);
         assert syb instanceof Star;
-        dsyb = (BDD<HashSet<SyKATexpression>>) syb.accept(del);
+        dsyb = (BDD<State>) syb.accept(del);
         res = dsyb.execute(new boolean[]{true, false, false, true, false, false});
         assert res.size() == 1;
-        for(SyKATexpression e : res) {
+        for(SyKATexpression e : res.getSet()) {
             assert e instanceof Concat;
             assert ((Concat) e).left instanceof BDD;
             assert ((Concat) e).right instanceof Star;
@@ -153,10 +154,10 @@ public class SykatTest {
     @org.junit.jupiter.api.Test
     void testDeltaComplex() {
         Delta del = new Delta(3,3);
-        BDD<HashSet<SyKATexpression>> dsyb = (BDD<HashSet<SyKATexpression>>) sy.accept(del);
-        HashSet<SyKATexpression> res = dsyb.execute(new boolean[]{true, false, false, true, false, false});
+        BDD<State> dsyb = (BDD<State>) sy.accept(del);
+        State res = dsyb.execute(new boolean[]{true, false, false, true, false, false});
         assert res.size() == 1;
-        assert res.contains(new Concat(trueBdd,bp2));
+        assert res.has(new Concat(trueBdd,bp2));
 
         KATexpression b = new ConcatExpression(new NegateTest(new PrimitiveTest("A")),
                                                new ConcatExpression(new Action(action1),
@@ -165,12 +166,12 @@ public class SykatTest {
                                               )
                 ;
         SyKATexpression syb = util.translate(b);
-        dsyb = (BDD<HashSet<SyKATexpression>>) syb.accept(del);
+        dsyb = (BDD<State>) syb.accept(del);
         assert dsyb.execute(new boolean[]{true, true, false, true, true, false}).isEmpty();
         assert dsyb.execute(new boolean[]{false, true, false, true, true, false}).isEmpty();
         res = dsyb.execute(new boolean[]{false, false, false, true, false, false});
         assert res.size() == 1;
-        for(SyKATexpression e : res) {
+        for(SyKATexpression e : res.getSet()) {
             assert e instanceof Concat;
             assert ((Concat) e).left.equals(trueBdd);
             assert ((Concat) e).right instanceof BDD;

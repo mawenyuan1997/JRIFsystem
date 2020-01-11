@@ -5,6 +5,7 @@ import SyKAT.BDD.BDD;
 import SyKAT.SyKATexpression;
 import SyKAT.Plus;
 import SyKAToperator.Delta;
+import utility.State;
 import utility.SymDFA;
 import utility.Util;
 
@@ -14,7 +15,6 @@ import java.util.HashSet;
 import static SyKAT.BDD.BooleanBDDutil.singleBooleanBDD;
 
 public class SymDFAtest {
-    HashMap<String, Boolean> atom = new HashMap<>();
     String[] primTests = new String[]{"A", "B", "C"};
     String[] primActions = new String[]{"p1","p2","p3"};
     Util util = new Util(primTests, primActions);
@@ -34,7 +34,7 @@ public class SymDFAtest {
     @org.junit.jupiter.api.Test
     void testBuild() {
         SymDFA dfa = new SymDFA(util, sy);
-        BDD<HashSet<SyKATexpression>> bdd = (BDD<HashSet<SyKATexpression>>) sy.accept(del);
+        BDD<State> bdd = (BDD<State>) sy.accept(del);
         assert dfa.states.containsKey(bdd.execute(new boolean[]{true, true, false, false, true, true}));
         assert dfa.states.containsKey(bdd.execute(new boolean[]{false, true, false, false, true, true}));
         assert dfa.states.containsKey(bdd.execute(new boolean[]{true, false, false, false, true, false}));

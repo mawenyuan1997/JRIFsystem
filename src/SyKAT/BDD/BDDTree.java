@@ -135,10 +135,10 @@ public class BDDTree<T>
             return false;
         visitedNodeLabels = new HashMap();
         refVisitedNodeLabels = new HashMap();
-        visitedNodeLabels.put(0, 0);
-        visitedNodeLabels.put(1, 1);
-        refVisitedNodeLabels.put(0, 0);
-        refVisitedNodeLabels.put(1, 1);
+//        visitedNodeLabels.put(0, 0);
+//        visitedNodeLabels.put(1, 1);
+//        refVisitedNodeLabels.put(0, 0);
+//        refVisitedNodeLabels.put(1, 1);
         nextLabel = 2;
         return equalsDFS((BDDTree)referenceTree, this.getRootIndex(), ((BDDTree)referenceTree).getRootIndex());
     }

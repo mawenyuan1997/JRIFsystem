@@ -2,6 +2,10 @@ package test;
 
 import KAT.*;
 import KAToperator.*;
+import SyKAT.SyKATexpression;
+import utility.State;
+import utility.StatePair;
+import utility.Util;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -10,107 +14,27 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class KATtest {
 
-    HashMap<String, Boolean> atom = new HashMap<>();
-/*
-    @org.junit.jupiter.api.Test
-    void testE() {
-
-        atom.put("A", true);
-        atom.put("B", false);
-        atom.put("C", false);
-        Evaluation E = new Evaluation(atom);
-        KATexpression trivial = new PrimitiveTest("A");
-        assertEquals(true, trivial.accept(E));
-        KATexpression expr = new ConcatExpression(
-                                new PrimitiveTest("A"),
-                                new Action("p")
-        );
-        assertEquals(false, expr.accept(E));
-    }
-
-    @org.junit.jupiter.api.Test
-    void testDerivative() {
-        atom.put("A", true);
-        atom.put("B", false);
-        atom.put("C", false);
-        Evaluation E = new Evaluation(atom);
-        KATexpression expr = new ConcatExpression(
-                                new ConcatExpression(
-                                        new PrimitiveTest("A"),
-                                        new Action("p")
-                                ),
-                                new PrimitiveTest("B")
-        );
-        Derivative D = new Derivative(atom, "p");
-        KATprinter print = new KATprinter();
-        Simplify S = new Simplify();
-        KATexpression d = (KATexpression) expr.accept(D);
-        KATexpression sd = (KATexpression) d.accept(S);
-        assertEquals("((0)(p)+(1)(1))(B)+(0)(0)", d.accept(print));
-        assertEquals("B", sd.accept(print));
-    }
-
     @org.junit.jupiter.api.Test
     void testEquals() {
-        KATexpression expr1 = new ConcatExpression(
-                new ConcatExpression(
-                        new PrimitiveTest("A"),
-                        new Action("p")
-                ),
-                new PrimitiveTest("B")
-        );
-        KATexpression expr2 = new ConcatExpression(
-                new ConcatExpression(
-                        new PrimitiveTest("A"),
-                        new Action("p")
-                ),
-                new PrimitiveTest("B")
-        );
-        assert(expr1.equals(expr2));
-        KATexpression e1 = new PlusExpression(
-                new PrimitiveTest("A"),
-                new PrimitiveTest("B")
-        );
-        KATexpression e2 = new PlusExpression(
-                new PrimitiveTest("B"),
-                new PrimitiveTest("A")
-        );
-        assert(e1.equals(e2));
+        String[] primTests = new String[]{"A", "B", "C"};
+        String[] primActions = new String[]{"p1","p2","p3"};
+        Util util = new Util(primTests, primActions);
+        String[] action1 = new String[]{"p1"};
+        String[] action2 = new String[]{"p1", "p2"};
+        KATexpression pp = new ConcatExpression(new Action(action1), new Action(action1));
+        SyKATexpression sy1 = util.translate(pp);
+        SyKATexpression sy2 = util.translate(pp);
+        assert sy1.equals(sy2);
+        HashSet<SyKATexpression> s = new HashSet<>();
+        s.add(sy1);
+        assert s.contains(sy2);
+        System.out.println(sy1.toString());
+        HashSet<SyKATexpression> s1 = new HashSet<>();
+        HashSet<SyKATexpression> s2 = new HashSet<>();
+        HashSet<SyKATexpression> s3 = new HashSet<>();
+        HashSet<SyKATexpression> s4 = new HashSet<>();
+        assert (new State(s1)).equals(new State(s2));
+        assert (new StatePair(new State(s1), new State(s2))).equals(new StatePair(new State(s3), new State(s4)));
+        System.out.println((new State(s1)));
     }
-
-    @org.junit.jupiter.api.Test
-    void testPartialDerivative() {
-        atom.put("A", true);
-        atom.put("B", false);
-        atom.put("C", false);
-        Evaluation E = new Evaluation(atom);
-        KATexpression e1 = new ConcatExpression(
-                new ConcatExpression(
-                        new PrimitiveTest("A"),
-                        new Action("p")
-                ),
-                new PrimitiveTest("B")
-        );
-        KATexpression e2 = new ConcatExpression(
-                new ConcatExpression(
-                        new PrimitiveTest("A"),
-                        new Action("p")
-                ),
-                new PrimitiveTest("C")
-        );
-        KATexpression expr = new PlusExpression(e1, e2);
-        PartialDerivative D = new PartialDerivative(atom, "p");
-        System.out.println((HashSet<KATexpression>) expr.accept(D));
-        HashSet<KATexpression> set = (HashSet<KATexpression>) expr.accept(D);
-
-        assert(set.contains(new ConcatExpression(
-                new OneTest(),
-                new PrimitiveTest("B")
-        )));
-        assert(set.contains(new ConcatExpression(
-                new OneTest(),
-                new PrimitiveTest("C")
-        )));
-    }
-    */
 }

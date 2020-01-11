@@ -1,5 +1,8 @@
 package utility;
 
+import KAT.Action;
+import KAT.ConcatExpression;
+import KAT.KATexpression;
 import SyKAT.BDD.BDD;
 import SyKAT.BDD.BDDTree;
 import SyKAT.BDD.Node;
@@ -15,35 +18,29 @@ import static SyKAT.BDD.BooleanBDDutil.singleBooleanBDD;
 public class SymDFA {
 
     public Util util;
-    public HashMap<HashSet<SyKATexpression>, BDD<HashSet<SyKATexpression>>> transition;
-    public HashMap<HashSet<SyKATexpression>, Boolean> states;
-    HashSet<SyKATexpression> initial;
+    public HashMap<State, BDD<State>> transition;
+    public HashMap<State, Boolean> states;
+    State initial;
     BDD<Boolean> trueBdd = singleBooleanBDD(true, 3);
     public SymDFA(Util u, SyKATexpression expr) {
         util = u;
         transition = new HashMap<>();
         states = new HashMap<>();
-        initial = new HashSet<>();
-        initial.add(expr);
+        HashSet<SyKATexpression> init = new HashSet<>();
+        init.add(expr);
+        initial = new State(init);
         if (expr.equals(trueBdd)) states.put(initial, true);
         else states.put(initial, false);
         buildFrom(initial);
     }
 
-    private void buildFrom(HashSet<SyKATexpression> currState) {
+    private void buildFrom(State currState) {
         if (transition.containsKey(currState) || currState.isEmpty()) return;
-        BDD<HashSet<SyKATexpression>> total = null;
-        Operator<HashSet<SyKATexpression>> op = new Operator<HashSet<SyKATexpression>>() {
-            @Override
-            public HashSet<SyKATexpression> operate(HashSet<SyKATexpression> x, HashSet<SyKATexpression> y) {
-                HashSet<SyKATexpression> temp = new HashSet<>(x);
-                temp.addAll(y);
-                return temp;
-            }
-        };
+        BDD<State> total = null;
+        Operator<State> op = (x, y) -> x.merge(y);
         Delta del = new Delta(util.numOfTest, util.numOfAction);
-        for(SyKATexpression expr : currState) {
-            BDD<HashSet<SyKATexpression>> bdd = (BDD<HashSet<SyKATexpression>>) expr.accept(del);
+        for(SyKATexpression expr : currState.getSet()) {
+            BDD<State> bdd = (BDD<State>) expr.accept(del);
             if (total == null)
                 total = bdd;
             else {
@@ -51,10 +48,10 @@ public class SymDFA {
             }
         }
         transition.put(currState, total);
-        BDDTree<HashSet<SyKATexpression>> tree = total.getTree();
-        for(Node<HashSet<SyKATexpression>> n : tree.nodes) {
+        BDDTree<State> tree = total.getTree();
+        for(Node<State> n : tree.nodes) {
             if (n.isTerminal()) {
-                if (n.terminalValue.contains(trueBdd)) states.put(n.terminalValue, true);
+                if (n.terminalValue.has(trueBdd)) states.put(n.terminalValue, true);
                 else states.put(n.terminalValue, false);
                 buildFrom(n.terminalValue);
             }
@@ -67,34 +64,30 @@ public class SymDFA {
      * @return
      */
     public boolean isSmallerThan(SymDFA dfa) {
-//        HashSet<HashSet<SyKATexpression>[]> r = new HashSet<>();
-//        Queue<HashSet<SyKATexpression>[]> todo = new LinkedList<>();
-//        HashSet<SyKATexpression>[] temp = new HashSet[2];
-//        temp[0] = initial;
-//        temp[1] = dfa.initial;
-//        todo.add(temp);
-//        while(!todo.isEmpty()) {
-//            System.out.println(r.size());
-//            HashSet<SyKATexpression>[] cur = todo.poll();
-//            if (r.contains(cur)) continue;
-//            if (states.get(cur[0]) && !dfa.states.get(cur[1])) return false;
-//            if (!cur[0].isEmpty() && !cur[1].isEmpty())
-//                addNext(todo, dfa, cur[0], cur[1], new boolean[util.numOfAction+util.numOfTest],0);
-//            r.add(cur);
-//        }
-//        return true;
-        HashMap<HashSet<SyKATexpression>[], Boolean> checked = new HashMap<>();
-        return check(initial, dfa.initial, dfa, checked);
+        HashSet<StatePair> r = new HashSet<>();
+        Queue<StatePair> todo = new LinkedList<>();
+        StatePair temp = new StatePair(initial, dfa.initial);
+        todo.add(temp);
+        while(!todo.isEmpty()) {
+            StatePair cur = todo.poll();
+            if (r.contains(cur)) continue;
+            State s1 = cur.getFirst(), s2 = cur.getSecond();
+            if (states.get(s1) && !dfa.states.get(s2)) return false;
+            if (!s1.isEmpty() && !s2.isEmpty())
+                addNext(todo, dfa, s1, s2, new boolean[util.numOfAction+util.numOfTest],0);
+            r.add(cur);
+        }
+        return true;
+//        HashMap<HashSet<SyKATexpression>[], Boolean> checked = new HashMap<>();
+//        return check(initial, dfa.initial, dfa, checked);
     }
 
-    private void addNext(Queue<HashSet<SyKATexpression>[]> todo, SymDFA dfa, HashSet<SyKATexpression> x, HashSet<SyKATexpression> y
+    private void addNext(Queue<StatePair> todo, SymDFA dfa, State x, State y
             , boolean[] input, int index) {
         if (index == util.numOfAction+util.numOfTest) {
-            HashSet<SyKATexpression> xnext = transition.get(x).execute(input);
-            HashSet<SyKATexpression> ynext = dfa.transition.get(y).execute(input);
-            HashSet<SyKATexpression>[] temp = new HashSet[2];
-            temp[0] = xnext;
-            temp[1] = ynext;
+            State xnext = transition.get(x).execute(input);
+            State ynext = dfa.transition.get(y).execute(input);
+            StatePair temp = new StatePair(xnext, ynext);
             todo.add(temp);
         } else {
             input[index] = true;
