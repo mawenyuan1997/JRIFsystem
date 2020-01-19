@@ -33,21 +33,22 @@ public class SymDFAtest {
 
     @org.junit.jupiter.api.Test
     void testBuild() {
+        // sy = ap+q,  bdd = D(sy)
         SymDFA dfa = new SymDFA(util, sy);
         BDD<State> bdd = (BDD<State>) sy.accept(del);
         assert dfa.states.containsKey(bdd.execute(new boolean[]{true, true, false, false, true, true}));
         assert dfa.states.containsKey(bdd.execute(new boolean[]{false, true, false, false, true, true}));
         assert dfa.states.containsKey(bdd.execute(new boolean[]{true, false, false, false, true, false}));
         assert dfa.states.containsKey(bdd.execute(new boolean[]{true, false, true, false, false, true}));
-        assert dfa.states.get(bdd.execute(new boolean[]{true, false, true, true, true, false}));
-        assert dfa.states.get(bdd.execute(new boolean[]{true, false, true, true, false, false}));
-        assert !dfa.states.get(bdd.execute(new boolean[]{true, false, true, true, false, true}));
-        assert !dfa.states.get(bdd.execute(new boolean[]{false, false, true, true, false, false}));
+        assert dfa.states.get(bdd.execute(new boolean[]{true, false, true, true, true, false})).equals(trueBdd);
+        assert dfa.states.get(bdd.execute(new boolean[]{true, false, true, true, false, false})).equals(trueBdd);
+        assert bdd.execute(new boolean[]{true, false, true, true, false, true}).isEmpty();
+        assert bdd.execute(new boolean[]{false, false, true, true, false, false}).isEmpty();
     }
 
     @org.junit.jupiter.api.Test
     void testCompareBasic() {
-        // q < ap+q, ap < ap+q
+        // ap+q = ap+q, q < ap+q, ap < ap+q
         SymDFA dfa = new SymDFA(util, sy);
         assert dfa.isSmallerThan(dfa);
         SymDFA dfa2 = new SymDFA(util, ((Plus) sy).right);
@@ -65,7 +66,7 @@ public class SymDFAtest {
         // (p+q)* = p*(qp*)* = ((1+p)(1+q))*
         KATexpression e1 = new StarExpression(new PlusExpression(new Action(action1), new Action(action2)));
         KATexpression e2 = new ConcatExpression(new StarExpression(new Action(action1)),
-                new StarExpression(new ConcatExpression(new Action(action2), new StarExpression(new Action(action2)))));
+                new StarExpression(new ConcatExpression(new Action(action2), new StarExpression(new Action(action1)))));
         KATexpression e3 = new StarExpression(new ConcatExpression(new PlusExpression(new OneTest(), new Action(action1)),
                 new PlusExpression(new OneTest(), new Action(action2))));
         SymDFA dfa1 = new SymDFA(util, util.translate(e1));
@@ -115,6 +116,7 @@ public class SymDFAtest {
         SymDFA dfa1 = new SymDFA(util, util.translate(l));
         SymDFA dfa2 = new SymDFA(util, util.translate(r));
         assert dfa1.isSmallerThan(dfa2);
+        assert !dfa2.isSmallerThan(dfa1);
     }
 
 }

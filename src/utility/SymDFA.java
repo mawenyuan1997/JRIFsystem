@@ -18,22 +18,41 @@ import static SyKAT.BDD.BooleanBDDutil.singleBooleanBDD;
 public class SymDFA {
 
     public Util util;
-    public HashMap<State, BDD<State>> transition;
-    public HashMap<State, Boolean> states;
+    public HashMap<State, BDD<State>> transition; // map a state to its delta tree
+    public HashMap<State, BDD<Boolean>> states;   // map a state to its epsilon bdd tree
     State initial;
-    BDD<Boolean> trueBdd = singleBooleanBDD(true, 3);
     public SymDFA(Util u, SyKATexpression expr) {
         util = u;
         transition = new HashMap<>();
         states = new HashMap<>();
-        HashSet<SyKATexpression> init = new HashSet<>();
-        init.add(expr);
-        initial = new State(init);
-        if (expr.equals(trueBdd)) states.put(initial, true);
-        else states.put(initial, false);
+        initial = new State(expr);
+        addState(initial);
         buildFrom(initial);
     }
 
+    /**
+     * add a new state s to states
+     * @param s
+     */
+    private void addState(State s) {
+        Epsilon eps = new Epsilon(util.numOfTest);
+        BDD<Boolean> total = null;
+        Operator<Boolean> op = (x, y) -> x || y;
+        for(SyKATexpression expr : s.getSet()) {
+            BDD<Boolean> bdd = (BDD<Boolean>) expr.accept(eps);
+            if (total == null)
+                total = bdd;
+            else {
+                total = new BDD(op, total, bdd);
+            }
+        }
+        states.put(s, total);
+    }
+
+    /**
+     * build transitions from currState and all states that can be arrived
+     * @param currState
+     */
     private void buildFrom(State currState) {
         if (transition.containsKey(currState) || currState.isEmpty()) return;
         BDD<State> total = null;
@@ -51,8 +70,7 @@ public class SymDFA {
         BDDTree<State> tree = total.getTree();
         for(Node<State> n : tree.nodes) {
             if (n.isTerminal()) {
-                if (n.terminalValue.has(trueBdd)) states.put(n.terminalValue, true);
-                else states.put(n.terminalValue, false);
+                addState(n.terminalValue);
                 buildFrom(n.terminalValue);
             }
         }
@@ -72,10 +90,10 @@ public class SymDFA {
 //        while(!todo.isEmpty()) {
 //            StatePair cur = todo.poll();
 //            if (r.contains(cur)) continue;
+//            System.out.println(cur);
 //            State s1 = cur.getFirst(), s2 = cur.getSecond();
-//            if (states.get(s1) && !dfa.states.get(s2)) return false;
-//            if (!s1.isEmpty() && !s2.isEmpty())
-//                addNext(todo, dfa, s1, s2, new boolean[util.numOfAction+util.numOfTest],0);
+//            if (!check(cur, dfa)) return false;
+//            addNext(todo, dfa, s1, s2, new boolean[util.numOfAction+util.numOfTest],0);
 //            r.add(cur);
 //        }
 //        return true;
@@ -89,22 +107,72 @@ public class SymDFA {
             StatePair cur = todo.poll();
             if (r.contains(cur)) continue;
             State s1 = cur.getFirst(), s2 = cur.getSecond();
-            if (states.get(s1) && (s2.isEmpty() || !dfa.states.get(s2))) return false;
-            if (!s1.isEmpty() && !s2.isEmpty()) {
-                BDDTree xTree = transition.get(s1).getTree();
-                BDDTree yTree = dfa.transition.get(s2).getTree();
-                product(xTree, yTree, xTree.getRootIndex(), yTree.getRootIndex(), todo);
+            if (!check(cur, dfa)) return false;
+            if (!s1.isEmpty() || !s2.isEmpty()) {
+                BDDTree xTree = null, yTree = null;
+                if (!s1.isEmpty()) xTree = transition.get(s1).getTree();
+                if (!s2.isEmpty()) yTree = dfa.transition.get(s2).getTree();
+
+                if (s1.isEmpty()) product(xTree, yTree, 0, yTree.getRootIndex(), todo);
+                else if (s2.isEmpty()) product(xTree, yTree, xTree.getRootIndex(), 0, todo);
+                else product(xTree, yTree, xTree.getRootIndex(), yTree.getRootIndex(), todo);
             }
             r.add(cur);
         }
         return true;
     }
 
+    /**
+     * check if state pair sp satisfy eps_a(sp.getFirst()) => eps_a(sp.getSecond())
+     * @param sp
+     * @param dfa dfa of second state
+     * @return
+     */
+    private boolean check(StatePair sp, SymDFA dfa) {
+        if (sp.getFirst().isEmpty()) return true;
+        if (sp.getSecond().isEmpty()) {
+            BDD<Boolean> b1 = states.get(sp.getFirst());
+            BDDTree<Boolean> b1t = b1.getTree();
+            for(Node<Boolean> n : b1t.nodes) {
+                if (n.isTerminal()) {
+                    if (n.terminalValue) return false;
+                }
+            }
+            return true;
+        }
+        BDD<Boolean> b1 = states.get(sp.getFirst());
+        BDD<Boolean> b2 = dfa.states.get(sp.getSecond());
+        Operator<Boolean> op = (x, y) -> (x && !y);
+        BDDTree<Boolean> b3t = new BDD(op, b1, b2).getTree();
+        for(Node<Boolean> n : b3t.nodes) {
+            if (n.isTerminal()) {
+                if (n.terminalValue) return false;
+            }
+        }
+        return true;
+    }
+
+    /**
+     * add next state pair to the queue (simple method)
+     * @param todo the queue
+     * @param dfa dfa of second y
+     * @param x
+     * @param y
+     * @param input
+     * @param index
+     */
     private void addNext(Queue<StatePair> todo, SymDFA dfa, State x, State y
             , boolean[] input, int index) {
         if (index == util.numOfAction+util.numOfTest) {
-            State xnext = transition.get(x).execute(input);
-            State ynext = dfa.transition.get(y).execute(input);
+            State xnext, ynext;
+            if (x.isEmpty())
+                xnext = new State();
+            else
+                xnext = transition.get(x).execute(input);
+            if (y.isEmpty())
+                ynext = new State();
+            else
+                ynext = dfa.transition.get(y).execute(input);
             StatePair temp = new StatePair(xnext, ynext);
             todo.add(temp);
         } else {
@@ -115,7 +183,37 @@ public class SymDFA {
         }
     }
 
+    /**
+     * add next state pair to the queue (bdd method)
+     * @param xTree
+     * @param yTree
+     * @param xIndex
+     * @param yIndex
+     * @param queue
+     */
     private void product(BDDTree xTree, BDDTree yTree, int xIndex, int yIndex, Queue<StatePair> queue) {
+        if (xTree == null) {
+            Node y = yTree.getNode(yIndex);
+            if (y.isTerminal()) {
+                StatePair pair = new StatePair(new State(), (State) y.terminalValue);
+                queue.add(pair);
+            } else {
+                product(xTree, yTree, xIndex, y.low, queue);
+                product(xTree, yTree, xIndex, y.high, queue);
+            }
+            return;
+        }
+        if (yTree == null) {
+            Node x = xTree.getNode(xIndex);
+            if (x.isTerminal()) {
+                StatePair pair = new StatePair((State) x.terminalValue, new State());
+                queue.add(pair);
+            } else {
+                product(xTree, yTree, x.low, yIndex, queue);
+                product(xTree, yTree, x.high, yIndex, queue);
+            }
+            return;
+        }
         Node x = xTree.getNode(xIndex);
         Node y = yTree.getNode(yIndex);
         if (x.isTerminal() && y.isTerminal()) {

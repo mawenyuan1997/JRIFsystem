@@ -6,13 +6,20 @@ import java.util.HashSet;
 
 public class State {
     public HashSet<SyKATexpression> s;
+
     public State(HashSet<SyKATexpression> ss) {
         s = ss;
     }
+
     public State(SyKATexpression e) {
         s = new HashSet<>();
         s.add(e);
     }
+
+    public State() {
+        s = new HashSet<>();
+    }
+
     @Override
     public boolean equals(Object o) {
         if (o == this) return true;

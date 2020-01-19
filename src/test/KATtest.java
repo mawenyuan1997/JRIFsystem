@@ -7,6 +7,7 @@ import utility.State;
 import utility.StatePair;
 import utility.Util;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 
@@ -33,7 +34,13 @@ class KATtest {
         HashSet<SyKATexpression> s2 = new HashSet<>();
         HashSet<SyKATexpression> s3 = new HashSet<>();
         HashSet<SyKATexpression> s4 = new HashSet<>();
-        assert (new State(s1)).equals(new State(s2));
+        HashSet<SyKATexpression> [] q = new HashSet[2];
+        q[0]=s1;
+        q[1]=s2;
+        HashSet<SyKATexpression> [] w = new HashSet[2];
+        w[0]=s3;
+        w[1]=s4;
+        assert !q.equals(w);
         assert (new StatePair(new State(s1), new State(s2))).equals(new StatePair(new State(s3), new State(s4)));
         System.out.println((new State(s1)));
     }
