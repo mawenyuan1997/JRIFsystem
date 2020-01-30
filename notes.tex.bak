@@ -15,14 +15,14 @@
 \item We first convert KAT expressions into symbolic automata and then compare the restrictiveness of these automata.
 \item We follow Pous paper (``Symbolic Algorithms for Language Equivalence and Kleene Algebra with Tests'').
 \begin{itemize}
-\item Implemented function KAT$\rightarrow$SyKAT. We used code from the link below to  converts expressions on tests to Boolean BDDs in Java : https://github.com/SigmaX/LightBDD/.
+\item Implement function KAT$\rightarrow$SyKAT. We used code from the link below to  converts expressions on tests to Boolean BDDs in Java : https://github.com/SigmaX/LightBDD/.
 \begin{itemize}
-\item To convert a boolean expression into a boolean SyKAT.BDD we used Figure 2 of pous.pdf inductively on the boolean expression. See 19-bdds.pdf for a nice schematic explanation of the algorithm.
-\item Initially, we assumed that actions are exponentially many, too (similar to atoms being exponentially many). So, we assumed there is a set $\Sigma'$ of \emph{letters} that are combined to form actions. In particular, an action is a subset of $2^{\Sigma'}$. Consequently an action in a KAT expression should be translated into a  Boolean BDD, too.  Later, we can optimize the algorithm to treat actions in a different (more efficient) way than atoms.
+\item To convert a boolean expression into a boolean SyKAT.BDD we use Figure 2 of pous.pdf inductively on the boolean expression. See 19-bdds.pdf for a nice schematic explanation of the algorithm.
+\item Initially, we assume that actions are exponentially many, too (similar to atoms being exponentially many). So, we assume there is a set $\Sigma'$ of \emph{letters} that are combined to form actions. In particular, an action is a subset of $2^{\Sigma'}$. Consequently an action in a KAT expression should be translated into a  Boolean BDD, too.  Later, we can optimize the algorithm to treat actions in a different (more efficient) way than atoms.
 \end{itemize}
-\item Used Section 4.2 from Pous to make the conversion algorithm (from KAt expressions to NFAs) symbolic.
-\item Used Section 3.2 from Pous and Section 4.2 from Antimirov to extend the conversion algorithm to produce DFAs.
-\item Used Section 3.2 from Pous to compare DFAs.
+\item Use Section 4.2 from Pous to make the conversion algorithm (from KAt expressions to NFAs) symbolic.
+\item Use Section 3.2 from Pous and Section 4.2 from Antimirov to extend the conversion algorithm to produce DFAs.
+\item Use Section 3.2 from Pous to compare DFAs.
 \end{itemize}
 \item We use hashconsing of expressions to achieve a faster syntactic equivalence routine. For example, when using sets of expressions, we need to decide if a new element is already in the set to avoid duplication.
 \item We could compute the product of syntactic automata as an ``apply'' function on BDDs.
@@ -32,7 +32,6 @@
 
 \section*{TODO}
 \begin{itemize}
-\item Port the code that converts KAT expressions to symbolic automata into JRIF.
 \item For the conversion of expressions to automata we need to use ``smart constructors''. For example, when converting \emph{1e}, it suffices to convert \emph{e} and when converting \emph{0e}, it suffices to convert \emph{0}.
 \item Enrich notes with the theoretical background for KAT and authorization strings.
 \item Come up with policies that take advantage of the expressive power of KAT. We need to show that non-determinism is useful. If non-determinism is not useful, then we could restrict the syntax of KAT (i.e., guarded KAT) and get more efficient procedures for converting to automata and for comparison.
