@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="abc0c21f-9c25-424c-8d60-52b3ee40e2f0" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/KATautomata/test/SymDFAtest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/KATautomata/test/SymDFAtest.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/SymDFAtest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/SymDFAtest.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -20,7 +21,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/SyKAT/BDD/BDD.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="171">
+            <state relative-caret-position="1260">
               <caret line="101" selection-start-line="101" selection-end-line="101" />
             </state>
           </provider>
@@ -29,8 +30,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/utility/SymDFA.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-634">
-              <caret line="39" column="48" lean-forward="true" selection-start-line="39" selection-start-column="48" selection-end-line="39" selection-end-column="48" />
+            <state relative-caret-position="330">
+              <caret line="35" column="7" selection-start-line="35" selection-start-column="7" selection-end-line="35" selection-end-column="7" />
             </state>
           </provider>
         </entry>
@@ -38,26 +39,10 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/utility/State.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
+            <state relative-caret-position="210">
               <caret line="19" column="28" selection-start-line="19" selection-start-column="28" selection-end-line="19" selection-end-column="28" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#177#178#0" expanded="true" />
-                <element signature="e#198#199#0" expanded="true" />
-                <element signature="e#331#332#0" expanded="true" />
-                <element signature="e#365#366#0" expanded="true" />
-                <element signature="e#442#443#0" expanded="true" />
-                <element signature="e#476#477#0" expanded="true" />
-                <element signature="e#689#690#0" expanded="true" />
-                <element signature="e#712#713#0" expanded="true" />
-                <element signature="e#753#754#0" expanded="true" />
-                <element signature="e#780#781#0" expanded="true" />
-                <element signature="e#909#910#0" expanded="true" />
-                <element signature="e#939#940#0" expanded="true" />
-                <element signature="e#839#840#0" expanded="true" />
-                <element signature="e#863#864#0" expanded="true" />
-                <element signature="e#1058#1059#0" expanded="true" />
-                <element signature="e#1112#1113#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -66,7 +51,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/SyKAToperator/Delta.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="239">
+            <state relative-caret-position="1935">
               <caret line="138" column="58" selection-start-line="138" selection-start-column="58" selection-end-line="138" selection-end-column="58" />
             </state>
           </provider>
@@ -75,8 +60,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/SymDFAtest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="475">
-              <caret line="171" column="108" selection-start-line="171" selection-start-column="108" selection-end-line="171" selection-end-column="108" />
+            <state relative-caret-position="420">
+              <caret line="209" column="16" selection-start-line="209" selection-start-column="16" selection-end-line="209" selection-end-column="16" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -96,7 +81,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/KAT/NegateTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
+            <state relative-caret-position="315">
               <caret line="26" column="49" selection-start-line="26" selection-start-column="49" selection-end-line="26" selection-end-column="49" />
               <folding>
                 <element signature="e#581#582#0" expanded="true" />
@@ -109,7 +94,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/KATtest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="366">
+            <state relative-caret-position="465">
               <caret line="42" column="28" selection-start-line="42" selection-start-column="28" selection-end-line="42" selection-end-column="28" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -121,7 +106,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/SykatTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="448">
+            <state relative-caret-position="2400">
               <caret line="173" column="44" selection-start-line="173" selection-start-column="44" selection-end-line="173" selection-end-column="44" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -133,12 +118,10 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/utility/StatePair.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
+            <state relative-caret-position="315">
               <caret line="23" column="30" selection-start-line="23" selection-start-column="30" selection-end-line="23" selection-end-column="30" />
               <folding>
-                <element signature="e#196#197#0" expanded="true" />
-                <element signature="e#250#251#0" expanded="true" />
-                <element signature="e#496#497#0" expanded="true" />
+                <element signature="e#594#595#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -252,7 +235,7 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="174" />
+    <option name="x" value="137" />
     <option name="y" value="23" />
     <option name="width" value="1249" />
     <option name="height" value="812" />
@@ -265,8 +248,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -320,6 +301,8 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -329,7 +312,7 @@
     <property name="Repository.Attach.Sources" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1579411103600" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1580346842974" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="Arquillian JUnit4" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.Arquillian JUnit4" value="" />
     <property name="create.test.in.the.same.root" value="true" />
@@ -467,7 +450,9 @@
       <workItem from="1574486244012" duration="30198000" />
       <workItem from="1575149279782" duration="10202000" />
       <workItem from="1576370708302" duration="4654000" />
-      <workItem from="1578236501209" duration="45831000" />
+      <workItem from="1578236501209" duration="46746000" />
+      <workItem from="1579877349378" duration="2142000" />
+      <workItem from="1580316446068" duration="2204000" />
     </task>
     <task id="LOCAL-00001" summary="refactor">
       <created>1565894824101</created>
@@ -672,19 +657,17 @@
       <option name="project" value="LOCAL" />
       <updated>1579407708699</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="add tests">
+      <created>1579411171581</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1579411171581</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="SymDFAtest - 2020.01.19 at 08h 00m 31s.xml">
-      <configuration name="SymDFAtest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="SymDFAtest - 2020.01.19 at 08h 02m 19s.xml">
-      <configuration name="SymDFAtest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="SymDFAtest - 2020.01.19 at 11h 42m 21s.xml">
-      <configuration name="SymDFAtest" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="SymDFAtest - 2020.01.19 at 11h 56m 38s.xml">
       <configuration name="SymDFAtest" configurationId="JUnit" />
     </history-entry>
@@ -706,9 +689,18 @@
     <history-entry file="SymDFAtest - 2020.01.19 at 13h 08m 41s.xml">
       <configuration name="SymDFAtest" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="SymDFAtest - 2020.01.19 at 13h 18m 26s.xml">
+      <configuration name="SymDFAtest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="SymDFAtest - 2020.01.29 at 20h 08m 34s.xml">
+      <configuration name="SymDFAtest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="SymDFAtest - 2020.01.29 at 20h 10m 08s.xml">
+      <configuration name="SymDFAtest" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="322808000" />
+    <option name="totallyTimeSpent" value="328069000" />
   </component>
   <component name="TodoView" selected-index="4">
     <todo-panel id="selected-file">
@@ -720,10 +712,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="174" y="23" width="1249" height="812" extended-state="0" />
+    <frame x="137" y="23" width="1249" height="812" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49813432" visible="true" weight="0.14001657" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49813432" visible="true" weight="0.1996686" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -779,11 +771,11 @@
     <MESSAGE value="fix squareCross bug" />
     <MESSAGE value="add automata builder and test" />
     <MESSAGE value="add code and tests for comparing two symbolic kat automata" />
-    <MESSAGE value="add tests" />
     <MESSAGE value="simple algorithm passes tests" />
     <MESSAGE value="bdd algorithm passes tests" />
     <MESSAGE value="fix accepting condition; add comments" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix accepting condition; add comments" />
+    <MESSAGE value="add tests" />
+    <option name="LAST_COMMIT_MESSAGE" value="add tests" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/SyKAT/BDD/SyBDDtree.java" />
@@ -1040,86 +1032,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/utility/StatePair.java">
+    <entry file="file://$PROJECT_DIR$/src/SyKAT/BDD/BDD.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="23" column="30" selection-start-line="23" selection-start-column="30" selection-end-line="23" selection-end-column="30" />
-          <folding>
-            <element signature="e#196#197#0" expanded="true" />
-            <element signature="e#250#251#0" expanded="true" />
-            <element signature="e#496#497#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="1260">
+          <caret line="101" selection-start-line="101" selection-end-line="101" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/SykatTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="448">
-          <caret line="173" column="44" selection-start-line="173" selection-start-column="44" selection-end-line="173" selection-end-column="44" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/KAT/NegateTest.java">
+    <entry file="file://$PROJECT_DIR$/src/utility/SymDFA.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="330">
-          <caret line="26" column="49" selection-start-line="26" selection-start-column="49" selection-end-line="26" selection-end-column="49" />
+          <caret line="35" column="7" selection-start-line="35" selection-start-column="7" selection-end-line="35" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utility/State.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="19" column="28" selection-start-line="19" selection-start-column="28" selection-end-line="19" selection-end-column="28" />
           <folding>
-            <element signature="e#581#582#0" expanded="true" />
-            <element signature="e#638#639#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/SyKAToperator/Delta.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="239">
+        <state relative-caret-position="1935">
           <caret line="138" column="58" selection-start-line="138" selection-start-column="58" selection-end-line="138" selection-end-column="58" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/KATtest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="366">
-          <caret line="42" column="28" selection-start-line="42" selection-start-column="28" selection-end-line="42" selection-end-column="28" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/utility/State.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="19" column="28" selection-start-line="19" selection-start-column="28" selection-end-line="19" selection-end-column="28" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#177#178#0" expanded="true" />
-            <element signature="e#198#199#0" expanded="true" />
-            <element signature="e#331#332#0" expanded="true" />
-            <element signature="e#365#366#0" expanded="true" />
-            <element signature="e#442#443#0" expanded="true" />
-            <element signature="e#476#477#0" expanded="true" />
-            <element signature="e#689#690#0" expanded="true" />
-            <element signature="e#712#713#0" expanded="true" />
-            <element signature="e#753#754#0" expanded="true" />
-            <element signature="e#780#781#0" expanded="true" />
-            <element signature="e#909#910#0" expanded="true" />
-            <element signature="e#939#940#0" expanded="true" />
-            <element signature="e#839#840#0" expanded="true" />
-            <element signature="e#863#864#0" expanded="true" />
-            <element signature="e#1058#1059#0" expanded="true" />
-            <element signature="e#1112#1113#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/SyKAT/BDD/BDD.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="101" selection-start-line="101" selection-end-line="101" />
         </state>
       </provider>
     </entry>
@@ -1130,17 +1070,51 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/utility/SymDFA.java">
+    <entry file="file://$PROJECT_DIR$/src/KAT/NegateTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-634">
-          <caret line="39" column="48" lean-forward="true" selection-start-line="39" selection-start-column="48" selection-end-line="39" selection-end-column="48" />
+        <state relative-caret-position="315">
+          <caret line="26" column="49" selection-start-line="26" selection-start-column="49" selection-end-line="26" selection-end-column="49" />
+          <folding>
+            <element signature="e#581#582#0" expanded="true" />
+            <element signature="e#638#639#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/KATtest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="465">
+          <caret line="42" column="28" selection-start-line="42" selection-start-column="28" selection-end-line="42" selection-end-column="28" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/SykatTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2400">
+          <caret line="173" column="44" selection-start-line="173" selection-start-column="44" selection-end-line="173" selection-end-column="44" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utility/StatePair.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="23" column="30" selection-start-line="23" selection-start-column="30" selection-end-line="23" selection-end-column="30" />
+          <folding>
+            <element signature="e#594#595#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/SymDFAtest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="475">
-          <caret line="171" column="108" selection-start-line="171" selection-start-column="108" selection-end-line="171" selection-end-column="108" />
+        <state relative-caret-position="420">
+          <caret line="209" column="16" selection-start-line="209" selection-start-column="16" selection-end-line="209" selection-end-column="16" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

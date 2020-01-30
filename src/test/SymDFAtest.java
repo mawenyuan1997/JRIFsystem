@@ -155,7 +155,7 @@ public class SymDFAtest {
         KATexpression r = new StarExpression(new PlusExpression(p, q));
         SymDFA dfa1 = new SymDFA(util, util.translate(l));
         SymDFA dfa2 = new SymDFA(util, util.translate(r));
-        assert dfa1.isSmallerThan(dfa2);
+        assert  dfa1.isSmallerThan(dfa2);
         assert !dfa2.isSmallerThan(dfa1);
     }
 
@@ -175,5 +175,42 @@ public class SymDFAtest {
         SymDFA dfa2 = new SymDFA(util, util.translate(r));
         assert dfa1.isSmallerThan(dfa2);
         assert dfa2.isSmallerThan(dfa1);
+    }
+
+    @org.junit.jupiter.api.Test
+    void testCompare9() {
+        // p ≠ q, a < a+b, ab < a
+        KATexpression p = new Action(action1), q = new Action(action2);
+        SymDFA dfa1 = new SymDFA(util, util.translate(p));
+        SymDFA dfa2 = new SymDFA(util, util.translate(q));
+        assert !dfa1.isSmallerThan(dfa2);
+        assert !dfa2.isSmallerThan(dfa1);
+        TestExpression a = new PrimitiveTest("A"), b = new PrimitiveTest("B");
+        dfa1 = new SymDFA(util, util.translate(a));
+        dfa2 = new SymDFA(util, util.translate(new PlusTest(a, b)));
+        assert dfa1.isSmallerThan(dfa2);
+        assert !dfa2.isSmallerThan(dfa1);
+        dfa1 = new SymDFA(util, util.translate(a));
+        dfa2 = new SymDFA(util, util.translate(new ConcatTest(a, b)));
+        assert !dfa1.isSmallerThan(dfa2);
+        assert dfa2.isSmallerThan(dfa1);
+    }
+
+    @org.junit.jupiter.api.Test
+    void testCompare10() {
+        // a+b < 1, ab > 0, 0 < 1
+        TestExpression a = new PrimitiveTest("A"), b = new PrimitiveTest("B");
+        SymDFA dfa1 = new SymDFA(util, util.translate(new OneTest()));
+        SymDFA dfa2 = new SymDFA(util, util.translate(new PlusTest(a, b)));
+        assert !dfa1.isSmallerThan(dfa2);
+        assert dfa2.isSmallerThan(dfa1);
+        dfa1 = new SymDFA(util, util.translate(new ZeroTest()));
+        dfa2 = new SymDFA(util, util.translate(new ConcatTest(a, b)));
+        assert dfa1.isSmallerThan(dfa2);
+        assert !dfa2.isSmallerThan(dfa1);
+        dfa1 = new SymDFA(util, util.translate(new ZeroTest()));
+        dfa2 = new SymDFA(util, util.translate(new OneTest()));
+        assert dfa1.isSmallerThan(dfa2);
+        assert !dfa2.isSmallerThan(dfa1);
     }
 }
