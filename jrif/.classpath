@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="compiler/src"/>
+	<classpathentry kind="src" path="runtime/src"/>
+	<classpathentry exported="true" kind="lib" path="lib/java_cup.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/polyglot.jar" sourcepath="/polyglot"/>
+	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry exported="true" kind="lib" path="/jif-3.5.0/lib/jif.jar" sourcepath="/jif-3.5.0/src"/>
+	<classpathentry exported="true" kind="lib" path="/jif-3.5.0/lib/jifrt.jar" sourcepath="/jif-3.5.0/rt-src"/>
+	<classpathentry kind="output" path="bin_"/>
+</classpath>

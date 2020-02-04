@@ -1,0 +1,31 @@
+// rifspecs on objects
+// Non-Type-correct
+
+class Complex
+{
+    public final int {rif[q1*:{Alice,Bob},q2:{Alice},f1:q1->q2,f2:q2->q1]} real, imag;
+
+    public Complex(int {rif[q1*:{Alice,Bob},q2:{Alice},f1:q1->q2,f2:q2->q1]} r, int  {rif[q1*:{Alice,Bob},q2:{Alice},f1:q1->q2,f2:q2->q1]} i) {
+	real = r;
+	imag = i;
+    }
+
+    public int {rif[q1*:{Alice,Bob},q2:{Alice},f1:q1->q2,f2:q2->q1]} real(){
+	return real;
+    }
+
+    public int {rif[q1*:{Alice,Bob},q2:{Alice},f1:q1->q2,f2:q2->q1]} imag(){
+	return imag;
+    }
+}
+
+public class test33{
+    
+    public test33{}() {
+
+    int {rif[q1*:{Alice,Bob},q2:{Alice,Bob},f1:q1->q2,f2:q2->q1]} x;
+	Complex {rif[q1*:{Alice,Bob},q2:{Alice},f1:q1->q2,f2:q2->q1]} c = new Complex(1,2);
+	    
+	x = c.real();
+    }
+}

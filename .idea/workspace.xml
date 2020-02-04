@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="abc0c21f-9c25-424c-8d60-52b3ee40e2f0" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/KATautomata/test/SymDFAtest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/KATautomata/test/SymDFAtest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/SymDFAtest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/SymDFAtest.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -60,8 +58,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/SymDFAtest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="420">
-              <caret line="209" column="16" selection-start-line="209" selection-start-column="16" selection-end-line="209" selection-end-column="16" />
+            <state relative-caret-position="210">
+              <caret line="106" column="31" lean-forward="true" selection-start-line="106" selection-start-column="31" selection-end-line="106" selection-end-column="31" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -235,8 +233,8 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="137" />
-    <option name="y" value="23" />
+    <option name="x" value="162" />
+    <option name="y" value="286" />
     <option name="width" value="1249" />
     <option name="height" value="812" />
   </component>
@@ -301,8 +299,8 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -312,7 +310,7 @@
     <property name="Repository.Attach.Sources" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1580346842974" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1580346920698" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="Arquillian JUnit4" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.Arquillian JUnit4" value="" />
     <property name="create.test.in.the.same.root" value="true" />
@@ -452,7 +450,8 @@
       <workItem from="1576370708302" duration="4654000" />
       <workItem from="1578236501209" duration="46746000" />
       <workItem from="1579877349378" duration="2142000" />
-      <workItem from="1580316446068" duration="2204000" />
+      <workItem from="1580316446068" duration="2375000" />
+      <workItem from="1580395089068" duration="2400000" />
     </task>
     <task id="LOCAL-00001" summary="refactor">
       <created>1565894824101</created>
@@ -664,16 +663,17 @@
       <option name="project" value="LOCAL" />
       <updated>1579411171581</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="add more tests">
+      <created>1580346918284</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1580346918285</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="SymDFAtest - 2020.01.19 at 11h 56m 38s.xml">
-      <configuration name="SymDFAtest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="SymDFAtest - 2020.01.19 at 12h 12m 10s.xml">
-      <configuration name="SymDFAtest" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="SymDFAtest - 2020.01.19 at 12h 12m 40s.xml">
       <configuration name="SymDFAtest" configurationId="JUnit" />
     </history-entry>
@@ -698,9 +698,15 @@
     <history-entry file="SymDFAtest - 2020.01.29 at 20h 10m 08s.xml">
       <configuration name="SymDFAtest" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="SymDFAtest - 2020.01.29 at 20h 12m 40s.xml">
+      <configuration name="SymDFAtest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="SymDFAtest - 2020.01.29 at 20h 13m 41s.xml">
+      <configuration name="SymDFAtest" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="328069000" />
+    <option name="totallyTimeSpent" value="330640000" />
   </component>
   <component name="TodoView" selected-index="4">
     <todo-panel id="selected-file">
@@ -712,10 +718,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="137" y="23" width="1249" height="812" extended-state="0" />
+    <frame x="162" y="286" width="1249" height="812" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49813432" visible="true" weight="0.1996686" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49813432" visible="true" weight="0.2029826" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -724,7 +730,7 @@
       <window_info id="Favorites" order="6" sideWeight="0.5018657" side_tool="true" weight="0.21399178" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.26527777" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49468893" visible="true" weight="0.23333333" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49468893" weight="0.23333333" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.16666667" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -750,7 +756,6 @@
     <option name="version" value="1" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="add a BDD package" />
     <MESSAGE value="add Symbolic KAT definition" />
     <MESSAGE value="add translate function that turns a KAT expr to SyKAT expr&#10;use boolean array to represent atom" />
     <MESSAGE value="add epsilon function for SyKAT" />
@@ -775,7 +780,8 @@
     <MESSAGE value="bdd algorithm passes tests" />
     <MESSAGE value="fix accepting condition; add comments" />
     <MESSAGE value="add tests" />
-    <option name="LAST_COMMIT_MESSAGE" value="add tests" />
+    <MESSAGE value="add more tests" />
+    <option name="LAST_COMMIT_MESSAGE" value="add more tests" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/SyKAT/BDD/SyBDDtree.java" />
@@ -1113,8 +1119,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/SymDFAtest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="209" column="16" selection-start-line="209" selection-start-column="16" selection-end-line="209" selection-end-column="16" />
+        <state relative-caret-position="210">
+          <caret line="106" column="31" lean-forward="true" selection-start-line="106" selection-start-column="31" selection-end-line="106" selection-end-column="31" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

@@ -1,0 +1,15 @@
+//Type-correct
+
+public class dynTest[label L1, label L2, label L3] {
+
+   int{L1} res;
+   int{L2} x;
+   int{L3} y;
+
+   public dynTest() where tr(L2,f1)<=L1, tr(L3,f1)<=L1 {
+       x = 96;
+       y = 45;
+       res = reclassify(x+y,f1);
+   }
+
+}

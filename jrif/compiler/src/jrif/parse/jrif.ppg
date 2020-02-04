@@ -1,0 +1,89 @@
+// Assumes jif.jar is in classpath
+include "jif/parse/jif.ppg"
+
+package jrif.parse;
+
+import jrif.types.JrifTypeSystem;
+import jrif.ast.*;
+import jif.parse.*;
+
+parser Grm extends jif.parse.Grm {:
+    public final JrifTypeSystem ts;
+    public final JrifNodeFactory nf;
+
+    public Grm(Lexer l, JrifTypeSystem t, JrifNodeFactory n, ErrorQueue q) {
+        super(l, t, n, q);
+        ts = t;
+        nf = n;
+    }
+:};
+
+terminal Token RECLASSIFY;
+terminal Token RIF;
+terminal Token RIFI;
+terminal Token TR;
+terminal Token ONE;
+terminal Token ZERO;
+
+non terminal RifPolicyNode rif_label;
+non terminal RifPolicyNode rifi_label;
+non terminal RifPolicyNode policy;
+non terminal RifPolicyNode boolean;
+non terminal List principal_set;
+
+precedence left PLUS, OR;
+precedence left XOR, AND;
+precedence left COMP;
+start with goal;
+
+extend label_component ::=
+        rif_label:a
+            {: RESULT = a; :}
+    |   rifi_label:a
+            {: RESULT = a; :}
+    ;
+
+rif_label ::= 
+     RIF COLON policy:a 
+     {:RESULT = a; :}
+   ;
+
+rifi_label ::= 
+     RIFI COLON policy:a 
+     {:RESULT = a; :}
+   ;
+   
+principal_set ::=
+         LBRACE:x RBRACE:y
+            {: List l = new LinkedList<PrincipalNode>();
+               l.add(parser.nf.CanonicalPrincipalNode(parser.pos(x), parser.ts.topPrincipal(parser.pos(x))));
+               RESULT = l; :}
+    |    LBRACE:x principal_list:a RBRACE:y
+            {: RESULT = a; :}
+    ;
+
+policy ::= 
+   // POLICY IDENTIFIER {::}
+      policy PLUS policy        {: RifPolicyNode n = null; RESULT = n; :}
+    | policy XOR policy         {: RifPolicyNode n = null; RESULT = n; :}
+ // | policy policy             {: RifPolicyNode n = null; RESULT = n; :}
+    | policy MULT               {: RifPolicyNode n = null; RESULT = n; :}
+    | LPAREN policy RPAREN      {: RifPolicyNode n = null; RESULT = n; :}
+    | boolean                   {: RifPolicyNode n = null; RESULT = n; :}
+    | IDENTIFIER                {: RifPolicyNode n = null; RESULT = n; :}
+    ;
+
+boolean ::=
+      principal_set             {: RifPolicyNode n = null; RESULT = n; :}
+    | accesspath_no_id          {: RifPolicyNode n = null; RESULT = n; :}      
+    | ZERO                      {: RifPolicyNode n = null; RESULT = n; :}
+    | ONE                       {: RifPolicyNode n = null; RESULT = n; :}
+    | boolean OR boolean        {: RifPolicyNode n = null; RESULT = n; :}
+    | boolean AND boolean       {: RifPolicyNode n = null; RESULT = n; :}
+    | LBRACK boolean RBRACK     {: RifPolicyNode n = null; RESULT = n; :}
+    | COMP boolean              {: RifPolicyNode n = null; RESULT = n; :}
+    ;
+
+
+
+ 

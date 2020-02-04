@@ -1,0 +1,23 @@
+
+// 
+// Type-correct
+
+public class test19{
+    
+   public test(){
+
+       	int {rif:A^f^B} x;	    
+		int {rif:A^B^(~C)^(g+h)*^A^B^(~C)^f^A^(~B)^(~C)^(f+g+h)*^A^(~B)^(~C)} y;
+		int {rif:f} a;
+		int {rif:0} b;
+		int {rif:0^(f+g)} c;
+		int {rif:~[A|B]} d;
+		int {rif:1} e;
+		int {rif:[A&[~B]&[~C]]^h*^[A&[~B]&[~C]]^f^[[~A]&[B]&[~C]]+[A&[~B]&[~C]]^h*^[A&[~B]&[~C]]^g^[[~A]&[~B]&[C]]} g;
+		int {rif:{Alice,Bob}^h^{Alice}} k;
+		x = 96;
+		y = 96;
+		throw new Exception("Result: "+x);
+    }
+}
+

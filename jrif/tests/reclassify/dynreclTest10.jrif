@@ -1,0 +1,15 @@
+//non-type-correct
+
+public class dynreclTest[label L1, label L2, label L3] {
+
+   int {L1} res;
+   int {L2} y;
+
+   public dynreclTest() {
+       int {rif[q1*:{Alice},q2:{Alice},f1:q1->q2]} x =0;
+   
+       if(L2 <= new label {rif[q1*:{Alice},q2:{Alice},f1:q1->q2]}){ y=x; }
+       
+   }
+
+}

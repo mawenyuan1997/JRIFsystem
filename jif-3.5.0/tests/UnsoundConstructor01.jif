@@ -1,0 +1,25 @@
+
+/**
+ * This class demonstrates an unsoundness in the assumptions made about setting
+ * final fields.
+ */
+
+class UnsoundConstructor01 {
+	public static boolean {_→} _declassify (boolean {*→} y) {
+		UnsoundConstructor01 o;
+		if (y)
+			o = new UnsoundConstructor01(0);
+		else
+			o = new UnsoundConstructor01();
+		return o.x;
+	}
+
+
+
+	final boolean {_→} x;
+
+	UnsoundConstructor01 {*→} ()      { x = false; }
+	UnsoundConstructor01 {*→} (int a) { x = true;  }
+
+}
+		

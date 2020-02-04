@@ -1,0 +1,169 @@
+
+JRIF: Reactive Information Flow Control for Java
+------------------------------------------------
+
+JRIF introduces reactive information flow automata. It is implemented
+as a Polyglot extension of Jif. Polyglot and Jif are developed at
+Cornell, too.
+
+The installation directory contains:
+- jif-3.5.0: installation directory for Jif
+- polyglot: installation directory for Polyglot
+- jrif: installation directory for JRIF 
+
+Subdirectory jrif contains the following:
+
+  - compiler: the source code of the JRIF compiler
+  - doc:      JRIF documentation 
+  - lib:      needed JAR files
+  - bin:      scripts to run the JRIF compiler
+  - examples: JRIF examples (battleship and shared calendar)
+  - runtime:  source code for the JRIF runtime classes
+  - sig-src:  JRIF signatures for standard Java classes, e.g. java.lang.Object
+  - lib-src:  JRIF source code for utility classes, e.g. jif.util.List
+  - tests:    Some JRIF source code to test the JRIF compiler
+  - JrifChanges:  Changes introduced in the Jif compiler, to implement JRIF 
+
+
+Building JRIF
+------------
+
+We give general instructions on how to build JRIF,
+along with particular commands (as an example) used to build JRIF in Ubuntu 16.04.
+These commands start with a "-".
+
+1. Install JDK, g++, ant, and set the JAVA_HOME environment variable to the Java home
+   directory.  
+
+- sudo apt-get update
+- sudo apt-get install openjdk-8-jdk
+- sudo apt-get install g++
+- sudo apt-get install ant
+
+- JAVA_HOME="/usr/lib/jvm/java-8-openjdk-amd64"
+- export JAVA_HOME
+- echo $JAVA_HOME
+
+2. Install polyglot, included in this directory.
+   Let $POLY be the location of the polyglot directory.
+
+- cd $POLY/polyglot
+- ant
+- ant jar
+
+- PATH=$PATH:$HOME/bin:$JAVA_HOME/bin:$POLY/polyglot/bin
+- CLASSPATH=".:$POLY/polyglot/classes:$POLY/polyglot/lib/java_cup.jar"
+- export PATH
+- export CLASSPATH
+- echo $PATH
+- echo $CLASSPATH
+
+(The definition of variables JAVA_HOME, PATH and CLASSPATH, can also
+be done by editing /etc/profile (sudo vi /etc/profile), 
+and then executing: source /etc/profile .)
+
+
+3. Go to the installation directory of jif.
+   Let $JIF be the location of the jif directory.
+
+    - cd $JIF/jif
+
+4. Copy config.properties.in to config.properties, and then edit
+   config.properties as follows:
+
+   * polyglot.home=$POLY/polyglot/  [uncomment and modify]
+   * #jdk.home=${java.home}  [comment]
+   * jdk.home=${env.JAVA_HOME} [uncomment]
+
+
+5. Run ant to configure the Jif system.
+
+    - ant configure
+   
+   This ensures that the classpath is set appropriately, and creates the
+   executable scripts /bin/jifc and /bin/jif.
+
+
+6. Run ant to build the platform-specific Jif runtime support.
+
+    - ant jif-runtime
+
+   This compiles the /rt-src directory. The resulting files will be stored
+   in /rt-classes.
+
+7. Run ant to build the Jif compiler, Jif signatures for standard Java
+   classes and the Jif library code.
+
+    - ant
+
+   This compiles the /src, /sig-src and /lib-src directories.
+   The resulting .class files will be stored in /classes,
+   /sig-classes and /lib-classes respectively.
+
+
+8. Go to the installation directory of jrif.
+   Let $JRIF be the location of the jrif directory.
+
+    - cd $JRIF/jrif
+	
+9. Run ant to build the JRIF compiler. 	
+ 
+    - ant
+		
+	- PATH=$PATH:$JRIF/jrif/bin
+	- export PATH
+	- echo $PATH
+		
+10. Build JRIF signatures for standard Java classes and the JRIF library code.
+
+    - ./buildSigLib.sh $JRIF
+	
+
+To clean up JRIF code run "ant clean" and "./cleanUPclasses".	
+
+
+Running JRIF
+-----------
+
+Scripts named "jrifc" and "jrif" are created in the $JRIF/jrif/bin directory.
+The jrifc script runs the JRIF compiler, and the jrif script provides a 
+convenient way to execute the compiled JRIF code.
+
+The command line options for jrifc can be viewed by running jrifc with the
+"-h" flag.
+
+Try JRIF by compiling and running our rif_battleship and rif_calendar applications.
+
+11. Go to directory $JRIF/jrif/tests.
+12. Compile principals Alice and Bob.
+
+	- jrifc jif/principals/Alice.jrif jif/principals/Bob.jrif
+
+13. Go to directory $JRIF/jrif/examples/rif_battleship/
+14. Compile the code.
+
+	- jrifc -simpleoutput -classpath $JRIF/jrif/tests/ *.jrif
+	
+15. Run the program.
+
+	- jrif  -classpath $JRIF/jrif/tests/ Main
+	
+16. Go to directory $JRIF/jrif/examples/rif_calendar
+17. Compile and run the code.
+
+	- jrifc -simpleoutput -classpath $JRIF/jrif/tests/ *.jrif
+	- jrif  -classpath $JRIF/jrif/tests/ Main
+	
+
+
+Restrictions on use
+-------------------
+
+This free release of the JRIF system may be used, modified, and
+redistributed as governed by the license included in the attached file
+LICENSE.
+
+This software is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the file
+LICENSE for more details.

@@ -1,0 +1,7 @@
+This directory contains test cases that compile
+and test cases that do not. The initial comments
+of each test say whether this test type-checks.
+File gentest.sh tries to compile all test cases.
+For each test, it is printed whether the test
+is supposed to be type-correct and the actual
+compilation result. 
