@@ -1979,10 +1979,10 @@ policy ::=
  |  policy MULT {:  RifPolicyNode n = null; RESULT = n;  :}
  |  LPAREN policy RPAREN {:  RifPolicyNode n = null; RESULT = n;  :}
  |  boolean {:  RifPolicyNode n = null; RESULT = n;  :}
- |  principal_set {:  RifPolicyNode n = null; RESULT = n;  :};
+ |  IDENTIFIER {:  RifPolicyNode n = null; RESULT = n;  :};
 
 boolean ::=
-    IDENTIFIER {:  RifPolicyNode n = null; RESULT = n;  :}
+    principal_set {:  RifPolicyNode n = null; RESULT = n;  :}
  |  accesspath_no_id {:  RifPolicyNode n = null; RESULT = n;  :}
  |  ZERO {:  RifPolicyNode n = null; RESULT = n;  :}
  |  ONE {:  RifPolicyNode n = null; RESULT = n;  :}
