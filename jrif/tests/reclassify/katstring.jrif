@@ -17,7 +17,7 @@ public class test19{
 		int {rif:{Alice,Bob}^h^{Alice}} k;
 		x = 96;
 		y = 96;
-		throw new Exception("Result: "+x);
+		throw new Exception("Result: ok");
     }
 }
 

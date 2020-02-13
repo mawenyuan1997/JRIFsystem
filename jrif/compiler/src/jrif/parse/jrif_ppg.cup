@@ -20,6 +20,11 @@ import java.util.*;
 import jrif.types.JrifTypeSystem;
 import jrif.ast.*;
 import jif.parse.*;
+import KAT.*;
+import KAToperator.*;
+import SyKAT.*;
+import SyKAToperator.*;
+import utility.*;
 
 parser Grm extends jif.parse.Grm {:
 
@@ -1974,21 +1979,31 @@ principal_set ::=
  |  LBRACE:x principal_list:a RBRACE:y {:  RESULT = a;  :};
 
 policy ::=
-    policy PLUS policy {:  RifPolicyNode n = null; RESULT = n;  :}
- |  policy XOR policy {:  RifPolicyNode n = null; RESULT = n;  :}
- |  policy MULT {:  RifPolicyNode n = null; RESULT = n;  :}
- |  LPAREN policy RPAREN {:  RifPolicyNode n = null; RESULT = n;  :}
- |  boolean {:  RifPolicyNode n = null; RESULT = n;  :}
- |  IDENTIFIER {:  RifPolicyNode n = null; RESULT = n;  :};
+    policy:p1 PLUS policy:p2 {:
+                             KATexpression n = new PlusExpression(p1, p2); RESULT = n; 
+                             :}
+ |  policy:p1 XOR policy:p2 {:
+                            KATexpression n = new ConcatExpression(p1, p2); RESULT = n; 
+                            :}
+ |  policy:p MULT {:  KATexpression n = new StarExpression(p); RESULT = n;  :}
+ |  LPAREN policy:p RPAREN {:  KATexpression n = p; RESULT = n;  :}
+ |  boolean:b {:  KATexpression n = b; RESULT = n;  :}
+ |  IDENTIFIER:p {:  KATexpression n = new Action(p); RESULT = n;  :};
 
 boolean ::=
-    principal_set {:  RifPolicyNode n = null; RESULT = n;  :}
- |  accesspath_no_id {:  RifPolicyNode n = null; RESULT = n;  :}
- |  ZERO {:  RifPolicyNode n = null; RESULT = n;  :}
- |  ONE {:  RifPolicyNode n = null; RESULT = n;  :}
- |  boolean OR boolean {:  RifPolicyNode n = null; RESULT = n;  :}
- |  boolean AND boolean {:  RifPolicyNode n = null; RESULT = n;  :}
- |  LBRACK boolean RBRACK {:  RifPolicyNode n = null; RESULT = n;  :}
- |  COMP boolean {:  RifPolicyNode n = null; RESULT = n;  :};
+    principal_set:p {:  TestExpression n = new PrimitiveTest(p); RESULT = n;  :}
+ |  accesspath_no_id:p {:
+                       TestExpression n = new PrimitiveTest(p); RESULT = n; 
+                       :}
+ |  ZERO {:  TestExpression n = new ZeroTest(); RESULT = n;  :}
+ |  ONE {:  TestExpression n = new OneTest(); RESULT = n;  :}
+ |  boolean:b1 OR boolean:b2 {:
+                             TestExpression n = new PlusTest(b1, b2); RESULT = n; 
+                             :}
+ |  boolean:b1 AND boolean:b2 {:
+                              TestExpression n = new ConcatTest(b1, b2); RESULT = n; 
+                              :}
+ |  LBRACK boolean:b RBRACK {:  TestExpression n = b; RESULT = n;  :}
+ |  COMP boolean:b {:  TestExpression n = new NegateTest(b); RESULT = n;  :};
 
 

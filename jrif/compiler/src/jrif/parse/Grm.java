@@ -25,6 +25,11 @@ import java.util.*;
 import jrif.types.JrifTypeSystem;
 import jrif.ast.*;
 import jif.parse.*;
+import KAT.*;
+import KAToperator.*;
+import SyKAT.*;
+import SyKAToperator.*;
+import utility.*;
 
 /** CUP v0.11b 20150326 generated parser.
   */
@@ -9509,7 +9514,11 @@ class CUP$Grm$actions {
         case 485: // policy ::= policy PLUS policy 
             {
                 RifPolicyNode RESULT = null;
-                  RifPolicyNode n = null; RESULT = n;  
+                RifPolicyNode p1 = CUP$Grm$stack.elementAt(CUP$Grm$top-2).<RifPolicyNode> value();
+                RifPolicyNode p2 = CUP$Grm$stack.peek().<RifPolicyNode> value();
+                
+                             KATexpression n = new PlusExpression(p1, p2); RESULT = n; 
+                             
                 CUP$Grm$result = parser.getSymbolFactory().newSymbol("policy",200, RESULT);
             }
             return CUP$Grm$result;
@@ -9518,7 +9527,11 @@ class CUP$Grm$actions {
         case 486: // policy ::= policy XOR policy 
             {
                 RifPolicyNode RESULT = null;
-                  RifPolicyNode n = null; RESULT = n;  
+                RifPolicyNode p1 = CUP$Grm$stack.elementAt(CUP$Grm$top-2).<RifPolicyNode> value();
+                RifPolicyNode p2 = CUP$Grm$stack.peek().<RifPolicyNode> value();
+                
+                            KATexpression n = new ConcatExpression(p1, p2); RESULT = n; 
+                            
                 CUP$Grm$result = parser.getSymbolFactory().newSymbol("policy",200, RESULT);
             }
             return CUP$Grm$result;
@@ -9527,7 +9540,8 @@ class CUP$Grm$actions {
         case 487: // policy ::= policy MULT 
             {
                 RifPolicyNode RESULT = null;
-                  RifPolicyNode n = null; RESULT = n;  
+                RifPolicyNode p = CUP$Grm$stack.elementAt(CUP$Grm$top-1).<RifPolicyNode> value();
+                  KATexpression n = new StarExpression(p); RESULT = n;  
                 CUP$Grm$result = parser.getSymbolFactory().newSymbol("policy",200, RESULT);
             }
             return CUP$Grm$result;
@@ -9536,7 +9550,8 @@ class CUP$Grm$actions {
         case 488: // policy ::= LPAREN policy RPAREN 
             {
                 RifPolicyNode RESULT = null;
-                  RifPolicyNode n = null; RESULT = n;  
+                RifPolicyNode p = CUP$Grm$stack.elementAt(CUP$Grm$top-1).<RifPolicyNode> value();
+                  KATexpression n = p; RESULT = n;  
                 CUP$Grm$result = parser.getSymbolFactory().newSymbol("policy",200, RESULT);
             }
             return CUP$Grm$result;
@@ -9545,7 +9560,8 @@ class CUP$Grm$actions {
         case 489: // policy ::= boolean 
             {
                 RifPolicyNode RESULT = null;
-                  RifPolicyNode n = null; RESULT = n;  
+                RifPolicyNode b = CUP$Grm$stack.peek().<RifPolicyNode> value();
+                  KATexpression n = b; RESULT = n;  
                 CUP$Grm$result = parser.getSymbolFactory().newSymbol("policy",200, RESULT);
             }
             return CUP$Grm$result;
@@ -9554,7 +9570,8 @@ class CUP$Grm$actions {
         case 490: // policy ::= IDENTIFIER 
             {
                 RifPolicyNode RESULT = null;
-                  RifPolicyNode n = null; RESULT = n;  
+                Identifier p = CUP$Grm$stack.peek().<Identifier> value();
+                  KATexpression n = new Action(p); RESULT = n;  
                 CUP$Grm$result = parser.getSymbolFactory().newSymbol("policy",200, RESULT);
             }
             return CUP$Grm$result;
@@ -9563,7 +9580,8 @@ class CUP$Grm$actions {
         case 491: // boolean ::= principal_set 
             {
                 RifPolicyNode RESULT = null;
-                  RifPolicyNode n = null; RESULT = n;  
+                List p = CUP$Grm$stack.peek().<List> value();
+                  TestExpression n = new PrimitiveTest(p); RESULT = n;  
                 CUP$Grm$result = parser.getSymbolFactory().newSymbol("boolean",201, RESULT);
             }
             return CUP$Grm$result;
@@ -9572,7 +9590,10 @@ class CUP$Grm$actions {
         case 492: // boolean ::= accesspath_no_id 
             {
                 RifPolicyNode RESULT = null;
-                  RifPolicyNode n = null; RESULT = n;  
+                Expr p = CUP$Grm$stack.peek().<Expr> value();
+                
+                       TestExpression n = new PrimitiveTest(p); RESULT = n; 
+                       
                 CUP$Grm$result = parser.getSymbolFactory().newSymbol("boolean",201, RESULT);
             }
             return CUP$Grm$result;
@@ -9581,7 +9602,7 @@ class CUP$Grm$actions {
         case 493: // boolean ::= ZERO 
             {
                 RifPolicyNode RESULT = null;
-                  RifPolicyNode n = null; RESULT = n;  
+                  TestExpression n = new ZeroTest(); RESULT = n;  
                 CUP$Grm$result = parser.getSymbolFactory().newSymbol("boolean",201, RESULT);
             }
             return CUP$Grm$result;
@@ -9590,7 +9611,7 @@ class CUP$Grm$actions {
         case 494: // boolean ::= ONE 
             {
                 RifPolicyNode RESULT = null;
-                  RifPolicyNode n = null; RESULT = n;  
+                  TestExpression n = new OneTest(); RESULT = n;  
                 CUP$Grm$result = parser.getSymbolFactory().newSymbol("boolean",201, RESULT);
             }
             return CUP$Grm$result;
@@ -9599,7 +9620,11 @@ class CUP$Grm$actions {
         case 495: // boolean ::= boolean OR boolean 
             {
                 RifPolicyNode RESULT = null;
-                  RifPolicyNode n = null; RESULT = n;  
+                RifPolicyNode b1 = CUP$Grm$stack.elementAt(CUP$Grm$top-2).<RifPolicyNode> value();
+                RifPolicyNode b2 = CUP$Grm$stack.peek().<RifPolicyNode> value();
+                
+                             TestExpression n = new PlusTest(b1, b2); RESULT = n; 
+                             
                 CUP$Grm$result = parser.getSymbolFactory().newSymbol("boolean",201, RESULT);
             }
             return CUP$Grm$result;
@@ -9608,7 +9633,11 @@ class CUP$Grm$actions {
         case 496: // boolean ::= boolean AND boolean 
             {
                 RifPolicyNode RESULT = null;
-                  RifPolicyNode n = null; RESULT = n;  
+                RifPolicyNode b1 = CUP$Grm$stack.elementAt(CUP$Grm$top-2).<RifPolicyNode> value();
+                RifPolicyNode b2 = CUP$Grm$stack.peek().<RifPolicyNode> value();
+                
+                              TestExpression n = new ConcatTest(b1, b2); RESULT = n; 
+                              
                 CUP$Grm$result = parser.getSymbolFactory().newSymbol("boolean",201, RESULT);
             }
             return CUP$Grm$result;
@@ -9617,7 +9646,8 @@ class CUP$Grm$actions {
         case 497: // boolean ::= LBRACK boolean RBRACK 
             {
                 RifPolicyNode RESULT = null;
-                  RifPolicyNode n = null; RESULT = n;  
+                RifPolicyNode b = CUP$Grm$stack.elementAt(CUP$Grm$top-1).<RifPolicyNode> value();
+                  TestExpression n = b; RESULT = n;  
                 CUP$Grm$result = parser.getSymbolFactory().newSymbol("boolean",201, RESULT);
             }
             return CUP$Grm$result;
@@ -9626,7 +9656,8 @@ class CUP$Grm$actions {
         case 498: // boolean ::= COMP boolean 
             {
                 RifPolicyNode RESULT = null;
-                  RifPolicyNode n = null; RESULT = n;  
+                RifPolicyNode b = CUP$Grm$stack.peek().<RifPolicyNode> value();
+                  TestExpression n = new NegateTest(b); RESULT = n;  
                 CUP$Grm$result = parser.getSymbolFactory().newSymbol("boolean",201, RESULT);
             }
             return CUP$Grm$result;

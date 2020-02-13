@@ -6,6 +6,11 @@ package jrif.parse;
 import jrif.types.JrifTypeSystem;
 import jrif.ast.*;
 import jif.parse.*;
+import KAT.*;
+import KAToperator.*;
+import SyKAT.*;
+import SyKAToperator.*;
+import utility.*;
 
 parser Grm extends jif.parse.Grm {:
     public final JrifTypeSystem ts;
@@ -45,7 +50,7 @@ extend label_component ::=
 
 rif_label ::= 
      RIF COLON policy:a 
-     {:RESULT = a; :}
+     {:RESULT = a; :}  //   1. invoke conversion  2. create ast (automata)
    ;
 
 rifi_label ::= 
