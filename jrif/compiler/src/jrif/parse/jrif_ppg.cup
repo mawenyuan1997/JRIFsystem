@@ -270,8 +270,8 @@ terminal Token ONE;
 terminal Token ZERO;
 non terminal RifPolicyNode rif_label;
 non terminal RifPolicyNode rifi_label;
-non terminal RifPolicyNode policy;
-non terminal RifPolicyNode boolean;
+non terminal KATexpression policy;
+non terminal TestExpression boolean;
 non terminal List principal_set;
 
 precedence left PLUS, OR;
@@ -1965,10 +1965,10 @@ reftype_or_expr ::=
                                             :};
 
 rif_label ::=
-    RIF COLON policy:a {: RESULT = a;  :};
+    RIF COLON policy:a {: RESULT = null;  :};
 
 rifi_label ::=
-    RIFI COLON policy:a {: RESULT = a;  :};
+    RIFI COLON policy:a {: RESULT = null;  :};
 
 principal_set ::=
     LBRACE:x RBRACE:y {:
@@ -1988,12 +1988,14 @@ policy ::=
  |  policy:p MULT {:  KATexpression n = new StarExpression(p); RESULT = n;  :}
  |  LPAREN policy:p RPAREN {:  KATexpression n = p; RESULT = n;  :}
  |  boolean:b {:  KATexpression n = b; RESULT = n;  :}
- |  IDENTIFIER:p {:  KATexpression n = new Action(p); RESULT = n;  :};
+ |  IDENTIFIER:p {:  KATexpression n = new Action(null); RESULT = n;  :};
 
 boolean ::=
-    principal_set:p {:  TestExpression n = new PrimitiveTest(p); RESULT = n;  :}
+    principal_set:p {:
+                    TestExpression n = new PrimitiveTest(null); RESULT = n; 
+                    :}
  |  accesspath_no_id:p {:
-                       TestExpression n = new PrimitiveTest(p); RESULT = n; 
+                       TestExpression n = new PrimitiveTest(null); RESULT = n; 
                        :}
  |  ZERO {:  TestExpression n = new ZeroTest(); RESULT = n;  :}
  |  ONE {:  TestExpression n = new OneTest(); RESULT = n;  :}
