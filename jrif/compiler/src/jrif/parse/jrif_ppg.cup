@@ -270,8 +270,8 @@ terminal Token ONE;
 terminal Token ZERO;
 non terminal RifPolicyNode rif_label;
 non terminal RifPolicyNode rifi_label;
-non terminal KATexpression policy;
-non terminal TestExpression boolean;
+non terminal KatExprNode policy;
+non terminal KatTestNode boolean;
 non terminal List principal_set;
 
 precedence left PLUS, OR;
@@ -1979,33 +1979,23 @@ principal_set ::=
  |  LBRACE:x principal_list:a RBRACE:y {:  RESULT = a;  :};
 
 policy ::=
-    policy:p1 PLUS policy:p2 {:
-                             KATexpression n = new PlusExpression(p1, p2); RESULT = n; 
-                             :}
- |  policy:p1 XOR policy:p2 {:
-                            KATexpression n = new ConcatExpression(p1, p2); RESULT = n; 
-                            :}
- |  policy:p MULT {:  KATexpression n = new StarExpression(p); RESULT = n;  :}
- |  LPAREN policy:p RPAREN {:  KATexpression n = p; RESULT = n;  :}
- |  boolean:b {:  KATexpression n = b; RESULT = n;  :}
- |  IDENTIFIER:p {:  KATexpression n = new Action(null); RESULT = n;  :};
+    policy:p1 PLUS policy:p2 {:  RESULT = new KatPlusNode(p1, p2);  :}
+ |  policy:p1 XOR policy:p2 {:  RESULT = new KatConcatNode(p1, p2);  :}
+ |  policy:p MULT {:  RESULT = new KatStarNode(p);  :}
+ |  LPAREN policy:p RPAREN {:  RESULT = p;  :}
+ |  boolean:b {:  RESULT = b;  :}
+ |  IDENTIFIER:p {:
+                 RESULT = new KatActionNode(parser.pos(p), p.getIdentifier()); 
+                 :};
 
 boolean ::=
-    principal_set:p {:
-                    TestExpression n = new PrimitiveTest(null); RESULT = n; 
-                    :}
- |  accesspath_no_id:p {:
-                       TestExpression n = new PrimitiveTest(null); RESULT = n; 
-                       :}
- |  ZERO {:  TestExpression n = new ZeroTest(); RESULT = n;  :}
- |  ONE {:  TestExpression n = new OneTest(); RESULT = n;  :}
- |  boolean:b1 OR boolean:b2 {:
-                             TestExpression n = new PlusTest(b1, b2); RESULT = n; 
-                             :}
- |  boolean:b1 AND boolean:b2 {:
-                              TestExpression n = new ConcatTest(b1, b2); RESULT = n; 
-                              :}
- |  LBRACK boolean:b RBRACK {:  TestExpression n = b; RESULT = n;  :}
- |  COMP boolean:b {:  TestExpression n = new NegateTest(b); RESULT = n;  :};
+    principal_set:p {:  RESULT = new KatAtomNode(parser.pos(p), p);  :}
+ |  accesspath_no_id:p {:  RESULT = new KatAtomNode(parser.pos(p), p);  :}
+ |  ZERO {:  RESULT = new KatZeroNode();  :}
+ |  ONE {:  RESULT = new KatOneNode();  :}
+ |  boolean:b1 OR boolean:b2 {:  RESULT = new KatOrNode(b1, b2);  :}
+ |  boolean:b1 AND boolean:b2 {:  RESULT = new KatAndNode(b1, b2);  :}
+ |  LBRACK boolean:b RBRACK {:  RESULT = b;  :}
+ |  COMP boolean:b {:  RESULT = new KatNegateNode(b);  :};
 
 

@@ -9467,7 +9467,7 @@ class CUP$Grm$actions {
         case 481: // rif_label ::= RIF COLON policy 
             {
                 RifPolicyNode RESULT = null;
-                KATexpression a = CUP$Grm$stack.peek().<KATexpression> value();
+                KatExprNode a = CUP$Grm$stack.peek().<KatExprNode> value();
                  RESULT = null;  
                 CUP$Grm$result = parser.getSymbolFactory().newSymbol("rif_label",198, RESULT);
             }
@@ -9477,7 +9477,7 @@ class CUP$Grm$actions {
         case 482: // rifi_label ::= RIFI COLON policy 
             {
                 RifPolicyNode RESULT = null;
-                KATexpression a = CUP$Grm$stack.peek().<KATexpression> value();
+                KatExprNode a = CUP$Grm$stack.peek().<KatExprNode> value();
                  RESULT = null;  
                 CUP$Grm$result = parser.getSymbolFactory().newSymbol("rifi_label",199, RESULT);
             }
@@ -9513,12 +9513,10 @@ class CUP$Grm$actions {
         /*. . . . . . . . . . . . . . . . . . . .*/
         case 485: // policy ::= policy PLUS policy 
             {
-                KATexpression RESULT = null;
-                KATexpression p1 = CUP$Grm$stack.elementAt(CUP$Grm$top-2).<KATexpression> value();
-                KATexpression p2 = CUP$Grm$stack.peek().<KATexpression> value();
-                
-                             KATexpression n = new PlusExpression(p1, p2); RESULT = n; 
-                             
+                KatExprNode RESULT = null;
+                KatExprNode p1 = CUP$Grm$stack.elementAt(CUP$Grm$top-2).<KatExprNode> value();
+                KatExprNode p2 = CUP$Grm$stack.peek().<KatExprNode> value();
+                  RESULT = new KatPlusNode(p1, p2);  
                 CUP$Grm$result = parser.getSymbolFactory().newSymbol("policy",200, RESULT);
             }
             return CUP$Grm$result;
@@ -9526,12 +9524,10 @@ class CUP$Grm$actions {
         /*. . . . . . . . . . . . . . . . . . . .*/
         case 486: // policy ::= policy XOR policy 
             {
-                KATexpression RESULT = null;
-                KATexpression p1 = CUP$Grm$stack.elementAt(CUP$Grm$top-2).<KATexpression> value();
-                KATexpression p2 = CUP$Grm$stack.peek().<KATexpression> value();
-                
-                            KATexpression n = new ConcatExpression(p1, p2); RESULT = n; 
-                            
+                KatExprNode RESULT = null;
+                KatExprNode p1 = CUP$Grm$stack.elementAt(CUP$Grm$top-2).<KatExprNode> value();
+                KatExprNode p2 = CUP$Grm$stack.peek().<KatExprNode> value();
+                  RESULT = new KatConcatNode(p1, p2);  
                 CUP$Grm$result = parser.getSymbolFactory().newSymbol("policy",200, RESULT);
             }
             return CUP$Grm$result;
@@ -9539,9 +9535,9 @@ class CUP$Grm$actions {
         /*. . . . . . . . . . . . . . . . . . . .*/
         case 487: // policy ::= policy MULT 
             {
-                KATexpression RESULT = null;
-                KATexpression p = CUP$Grm$stack.elementAt(CUP$Grm$top-1).<KATexpression> value();
-                  KATexpression n = new StarExpression(p); RESULT = n;  
+                KatExprNode RESULT = null;
+                KatExprNode p = CUP$Grm$stack.elementAt(CUP$Grm$top-1).<KatExprNode> value();
+                  RESULT = new KatStarNode(p);  
                 CUP$Grm$result = parser.getSymbolFactory().newSymbol("policy",200, RESULT);
             }
             return CUP$Grm$result;
@@ -9549,9 +9545,9 @@ class CUP$Grm$actions {
         /*. . . . . . . . . . . . . . . . . . . .*/
         case 488: // policy ::= LPAREN policy RPAREN 
             {
-                KATexpression RESULT = null;
-                KATexpression p = CUP$Grm$stack.elementAt(CUP$Grm$top-1).<KATexpression> value();
-                  KATexpression n = p; RESULT = n;  
+                KatExprNode RESULT = null;
+                KatExprNode p = CUP$Grm$stack.elementAt(CUP$Grm$top-1).<KatExprNode> value();
+                  RESULT = p;  
                 CUP$Grm$result = parser.getSymbolFactory().newSymbol("policy",200, RESULT);
             }
             return CUP$Grm$result;
@@ -9559,9 +9555,9 @@ class CUP$Grm$actions {
         /*. . . . . . . . . . . . . . . . . . . .*/
         case 489: // policy ::= boolean 
             {
-                KATexpression RESULT = null;
-                TestExpression b = CUP$Grm$stack.peek().<TestExpression> value();
-                  KATexpression n = b; RESULT = n;  
+                KatExprNode RESULT = null;
+                KatTestNode b = CUP$Grm$stack.peek().<KatTestNode> value();
+                  RESULT = b;  
                 CUP$Grm$result = parser.getSymbolFactory().newSymbol("policy",200, RESULT);
             }
             return CUP$Grm$result;
@@ -9569,9 +9565,11 @@ class CUP$Grm$actions {
         /*. . . . . . . . . . . . . . . . . . . .*/
         case 490: // policy ::= IDENTIFIER 
             {
-                KATexpression RESULT = null;
+                KatExprNode RESULT = null;
                 Identifier p = CUP$Grm$stack.peek().<Identifier> value();
-                  KATexpression n = new Action(null); RESULT = n;  
+                
+                 RESULT = new KatActionNode(parser.pos(p), p.getIdentifier()); 
+                 
                 CUP$Grm$result = parser.getSymbolFactory().newSymbol("policy",200, RESULT);
             }
             return CUP$Grm$result;
@@ -9579,11 +9577,9 @@ class CUP$Grm$actions {
         /*. . . . . . . . . . . . . . . . . . . .*/
         case 491: // boolean ::= principal_set 
             {
-                TestExpression RESULT = null;
+                KatTestNode RESULT = null;
                 List p = CUP$Grm$stack.peek().<List> value();
-                
-                    TestExpression n = new PrimitiveTest(null); RESULT = n; 
-                    
+                  RESULT = new KatAtomNode(parser.pos(p), p);  
                 CUP$Grm$result = parser.getSymbolFactory().newSymbol("boolean",201, RESULT);
             }
             return CUP$Grm$result;
@@ -9591,11 +9587,9 @@ class CUP$Grm$actions {
         /*. . . . . . . . . . . . . . . . . . . .*/
         case 492: // boolean ::= accesspath_no_id 
             {
-                TestExpression RESULT = null;
+                KatTestNode RESULT = null;
                 Expr p = CUP$Grm$stack.peek().<Expr> value();
-                
-                       TestExpression n = new PrimitiveTest(null); RESULT = n; 
-                       
+                  RESULT = new KatAtomNode(parser.pos(p), p);  
                 CUP$Grm$result = parser.getSymbolFactory().newSymbol("boolean",201, RESULT);
             }
             return CUP$Grm$result;
@@ -9603,8 +9597,8 @@ class CUP$Grm$actions {
         /*. . . . . . . . . . . . . . . . . . . .*/
         case 493: // boolean ::= ZERO 
             {
-                TestExpression RESULT = null;
-                  TestExpression n = new ZeroTest(); RESULT = n;  
+                KatTestNode RESULT = null;
+                  RESULT = new KatZeroNode();  
                 CUP$Grm$result = parser.getSymbolFactory().newSymbol("boolean",201, RESULT);
             }
             return CUP$Grm$result;
@@ -9612,8 +9606,8 @@ class CUP$Grm$actions {
         /*. . . . . . . . . . . . . . . . . . . .*/
         case 494: // boolean ::= ONE 
             {
-                TestExpression RESULT = null;
-                  TestExpression n = new OneTest(); RESULT = n;  
+                KatTestNode RESULT = null;
+                  RESULT = new KatOneNode();  
                 CUP$Grm$result = parser.getSymbolFactory().newSymbol("boolean",201, RESULT);
             }
             return CUP$Grm$result;
@@ -9621,12 +9615,10 @@ class CUP$Grm$actions {
         /*. . . . . . . . . . . . . . . . . . . .*/
         case 495: // boolean ::= boolean OR boolean 
             {
-                TestExpression RESULT = null;
-                TestExpression b1 = CUP$Grm$stack.elementAt(CUP$Grm$top-2).<TestExpression> value();
-                TestExpression b2 = CUP$Grm$stack.peek().<TestExpression> value();
-                
-                             TestExpression n = new PlusTest(b1, b2); RESULT = n; 
-                             
+                KatTestNode RESULT = null;
+                KatTestNode b1 = CUP$Grm$stack.elementAt(CUP$Grm$top-2).<KatTestNode> value();
+                KatTestNode b2 = CUP$Grm$stack.peek().<KatTestNode> value();
+                  RESULT = new KatOrNode(b1, b2);  
                 CUP$Grm$result = parser.getSymbolFactory().newSymbol("boolean",201, RESULT);
             }
             return CUP$Grm$result;
@@ -9634,12 +9626,10 @@ class CUP$Grm$actions {
         /*. . . . . . . . . . . . . . . . . . . .*/
         case 496: // boolean ::= boolean AND boolean 
             {
-                TestExpression RESULT = null;
-                TestExpression b1 = CUP$Grm$stack.elementAt(CUP$Grm$top-2).<TestExpression> value();
-                TestExpression b2 = CUP$Grm$stack.peek().<TestExpression> value();
-                
-                              TestExpression n = new ConcatTest(b1, b2); RESULT = n; 
-                              
+                KatTestNode RESULT = null;
+                KatTestNode b1 = CUP$Grm$stack.elementAt(CUP$Grm$top-2).<KatTestNode> value();
+                KatTestNode b2 = CUP$Grm$stack.peek().<KatTestNode> value();
+                  RESULT = new KatAndNode(b1, b2);  
                 CUP$Grm$result = parser.getSymbolFactory().newSymbol("boolean",201, RESULT);
             }
             return CUP$Grm$result;
@@ -9647,9 +9637,9 @@ class CUP$Grm$actions {
         /*. . . . . . . . . . . . . . . . . . . .*/
         case 497: // boolean ::= LBRACK boolean RBRACK 
             {
-                TestExpression RESULT = null;
-                TestExpression b = CUP$Grm$stack.elementAt(CUP$Grm$top-1).<TestExpression> value();
-                  TestExpression n = b; RESULT = n;  
+                KatTestNode RESULT = null;
+                KatTestNode b = CUP$Grm$stack.elementAt(CUP$Grm$top-1).<KatTestNode> value();
+                  RESULT = b;  
                 CUP$Grm$result = parser.getSymbolFactory().newSymbol("boolean",201, RESULT);
             }
             return CUP$Grm$result;
@@ -9657,9 +9647,9 @@ class CUP$Grm$actions {
         /*. . . . . . . . . . . . . . . . . . . .*/
         case 498: // boolean ::= COMP boolean 
             {
-                TestExpression RESULT = null;
-                TestExpression b = CUP$Grm$stack.peek().<TestExpression> value();
-                  TestExpression n = new NegateTest(b); RESULT = n;  
+                KatTestNode RESULT = null;
+                KatTestNode b = CUP$Grm$stack.peek().<KatTestNode> value();
+                  RESULT = new KatNegateNode(b);  
                 CUP$Grm$result = parser.getSymbolFactory().newSymbol("boolean",201, RESULT);
             }
             return CUP$Grm$result;
