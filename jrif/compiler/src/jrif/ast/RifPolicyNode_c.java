@@ -3,7 +3,10 @@ package jrif.ast;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import utility.Util;
 
+import KAT.KATexpression;
+import SyKAT.SyKATexpression;
 import jrif.types.JrifTypeSystem;
 import jrif.types.RifComponent;
 import jrif.types.RifFSM_c;
@@ -19,75 +22,38 @@ import polyglot.util.SerialVersionUID;
 import polyglot.visit.AmbiguityRemover;
 import polyglot.visit.NodeVisitor;
 import polyglot.visit.PrettyPrinter;
+import utility.SymDFA;
 
 public class RifPolicyNode_c extends PolicyNode_c implements RifPolicyNode {
     private static final long serialVersionUID = SerialVersionUID.generate();
+    private KatExprNode child;
+    private KATexpression policy;
+    private SymDFA automata;
+    private Util util;
 
-    protected List<RifComponentNode> components;
-
-    public RifPolicyNode_c(Position pos, List<RifComponentNode> components) {
+    public RifPolicyNode_c(Position pos, KatExprNode expr) {
         super(pos, (Policy) null); //this is not very principled!
-        this.components = components;
+        this.child = expr;
     }
 
-    @Override
-    public List<RifComponentNode> components() {
-        return this.components;
-    }
 
-    protected RifPolicyNode_c reconstruct(List<RifComponentNode> components) {
-        if (!CollectionUtil.equals(components, this.components)) {
-            RifPolicyNode_c n = (RifPolicyNode_c) copy();
-            n.components = ListUtil.copy(components, true);
-            return n;
-        }
-
-        return this;
-    }
-
-    @Override
-    public Node visitChildren(NodeVisitor v) {
-        List<RifComponentNode> lnew = visitList(this.components, v);
-        return reconstruct(lnew);
-    }
-
-    protected Policy producePolicy(JrifTypeSystem ts,
-            List<RifComponent> components) {
-        return ts.rifreaderPolicy(position(), new RifFSM_c(components));
+    protected Policy producePolicy(JrifTypeSystem ts, KATexpression expr) {
+        SyKATexpression sy = util.translate(expr);
+        this.automata = new SymDFA(util, sy);
+        return ts.rifreaderPolicy(position(), this.automata);
     }
 
     @Override
     public Node disambiguate(AmbiguityRemover ar) throws SemanticException {
         JrifTypeSystem ts = (JrifTypeSystem) ar.typeSystem();
-        List<RifComponent> l = new LinkedList<RifComponent>();
-
-        for (RifComponentNode c : this.components) {
-            if (!c.isDisambiguated()) {
-                ar.job().extensionInfo().scheduler().currentGoal()
-                        .setUnreachableThisRun();
-                return this;
-            }
-            if (c instanceof RifStateNode) {
-                l.add(((RifStateNode) c).state());
-            } else if (c instanceof RifTransitionNode) {
-                l.add(((RifTransitionNode) c).transition());
-            }
-        }
-        this.policy = producePolicy(ts, l);
+        KATexpression expr = child.disambiguate();
+        this.policy = producePolicy(ts, expr);
         return this;
     }
 
     @Override
     public void prettyPrint(CodeWriter w, PrettyPrinter tr) {
 
-        Iterator<RifComponentNode> ic = this.components.iterator();
-        while (ic.hasNext()) {
-            RifComponentNode c = ic.next();
-            print(c, w, tr);
-            if (ic.hasNext()) {
-                w.write(",");
-            }
-        }
 
     }
 

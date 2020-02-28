@@ -1,6 +1,7 @@
 package jrif.ast;
 
 import KAT.ConcatTest;
+import KAT.KATexpression;
 import KAT.TestExpression;
 import polyglot.util.Position;
 
@@ -12,10 +13,10 @@ public class KatAndNode extends KatTestNode {
         right = e2;
     }
 
-    @Override
-    public void disambiguate() {
-        left.disambiguate();
-        right.disambiguate();
-        this.policy = new ConcatTest((TestExpression) left.policy, (TestExpression) right.policy);
+
+    public TestExpression disambiguate() {
+        TestExpression l = left.disambiguate();
+        TestExpression r = right.disambiguate();
+        return new ConcatTest(l, r);
     }
 }

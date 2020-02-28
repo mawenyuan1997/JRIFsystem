@@ -6,6 +6,6 @@ import jif.ast.PolicyNode;
 
 public interface RifPolicyNode extends PolicyNode {
 
-    public List<RifComponentNode> components();
+
 
 }

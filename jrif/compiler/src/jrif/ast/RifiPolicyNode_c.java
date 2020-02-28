@@ -31,27 +31,6 @@ public class RifiPolicyNode_c extends PolicyNode_c implements RifiPolicyNode {
         this.components = components;
     }
 
-    @Override
-    public List<RifComponentNode> components() {
-        return this.components;
-    }
-
-    protected RifiPolicyNode_c reconstruct(List<RifComponentNode> components) {
-        if (!CollectionUtil.equals(components, this.components)) {
-            RifiPolicyNode_c n = (RifiPolicyNode_c) copy();
-            n.components = ListUtil.copy(components, true);
-            return n;
-        }
-
-        return this;
-    }
-
-    @Override
-    public Node visitChildren(NodeVisitor v) {
-        List<RifComponentNode> lnew = visitList(this.components, v);
-        return reconstruct(lnew);
-    }
-
     protected Policy producePolicy(JrifTypeSystem ts,
             List<RifComponent> components) {
         return ts.rifwriterPolicy(position(), new RifFSM_c(components));
@@ -62,33 +41,13 @@ public class RifiPolicyNode_c extends PolicyNode_c implements RifiPolicyNode {
         JrifTypeSystem ts = (JrifTypeSystem) ar.typeSystem();
         List<RifComponent> l = new LinkedList<RifComponent>();
 
-        for (RifComponentNode c : this.components) {
-            if (!c.isDisambiguated()) {
-                ar.job().extensionInfo().scheduler().currentGoal()
-                        .setUnreachableThisRun();
-                return this;
-            }
-            if (c instanceof RifStateNode) {
-                l.add(((RifStateNode) c).state());
-            } else if (c instanceof RifTransitionNode) {
-                l.add(((RifTransitionNode) c).transition());
-            }
-        }
+
         this.policy = producePolicy(ts, l);
         return this;
     }
 
     @Override
     public void prettyPrint(CodeWriter w, PrettyPrinter tr) {
-
-        Iterator<RifComponentNode> ic = this.components.iterator();
-        while (ic.hasNext()) {
-            RifComponentNode c = ic.next();
-            print(c, w, tr);
-            if (ic.hasNext()) {
-                w.write(",");
-            }
-        }
 
     }
 

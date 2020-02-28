@@ -1,5 +1,6 @@
 package jrif.ast;
 
+import KAT.TestExpression;
 import polyglot.ast.Expr;
 import polyglot.util.Position;
 
@@ -16,5 +17,9 @@ public class KatAtomNode extends KatTestNode{
     public KatAtomNode(Position pos, List l) {
         super(pos);
         principalList = l;
+    }
+
+    public TestExpression disambiguate() {
+
     }
 }

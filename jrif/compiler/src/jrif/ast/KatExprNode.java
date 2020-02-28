@@ -10,5 +10,4 @@ public abstract class KatExprNode extends Node_c {
         super(pos,null);
     }
 
-    public abstract void disambiguate();
 }

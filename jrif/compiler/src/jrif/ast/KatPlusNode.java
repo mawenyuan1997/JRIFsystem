@@ -1,5 +1,7 @@
 package jrif.ast;
 
+import KAT.KATexpression;
+import KAT.PlusExpression;
 import polyglot.util.Position;
 
 public class KatPlusNode extends KatExprNode {
@@ -9,5 +11,11 @@ public class KatPlusNode extends KatExprNode {
         super(pos);
         left = e1;
         right = e2;
+    }
+
+    public KATexpression disambiguate() {
+        KATexpression l = left.disambiguate();
+        KATexpression r = right.disambiguate();
+        return new PlusExpression(l, r);
     }
 }

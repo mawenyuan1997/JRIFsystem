@@ -1,7 +1,9 @@
 package jrif.ast;
 
 import KAT.ConcatExpression;
+import KAT.KATexpression;
 import polyglot.util.Position;
+import polyglot.visit.AmbiguityRemover;
 
 public class KatConcatNode extends KatExprNode {
 
@@ -13,9 +15,9 @@ public class KatConcatNode extends KatExprNode {
     }
 
     @Override
-    public void disambiguate() {
-        left.disambiguate();
-        right.disambiguate();
-        this.policy = new ConcatExpression(left.policy, right.policy);
+    public KATexpression disambiguate(AmbiguityRemover sc) {
+        KATexpression l = left.disambiguate(sc);
+        KATexpression r = right.disambiguate(sc);
+        return new ConcatExpression(l, r);
     }
 }
