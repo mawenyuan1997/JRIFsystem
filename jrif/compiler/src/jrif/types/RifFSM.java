@@ -12,16 +12,17 @@ import polyglot.ast.Id;
 import polyglot.types.SemanticException;
 import polyglot.types.Type;
 import polyglot.types.TypeSystem;
+import utility.SymDFA;
 
 public interface RifFSM extends Serializable {
 
-    RifFSMstate currentState();
+    //RifFSMstate currentState();
 
-    RifFSM takeTransition(Id action);
+    SymDFA takeTransition(Id action);
 
     boolean equalsFSM(RifFSM other, List<String> visited);
 
-    boolean leqFSM(RifFSM other, List<String> visited);
+    boolean leqFSM(SymDFA other, List<String> visited);
 
     boolean isCanonical();
 
@@ -40,7 +41,7 @@ public interface RifFSM extends Serializable {
 
     PathMap labelCheck(JifContext A, LabelChecker lc);
 
-    Map<String, RifFSMstate> states();
+    //Map<String, RifFSMstate> states();
 
     boolean isBottom(List<String> newvisited);
 

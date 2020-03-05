@@ -1,8 +1,5 @@
 package utility;
 
-import KAT.Action;
-import KAT.ConcatExpression;
-import KAT.KATexpression;
 import SyKAT.BDD.BDD;
 import SyKAT.BDD.BDDTree;
 import SyKAT.BDD.Node;
@@ -10,12 +7,20 @@ import SyKAT.BDD.Operator;
 import SyKAT.SyKATexpression;
 import SyKAToperator.Delta;
 import SyKAToperator.Epsilon;
+import jif.types.JifContext;
+import jif.types.LabelSubstitution;
+import jif.types.PathMap;
+import jif.visit.LabelChecker;
+import jrif.types.RifFSM;
+import polyglot.ast.Id;
+import polyglot.types.SemanticException;
+import polyglot.types.Type;
+import polyglot.types.TypeSystem;
 
 import java.util.*;
 
-import static SyKAT.BDD.BooleanBDDutil.singleBooleanBDD;
 
-public class SymDFA {
+public class SymDFA implements RifFSM {
 
     public Util util;
     public HashMap<State, BDD<State>> transition; // map a state to its delta tree
@@ -235,6 +240,66 @@ public class SymDFA {
             product(xTree, yTree, xIndex, y.low, queue);
             product(xTree, yTree, xIndex, y.high, queue);
         }
+    }
+
+    @Override
+    public SymDFA takeTransition(Id action) {
+        return null;
+    }
+
+    @Override
+    public boolean equalsFSM(RifFSM other, List<String> visited) {
+        return false;
+    }
+
+    @Override
+    public boolean leqFSM(RifFSM other, List<String> visited) {
+        return false;
+    }
+
+    @Override
+    public boolean isCanonical() {
+        return false;
+    }
+
+    @Override
+    public boolean isRuntimeRepresentable() {
+        return false;
+    }
+
+    @Override
+    public List<Type> throwTypes(TypeSystem ts) {
+        return null;
+    }
+
+    @Override
+    public boolean isBottomConfidentiality() {
+        return false;
+    }
+
+    @Override
+    public boolean isTopConfidentiality() {
+        return false;
+    }
+
+    @Override
+    public RifFSM subst(LabelSubstitution substitution) throws SemanticException {
+        return null;
+    }
+
+    @Override
+    public PathMap labelCheck(JifContext A, LabelChecker lc) {
+        return null;
+    }
+
+    @Override
+    public boolean isBottom(List<String> newvisited) {
+        return false;
+    }
+
+    @Override
+    public boolean isTop(List<String> visited) {
+        return false;
     }
 }
 

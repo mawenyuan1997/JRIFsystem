@@ -1,7 +1,12 @@
 package jrif.ast;
 
 import KAT.ConcatExpression;
+import KAT.ConcatTest;
 import KAT.KATexpression;
+import KAT.TestExpression;
+import jrif.types.KatExprType;
+import polyglot.ast.Node;
+import polyglot.types.SemanticException;
 import polyglot.util.Position;
 import polyglot.visit.AmbiguityRemover;
 
@@ -15,9 +20,10 @@ public class KatConcatNode extends KatExprNode {
     }
 
     @Override
-    public KATexpression disambiguate(AmbiguityRemover sc) {
-        KATexpression l = left.disambiguate(sc);
-        KATexpression r = right.disambiguate(sc);
-        return new ConcatExpression(l, r);
+    public Node disambiguate(AmbiguityRemover ar) throws SemanticException {
+        KatExprType l = ((KatExprNode) left.disambiguate(ar)).getType();
+        KatExprType r = ((KatExprNode) right.disambiguate(ar)).getType();
+        this.type = new KatExprType(new ConcatTest((TestExpression) l.getExpr(), (TestExpression) r.getExpr()));
+        return this;
     }
 }

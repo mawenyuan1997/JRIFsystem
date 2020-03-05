@@ -23,12 +23,11 @@ import polyglot.visit.PrettyPrinter;
 
 public class RifiPolicyNode_c extends PolicyNode_c implements RifiPolicyNode {
     private static final long serialVersionUID = SerialVersionUID.generate();
+    private KatExprNode katExprNode;
 
-    protected List<RifComponentNode> components;
-
-    public RifiPolicyNode_c(Position pos, List<RifComponentNode> components) {
+    public RifiPolicyNode_c(Position pos, KatExprNode expr) {
         super(pos, (Policy) null); //this is not very principled!
-        this.components = components;
+        this.katExprNode = expr;
     }
 
     protected Policy producePolicy(JrifTypeSystem ts,

@@ -4,6 +4,7 @@ import KAToperator.KATexpressionVisitor;
 
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.List;
 
 public class Action implements KATexpression{
 
@@ -12,6 +13,8 @@ public class Action implements KATexpression{
     public Action(String[] primActionlist) {
         this.primActions = new HashSet<>(Arrays.asList(primActionlist));
     }
+
+    public Action(List<String> primActionlist) { this.primActions = new HashSet<>(primActionlist); }
 
     @Override
     public Object accept(KATexpressionVisitor visitor) {

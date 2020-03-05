@@ -2,7 +2,12 @@ package jrif.ast;
 
 import KAT.KATexpression;
 import KAT.StarExpression;
+import KAT.TestExpression;
+import jrif.types.KatExprType;
+import polyglot.ast.Node;
+import polyglot.types.SemanticException;
 import polyglot.util.Position;
+import polyglot.visit.AmbiguityRemover;
 
 public class KatStarNode extends KatExprNode {
 
@@ -12,8 +17,10 @@ public class KatStarNode extends KatExprNode {
         expr = e;
     }
 
-    public KATexpression disambiguate() {
-        KATexpression l = expr.disambiguate();
-        return new StarExpression(l);
+    @Override
+    public Node disambiguate(AmbiguityRemover ar) throws SemanticException {
+        KatExprType t = ((KatExprNode) expr.disambiguate(ar)).getType();
+        this.type = new KatExprType(new StarExpression(t.getExpr()));
+        return this;
     }
 }

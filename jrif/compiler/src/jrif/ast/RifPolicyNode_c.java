@@ -1,35 +1,29 @@
 package jrif.ast;
 
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
+import jrif.types.KatExprType;
 import utility.Util;
 
 import KAT.KATexpression;
 import SyKAT.SyKATexpression;
 import jrif.types.JrifTypeSystem;
-import jrif.types.RifComponent;
-import jrif.types.RifFSM_c;
 import jif.ast.PolicyNode_c;
 import jif.types.label.Policy;
 import polyglot.ast.Node;
 import polyglot.types.SemanticException;
 import polyglot.util.CodeWriter;
-import polyglot.util.CollectionUtil;
-import polyglot.util.ListUtil;
 import polyglot.util.Position;
 import polyglot.util.SerialVersionUID;
 import polyglot.visit.AmbiguityRemover;
-import polyglot.visit.NodeVisitor;
 import polyglot.visit.PrettyPrinter;
 import utility.SymDFA;
+
+import static MetaData.Info.util;
 
 public class RifPolicyNode_c extends PolicyNode_c implements RifPolicyNode {
     private static final long serialVersionUID = SerialVersionUID.generate();
     private KatExprNode child;
-    private KATexpression policy;
+    private Policy policy;
     private SymDFA automata;
-    private Util util;
 
     public RifPolicyNode_c(Position pos, KatExprNode expr) {
         super(pos, (Policy) null); //this is not very principled!
@@ -46,8 +40,8 @@ public class RifPolicyNode_c extends PolicyNode_c implements RifPolicyNode {
     @Override
     public Node disambiguate(AmbiguityRemover ar) throws SemanticException {
         JrifTypeSystem ts = (JrifTypeSystem) ar.typeSystem();
-        KATexpression expr = child.disambiguate();
-        this.policy = producePolicy(ts, expr);
+        KatExprType expr = ((KatExprNode) child.disambiguate(ar)).getType();
+        this.policy = producePolicy(ts, expr.getExpr());
         return this;
     }
 

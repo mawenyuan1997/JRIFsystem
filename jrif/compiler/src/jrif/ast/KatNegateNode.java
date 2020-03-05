@@ -2,7 +2,11 @@ package jrif.ast;
 
 import KAT.NegateTest;
 import KAT.TestExpression;
+import jrif.types.KatExprType;
+import polyglot.ast.Node;
+import polyglot.types.SemanticException;
 import polyglot.util.Position;
+import polyglot.visit.AmbiguityRemover;
 
 public class KatNegateNode extends KatTestNode {
     KatTestNode test;
@@ -11,8 +15,11 @@ public class KatNegateNode extends KatTestNode {
         test = b;
     }
 
-    public TestExpression disambiguate() {
-        TestExpression t = test.disambiguate();
-        return new NegateTest(t);
+    public Node disambiguate(AmbiguityRemover ar) throws SemanticException {
+        KatExprType t = ((KatExprNode) test.disambiguate(ar)).getType();
+        if (!(t.getExpr() instanceof TestExpression))
+            throw new SemanticException();
+        this.type = new KatExprType(new NegateTest((TestExpression) t.getExpr()));
+        return this;
     }
 }

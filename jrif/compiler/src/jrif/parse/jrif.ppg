@@ -33,7 +33,7 @@ terminal Token ZERO;
 
 non terminal RifPolicyNode rif_label;
 non terminal RifPolicyNode rifi_label;
-non terminal KatExprNode policy;
+non terminal KatExprNode policy, kat_expr;
 non terminal KatTestNode boolean;
 non terminal List principal_set;
 
@@ -50,14 +50,13 @@ extend label_component ::=
     ;
 
 rif_label ::= 
-     RIF COLON policy:a 
-     {:RESULT = null; :}  //   1. invoke conversion  2. create ast (automata)
-                          //   TODO
+     RIF COLON kat_expr:a
+     {:RESULT = new RifPolicyNode(parser.pos(a), kat_expr); :}
    ;
 
 rifi_label ::= 
-     RIFI COLON policy:a 
-     {:RESULT = null; :}  // TODO
+     RIFI COLON kat_expr:a
+     {:RESULT = new RifPolicyNode(parser.pos(a), kat_expr); :}
    ;
    
 principal_set ::=
@@ -69,18 +68,18 @@ principal_set ::=
             {: RESULT = a; :}
     ;
 
-policy ::= 
-      policy:p1 PLUS policy:p2        {: RESULT = new KatPlusNode(parser.pos(p1,p2), p1, p2); :}
-    | policy:p1 XOR policy:p2         {: RESULT = new KatConcatNode(parser.pos(p1,p2), p1, p2); :}
-    | policy:p MULT                   {: RESULT = new KatStarNode(parser.pos(p), p); :}
-    | LPAREN policy:p RPAREN          {: RESULT = p; :}
-    | boolean:b                       {: RESULT = b; :}
-    | IDENTIFIER:p                    {: RESULT = new KatActionNode(parser.pos(p), p.getIdentifier()); :}
+kat_expr ::=
+      kat_expr:p1 PLUS kat_expr:p2        {: RESULT = new KatPlusNode(parser.pos(p1,p2), p1, p2); :}
+    | kat_expr:p1 XOR kat_expr:p2         {: RESULT = new KatConcatNode(parser.pos(p1,p2), p1, p2); :}
+    | kat_expr:p MULT                   {: RESULT = new KatStarNode(parser.pos(p), p); :}
+    | LPAREN kat_expr:p RPAREN          {: RESULT = p; :}
+    | boolean:b                        {: RESULT = b; :}
+    | IDENTIFIER:p                     {: RESULT = new KatActionNode(parser.pos(p), p.getIdentifier()); :}
     ;
 
 boolean ::=
       principal_set:p                 {: RESULT = new KatAtomNode(parser.pos(p), p); :}
-    | accesspath_no_id:p              {: RESULT = new KatAtomNode(parser.pos(p), p); :}
+    //| accesspath_no_id:p              {: RESULT = new KatAtomNode(parser.pos(p), p); :}
     | ZERO:p                          {: RESULT = new KatZeroNode(parser.pos(p)); :}
     | ONE:p                           {: RESULT = new KatOneNode(parser.pos(p)); :}
     | boolean:b1 OR boolean:b2        {: RESULT = new KatOrNode(parser.pos(b1,b2), b1, b2); :}

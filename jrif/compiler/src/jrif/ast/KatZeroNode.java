@@ -2,14 +2,20 @@ package jrif.ast;
 
 import KAT.TestExpression;
 import KAT.ZeroTest;
+import jrif.types.KatExprType;
+import polyglot.ast.Node;
+import polyglot.types.SemanticException;
 import polyglot.util.Position;
+import polyglot.visit.AmbiguityRemover;
 
 public class KatZeroNode extends KatTestNode {
     public KatZeroNode(Position pos) {
         super(pos);
     }
 
-    public TestExpression disambiguate() {
-        return new ZeroTest();
+    @Override
+    public Node disambiguate(AmbiguityRemover ar) throws SemanticException {
+        this.type = new KatExprType(new ZeroTest());
+        return this;
     }
 }

@@ -26,17 +26,18 @@ import polyglot.types.TypeObject;
 import polyglot.types.TypeSystem;
 import polyglot.util.Position;
 import polyglot.util.SerialVersionUID;
+import utility.SymDFA;
 
 /** An implementation of the <code>PolicyLabel</code> interface.
  */
-public class RifReaderPolicy_c extends Policy_c implements RifConfPolicy {
+public class RifReaderPolicy_c extends Policy_c implements RifConfPolicy{
     private static final long serialVersionUID = SerialVersionUID.generate();
 
-    private RifFSM fsm;
+    private SymDFA fsm;
 
-    public RifReaderPolicy_c(RifFSM fsm, JifTypeSystem ts, Position pos) {
+    public RifReaderPolicy_c(SymDFA dfa, JifTypeSystem ts, Position pos) {
         super(ts, pos);
-        this.fsm = fsm;
+        this.fsm = dfa;
     }
 
     @Override
@@ -44,15 +45,8 @@ public class RifReaderPolicy_c extends Policy_c implements RifConfPolicy {
         return true;
     }
 
-    public RifFSM getFSM() {
+    public SymDFA getFSM() {
         return this.fsm;
-    }
-
-    @Override
-    public Set<RifFSM> getFSMs() {
-        Set<RifFSM> l = new LinkedHashSet<RifFSM>();
-        l.add(this.fsm);
-        return l;
     }
 
     @Override
@@ -67,9 +61,14 @@ public class RifReaderPolicy_c extends Policy_c implements RifConfPolicy {
 
     @Override
     public RifConfPolicy takeTransition(Id action) {
-        RifFSM newfsm = this.fsm.takeTransition(action);
+        SymDFA newfsm = this.fsm.takeTransition(action);
         return new RifReaderPolicy_c(newfsm, (JifTypeSystem) this.ts,
                 this.position);
+    }
+
+    @Override
+    public Set<RifFSM> getFSMs() {
+        return null;
     }
 
     @Override
