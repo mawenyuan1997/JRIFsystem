@@ -19,7 +19,6 @@ import jif.types.label.ReaderPolicy;
 import jif.types.label.WriterPolicy;
 import jif.types.principal.Principal;
 import jrif.types.RifFSM;
-import jrif.types.RifFSMstate;
 import jrif.types.label.RifConfPolicy;
 import jrif.types.label.RifIntegPolicy;
 import jrif.types.label.RifJoinConfPolicy_c;
@@ -38,18 +37,18 @@ public class JrifLabelTypeCheckUtil extends LabelTypeCheckUtil{
 	 public void typeCheckFSM(TypeChecker tc, Set<RifFSM> fsms)
 	            throws SemanticException {
 
-	        for (RifFSM fsm : fsms) {
-	            Map<String, RifFSMstate> states = fsm.states();
-	            List<Principal> principals;
-	            for (Entry<String, RifFSMstate> pair : states.entrySet()) {
-	                principals = pair.getValue().principals();
-	                if (principals != null) {
-	                    for (Principal p : principals) {
-	                        typeCheckPrincipal(tc, p);
-	                    }
-	                }
-	            }
-	        }
+//	        for (RifFSM fsm : fsms) {
+//	            Map<String, RifFSMstate> states = fsm.states();
+//	            List<Principal> principals;
+//	            for (Entry<String, RifFSMstate> pair : states.entrySet()) {
+//	                principals = pair.getValue().principals();
+//	                if (principals != null) {
+//	                    for (Principal p : principals) {
+//	                        typeCheckPrincipal(tc, p);
+//	                    }
+//	                }
+//	            }
+//	        }
 	    }
 	 
 	 @Override

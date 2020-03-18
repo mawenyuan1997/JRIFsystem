@@ -6,11 +6,11 @@ package jrif.parse;
 import jrif.types.JrifTypeSystem;
 import jrif.ast.*;
 import jif.parse.*;
-import KAT.*;
-import KAToperator.*;
-import SyKAT.*;
-import SyKAToperator.*;
-import utility.*;
+import KATautomata.KAT.*;
+import KATautomata.KAToperator.*;
+import KATautomata.SyKAT.*;
+import KATautomata.SyKAToperator.*;
+import KATautomata.utility.*;
 
 parser Grm extends jif.parse.Grm {:
     public final JrifTypeSystem ts;
@@ -32,8 +32,8 @@ terminal Token ZERO;
 
 
 non terminal RifPolicyNode rif_label;
-non terminal RifPolicyNode rifi_label;
-non terminal KatExprNode policy, kat_expr;
+non terminal RifiPolicyNode rifi_label;
+non terminal KatExprNode kat_expr;
 non terminal KatTestNode boolean;
 non terminal List principal_set;
 
@@ -49,16 +49,16 @@ extend label_component ::=
             {: RESULT = a; :}
     ;
 
-rif_label ::= 
+rif_label ::=
      RIF COLON kat_expr:a
-     {:RESULT = new RifPolicyNode(parser.pos(a), kat_expr); :}
+     {:RESULT = new RifPolicyNode_c(parser.pos(a), a); :}
    ;
 
-rifi_label ::= 
+rifi_label ::=
      RIFI COLON kat_expr:a
-     {:RESULT = new RifPolicyNode(parser.pos(a), kat_expr); :}
+     {:RESULT = new RifiPolicyNode_c(parser.pos(a), a); :}
    ;
-   
+
 principal_set ::=
          LBRACE:x RBRACE:y
             {: List l = new LinkedList<PrincipalNode>();

@@ -19,7 +19,6 @@ import jif.types.label.WriterPolicy;
 import jif.types.principal.Principal;
 import jrif.types.RifFSM;
 import jrif.types.JrifTypeSystem;
-import jrif.types.RifFSMstate;
 import jrif.types.label.RifJoinConfPolicy;
 import jrif.types.label.RifJoinIntegPolicy;
 import jrif.types.label.RifReaderPolicy_c;
@@ -61,7 +60,7 @@ public class JrifPairLabelToJavaExpr_c extends PairLabelToJavaExpr_c{
                     .position(Position.compilerGenerated(
                             p.toString() + ":" + p.position().toString()));
         }
-        
+/*        TODO
         if (p instanceof RifJoinConfPolicy && p.isSingleton()) {
             String curr = null;
             RifJoinConfPolicy policy = (RifJoinConfPolicy) p;
@@ -251,7 +250,7 @@ public class JrifPairLabelToJavaExpr_c extends PairLabelToJavaExpr_c{
             }
             return e;
         }
-
+*/
         if (p instanceof RifJoinConfPolicy && !p.isSingleton()) {
             RifJoinConfPolicy jp = (RifJoinConfPolicy) p;
             LinkedList<ConfPolicy> l =

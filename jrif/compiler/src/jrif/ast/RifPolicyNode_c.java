@@ -2,8 +2,8 @@ package jrif.ast;
 
 import jrif.types.KatExprType;
 
-import KAT.KATexpression;
-import SyKAT.SyKATexpression;
+import KATautomata.KAT.KATexpression;
+import KATautomata.SyKAT.SyKATexpression;
 import jrif.types.JrifTypeSystem;
 import jif.ast.PolicyNode_c;
 import jif.types.label.Policy;

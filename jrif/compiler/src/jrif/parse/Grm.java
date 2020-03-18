@@ -25,11 +25,11 @@ import java.util.*;
 import jrif.types.JrifTypeSystem;
 import jrif.ast.*;
 import jif.parse.*;
-import KAT.*;
-import KAToperator.*;
-import SyKAT.*;
-import SyKAToperator.*;
-import utility.*;
+import KATautomata.KAT.*;
+import KATautomata.KAToperator.*;
+import KATautomata.SyKAT.*;
+import KATautomata.SyKAToperator.*;
+import KATautomata.utility.*;
 
 /** CUP v0.11b 20150326 generated parser.
   */
@@ -188,12 +188,12 @@ public class Grm
     "\005\000\002\301\003\000\002\301\005\000\002\301\006" +
     "\000\002\300\003\000\002\300\005\000\002\300\006\000" +
     "\002\300\005\000\002\300\004\000\002\300\007\000\002" +
-    "\300\006\000\002\310\005\000\002\311\005\000\002\315" +
-    "\004\000\002\315\005\000\002\313\005\000\002\313\005" +
-    "\000\002\313\004\000\002\313\005\000\002\313\003\000" +
-    "\002\313\003\000\002\314\003\000\002\314\003\000\002" +
-    "\314\003\000\002\314\005\000\002\314\005\000\002\314" +
-    "\005\000\002\314\004" });
+    "\300\006\000\002\310\005\000\002\311\005\000\002\314" +
+    "\004\000\002\314\005\000\002\312\005\000\002\312\005" +
+    "\000\002\312\004\000\002\312\005\000\002\312\003\000" +
+    "\002\312\003\000\002\313\003\000\002\313\003\000\002" +
+    "\313\003\000\002\313\005\000\002\313\005\000\002\313" +
+    "\005\000\002\313\004" });
 
   /** Access to production table. */
   @Override
@@ -2856,21 +2856,21 @@ public class Grm
     "\u0149\260\u014c\001\001\000\002\001\001\000\002\001\001" +
     "\000\002\001\001\000\002\001\001\000\002\001\001\000" +
     "\002\001\001\000\002\001\001\000\002\001\001\000\002" +
-    "\001\001\000\010\313\u0125\314\u0128\315\u012c\001\001\000" +
-    "\002\001\001\000\006\314\u0146\315\u012c\001\001\000\002" +
-    "\001\001\000\002\001\001\000\006\314\u0140\315\u012c\001" +
-    "\001\000\002\001\001\000\010\313\u0139\314\u0128\315\u012c" +
+    "\001\001\000\010\312\u0125\313\u0128\314\u012c\001\001\000" +
+    "\002\001\001\000\006\313\u0146\314\u012c\001\001\000\002" +
+    "\001\001\000\002\001\001\000\006\313\u0140\314\u012c\001" +
+    "\001\000\002\001\001\000\010\312\u0139\313\u0128\314\u012c" +
     "\001\001\000\002\001\001\000\002\001\001\000\014\254" +
     "\u0131\256\u0116\260\235\261\u0122\262\u0133\001\001\000\002" +
     "\001\001\000\002\001\001\000\002\001\001\000\002\001" +
     "\001\000\002\001\001\000\012\254\u0136\256\u0116\260\235" +
     "\261\u0122\001\001\000\002\001\001\000\002\001\001\000" +
     "\010\256\u0138\260\235\261\u0122\001\001\000\002\001\001" +
-    "\000\002\001\001\000\002\001\001\000\010\313\u013f\314" +
-    "\u0128\315\u012c\001\001\000\002\001\001\000\010\313\u013e" +
-    "\314\u0128\315\u012c\001\001\000\002\001\001\000\002\001" +
-    "\001\000\002\001\001\000\002\001\001\000\006\314\u0145" +
-    "\315\u012c\001\001\000\006\314\u0144\315\u012c\001\001\000" +
+    "\000\002\001\001\000\002\001\001\000\010\312\u013f\313" +
+    "\u0128\314\u012c\001\001\000\002\001\001\000\010\312\u013e" +
+    "\313\u0128\314\u012c\001\001\000\002\001\001\000\002\001" +
+    "\001\000\002\001\001\000\002\001\001\000\006\313\u0145" +
+    "\314\u012c\001\001\000\006\313\u0144\314\u012c\001\001\000" +
     "\002\001\001\000\002\001\001\000\002\001\001\000\026" +
     "\251\u0148\252\u0123\253\u0118\254\u010f\255\u0119\256\u0116\260" +
     "\235\261\u0122\310\u0112\311\u0110\001\001\000\002\001\001" +
@@ -2884,7 +2884,7 @@ public class Grm
     "\001\000\002\001\001\000\002\001\001\000\002\001\001" +
     "\000\002\001\001\000\002\001\001\000\002\001\001\000" +
     "\012\254\u0161\256\u0116\260\235\261\u0122\001\001\000\002" +
-    "\001\001\000\010\313\u0163\314\u0128\315\u012c\001\001\000" +
+    "\001\001\000\010\312\u0163\313\u0128\314\u012c\001\001\000" +
     "\002\001\001\000\002\001\001\000\002\001\001\000\002" +
     "\001\001\000\002\001\001\000\032\247\u0169\250\u011d\251" +
     "\u011e\252\u0123\253\u0118\254\u010f\255\u0119\256\u0116\260\235" +
@@ -8184,7 +8184,7 @@ class CUP$Grm$actions {
         case 381: // label_component ::= rifi_label 
             {
                 Object RESULT = null;
-                RifPolicyNode a = CUP$Grm$stack.peek().<RifPolicyNode> value();
+                RifiPolicyNode a = CUP$Grm$stack.peek().<RifiPolicyNode> value();
                   RESULT = a;  
                 CUP$Grm$result = parser.getSymbolFactory().newSymbol("label_component",167, RESULT);
             }
@@ -9459,9 +9459,7 @@ class CUP$Grm$actions {
             {
                 RifPolicyNode RESULT = null;
                 KatExprNode a = CUP$Grm$stack.peek().<KatExprNode> value();
-                
-                        RESULT = new RifPolicyNode(parser.pos(a), kat_expr); 
-                         
+                 RESULT = new RifPolicyNode_c(parser.pos(a), a);  
                 CUP$Grm$result = parser.getSymbolFactory().newSymbol("rif_label",198, RESULT);
             }
             return CUP$Grm$result;
@@ -9469,10 +9467,10 @@ class CUP$Grm$actions {
         /*. . . . . . . . . . . . . . . . . . . .*/
         case 482: // rifi_label ::= RIFI COLON kat_expr 
             {
-                RifPolicyNode RESULT = null;
+                RifiPolicyNode RESULT = null;
                 KatExprNode a = CUP$Grm$stack.peek().<KatExprNode> value();
                 
-                         RESULT = new RifPolicyNode(parser.pos(a), kat_expr); 
+                         RESULT = new RifiPolicyNode_c(parser.pos(a), a); 
                           
                 CUP$Grm$result = parser.getSymbolFactory().newSymbol("rifi_label",199, RESULT);
             }
@@ -9489,7 +9487,7 @@ class CUP$Grm$actions {
                l.add(parser.nf.CanonicalPrincipalNode(parser.pos(x), parser.ts.topPrincipal(parser.pos(x))));
                RESULT = l; 
                       
-                CUP$Grm$result = parser.getSymbolFactory().newSymbol("principal_set",203, RESULT);
+                CUP$Grm$result = parser.getSymbolFactory().newSymbol("principal_set",202, RESULT);
             }
             return CUP$Grm$result;
 
@@ -9501,7 +9499,7 @@ class CUP$Grm$actions {
                 List a = CUP$Grm$stack.elementAt(CUP$Grm$top-1).<List> value();
                 Token y = CUP$Grm$stack.peek().<Token> value();
                   RESULT = a;  
-                CUP$Grm$result = parser.getSymbolFactory().newSymbol("principal_set",203, RESULT);
+                CUP$Grm$result = parser.getSymbolFactory().newSymbol("principal_set",202, RESULT);
             }
             return CUP$Grm$result;
 
@@ -9514,7 +9512,7 @@ class CUP$Grm$actions {
                 
                                  RESULT = new KatPlusNode(parser.pos(p1,p2), p1, p2); 
                                  
-                CUP$Grm$result = parser.getSymbolFactory().newSymbol("kat_expr",201, RESULT);
+                CUP$Grm$result = parser.getSymbolFactory().newSymbol("kat_expr",200, RESULT);
             }
             return CUP$Grm$result;
 
@@ -9527,7 +9525,7 @@ class CUP$Grm$actions {
                 
                                 RESULT = new KatConcatNode(parser.pos(p1,p2), p1, p2); 
                                 
-                CUP$Grm$result = parser.getSymbolFactory().newSymbol("kat_expr",201, RESULT);
+                CUP$Grm$result = parser.getSymbolFactory().newSymbol("kat_expr",200, RESULT);
             }
             return CUP$Grm$result;
 
@@ -9537,7 +9535,7 @@ class CUP$Grm$actions {
                 KatExprNode RESULT = null;
                 KatExprNode p = CUP$Grm$stack.elementAt(CUP$Grm$top-1).<KatExprNode> value();
                   RESULT = new KatStarNode(parser.pos(p), p);  
-                CUP$Grm$result = parser.getSymbolFactory().newSymbol("kat_expr",201, RESULT);
+                CUP$Grm$result = parser.getSymbolFactory().newSymbol("kat_expr",200, RESULT);
             }
             return CUP$Grm$result;
 
@@ -9547,7 +9545,7 @@ class CUP$Grm$actions {
                 KatExprNode RESULT = null;
                 KatExprNode p = CUP$Grm$stack.elementAt(CUP$Grm$top-1).<KatExprNode> value();
                   RESULT = p;  
-                CUP$Grm$result = parser.getSymbolFactory().newSymbol("kat_expr",201, RESULT);
+                CUP$Grm$result = parser.getSymbolFactory().newSymbol("kat_expr",200, RESULT);
             }
             return CUP$Grm$result;
 
@@ -9557,7 +9555,7 @@ class CUP$Grm$actions {
                 KatExprNode RESULT = null;
                 KatTestNode b = CUP$Grm$stack.peek().<KatTestNode> value();
                   RESULT = b;  
-                CUP$Grm$result = parser.getSymbolFactory().newSymbol("kat_expr",201, RESULT);
+                CUP$Grm$result = parser.getSymbolFactory().newSymbol("kat_expr",200, RESULT);
             }
             return CUP$Grm$result;
 
@@ -9569,7 +9567,7 @@ class CUP$Grm$actions {
                 
                  RESULT = new KatActionNode(parser.pos(p), p.getIdentifier()); 
                  
-                CUP$Grm$result = parser.getSymbolFactory().newSymbol("kat_expr",201, RESULT);
+                CUP$Grm$result = parser.getSymbolFactory().newSymbol("kat_expr",200, RESULT);
             }
             return CUP$Grm$result;
 
@@ -9579,7 +9577,7 @@ class CUP$Grm$actions {
                 KatTestNode RESULT = null;
                 List p = CUP$Grm$stack.peek().<List> value();
                   RESULT = new KatAtomNode(parser.pos(p), p);  
-                CUP$Grm$result = parser.getSymbolFactory().newSymbol("boolean",202, RESULT);
+                CUP$Grm$result = parser.getSymbolFactory().newSymbol("boolean",201, RESULT);
             }
             return CUP$Grm$result;
 
@@ -9589,7 +9587,7 @@ class CUP$Grm$actions {
                 KatTestNode RESULT = null;
                 Token p = CUP$Grm$stack.peek().<Token> value();
                   RESULT = new KatZeroNode(parser.pos(p));  
-                CUP$Grm$result = parser.getSymbolFactory().newSymbol("boolean",202, RESULT);
+                CUP$Grm$result = parser.getSymbolFactory().newSymbol("boolean",201, RESULT);
             }
             return CUP$Grm$result;
 
@@ -9599,7 +9597,7 @@ class CUP$Grm$actions {
                 KatTestNode RESULT = null;
                 Token p = CUP$Grm$stack.peek().<Token> value();
                   RESULT = new KatOneNode(parser.pos(p));  
-                CUP$Grm$result = parser.getSymbolFactory().newSymbol("boolean",202, RESULT);
+                CUP$Grm$result = parser.getSymbolFactory().newSymbol("boolean",201, RESULT);
             }
             return CUP$Grm$result;
 
@@ -9612,7 +9610,7 @@ class CUP$Grm$actions {
                 
                              RESULT = new KatOrNode(parser.pos(b1,b2), b1, b2); 
                              
-                CUP$Grm$result = parser.getSymbolFactory().newSymbol("boolean",202, RESULT);
+                CUP$Grm$result = parser.getSymbolFactory().newSymbol("boolean",201, RESULT);
             }
             return CUP$Grm$result;
 
@@ -9625,7 +9623,7 @@ class CUP$Grm$actions {
                 
                               RESULT = new KatAndNode(parser.pos(b1,b2), b1, b2); 
                               
-                CUP$Grm$result = parser.getSymbolFactory().newSymbol("boolean",202, RESULT);
+                CUP$Grm$result = parser.getSymbolFactory().newSymbol("boolean",201, RESULT);
             }
             return CUP$Grm$result;
 
@@ -9635,7 +9633,7 @@ class CUP$Grm$actions {
                 KatTestNode RESULT = null;
                 KatTestNode b = CUP$Grm$stack.elementAt(CUP$Grm$top-1).<KatTestNode> value();
                   RESULT = b;  
-                CUP$Grm$result = parser.getSymbolFactory().newSymbol("boolean",202, RESULT);
+                CUP$Grm$result = parser.getSymbolFactory().newSymbol("boolean",201, RESULT);
             }
             return CUP$Grm$result;
 
@@ -9645,7 +9643,7 @@ class CUP$Grm$actions {
                 KatTestNode RESULT = null;
                 KatTestNode b = CUP$Grm$stack.peek().<KatTestNode> value();
                   RESULT = new KatNegateNode(parser.pos(b), b);  
-                CUP$Grm$result = parser.getSymbolFactory().newSymbol("boolean",202, RESULT);
+                CUP$Grm$result = parser.getSymbolFactory().newSymbol("boolean",201, RESULT);
             }
             return CUP$Grm$result;
 

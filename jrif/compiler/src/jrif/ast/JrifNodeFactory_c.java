@@ -31,48 +31,7 @@ public class JrifNodeFactory_c extends JifNodeFactory_c implements JrifNodeFacto
         n = del(n, delFactory().delExpr());
         return n;
     }
-    
 
-
-    public RifTransitionNode RifTransitionNode(Position pos, Id name,
-            Id lstate, Id rstate) {
-        RifTransitionNode n =
-                new RifTransitionNode_c(pos, name, lstate, rstate);
-        n = ext(n, jrifExtFactory().extRifTransitionNode());
-        n = del(n, delFactory().delExpr());
-        return n;
-    }
-    
-    
-
-    public RifStateNode RifStateNode(Position pos, Id name,
-            List<PrincipalNode> principals, String current) {
-        RifStateNode n = new RifStateNode_c(pos, name, principals, current);
-        n = ext(n, jrifExtFactory().extRifStateNode());
-        n = del(n, delFactory().delExpr());
-        return n;
-    }
-    
-
-
-    public RifPolicyNode RifPolicyNode(Position pos,
-            List<RifComponentNode> components) {
-        RifPolicyNode n = new RifPolicyNode_c(pos, components);
-        n = ext(n, jrifExtFactory().extRifPolicyNode());
-        n = del(n, delFactory().delExpr());
-        return n;
-    }
-
-
-    @Override
-    public RifiPolicyNode RifiPolicyNode(Position pos,
-            List<RifComponentNode> components) {
-        RifiPolicyNode n = new RifiPolicyNode_c(pos, components);
-        n = ext(n, jrifExtFactory().extRifiPolicyNode());
-        n = del(n, delFactory().delExpr());
-        return n;
-    }
-    
     @Override
     public AmbRifDynamicLabelNode AmbRifDynamicLabelNode(Position pos, Id name,
             LabelNode lbl) {
