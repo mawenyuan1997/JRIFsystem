@@ -1,6 +1,5 @@
 package jrif.types.label;
 
-import java.util.LinkedHashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
@@ -26,7 +25,7 @@ import polyglot.types.TypeObject;
 import polyglot.types.TypeSystem;
 import polyglot.util.Position;
 import polyglot.util.SerialVersionUID;
-import utility.SymDFA;
+import KATautomata.utility.SymDFA;
 
 /** An implementation of the <code>PolicyLabel</code> interface.
  */

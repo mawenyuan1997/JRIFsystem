@@ -1,5 +1,5 @@
 package jrif.ast;
-import KAT.Action;
+import KATautomata.KAT.Action;
 import jrif.types.KatExprType;
 import polyglot.ast.Node;
 import polyglot.types.SemanticException;

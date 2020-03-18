@@ -2,7 +2,6 @@ package jrif.types;
 
 import java.io.Serializable;
 import java.util.List;
-import java.util.Map;
 
 import jif.types.JifContext;
 import jif.types.LabelSubstitution;
@@ -12,7 +11,7 @@ import polyglot.ast.Id;
 import polyglot.types.SemanticException;
 import polyglot.types.Type;
 import polyglot.types.TypeSystem;
-import utility.SymDFA;
+import KATautomata.utility.SymDFA;
 
 public interface RifFSM extends Serializable {
 
@@ -23,6 +22,8 @@ public interface RifFSM extends Serializable {
     boolean equalsFSM(RifFSM other, List<String> visited);
 
     boolean leqFSM(SymDFA other, List<String> visited);
+
+    boolean leqFSM(RifFSM other, List<String> visited);
 
     boolean isCanonical();
 

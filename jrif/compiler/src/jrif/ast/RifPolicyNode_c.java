@@ -1,7 +1,6 @@
 package jrif.ast;
 
 import jrif.types.KatExprType;
-import utility.Util;
 
 import KAT.KATexpression;
 import SyKAT.SyKATexpression;
@@ -15,7 +14,7 @@ import polyglot.util.Position;
 import polyglot.util.SerialVersionUID;
 import polyglot.visit.AmbiguityRemover;
 import polyglot.visit.PrettyPrinter;
-import utility.SymDFA;
+import KATautomata.utility.SymDFA;
 
 import static MetaData.Info.util;
 

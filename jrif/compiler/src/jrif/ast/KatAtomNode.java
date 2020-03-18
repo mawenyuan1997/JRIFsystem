@@ -1,9 +1,9 @@
 package jrif.ast;
 
-import KAT.ConcatTest;
-import KAT.PrimitiveTest;
-import KAT.TestExpression;
-import KAT.ZeroTest;
+import KATautomata.KAT.ConcatTest;
+import KATautomata.KAT.PrimitiveTest;
+import KATautomata.KAT.TestExpression;
+import KATautomata.KAT.ZeroTest;
 import jrif.types.KatExprType;
 import polyglot.ast.Expr;
 import polyglot.ast.Node;

@@ -1,9 +1,8 @@
 package jrif.types;
 
 import jif.types.JifTypeSystem_c;
-import jrif.types.JrifTypeSystem;
 import polyglot.types.TypeSystem;
-import utility.SymDFA;
+import KATautomata.utility.SymDFA;
 
 //package jrif.types;
 //

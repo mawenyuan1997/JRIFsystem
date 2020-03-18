@@ -1,6 +1,6 @@
 package MetaData;
 
-import utility.Util;
+import KATautomata.utility.Util;
 
 public class Info {
     public static String[] primTests = new String[]{"A", "B", "C"};

@@ -1,5 +1,5 @@
 package jrif.ast;
-import KAT.TestExpression;
+import KATautomata.KAT.TestExpression;
 import polyglot.util.Position;
 
 public abstract class KatTestNode extends KatExprNode{
