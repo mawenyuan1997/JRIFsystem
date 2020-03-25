@@ -253,13 +253,8 @@ public class SymDFA implements RifFSM {
     }
 
     @Override
-    public boolean leqFSM(SymDFA other, List<String> visited) {
-        return false;
-    }
-
-    @Override
     public boolean leqFSM(RifFSM other, List<String> visited) {
-        return false;
+        return isSmallerThan((SymDFA) other);
     }
 
     @Override

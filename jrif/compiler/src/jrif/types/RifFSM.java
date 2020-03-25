@@ -21,8 +21,6 @@ public interface RifFSM extends Serializable {
 
     boolean equalsFSM(RifFSM other, List<String> visited);
 
-    boolean leqFSM(SymDFA other, List<String> visited);
-
     boolean leqFSM(RifFSM other, List<String> visited);
 
     boolean isCanonical();
