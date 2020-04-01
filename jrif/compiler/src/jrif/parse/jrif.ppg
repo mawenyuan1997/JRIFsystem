@@ -11,6 +11,7 @@ import KATautomata.KAToperator.*;
 import KATautomata.SyKAT.*;
 import KATautomata.SyKAToperator.*;
 import KATautomata.utility.*;
+import polyglot.lex.IntegerLiteral;
 
 parser Grm extends jif.parse.Grm {:
     public final JrifTypeSystem ts;
@@ -27,8 +28,7 @@ terminal Token RECLASSIFY;
 terminal Token RIF;
 terminal Token RIFI;
 terminal Token TR;
-terminal Token ONE;
-terminal Token ZERO;
+terminal IntegerLiteral NUMBER;
 
 
 non terminal RifPolicyNode rif_label;
@@ -80,8 +80,15 @@ kat_expr ::=
 boolean ::=
       principal_set:p                 {: RESULT = new KatAtomNode(parser.pos(p), p); :}
     //| accesspath_no_id:p              {: RESULT = new KatAtomNode(parser.pos(p), p); :}
-    | ZERO:p                          {: RESULT = new KatZeroNode(parser.pos(p)); :}
-    | ONE:p                           {: RESULT = new KatOneNode(parser.pos(p)); :}
+    | NUMBER:p                            {:
+                                        int val = p.symbol();
+                                        if (val != 0 && val != 1) {
+                                            parser.report_error ("Expected 0 or 1", parser.pos(p));
+                                            if (true) throw new Exception();
+                                        }
+                                        if (val == 0) RESULT = new KatZeroNode(parser.pos(p));
+                                        else RESULT = new KatOneNode(parser.pos(p));
+                                       :}
     | boolean:b1 OR boolean:b2        {: RESULT = new KatOrNode(parser.pos(b1,b2), b1, b2); :}
     | boolean:b1 AND boolean:b2       {: RESULT = new KatAndNode(parser.pos(b1,b2), b1, b2); :}
     | LBRACK boolean:b RBRACK         {: RESULT = b; :}

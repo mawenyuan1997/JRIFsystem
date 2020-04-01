@@ -52,7 +52,6 @@ public class sym {
   public static final int GOTO = 106;
   public static final int LSHIFTEQ = 88;
   public static final int LEFTARROW = 126;
-  public static final int ONE = 136;
   public static final int CHAR = 7;
   public static final int PLUSPLUS = 59;
   public static final int IMPORT = 24;
@@ -78,7 +77,6 @@ public class sym {
   public static final int EXTENDS = 36;
   public static final int NEW = 58;
   public static final int INSTANCEOF = 74;
-  public static final int ZERO = 137;
   public static final int CALLER = 115;
   public static final int LT = 70;
   public static final int CLASS = 35;
@@ -89,6 +87,7 @@ public class sym {
   public static final int LABEL = 111;
   public static final int TRY = 55;
   public static final int SYNCHRONIZED = 32;
+  public static final int NUMBER = 136;
   public static final int CHARACTER_LITERAL = 101;
   public static final int INVARIANT = 113;
   public static final int FOR = 50;
@@ -283,8 +282,7 @@ public class sym {
   "RIF",
   "RIFI",
   "TR",
-  "ONE",
-  "ZERO"
+  "NUMBER"
   };
 }
 

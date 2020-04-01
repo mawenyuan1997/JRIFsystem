@@ -130,8 +130,6 @@ import java.util.Set;
 	    keywords.put("rif",    new Integer(sym.RIF));
         keywords.put("rifi",    new Integer(sym.RIFI));
 	    keywords.put("tr",    new Integer(sym.TR));
-        keywords.put("1",      new Integer(sym.ONE));
-        keywords.put("0",      new Integer(sym.ZERO));
     }
 
     @Override
