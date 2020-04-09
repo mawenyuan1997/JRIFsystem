@@ -351,8 +351,6 @@ OctalEscape = \\ [0-7]
                     if (i == null) return id();
                     else return key(i.intValue()); }
 
-    "0"            {return key(keywords.get(yytext()));}
-    "1"            {return key(keywords.get(yytext()));}
     /* 3.11 Separators */
     "("    { return op(sym.LPAREN);    }
     ")"    { return op(sym.RPAREN);    }

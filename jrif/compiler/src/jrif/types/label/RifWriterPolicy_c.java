@@ -5,6 +5,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
+import KATautomata.utility.SymDFA;
 import jif.types.JifContext;
 import jif.types.JifTypeSystem;
 import jif.types.LabelSubstitution;
@@ -32,11 +33,11 @@ import polyglot.util.SerialVersionUID;
 public class RifWriterPolicy_c extends Policy_c implements RifIntegPolicy {
     private static final long serialVersionUID = SerialVersionUID.generate();
 
-    private RifFSM fsm;
+    private SymDFA fsm;
 
     public RifWriterPolicy_c(RifFSM fsm, JifTypeSystem ts, Position pos) {
         super(ts, pos);
-        this.fsm = fsm;
+        this.fsm = (SymDFA)fsm;
     }
 
     @Override

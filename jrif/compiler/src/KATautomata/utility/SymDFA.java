@@ -7,6 +7,7 @@ import KATautomata.SyKAT.BDD.Operator;
 import KATautomata.SyKAT.SyKATexpression;
 import KATautomata.SyKAToperator.Delta;
 import KATautomata.SyKAToperator.Epsilon;
+import MetaData.Info;
 import jif.types.JifContext;
 import jif.types.LabelSubstitution;
 import jif.types.PathMap;
@@ -26,11 +27,16 @@ public class SymDFA implements RifFSM {
     public HashMap<State, BDD<State>> transition; // map a state to its delta tree
     public HashMap<State, BDD<Boolean>> states;   // map a state to its epsilon bdd tree
     State initial;
+    State current;
+    SyKATexpression expr;
+
     public SymDFA(Util u, SyKATexpression expr) {
         util = u;
         transition = new HashMap<>();
         states = new HashMap<>();
         initial = new State(expr);
+        current = initial;
+        this.expr = expr;
         addState(initial);
         buildFrom(initial);
     }
@@ -244,7 +250,16 @@ public class SymDFA implements RifFSM {
 
     @Override
     public SymDFA takeTransition(Id action) {
-        return null;
+        int ascii = (int)action.id().charAt(0);
+        boolean[] prims = new boolean[Info.util.numOfAction];
+        for(int i = 0; i< Info.util.numOfAction; i++) {
+            if (ascii % 2 == 1) prims[i] = true;
+            else prims[i] = false;
+            ascii = ascii / 2;
+            if (ascii == 0) break;
+        }
+        current = transition.get(current).execute(prims);
+        return this;
     }
 
     @Override
@@ -301,5 +316,7 @@ public class SymDFA implements RifFSM {
     public boolean isTop(List<String> visited) {
         return false;
     }
+
+    public SyKATexpression getExpr() { return expr;}
 }
 

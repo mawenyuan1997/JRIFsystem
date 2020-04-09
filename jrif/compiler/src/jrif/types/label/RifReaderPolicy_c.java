@@ -34,9 +34,9 @@ public class RifReaderPolicy_c extends Policy_c implements RifConfPolicy{
 
     private SymDFA fsm;
 
-    public RifReaderPolicy_c(SymDFA dfa, JifTypeSystem ts, Position pos) {
+    public RifReaderPolicy_c(RifFSM dfa, JifTypeSystem ts, Position pos) {
         super(ts, pos);
-        this.fsm = dfa;
+        this.fsm = (SymDFA) dfa;
     }
 
     @Override

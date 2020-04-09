@@ -1,5 +1,10 @@
 package jrif.types;
 
+import KATautomata.KAT.*;
+import KATautomata.SyKAT.Concat;
+import KATautomata.SyKAT.Plus;
+import KATautomata.SyKAT.SyKATexpression;
+import MetaData.Info;
 import jif.types.JifTypeSystem_c;
 import polyglot.types.TypeSystem;
 import KATautomata.utility.SymDFA;
@@ -118,8 +123,7 @@ public class JrifTypeSystem_c extends JifTypeSystem_c implements JrifTypeSystem 
 
     @Override
     public Solver createSolver(String solverName) {
-//        return new JrifSolverGLB(this, extInfo.compiler(), solverName);
-        throw new UnsupportedOperationException();
+        return new JrifSolverGLB(this, extInfo.compiler(), solverName);
     }
 
     @Override
@@ -130,12 +134,14 @@ public class JrifTypeSystem_c extends JifTypeSystem_c implements JrifTypeSystem 
 
     @Override
     public RifFSM topfsm(Position pos) {
-        throw new UnsupportedOperationException();
+        SyKATexpression e = Info.util.translate(new ZeroTest());
+        return new SymDFA(Info.util, e);
     }
 //
     @Override
     public RifFSM bottomfsm(Position pos) {
-        throw new UnsupportedOperationException();
+        SyKATexpression e = Info.util.translate(new OneTest());
+        return new SymDFA(Info.util, e);
     }
 
 
@@ -153,7 +159,12 @@ public class JrifTypeSystem_c extends JifTypeSystem_c implements JrifTypeSystem 
 //        RifFSM fsm = new RifFSM_c(states, state);
 //        RifConfPolicy t = new RifReaderPolicy_c(fsm, this, pos);
 //        return t;
-        throw new UnsupportedOperationException();
+
+        PrimitiveTest o = new PrimitiveTest(owner.toString());
+        PrimitiveTest r = new PrimitiveTest(reader.toString());
+        SyKATexpression e = Info.util.translate(new ConcatTest(o, r));
+        SymDFA dfa = new SymDFA(Info.util, e);
+        return new RifReaderPolicy_c(dfa, this, pos);
     }
 
     @Override
@@ -172,7 +183,13 @@ public class JrifTypeSystem_c extends JifTypeSystem_c implements JrifTypeSystem 
 //        RifFSM fsm = new RifFSM_c(states, state);
 //        RifConfPolicy t = new RifReaderPolicy_c(fsm, this, pos);
 //        return t;
-        throw new UnsupportedOperationException();
+        TestExpression o = new PrimitiveTest(owner.toString());
+        for(Principal p : readers) {
+            o = new ConcatTest(o, new PrimitiveTest(p.toString()));
+        }
+        SyKATexpression e = Info.util.translate(o);
+        SymDFA dfa = new SymDFA(Info.util, e);
+        return new RifReaderPolicy_c(dfa, this, pos);
     }
 
     @Override
@@ -189,7 +206,11 @@ public class JrifTypeSystem_c extends JifTypeSystem_c implements JrifTypeSystem 
 //        RifFSM fsm = new RifFSM_c(states, state);
 //        RifIntegPolicy t = new RifWriterPolicy_c(fsm, this, pos);
 //        return t;
-        throw new UnsupportedOperationException();
+        PrimitiveTest o = new PrimitiveTest(owner.toString());
+        PrimitiveTest w = new PrimitiveTest(writer.toString());
+        SyKATexpression e = Info.util.translate(new ConcatTest(o, w));
+        SymDFA dfa = new SymDFA(Info.util, e);
+        return new RifWriterPolicy_c(dfa, this, pos);
     }
 
     @Override
@@ -208,7 +229,15 @@ public class JrifTypeSystem_c extends JifTypeSystem_c implements JrifTypeSystem 
 //        RifFSM fsm = new RifFSM_c(states, state);
 //        RifIntegPolicy t = new RifWriterPolicy_c(fsm, this, pos);
 //        return t;
-        throw new UnsupportedOperationException();
+        TestExpression o = new PrimitiveTest(owner.toString());
+        System.out.println(owner);
+        System.out.println(writers);
+        for(Principal p : writers) {
+            o = new ConcatTest(o, new PrimitiveTest(p.toString()));
+        }
+        SyKATexpression e = Info.util.translate(o);
+        SymDFA dfa = new SymDFA(Info.util, e);
+        return new RifWriterPolicy_c(dfa, this, pos);
     }
 
     @Override
@@ -252,7 +281,7 @@ public class JrifTypeSystem_c extends JifTypeSystem_c implements JrifTypeSystem 
     }
 
 
-    public RifFSM fsmConjunction(RifFSM fsm1, RifFSM fsm2) {
+    public RifFSM fsmConjunction(RifFSM dfa1, RifFSM dfa2) {
 //        HashMap<String, RifFSMstate> states;
 //        RifFSMstate newcurrentstate = null;
 //
@@ -311,10 +340,10 @@ public class JrifTypeSystem_c extends JifTypeSystem_c implements JrifTypeSystem 
 //        }
 
 //        return new RifFSM_c(states, newcurrentstate);
-        throw new UnsupportedOperationException();
+        return new SymDFA(Info.util, new Concat(((SymDFA) dfa1).getExpr(), ((SymDFA) dfa2).getExpr()));
     }
 
-    public RifFSM fsmDisjunction(RifFSM fsm1, RifFSM fsm2) {
+    public RifFSM fsmDisjunction(RifFSM dfa1, RifFSM dfa2) {
 //        HashMap<String, RifFSMstate> states;
 //        RifFSMstate newcurrentstate = null;
 //
@@ -371,17 +400,16 @@ public class JrifTypeSystem_c extends JifTypeSystem_c implements JrifTypeSystem 
 //        }
 //
 //        return new RifFSM_c(states, newcurrentstate);
-        throw new UnsupportedOperationException();
+        return new SymDFA(Info.util, new Plus(((SymDFA) dfa1).getExpr(), ((SymDFA) dfa2).getExpr()));
     }
 
 
     public RifReaderPolicy_c join(RifReaderPolicy_c p1, RifReaderPolicy_c p2) {
-//        RifFSM fsm1 = p1.getFSM();
-//        RifFSM fsm2 = p2.getFSM();
-//        RifFSM newfsm = fsmConjunction(fsm1, fsm2);
-//
-//        return new RifReaderPolicy_c(newfsm, this, p1.position());
-        throw new UnsupportedOperationException();
+        RifFSM fsm1 = p1.getFSM();
+        RifFSM fsm2 = p2.getFSM();
+        RifFSM newfsm = fsmConjunction(fsm1, fsm2);
+
+        return new RifReaderPolicy_c(newfsm, this, p1.position());
     }
 
 
@@ -414,12 +442,11 @@ public class JrifTypeSystem_c extends JifTypeSystem_c implements JrifTypeSystem 
 
     @Override
     public ConfPolicy meet(ConfPolicy p1, ConfPolicy p2) {
-//        RifFSM fsm1 = ((RifReaderPolicy_c)p1).getFSM();
-//        RifFSM fsm2 = ((RifReaderPolicy_c)p2).getFSM();
-//        RifFSM newfsm = fsmDisjunction(fsm1, fsm2);
-//
-//        return new RifReaderPolicy_c(newfsm, this, p1.position());
-        throw new UnsupportedOperationException();
+        RifFSM fsm1 = ((RifReaderPolicy_c)p1).getFSM();
+        RifFSM fsm2 = ((RifReaderPolicy_c)p2).getFSM();
+        RifFSM newfsm = fsmDisjunction(fsm1, fsm2);
+
+        return new RifReaderPolicy_c(newfsm, this, p1.position());
     }
 
     @Override
