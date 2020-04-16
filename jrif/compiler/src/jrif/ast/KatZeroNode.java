@@ -1,6 +1,5 @@
 package jrif.ast;
 
-import KATautomata.KAT.TestExpression;
 import KATautomata.KAT.ZeroTest;
 import jrif.types.KatExprType;
 import polyglot.ast.Node;

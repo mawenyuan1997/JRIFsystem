@@ -2,7 +2,7 @@ package KATautomata.KAT;
 
 import KATautomata.KAToperator.KATexpressionVisitor;
 
-public class PrimitiveTest extends TestExpression {
+public class PrimitiveTest extends TestExpr {
 
     public String id;
 

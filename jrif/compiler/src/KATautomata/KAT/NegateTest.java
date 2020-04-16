@@ -2,11 +2,11 @@ package KATautomata.KAT;
 
 import KATautomata.KAToperator.KATexpressionVisitor;
 
-public class NegateTest extends TestExpression {
+public class NegateTest extends TestExpr {
 
-    public TestExpression test;
+    public TestExpr test;
 
-    public NegateTest(TestExpression expr) {
+    public NegateTest(TestExpr expr) {
         test = expr;
     }
 

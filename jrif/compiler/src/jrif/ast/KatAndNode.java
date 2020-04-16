@@ -1,8 +1,7 @@
 package jrif.ast;
 
 import KATautomata.KAT.ConcatTest;
-import KATautomata.KAT.KATexpression;
-import KATautomata.KAT.TestExpression;
+import KATautomata.KAT.TestExpr;
 import jrif.types.KatExprType;
 import polyglot.ast.Node;
 import polyglot.types.SemanticException;
@@ -21,9 +20,9 @@ public class KatAndNode extends KatTestNode {
     public Node disambiguate(AmbiguityRemover ar) throws SemanticException {
         KatExprType l = ((KatExprNode) left.disambiguate(ar)).getType();
         KatExprType r = ((KatExprNode) right.disambiguate(ar)).getType();
-        if (!(l.getExpr() instanceof TestExpression) || !(r.getExpr() instanceof TestExpression))
+        if (!(l.getExpr() instanceof TestExpr) || !(r.getExpr() instanceof TestExpr))
             throw new SemanticException();
-        this.type = new KatExprType(new ConcatTest((TestExpression) l.getExpr(), (TestExpression) r.getExpr()));
+        this.type = new KatExprType(new ConcatTest((TestExpr) l.getExpr(), (TestExpr) r.getExpr()));
         return this;
     }
 }

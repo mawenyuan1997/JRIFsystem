@@ -2,7 +2,7 @@ package jrif.ast;
 
 import jrif.types.KatExprType;
 
-import KATautomata.KAT.KATexpression;
+import KATautomata.KAT.KatExpr;
 import KATautomata.SyKAT.SyKATexpression;
 import jrif.types.JrifTypeSystem;
 import jif.ast.PolicyNode_c;
@@ -30,7 +30,7 @@ public class RifPolicyNode_c extends PolicyNode_c implements RifPolicyNode {
     }
 
 
-    protected Policy producePolicy(JrifTypeSystem ts, KATexpression expr) {
+    protected Policy producePolicy(JrifTypeSystem ts, KatExpr expr) {
         SyKATexpression sy = util.translate(expr);
         this.automata = new SymDFA(util, sy);
         return ts.rifreaderPolicy(position(), this.automata);

@@ -18,19 +18,19 @@ public class Evaluation implements KATexpressionVisitor {
     }
 
     @Override
-    public Object visit(PlusExpression expr) {
+    public Object visit(PlusExpr expr) {
         return (Boolean) expr.left.accept(this)
                 || (Boolean) expr.right.accept(this);
     }
 
     @Override
-    public Object visit(ConcatExpression expr) {
+    public Object visit(ConcatExpr expr) {
         return (Boolean) expr.left.accept(this)
                 && (Boolean) expr.right.accept(this);
     }
 
     @Override
-    public Object visit(StarExpression expr) {
+    public Object visit(StarExpr expr) {
         return true;
     }
 

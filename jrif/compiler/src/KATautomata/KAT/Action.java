@@ -2,11 +2,10 @@ package KATautomata.KAT;
 
 import KATautomata.KAToperator.KATexpressionVisitor;
 
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 
-public class Action implements KATexpression{
+public class Action implements KatExpr {
 
     public HashSet<String> primActions;
 

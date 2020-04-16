@@ -13,7 +13,6 @@ import polyglot.ast.Cast;
 import polyglot.ast.Expr;
 import polyglot.ast.Field;
 import polyglot.ast.Id;
-import polyglot.ast.Id_c;
 import polyglot.ast.Local;
 import polyglot.ast.NullLit;
 import polyglot.ast.Receiver;
@@ -24,14 +23,9 @@ import polyglot.types.*;
 import polyglot.util.InternalCompilerError;
 import polyglot.util.Position;
 import java.util.Collection;
-import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.LinkedHashSet;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 import jif.ast.DowngradeExpr;
 import jif.ast.LabelExpr;
@@ -160,9 +154,9 @@ public class JrifTypeSystem_c extends JifTypeSystem_c implements JrifTypeSystem 
 //        RifConfPolicy t = new RifReaderPolicy_c(fsm, this, pos);
 //        return t;
 
-        PrimitiveTest o = new PrimitiveTest(owner.toString());
-        PrimitiveTest r = new PrimitiveTest(reader.toString());
-        SyKATexpression e = Info.util.translate(new ConcatTest(o, r));
+        TestExpr o = KatFactory.getPrimTest(owner, true);
+        TestExpr r = KatFactory.getPrimTest(reader, true);
+        SyKATexpression e = Info.util.translate(KatFactory.ConcatTest(o, r));
         SymDFA dfa = new SymDFA(Info.util, e);
         return new RifReaderPolicy_c(dfa, this, pos);
     }
@@ -183,9 +177,9 @@ public class JrifTypeSystem_c extends JifTypeSystem_c implements JrifTypeSystem 
 //        RifFSM fsm = new RifFSM_c(states, state);
 //        RifConfPolicy t = new RifReaderPolicy_c(fsm, this, pos);
 //        return t;
-        TestExpression o = new PrimitiveTest(owner.toString());
+        TestExpr o = KatFactory.getPrimTest(owner, true);
         for(Principal p : readers) {
-            o = new ConcatTest(o, new PrimitiveTest(p.toString()));
+            o = KatFactory.ConcatTest(o, KatFactory.getPrimTest(p, true));
         }
         SyKATexpression e = Info.util.translate(o);
         SymDFA dfa = new SymDFA(Info.util, e);
@@ -206,9 +200,9 @@ public class JrifTypeSystem_c extends JifTypeSystem_c implements JrifTypeSystem 
 //        RifFSM fsm = new RifFSM_c(states, state);
 //        RifIntegPolicy t = new RifWriterPolicy_c(fsm, this, pos);
 //        return t;
-        PrimitiveTest o = new PrimitiveTest(owner.toString());
-        PrimitiveTest w = new PrimitiveTest(writer.toString());
-        SyKATexpression e = Info.util.translate(new ConcatTest(o, w));
+        TestExpr o = KatFactory.getPrimTest(owner, false);
+        TestExpr w = KatFactory.getPrimTest(writer, false);
+        SyKATexpression e = Info.util.translate(KatFactory.ConcatTest(o, w));
         SymDFA dfa = new SymDFA(Info.util, e);
         return new RifWriterPolicy_c(dfa, this, pos);
     }
@@ -229,11 +223,9 @@ public class JrifTypeSystem_c extends JifTypeSystem_c implements JrifTypeSystem 
 //        RifFSM fsm = new RifFSM_c(states, state);
 //        RifIntegPolicy t = new RifWriterPolicy_c(fsm, this, pos);
 //        return t;
-        TestExpression o = new PrimitiveTest(owner.toString());
-        System.out.println(owner);
-        System.out.println(writers);
+        TestExpr o = KatFactory.getPrimTest(owner, false);
         for(Principal p : writers) {
-            o = new ConcatTest(o, new PrimitiveTest(p.toString()));
+            o = KatFactory.ConcatTest(o, KatFactory.getPrimTest(p, false));
         }
         SyKATexpression e = Info.util.translate(o);
         SymDFA dfa = new SymDFA(Info.util, e);

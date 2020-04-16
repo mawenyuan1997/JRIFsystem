@@ -2,11 +2,11 @@ package KATautomata.KAT;
 
 import KATautomata.KAToperator.KATexpressionVisitor;
 
-public class PlusTest extends TestExpression {
+public class PlusTest extends TestExpr {
 
-    public TestExpression left, right;
+    public TestExpr left, right;
 
-    public PlusTest(TestExpression p, TestExpression q) {
+    public PlusTest(TestExpr p, TestExpr q) {
         left = p;
         right = q;
     }

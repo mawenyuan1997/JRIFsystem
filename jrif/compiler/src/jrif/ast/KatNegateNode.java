@@ -1,7 +1,7 @@
 package jrif.ast;
 
 import KATautomata.KAT.NegateTest;
-import KATautomata.KAT.TestExpression;
+import KATautomata.KAT.TestExpr;
 import jrif.types.KatExprType;
 import polyglot.ast.Node;
 import polyglot.types.SemanticException;
@@ -17,9 +17,9 @@ public class KatNegateNode extends KatTestNode {
 
     public Node disambiguate(AmbiguityRemover ar) throws SemanticException {
         KatExprType t = ((KatExprNode) test.disambiguate(ar)).getType();
-        if (!(t.getExpr() instanceof TestExpression))
+        if (!(t.getExpr() instanceof TestExpr))
             throw new SemanticException();
-        this.type = new KatExprType(new NegateTest((TestExpression) t.getExpr()));
+        this.type = new KatExprType(new NegateTest((TestExpr) t.getExpr()));
         return this;
     }
 }

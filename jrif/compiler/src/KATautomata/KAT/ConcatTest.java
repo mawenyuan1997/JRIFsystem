@@ -2,11 +2,11 @@ package KATautomata.KAT;
 
 import KATautomata.KAToperator.KATexpressionVisitor;
 
-public class ConcatTest extends TestExpression {
+public class ConcatTest extends TestExpr {
 
-    public TestExpression left, right;
+    public TestExpr left, right;
 
-    public ConcatTest(TestExpression p, TestExpression q) {
+    public ConcatTest(TestExpr p, TestExpr q) {
         left = p;
         right = q;
     }

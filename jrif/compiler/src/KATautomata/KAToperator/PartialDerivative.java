@@ -20,69 +20,69 @@ public class PartialDerivative implements KATexpressionVisitor{
 
     @Override
     public Object visit(Action expr) {
-        HashSet<KATexpression> singleton = new HashSet<>();
+        HashSet<KatExpr> singleton = new HashSet<>();
         if (expr.id.equals(action))
             singleton.add(new OneTest());
         return singleton;
     }
 
     @Override
-    public Object visit(PlusExpression expr) {
-        HashSet<KATexpression> s = (HashSet<KATexpression>) expr.left.accept(this);
-        s.addAll((HashSet<KATexpression>) expr.right.accept(this));
+    public Object visit(PlusExpr expr) {
+        HashSet<KatExpr> s = (HashSet<KatExpr>) expr.left.accept(this);
+        s.addAll((HashSet<KatExpr>) expr.right.accept(this));
         return s;
     }
 
     @Override
-    public Object visit(ConcatExpression expr) {
-        HashSet<KATexpression> dx = (HashSet<KATexpression>) expr.left.accept(this);
-        HashSet<KATexpression> dxy = dx.stream()
-                                       .map(e -> new ConcatExpression(e, expr.right))
+    public Object visit(ConcatExpr expr) {
+        HashSet<KatExpr> dx = (HashSet<KatExpr>) expr.left.accept(this);
+        HashSet<KatExpr> dxy = dx.stream()
+                                       .map(e -> new ConcatExpr(e, expr.right))
                                        .collect(Collectors.toCollection(HashSet::new));
 
         if ((Boolean) expr.left.accept(E)) {
-            dxy.addAll((HashSet<KATexpression>) expr.right.accept(this));
+            dxy.addAll((HashSet<KatExpr>) expr.right.accept(this));
         }
 
         return dxy;
     }
 
     @Override
-    public Object visit(StarExpression expr) {
-        HashSet<KATexpression> dx = (HashSet<KATexpression>) expr.p.accept(this);
+    public Object visit(StarExpr expr) {
+        HashSet<KatExpr> dx = (HashSet<KatExpr>) expr.p.accept(this);
         return dx.stream()
-                 .map(e -> new ConcatExpression(e, expr))
+                 .map(e -> new ConcatExpr(e, expr))
                  .collect(Collectors.toCollection(HashSet::new));
     }
 
     @Override
     public Object visit(ConcatTest expr) {
-        return new HashSet<KATexpression>();
+        return new HashSet<KatExpr>();
     }
 
     @Override
     public Object visit(NegateTest expr) {
-        return new HashSet<KATexpression>();
+        return new HashSet<KatExpr>();
     }
 
     @Override
     public Object visit(OneTest expr) {
-        return new HashSet<KATexpression>();
+        return new HashSet<KatExpr>();
     }
 
     @Override
     public Object visit(PlusTest expr) {
-        return new HashSet<KATexpression>();
+        return new HashSet<KatExpr>();
     }
 
     @Override
     public Object visit(PrimitiveTest expr) {
-        return new HashSet<KATexpression>();
+        return new HashSet<KatExpr>();
     }
 
     @Override
     public Object visit(ZeroTest expr) {
-        return new HashSet<KATexpression>();
+        return new HashSet<KatExpr>();
     }
 }
 */

@@ -9,18 +9,18 @@ public class KATprinter implements KATexpressionVisitor {
     }
 
     @Override
-    public Object visit(PlusExpression expr) {
+    public Object visit(PlusExpr expr) {
         return expr.left.accept(this) + "+" + expr.right.accept(this);
     }
 
     @Override
-    public Object visit(ConcatExpression expr) {
+    public Object visit(ConcatExpr expr) {
         return "(" + expr.left.accept(this) + ")"
                 + "(" + expr.right.accept(this) + ")";
     }
 
     @Override
-    public Object visit(StarExpression expr) {
+    public Object visit(StarExpr expr) {
         return "(" + expr.p.accept(this) + ")*";
     }
 

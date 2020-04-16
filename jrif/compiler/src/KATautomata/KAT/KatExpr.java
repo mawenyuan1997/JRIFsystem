@@ -2,6 +2,6 @@ package KATautomata.KAT;
 
 import KATautomata.KAToperator.KATexpressionVisitor;
 
-public interface KATexpression {
+public interface KatExpr {
     Object accept(KATexpressionVisitor visitor);
 }

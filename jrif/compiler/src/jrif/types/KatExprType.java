@@ -1,15 +1,15 @@
 package jrif.types;
 
-import KATautomata.KAT.KATexpression;
+import KATautomata.KAT.KatExpr;
 
 public class KatExprType {
-    private KATexpression expr;
+    private KatExpr expr;
 
-    public KatExprType(KATexpression e) {
+    public KatExprType(KatExpr e) {
         expr = e;
     }
 
-    public KATexpression getExpr() {
+    public KatExpr getExpr() {
         return expr;
     }
 }

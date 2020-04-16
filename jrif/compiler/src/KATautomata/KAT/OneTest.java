@@ -2,7 +2,7 @@ package KATautomata.KAT;
 
 import KATautomata.KAToperator.KATexpressionVisitor;
 
-public class OneTest extends TestExpression {
+public class OneTest extends TestExpr {
     public OneTest() {}
 
     public Object accept(KATexpressionVisitor visitor) {

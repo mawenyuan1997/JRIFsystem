@@ -1,8 +1,6 @@
 package jrif.ast;
 
-import KATautomata.KAT.NegateTest;
 import KATautomata.KAT.OneTest;
-import KATautomata.KAT.TestExpression;
 import jrif.types.KatExprType;
 import polyglot.ast.Node;
 import polyglot.types.SemanticException;

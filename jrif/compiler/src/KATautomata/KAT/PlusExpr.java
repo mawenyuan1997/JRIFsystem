@@ -2,10 +2,10 @@ package KATautomata.KAT;
 
 import KATautomata.KAToperator.KATexpressionVisitor;
 
-public class PlusExpression implements KATexpression {
+public class PlusExpr implements KatExpr {
 
-    public KATexpression left, right;
-    public PlusExpression(KATexpression p, KATexpression q) {
+    public KatExpr left, right;
+    public PlusExpr(KatExpr p, KatExpr q) {
         left = p;
         right = q;
     }
@@ -18,8 +18,8 @@ public class PlusExpression implements KATexpression {
     @Override
     public boolean equals(Object o) {
         if (o == this) return true;
-        if (!(o instanceof PlusExpression)) return false;
-        PlusExpression e = (PlusExpression) o;
+        if (!(o instanceof PlusExpr)) return false;
+        PlusExpr e = (PlusExpr) o;
         return this.left.equals(e.left) && this.right.equals(e.right) ||
                 this.left.equals(e.right) && this.right.equals(e.left);
     }

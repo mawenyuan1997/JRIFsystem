@@ -25,37 +25,37 @@ public class Derivative implements KATexpressionVisitor {
     }
 
     @Override
-    public Object visit(PlusExpression expr) {
-        return new PlusExpression(
-                (KATexpression) expr.left.accept(this),
-                (KATexpression) expr.right.accept(this)
+    public Object visit(PlusExpr expr) {
+        return new PlusExpr(
+                (KatExpr) expr.left.accept(this),
+                (KatExpr) expr.right.accept(this)
         );
     }
 
     @Override
-    public Object visit(ConcatExpression expr) {
-        KATexpression t1 = new ConcatExpression(
-                                    (KATexpression) expr.left.accept(this),
+    public Object visit(ConcatExpr expr) {
+        KatExpr t1 = new ConcatExpr(
+                                    (KatExpr) expr.left.accept(this),
                                     expr.right
         );
-        KATexpression t2 = null;
+        KatExpr t2 = null;
         if ((Boolean) expr.left.accept(E)) {
-            t2 = new ConcatExpression(
-                    new OneTest(), (KATexpression) expr.right.accept(this)
+            t2 = new ConcatExpr(
+                    new OneTest(), (KatExpr) expr.right.accept(this)
             );
         } else {
-            t2 = new ConcatExpression(
-                    new ZeroTest(), (KATexpression) expr.right.accept(this)
+            t2 = new ConcatExpr(
+                    new ZeroTest(), (KatExpr) expr.right.accept(this)
             );
         }
-        return new PlusExpression(t1, t2);
+        return new PlusExpr(t1, t2);
     }
 
     @Override
-    public Object visit(StarExpression expr) {
-        return new ConcatExpression(
-                    (KATexpression) expr.p.accept(this),
-                    new StarExpression(expr.p)
+    public Object visit(StarExpr expr) {
+        return new ConcatExpr(
+                    (KatExpr) expr.p.accept(this),
+                    new StarExpr(expr.p)
         );
     }
 

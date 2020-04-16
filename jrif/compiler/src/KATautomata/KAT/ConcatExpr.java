@@ -2,11 +2,11 @@ package KATautomata.KAT;
 
 import KATautomata.KAToperator.KATexpressionVisitor;
 
-public class ConcatExpression implements KATexpression {
+public class ConcatExpr implements KatExpr {
 
-    public KATexpression left,right;
+    public KatExpr left,right;
 
-    public ConcatExpression(KATexpression p, KATexpression q) {
+    public ConcatExpr(KatExpr p, KatExpr q) {
         left = p;
         right = q;
     }
@@ -19,8 +19,8 @@ public class ConcatExpression implements KATexpression {
     @Override
     public boolean equals(Object o) {
         if (o == this) return true;
-        if (!(o instanceof ConcatExpression)) return false;
-        ConcatExpression e = (ConcatExpression) o;
+        if (!(o instanceof ConcatExpr)) return false;
+        ConcatExpr e = (ConcatExpr) o;
         return this.left.equals(e.left) && this.right.equals(e.right);
     }
 

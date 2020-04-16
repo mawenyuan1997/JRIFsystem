@@ -2,11 +2,11 @@ package KATautomata.KAT;
 
 import KATautomata.KAToperator.KATexpressionVisitor;
 
-public class StarExpression implements KATexpression {
+public class StarExpr implements KatExpr {
 
-    public KATexpression p;
+    public KatExpr p;
 
-    public StarExpression(KATexpression expr) {
+    public StarExpr(KatExpr expr) {
         this.p = expr;
     }
 
@@ -18,8 +18,8 @@ public class StarExpression implements KATexpression {
     @Override
     public boolean equals(Object o) {
         if (o == this) return true;
-        if (!(o instanceof StarExpression)) return false;
-        StarExpression e = (StarExpression) o;
+        if (!(o instanceof StarExpr)) return false;
+        StarExpr e = (StarExpr) o;
         return this.p.equals(e.p);
     }
 

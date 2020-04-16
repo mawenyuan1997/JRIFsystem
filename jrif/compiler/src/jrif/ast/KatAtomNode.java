@@ -2,10 +2,9 @@ package jrif.ast;
 
 import KATautomata.KAT.ConcatTest;
 import KATautomata.KAT.PrimitiveTest;
-import KATautomata.KAT.TestExpression;
+import KATautomata.KAT.TestExpr;
 import KATautomata.KAT.ZeroTest;
 import jrif.types.KatExprType;
-import polyglot.ast.Expr;
 import polyglot.ast.Node;
 import polyglot.types.SemanticException;
 import polyglot.util.Position;
@@ -23,7 +22,7 @@ public class KatAtomNode extends KatTestNode{
 
     @Override
     public Node disambiguate(AmbiguityRemover ar) throws SemanticException {
-        TestExpression test;
+        TestExpr test;
         if (principalList.size() == 0) {
             test = new ZeroTest();
         } else if (principalList.size() == 1) {

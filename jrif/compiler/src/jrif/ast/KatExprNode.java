@@ -1,6 +1,5 @@
 package jrif.ast;
 
-import KATautomata.KAT.KATexpression;
 import jrif.types.KatExprType;
 import polyglot.ast.Node_c;
 import polyglot.util.Position;

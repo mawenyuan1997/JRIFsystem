@@ -5,7 +5,6 @@ import KATautomata.SyKAT.*;
 import KATautomata.SyKAT.BDD.BDD;
 import KATautomata.SyKAT.BDD.BooleanFunction;
 
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 
@@ -41,7 +40,7 @@ public class Util {
      * @param test
      * @return
      */
-    public BooleanFunction getFunction(TestExpression test) {
+    public BooleanFunction getFunction(TestExpr test) {
         int n = numOfTest;
         if (test instanceof OneTest) {
             return new BooleanFunction("one", n, 1) {
@@ -104,19 +103,19 @@ public class Util {
      * @param expr
      * @return
      */
-    public SyKATexpression translate(KATexpression expr) {
-        if (expr instanceof ConcatExpression) {
-            SyKATexpression l = translate(((ConcatExpression) expr).left);
-            SyKATexpression r = translate(((ConcatExpression) expr).right);
+    public SyKATexpression translate(KatExpr expr) {
+        if (expr instanceof ConcatExpr) {
+            SyKATexpression l = translate(((ConcatExpr) expr).left);
+            SyKATexpression r = translate(((ConcatExpr) expr).right);
             return new Concat(l, r);
         }
-        if (expr instanceof PlusExpression) {
-            SyKATexpression l = translate(((PlusExpression) expr).left);
-            SyKATexpression r = translate(((PlusExpression) expr).right);
+        if (expr instanceof PlusExpr) {
+            SyKATexpression l = translate(((PlusExpr) expr).left);
+            SyKATexpression r = translate(((PlusExpr) expr).right);
             return new Plus(l, r);
         }
-        if (expr instanceof StarExpression) {
-            SyKATexpression p = translate(((StarExpression) expr).p);
+        if (expr instanceof StarExpr) {
+            SyKATexpression p = translate(((StarExpr) expr).p);
             return new Star(p);
         }
         if (expr instanceof Action) {
@@ -136,8 +135,8 @@ public class Util {
             };
             return new BDD(f, true);
         }
-        // if expr instanceof TestExpression
-        final BooleanFunction f = getFunction((TestExpression) expr);
+        // if expr instanceof TestExpr
+        final BooleanFunction f = getFunction((TestExpr) expr);
         return new BDD(f, false);
     }
 }
