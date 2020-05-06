@@ -21,4 +21,10 @@ public class KatStarNode extends KatExprNode {
         this.type = new KatExprType(new StarExpr(t.getExpr()));
         return this;
     }
+
+    @Override
+    public boolean isDisambiguated() {
+        return this.type != null;
+    }
+
 }

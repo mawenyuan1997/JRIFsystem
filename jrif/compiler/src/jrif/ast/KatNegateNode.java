@@ -22,4 +22,10 @@ public class KatNegateNode extends KatTestNode {
         this.type = new KatExprType(new NegateTest((TestExpr) t.getExpr()));
         return this;
     }
+
+    @Override
+    public boolean isDisambiguated() {
+        return this.type != null;
+    }
+
 }

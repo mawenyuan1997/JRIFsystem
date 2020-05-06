@@ -17,4 +17,10 @@ public class KatZeroNode extends KatTestNode {
         this.type = new KatExprType(new ZeroTest());
         return this;
     }
+
+    @Override
+    public boolean isDisambiguated() {
+        return this.type != null;
+    }
+
 }

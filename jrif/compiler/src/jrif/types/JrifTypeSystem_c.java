@@ -153,12 +153,13 @@ public class JrifTypeSystem_c extends JifTypeSystem_c implements JrifTypeSystem 
 //        RifFSM fsm = new RifFSM_c(states, state);
 //        RifConfPolicy t = new RifReaderPolicy_c(fsm, this, pos);
 //        return t;
+        return new RifReaderPolicy_c(bottomfsm(pos), this, pos);
 
-        TestExpr o = KatFactory.getPrimTest(owner, true);
-        TestExpr r = KatFactory.getPrimTest(reader, true);
-        SyKATexpression e = Info.util.translate(KatFactory.ConcatTest(o, r));
-        SymDFA dfa = new SymDFA(Info.util, e);
-        return new RifReaderPolicy_c(dfa, this, pos);
+//        TestExpr o = KatFactory.getPrimTest(owner, true);
+//        TestExpr r = KatFactory.getPrimTest(reader, true);
+//        SyKATexpression e = Info.util.translate(KatFactory.ConcatTest(o, r));
+//        SymDFA dfa = new SymDFA(Info.util, e);
+//        return new RifReaderPolicy_c(dfa, this, pos);
     }
 
     @Override
@@ -223,13 +224,16 @@ public class JrifTypeSystem_c extends JifTypeSystem_c implements JrifTypeSystem 
 //        RifFSM fsm = new RifFSM_c(states, state);
 //        RifIntegPolicy t = new RifWriterPolicy_c(fsm, this, pos);
 //        return t;
-        TestExpr o = KatFactory.getPrimTest(owner, false);
-        for(Principal p : writers) {
-            o = KatFactory.ConcatTest(o, KatFactory.getPrimTest(p, false));
-        }
-        SyKATexpression e = Info.util.translate(o);
-        SymDFA dfa = new SymDFA(Info.util, e);
-        return new RifWriterPolicy_c(dfa, this, pos);
+
+        return new RifWriterPolicy_c(bottomfsm(pos), this, pos);
+
+//        TestExpr o = KatFactory.getPrimTest(owner, false);
+//        for(Principal p : writers) {
+//            o = KatFactory.ConcatTest(o, KatFactory.getPrimTest(p, false));
+//        }
+//        SyKATexpression e = Info.util.translate(o);
+//        SymDFA dfa = new SymDFA(Info.util, e);
+//        return new RifWriterPolicy_c(dfa, this, pos);
     }
 
     @Override

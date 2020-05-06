@@ -16,4 +16,10 @@ public class KatOneNode extends KatTestNode {
         this.type = new KatExprType(new OneTest());
         return this;
     }
+
+    @Override
+    public boolean isDisambiguated() {
+        return this.type != null;
+    }
+
 }

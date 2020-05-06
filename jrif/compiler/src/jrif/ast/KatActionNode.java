@@ -30,4 +30,10 @@ public class KatActionNode extends KatExprNode {
         this.type = new KatExprType(new Action(prims));
         return this;
     }
+
+    @Override
+    public boolean isDisambiguated() {
+        return this.type != null;
+    }
+
 }

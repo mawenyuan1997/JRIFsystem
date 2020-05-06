@@ -25,4 +25,10 @@ public class KatOrNode extends KatTestNode {
         this.type = new KatExprType(new PlusTest((TestExpr) l.getExpr(), (TestExpr) r.getExpr()));
         return this;
     }
+
+    @Override
+    public boolean isDisambiguated() {
+        return this.type != null;
+    }
+
 }

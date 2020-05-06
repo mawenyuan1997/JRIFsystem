@@ -1,41 +1,48 @@
 package jrif.ast;
 
-import KATautomata.KAT.ConcatTest;
-import KATautomata.KAT.PrimitiveTest;
-import KATautomata.KAT.TestExpr;
-import KATautomata.KAT.ZeroTest;
+import KATautomata.KAT.*;
+import jif.ast.PrincipalNode;
+import jif.types.principal.Principal;
 import jrif.types.KatExprType;
 import polyglot.ast.Node;
 import polyglot.types.SemanticException;
 import polyglot.util.Position;
 import polyglot.visit.AmbiguityRemover;
 
+import java.util.LinkedList;
 import java.util.List;
 
 public class KatAtomNode extends KatTestNode{
-    List<String> principalList;
+    List<PrincipalNode> principals;
 
-    public KatAtomNode(Position pos, List l) {
+    public KatAtomNode(Position pos, List<PrincipalNode> l) {
         super(pos);
-        principalList = l;
+        principals = l;
     }
 
     @Override
     public Node disambiguate(AmbiguityRemover ar) throws SemanticException {
-        TestExpr test;
-        if (principalList.size() == 0) {
-            test = new ZeroTest();
-        } else if (principalList.size() == 1) {
-            test = new PrimitiveTest(principalList.get(0));
-        } else {
-            PrimitiveTest p1 = new PrimitiveTest(principalList.get(0));
-            PrimitiveTest p2 = new PrimitiveTest(principalList.get(1));
-            test = new ConcatTest(p1, p2);
-            for(int i=2; i < principalList.size(); i++) {
-                test = new ConcatTest(test, new PrimitiveTest(principalList.get(i)));
+        List<Principal> l = new LinkedList<Principal>();
+
+        if (this.principals == null)
+            l = null;
+        else {
+            for (PrincipalNode r : this.principals) {
+                if (!r.isDisambiguated()) {
+                    ar.job().extensionInfo().scheduler().currentGoal()
+                            .setUnreachableThisRun();
+                    return this;
+                }
+                l.add(r.principal());
             }
         }
-        this.type = new KatExprType(test);
+        this.type = new KatExprType(KatFactory.OneTest()); // TODO convert to real test
         return this;
     }
+
+    @Override
+    public boolean isDisambiguated() {
+        return this.type != null;
+    }
+
 }
