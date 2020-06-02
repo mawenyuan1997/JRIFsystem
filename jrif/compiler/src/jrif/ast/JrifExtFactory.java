@@ -10,9 +10,25 @@ import polyglot.ast.ExtFactory;
 public interface JrifExtFactory extends JifExtFactory {
     Ext extReclassifyExpr();
     
-    Ext extRifTransitionNode();
+    Ext extKatActionNode();
 
-    Ext extRifStateNode();
+    Ext extKatAndNode();
+
+    Ext extKatAtomNode();
+
+    Ext extKatConcatNode();
+
+    Ext extKatNegateNode();
+
+    Ext extKatOneNode();
+
+    Ext extKatOrNode();
+
+    Ext extKatPlusNode();
+
+    Ext extKatStarNode();
+
+    Ext extKatZeroNode();
 
     Ext extRifPolicyNode();
 

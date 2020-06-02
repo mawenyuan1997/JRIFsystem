@@ -27,30 +27,6 @@ public abstract class JrifAbstractExtFactory_c extends AbstractJifExtFactory_c
         }
         return postExtDeclassifyExpr(e);
     }
-    
-    @Override
-    public final Ext extRifTransitionNode() {
-        Ext e = extRifTransitionNodeImpl();
-        if (nextExtFactory() != null
-                && nextExtFactory() instanceof JrifExtFactory) {
-            JrifExtFactory nextFac = (JrifExtFactory) nextExtFactory();
-            Ext e2 = nextFac.extRifTransitionNode();
-            e = composeExts(e, e2);
-        }
-        return postExtPolicyNode(e);
-    }
-
-    @Override
-    public final Ext extRifStateNode() {
-        Ext e = extRifStateNodeImpl();
-        if (nextExtFactory() != null
-                && nextExtFactory() instanceof JrifExtFactory) {
-            JrifExtFactory nextFac = (JrifExtFactory) nextExtFactory();
-            Ext e2 = nextFac.extRifStateNode();
-            e = composeExts(e, e2);
-        }
-        return postExtPolicyNode(e);
-    }
 
     @Override
     public final Ext extRifPolicyNode() {
@@ -88,6 +64,126 @@ public abstract class JrifAbstractExtFactory_c extends AbstractJifExtFactory_c
         return postExtAmbRifDynamicLabelNode(e);
     }
 
+    @Override
+    public final Ext extKatActionNode() {
+        Ext e = extNode();
+        if (nextExtFactory() != null
+                && nextExtFactory() instanceof JrifExtFactory) {
+            JrifExtFactory nextFac = (JrifExtFactory) nextExtFactory();
+            Ext e2 = nextFac.extKatActionNode();
+            e = composeExts(e, e2);
+        }
+        return postExtPolicyNode(e);
+    }
+
+    @Override
+    public final Ext extKatAndNode() {
+        Ext e = extNode();
+        if (nextExtFactory() != null
+                && nextExtFactory() instanceof JrifExtFactory) {
+            JrifExtFactory nextFac = (JrifExtFactory) nextExtFactory();
+            Ext e2 = nextFac.extKatAndNode();
+            e = composeExts(e, e2);
+        }
+        return postExtPolicyNode(e);
+    }
+
+    @Override
+    public final Ext extKatAtomNode() {
+        Ext e = extNode();
+        if (nextExtFactory() != null
+                && nextExtFactory() instanceof JrifExtFactory) {
+            JrifExtFactory nextFac = (JrifExtFactory) nextExtFactory();
+            Ext e2 = nextFac.extKatAtomNode();
+            e = composeExts(e, e2);
+        }
+        return postExtPolicyNode(e);
+    }
+
+    @Override
+    public final Ext extKatConcatNode() {
+        Ext e = extNode();
+        if (nextExtFactory() != null
+                && nextExtFactory() instanceof JrifExtFactory) {
+            JrifExtFactory nextFac = (JrifExtFactory) nextExtFactory();
+            Ext e2 = nextFac.extKatConcatNode();
+            e = composeExts(e, e2);
+        }
+        return postExtPolicyNode(e);
+    }
+
+    @Override
+    public final Ext extKatNegateNode() {
+        Ext e = extNode();
+        if (nextExtFactory() != null
+                && nextExtFactory() instanceof JrifExtFactory) {
+            JrifExtFactory nextFac = (JrifExtFactory) nextExtFactory();
+            Ext e2 = nextFac.extKatNegateNode();
+            e = composeExts(e, e2);
+        }
+        return postExtPolicyNode(e);
+    }
+
+    @Override
+    public final Ext extKatOneNode() {
+        Ext e = extNode();
+        if (nextExtFactory() != null
+                && nextExtFactory() instanceof JrifExtFactory) {
+            JrifExtFactory nextFac = (JrifExtFactory) nextExtFactory();
+            Ext e2 = nextFac.extKatOneNode();
+            e = composeExts(e, e2);
+        }
+        return postExtPolicyNode(e);
+    }
+
+    @Override
+    public final Ext extKatOrNode() {
+        Ext e = extNode();
+        if (nextExtFactory() != null
+                && nextExtFactory() instanceof JrifExtFactory) {
+            JrifExtFactory nextFac = (JrifExtFactory) nextExtFactory();
+            Ext e2 = nextFac.extKatOrNode();
+            e = composeExts(e, e2);
+        }
+        return postExtPolicyNode(e);
+    }
+
+    @Override
+    public final Ext extKatPlusNode() {
+        Ext e = extNode();
+        if (nextExtFactory() != null
+                && nextExtFactory() instanceof JrifExtFactory) {
+            JrifExtFactory nextFac = (JrifExtFactory) nextExtFactory();
+            Ext e2 = nextFac.extKatPlusNode();
+            e = composeExts(e, e2);
+        }
+        return postExtPolicyNode(e);
+    }
+
+    @Override
+    public final Ext extKatStarNode() {
+        Ext e = extNode();
+        if (nextExtFactory() != null
+                && nextExtFactory() instanceof JrifExtFactory) {
+            JrifExtFactory nextFac = (JrifExtFactory) nextExtFactory();
+            Ext e2 = nextFac.extKatStarNode();
+            e = composeExts(e, e2);
+        }
+        return postExtPolicyNode(e);
+    }
+
+    @Override
+    public final Ext extKatZeroNode() {
+        Ext e = extNode();
+        if (nextExtFactory() != null
+                && nextExtFactory() instanceof JrifExtFactory) {
+            JrifExtFactory nextFac = (JrifExtFactory) nextExtFactory();
+            Ext e2 = nextFac.extKatZeroNode();
+            e = composeExts(e, e2);
+        }
+        return postExtPolicyNode(e);
+    }
+
 /*    @Override
     public final Ext extRifLabelNode() {
         Ext e = extRifLabelNodeImpl();
@@ -114,14 +210,6 @@ public abstract class JrifAbstractExtFactory_c extends AbstractJifExtFactory_c
 */    
     protected Ext extReclassifyExprImpl() {
         return extExprImpl();
-    }
-    
-    protected Ext extRifTransitionNodeImpl() {
-        return extNode();
-    }
-
-    protected Ext extRifStateNodeImpl() {
-        return extNode();
     }
 
     protected Ext extRifPolicyNodeImpl() {
