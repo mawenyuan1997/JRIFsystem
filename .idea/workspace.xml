@@ -2,17 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="076fda81-a191-4a4e-9fb7-f0b3c02f50d1" name="Default Changelist" comment="create ast node in jrif.ppg">
-      <change afterPath="$PROJECT_DIR$/jrif/compiler/src/jrif/ast/KatActionNode_c.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jrif/compiler/src/jrif/ast/KatAndNode_c.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jrif/compiler/src/jrif/ast/KatAtomNode_c.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jrif/compiler/src/jrif/ast/KatConcatNode_c.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jrif/compiler/src/jrif/ast/KatExprNode_c.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jrif/compiler/src/jrif/ast/KatNegateNode_c.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jrif/compiler/src/jrif/ast/KatOneNode_c.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jrif/compiler/src/jrif/ast/KatOrNode_c.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jrif/compiler/src/jrif/ast/KatPlusNode_c.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jrif/compiler/src/jrif/ast/KatStarNode_c.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jrif/compiler/src/jrif/ast/KatZeroNode_c.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/jif-3.5.0/lib-classes/jif/lang/ExternalPrincipal.class" beforeDir="false" afterPath="$PROJECT_DIR$/jif-3.5.0/lib-classes/jif/lang/ExternalPrincipal.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/jif-3.5.0/lib-classes/jif/lang/ExternalPrincipal.java" beforeDir="false" afterPath="$PROJECT_DIR$/jif-3.5.0/lib-classes/jif/lang/ExternalPrincipal.java" afterDir="false" />
@@ -295,7 +285,7 @@
       <change beforePath="$PROJECT_DIR$/jrif/compiler/classes/jrif/extension/JrifReclassifyExprExt$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/jrif/compiler/classes/jrif/extension/JrifReclassifyExprExt$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/jrif/compiler/classes/jrif/extension/JrifReclassifyExprExt.class" beforeDir="false" afterPath="$PROJECT_DIR$/jrif/compiler/classes/jrif/extension/JrifReclassifyExprExt.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/jrif/compiler/classes/jrif/types/JrifTypeSystem.class" beforeDir="false" afterPath="$PROJECT_DIR$/jrif/compiler/classes/jrif/types/JrifTypeSystem.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jrif/compiler/classes/jrif/types/RifComponent.class" beforeDir="false" afterPath="$PROJECT_DIR$/jrif/compiler/classes/jrif/types/RifComponent.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jrif/compiler/classes/jrif/types/RifComponent.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/jrif/compiler/classes/jrif/types/RifFSM.class" beforeDir="false" afterPath="$PROJECT_DIR$/jrif/compiler/classes/jrif/types/RifFSM.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/jrif/compiler/classes/jrif/types/RifFSMstate.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/jrif/compiler/classes/jrif/types/RifState.class" beforeDir="false" />
@@ -305,28 +295,15 @@
       <change beforePath="$PROJECT_DIR$/jrif/compiler/classes/jrif/types/label/RifIntegPolicy.class" beforeDir="false" afterPath="$PROJECT_DIR$/jrif/compiler/classes/jrif/types/label/RifIntegPolicy.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/jrif/compiler/classes/jrif/types/label/RifVarLabel.class" beforeDir="false" afterPath="$PROJECT_DIR$/jrif/compiler/classes/jrif/types/label/RifVarLabel.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/jrif/compiler/classes/jrif/visit/JrifLabelChecker.class" beforeDir="false" afterPath="$PROJECT_DIR$/jrif/compiler/classes/jrif/visit/JrifLabelChecker.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jrif/compiler/src/jrif/ast/JrifAbstractExtFactory_c.java" beforeDir="false" afterPath="$PROJECT_DIR$/jrif/compiler/src/jrif/ast/JrifAbstractExtFactory_c.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jrif/compiler/src/jrif/ast/JrifExtFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/jrif/compiler/src/jrif/ast/JrifExtFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jrif/compiler/src/jrif/ast/JrifNodeFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/jrif/compiler/src/jrif/ast/JrifNodeFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jrif/compiler/src/jrif/ast/JrifNodeFactory_c.java" beforeDir="false" afterPath="$PROJECT_DIR$/jrif/compiler/src/jrif/ast/JrifNodeFactory_c.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jrif/compiler/src/jrif/ast/KatActionNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/jrif/compiler/src/jrif/ast/KatActionNode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jrif/compiler/src/jrif/ast/KatAndNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/jrif/compiler/src/jrif/ast/KatAndNode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jrif/compiler/src/jrif/ast/KatAtomNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/jrif/compiler/src/jrif/ast/KatAtomNode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jrif/compiler/src/jrif/ast/KatConcatNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/jrif/compiler/src/jrif/ast/KatConcatNode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jrif/compiler/src/jrif/ast/KatExprNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/jrif/compiler/src/jrif/ast/KatExprNode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jrif/compiler/src/jrif/ast/KatNegateNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/jrif/compiler/src/jrif/ast/KatNegateNode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jrif/compiler/src/jrif/ast/KatOneNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/jrif/compiler/src/jrif/ast/KatOneNode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jrif/compiler/src/jrif/ast/KatOrNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/jrif/compiler/src/jrif/ast/KatOrNode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jrif/compiler/src/jrif/ast/KatPlusNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/jrif/compiler/src/jrif/ast/KatPlusNode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jrif/compiler/src/jrif/ast/KatStarNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/jrif/compiler/src/jrif/ast/KatStarNode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jrif/compiler/src/jrif/ast/KatTestNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/jrif/compiler/src/jrif/ast/KatTestNode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jrif/compiler/src/jrif/ast/KatZeroNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/jrif/compiler/src/jrif/ast/KatZeroNode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jrif/compiler/src/jrif/ast/RifPolicyNode_c.java" beforeDir="false" afterPath="$PROJECT_DIR$/jrif/compiler/src/jrif/ast/RifPolicyNode_c.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jrif/compiler/src/KATautomata/KAToperator/Derivative.java" beforeDir="false" afterPath="$PROJECT_DIR$/jrif/compiler/src/KATautomata/KAToperator/Derivative.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jrif/compiler/src/KATautomata/KAToperator/Evaluation.java" beforeDir="false" afterPath="$PROJECT_DIR$/jrif/compiler/src/KATautomata/KAToperator/Evaluation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jrif/compiler/src/KATautomata/KAToperator/PartialDerivative.java" beforeDir="false" afterPath="$PROJECT_DIR$/jrif/compiler/src/KATautomata/KAToperator/PartialDerivative.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/jrif/compiler/src/jrif/ast/RifiPolicyNode_c.java" beforeDir="false" afterPath="$PROJECT_DIR$/jrif/compiler/src/jrif/ast/RifiPolicyNode_c.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/jrif/compiler/src/jrif/parse/Grm.java" beforeDir="false" afterPath="$PROJECT_DIR$/jrif/compiler/src/jrif/parse/Grm.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/jrif/compiler/src/jrif/parse/Lexer_c.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jrif/compiler/src/jrif/parse/jrif.ppg" beforeDir="false" afterPath="$PROJECT_DIR$/jrif/compiler/src/jrif/parse/jrif.ppg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/jrif/compiler/src/jrif/parse/jrif_ppg.cup" beforeDir="false" afterPath="$PROJECT_DIR$/jrif/compiler/src/jrif/parse/jrif_ppg.cup" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jrif/compiler/src/jrif/types/JrifTypeSystem_c.java" beforeDir="false" afterPath="$PROJECT_DIR$/jrif/compiler/src/jrif/types/JrifTypeSystem_c.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jrif/compiler/src/jrif/types/RifComponent.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/jrif/examples/rif_calendar/Calendar.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/jrif/examples/rif_calendar/Calendar.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/jrif/examples/rif_calendar/Date.class" beforeDir="false" />
@@ -638,91 +615,99 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/jrif/compiler/src/jrif/parse/jrif.ppg">
+        <entry file="file://$PROJECT_DIR$/jrif/compiler/src/jrif/ast/KatAndNode_c.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1455">
-              <caret line="97" column="57" selection-start-line="97" selection-start-column="57" selection-end-line="97" selection-end-column="57" />
+            <state relative-caret-position="225">
+              <caret line="21" column="75" lean-forward="true" selection-start-line="21" selection-start-column="75" selection-end-line="21" selection-end-column="75" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/jrif/compiler/src/jrif/Main.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="150">
+              <caret line="10" selection-start-line="10" selection-end-line="10" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/polyglot/src/polyglot/main/Main.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="147">
+              <caret line="181" selection-start-line="181" selection-end-line="181" />
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="jar://$PROJECT_DIR$/polyglot/lib/polyglot.jar!/polyglot/frontend/Compiler.class">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="207">
+              <caret line="95" selection-start-line="95" selection-end-line="95" />
+              <folding>
+                <element signature="e#3368#3539#0" expanded="true" />
+                <element signature="e#3538#3539#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/README">
+        <entry file="jar://$PROJECT_DIR$/polyglot/lib/polyglot.jar!/polyglot/frontend/Scheduler.class">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1785">
-              <caret line="119" column="4" selection-start-line="119" selection-start-column="4" selection-end-line="119" selection-end-column="4" />
+            <state relative-caret-position="-607">
+              <caret line="374" column="20" lean-forward="true" selection-start-line="374" selection-start-column="20" selection-end-line="374" selection-end-column="20" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/jrif/compiler/src/jrif/ast/KatOrNode_c.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="12" column="64" selection-start-line="12" selection-start-column="64" selection-end-line="12" selection-end-column="64" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/jrif/compiler/src/jrif/ast/KatZeroNode.java">
+        <entry file="file://$PROJECT_DIR$/jrif/compiler/src/jrif/ast/KatActionNode.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="30">
-              <caret line="2" column="48" selection-start-line="2" selection-start-column="37" selection-end-line="2" selection-end-column="48" />
+              <caret line="2" column="17" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/jrif/compiler/src/jrif/ast/KatAtomNode.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="4" selection-start-line="4" selection-end-line="4" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/jrif/compiler/src/jrif/ast/KatConcatNode.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="2" column="50" selection-start-line="2" selection-start-column="50" selection-end-line="2" selection-end-column="50" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/jrif/compiler/src/jrif/ast/KatNegateNode.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="2" column="50" selection-start-line="2" selection-start-column="50" selection-end-line="2" selection-end-column="50" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/jrif/compiler/src/jrif/ast/KatAtomNode_c.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="14" column="46" selection-start-line="14" selection-start-column="46" selection-end-line="14" selection-end-column="46" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/jrif/compiler/src/jrif/ast/KatTestNode.java">
+        <entry file="file://$PROJECT_DIR$/jrif/compiler/src/jrif/ast/KatActionNode_c.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="45">
-              <caret line="4" column="55" selection-start-line="4" selection-start-column="42" selection-end-line="4" selection-end-column="55" />
+              <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/jrif/compiler/src/jrif/ast/KatExprNode.java">
+        <entry file="jar://$PROJECT_DIR$/polyglot/lib/polyglot.jar!/polyglot/filemanager/ExtFileManager.class">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="4" selection-start-line="4" selection-end-line="4" />
+            <state relative-caret-position="89">
+              <caret line="377" selection-start-line="377" selection-end-line="377" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/jrif/compiler/src/jrif/ExtensionInfo.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="105">
+              <caret line="28" selection-start-line="28" selection-end-line="28" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="jar://$PROJECT_DIR$/polyglot/lib/polyglot.jar!/polyglot/frontend/AbstractExtensionInfo.class">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="149">
+              <caret line="61" selection-start-line="61" selection-end-line="61" />
             </state>
           </provider>
         </entry>
@@ -739,20 +724,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>compile-all</find>
-      <find>init</find>
-      <find>configu</find>
-      <find>kat_expr</find>
-      <find>policy</find>
-      <find>javah</find>
-      <find>riffsm_c</find>
-      <find>could not find class</find>
-      <find>loadExtension</find>
-      <find>checkResolve</find>
-      <find>./buildSigLib</find>
-      <find>int_lit</find>
-      <find>throw</find>
-      <find>int</find>
       <find>INT</find>
       <find>zero</find>
       <find>return key(keywords.get(yytext()));</find>
@@ -769,6 +740,20 @@
       <find>copy(</find>
       <find>rif</find>
       <find>KatAtomNode</find>
+      <find>Possible infinite loop detected trying</find>
+      <find>jl</find>
+      <find>does not have the extension</find>
+      <find>exts</find>
+      <find>extInfo</find>
+      <find>symbolfac</find>
+      <find>vmargs</find>
+      <find>fixclasspath</find>
+      <find>signaturesre</find>
+      <find>PATH_uni</find>
+      <find>Possible infinite loop</find>
+      <find>count</find>
+      <find>infini</find>
+      <find>runPass</find>
     </findStrings>
     <replaceStrings>
       <replace>{A}</replace>
@@ -785,10 +770,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/jrif/compiler/src/KATautomata/utility/StatePair.java" />
-        <option value="$PROJECT_DIR$/jrif/compiler/src/KATautomata/KAToperator/KATexpressionVisitor.java" />
-        <option value="$PROJECT_DIR$/jrif/compiler/src/jrif/types/KatExprType.java" />
-        <option value="$PROJECT_DIR$/jrif/compiler/src/jrif/translate/JrifPairLabelToJavaExpr_c.java" />
         <option value="$PROJECT_DIR$/jrif/compiler/src/jrif/types/RifFSM_c.java" />
         <option value="$PROJECT_DIR$/jrif/compiler/src/jrif/types/RifFSM.java" />
         <option value="$PROJECT_DIR$/jif-3.5.0/config.properties" />
@@ -802,7 +783,6 @@
         <option value="$PROJECT_DIR$/jrif/compiler/src/KATautomata/KAT/KatFactory.java" />
         <option value="$PROJECT_DIR$/jrif/compiler/src/KATautomata/utility/Util.java" />
         <option value="$PROJECT_DIR$/jrif/compiler/src/jrif/parse/Lexer_c.java" />
-        <option value="$PROJECT_DIR$/jrif/compiler/src/jrif/types/JrifTypeSystem_c.java" />
         <option value="$PROJECT_DIR$/jrif/compiler/src/jrif/ast/JrifExtFactory.java" />
         <option value="$PROJECT_DIR$/jrif/compiler/src/jrif/ast/JrifAbstractExtFactory_c.java" />
         <option value="$PROJECT_DIR$/jrif/compiler/src/jrif/ast/KatTestNode_c.java" />
@@ -822,7 +802,6 @@
         <option value="$PROJECT_DIR$/jrif/compiler/src/jrif/ast/KatExprNode_c.java" />
         <option value="$PROJECT_DIR$/jrif/compiler/src/jrif/extension/JrifLabelTypeCheckUtil.java" />
         <option value="$PROJECT_DIR$/jrif/compiler/src/KATautomata/utility/SymDFA.java" />
-        <option value="$PROJECT_DIR$/jrif/compiler/src/jrif/ast/RifiPolicyNode_c.java" />
         <option value="$PROJECT_DIR$/jrif/compiler/src/jrif/ast/RifPolicyNode_c.java" />
         <option value="$PROJECT_DIR$/jrif/compiler/src/jrif/ast/KatAndNode_c.java" />
         <option value="$PROJECT_DIR$/jrif/compiler/src/jrif/ast/KatConcatNode_c.java" />
@@ -836,21 +815,27 @@
         <option value="$PROJECT_DIR$/jrif/compiler/src/jrif/ast/KatTestNode.java" />
         <option value="$PROJECT_DIR$/jrif/compiler/src/jrif/ast/KatAtomNode.java" />
         <option value="$PROJECT_DIR$/jrif/compiler/src/jrif/parse/jrif.ppg" />
+        <option value="$PROJECT_DIR$/jrif/compiler/src/jrif/ast/RifiPolicyNode_c.java" />
+        <option value="$PROJECT_DIR$/jrif/buildSigLib.sh" />
+        <option value="$PROJECT_DIR$/jrif/compiler/src/jrif/types/JrifTypeSystem_c.java" />
+        <option value="$PROJECT_DIR$/jrif/compiler/src/KATautomata/KAToperator/Evaluation.java" />
+        <option value="$PROJECT_DIR$/jrif/compiler/src/KATautomata/KAToperator/Derivative.java" />
+        <option value="$PROJECT_DIR$/jrif/compiler/src/KATautomata/KAToperator/PartialDerivative.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="85" />
-    <option name="y" value="23" />
+    <option name="x" value="54" />
+    <option name="y" value="30" />
     <option name="width" value="1319" />
-    <option name="height" value="807" />
+    <option name="height" value="798" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -878,6 +863,18 @@
               <item name="JRIFsystem" type="b2602c69:ProjectViewProjectNode" />
               <item name="JRIFsystem" type="462c0819:PsiDirectoryNode" />
               <item name="jrif" type="462c0819:PsiDirectoryNode" />
+              <item name="bin" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="JRIFsystem" type="b2602c69:ProjectViewProjectNode" />
+              <item name="JRIFsystem" type="462c0819:PsiDirectoryNode" />
+              <item name="jrif" type="462c0819:PsiDirectoryNode" />
+              <item name="bin_" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="JRIFsystem" type="b2602c69:ProjectViewProjectNode" />
+              <item name="JRIFsystem" type="462c0819:PsiDirectoryNode" />
+              <item name="jrif" type="462c0819:PsiDirectoryNode" />
               <item name="compiler" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -893,7 +890,7 @@
               <item name="jrif" type="462c0819:PsiDirectoryNode" />
               <item name="compiler" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="KATautomata" type="462c0819:PsiDirectoryNode" />
+              <item name="jrif" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="JRIFsystem" type="b2602c69:ProjectViewProjectNode" />
@@ -901,8 +898,29 @@
               <item name="jrif" type="462c0819:PsiDirectoryNode" />
               <item name="compiler" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="KATautomata" type="462c0819:PsiDirectoryNode" />
-              <item name="SyKAToperator" type="462c0819:PsiDirectoryNode" />
+              <item name="jrif" type="462c0819:PsiDirectoryNode" />
+              <item name="ast" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="JRIFsystem" type="b2602c69:ProjectViewProjectNode" />
+              <item name="JRIFsystem" type="462c0819:PsiDirectoryNode" />
+              <item name="jrif" type="462c0819:PsiDirectoryNode" />
+              <item name="sig-src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="JRIFsystem" type="b2602c69:ProjectViewProjectNode" />
+              <item name="JRIFsystem" type="462c0819:PsiDirectoryNode" />
+              <item name="jrif" type="462c0819:PsiDirectoryNode" />
+              <item name="sig-src" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="JRIFsystem" type="b2602c69:ProjectViewProjectNode" />
+              <item name="JRIFsystem" type="462c0819:PsiDirectoryNode" />
+              <item name="jrif" type="462c0819:PsiDirectoryNode" />
+              <item name="sig-src" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="lang" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="JRIFsystem" type="b2602c69:ProjectViewProjectNode" />
@@ -913,28 +931,13 @@
               <item name="JRIFsystem" type="b2602c69:ProjectViewProjectNode" />
               <item name="JRIFsystem" type="462c0819:PsiDirectoryNode" />
               <item name="polyglot" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="JRIFsystem" type="b2602c69:ProjectViewProjectNode" />
-              <item name="JRIFsystem" type="462c0819:PsiDirectoryNode" />
-              <item name="polyglot" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="polyglot" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="JRIFsystem" type="b2602c69:ProjectViewProjectNode" />
-              <item name="JRIFsystem" type="462c0819:PsiDirectoryNode" />
-              <item name="polyglot" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="polyglot" type="462c0819:PsiDirectoryNode" />
-              <item name="frontend" type="462c0819:PsiDirectoryNode" />
+              <item name="lib" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -945,7 +948,7 @@
     <property name="Repository.Attach.Sources" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1591062069364" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1591902591404" />
     <property name="go.gopath.indexing.explicitly.defined" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
@@ -979,7 +982,17 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.SymDFAtest (1)">
+  <component name="RunManager" selected="Application.Main">
+    <configuration name="Main" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="ALTERNATIVE_JRE_PATH" value="1.8.0_144" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="MAIN_CLASS_NAME" value="jrif.Main" />
+      <module name="JRIFsystem" />
+      <option name="PROGRAM_PARAMETERS" value="$PROJECT_DIR$/jrif/sig-src/java/net/Socket.jrif $PROJECT_DIR$/jrif/sig-src/java/net/InetSocketAddress.jrif $PROJECT_DIR$/jrif/sig-src/java/net/InetAddress.jrif $PROJECT_DIR$/jrif/sig-src/java/net/ServerSocket.jrif $PROJECT_DIR$/jrif/sig-src/java/net/SocketException.jrif $PROJECT_DIR$/jrif/sig-src/java/net/SocketAddress.jrif $PROJECT_DIR$/jrif/sig-src/java/net/UnknownHostException.jrif $PROJECT_DIR$/jrif/sig-src/java/io/StringWriter.jrif $PROJECT_DIR$/jrif/sig-src/java/io/FileNotFoundException.jrif $PROJECT_DIR$/jrif/sig-src/java/io/StringReader.jrif $PROJECT_DIR$/jrif/sig-src/java/io/PrintWriter.jrif $PROJECT_DIR$/jrif/sig-src/java/io/FileInputStream.jrif $PROJECT_DIR$/jrif/sig-src/java/io/OutputStreamWriter.jrif $PROJECT_DIR$/jrif/sig-src/java/io/FileOutputStream.jrif $PROJECT_DIR$/jrif/sig-src/java/io/FileDescriptor.jrif $PROJECT_DIR$/jrif/sig-src/java/io/PrintStream.jrif $PROJECT_DIR$/jrif/sig-src/java/io/FilterOutputStream.jrif $PROJECT_DIR$/jrif/sig-src/java/io/InputStreamReader.jrif $PROJECT_DIR$/jrif/sig-src/java/io/Reader.jrif $PROJECT_DIR$/jrif/sig-src/java/io/OutputStream.jrif $PROJECT_DIR$/jrif/sig-src/java/io/InputStream.jrif $PROJECT_DIR$/jrif/sig-src/java/io/Serializable.jrif $PROJECT_DIR$/jrif/sig-src/java/io/BufferedReader.jrif $PROJECT_DIR$/jrif/sig-src/java/io/Writer.jrif $PROJECT_DIR$/jrif/sig-src/java/io/IOException.jrif $PROJECT_DIR$/jrif/sig-src/java/math/BigInteger.jrif $PROJECT_DIR$/jrif/sig-src/java/lang/ArrayStoreException.jrif $PROJECT_DIR$/jrif/sig-src/java/lang/NegativeArraySizeException.jrif $PROJECT_DIR$/jrif/sig-src/java/lang/Double.jrif $PROJECT_DIR$/jrif/sig-src/java/lang/Cloneable.jrif $PROJECT_DIR$/jrif/sig-src/java/lang/Number.jrif $PROJECT_DIR$/jrif/sig-src/java/lang/Character.jrif $PROJECT_DIR$/jrif/sig-src/java/lang/SecurityManager.jrif $PROJECT_DIR$/jrif/sig-src/java/lang/UnsupportedOperationException.jrif $PROJECT_DIR$/jrif/sig-src/java/lang/IndexOutOfBoundsException.jrif $PROJECT_DIR$/jrif/sig-src/java/lang/ArithmeticException.jrif $PROJECT_DIR$/jrif/sig-src/java/lang/Error.jrif $PROJECT_DIR$/jrif/sig-src/java/lang/Boolean.jrif $PROJECT_DIR$/jrif/sig-src/java/lang/ArrayIndexOutOfBoundsException.jrif $PROJECT_DIR$/jrif/sig-src/java/lang/NumberFormatException.jrif $PROJECT_DIR$/jrif/sig-src/java/lang/SecurityException.jrif $PROJECT_DIR$/jrif/sig-src/java/lang/Exception.jrif $PROJECT_DIR$/jrif/sig-src/java/lang/StringBuffer.jrif $PROJECT_DIR$/jrif/sig-src/java/lang/Integer.jrif $PROJECT_DIR$/jrif/sig-src/java/lang/NullPointerException.jrif $PROJECT_DIR$/jrif/sig-src/java/lang/System.jrif $PROJECT_DIR$/jrif/sig-src/java/lang/IllegalStateException.jrif $PROJECT_DIR$/jrif/sig-src/java/lang/Throwable.jrif $PROJECT_DIR$/jrif/sig-src/java/lang/ClassCastException.jrif $PROJECT_DIR$/jrif/sig-src/java/lang/String.jrif $PROJECT_DIR$/jrif/sig-src/java/lang/Object.jrif $PROJECT_DIR$/jrif/sig-src/java/lang/RuntimeException.jrif $PROJECT_DIR$/jrif/sig-src/java/lang/Class.jrif $PROJECT_DIR$/jrif/sig-src/java/lang/ClassNotFoundException.jrif $PROJECT_DIR$/jrif/sig-src/java/lang/Float.jrif $PROJECT_DIR$/jrif/sig-src/java/lang/Long.jrif $PROJECT_DIR$/jrif/sig-src/java/lang/IllegalArgumentException.jrif $PROJECT_DIR$/jrif/sig-src/java/lang/CharSequence.jrif $PROJECT_DIR$/jrif/sig-src/java/lang/StringIndexOutOfBoundsException.jrif $PROJECT_DIR$/jrif/sig-src/java/lang/Byte.jrif $PROJECT_DIR$/jrif/sig-src/java/sql/SQLException.jrif $PROJECT_DIR$/jrif/sig-src/jif/lang/Principal.jrif $PROJECT_DIR$/jrif/sig-src/jif/lang/Closure.jrif $PROJECT_DIR$/jrif/sig-src/jif/lang/ActsForProof.jrif" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="SymDFAtest (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="JRIFsystem" />
       <extension name="coverage">
@@ -1012,6 +1025,11 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Application.Main" />
+      <item itemvalue="JUnit.SymDFAtest" />
+      <item itemvalue="JUnit.SymDFAtest (1)" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.SymDFAtest (1)" />
@@ -1061,7 +1079,9 @@
       <workItem from="1590527764738" duration="198000" />
       <workItem from="1590599278355" duration="15816000" />
       <workItem from="1590894952326" duration="17959000" />
-      <workItem from="1591064856644" duration="769000" />
+      <workItem from="1591064856644" duration="3847000" />
+      <workItem from="1591313742952" duration="5963000" />
+      <workItem from="1591473179891" duration="31205000" />
     </task>
     <task id="LOCAL-00001" summary="update test">
       <created>1581050586816</created>
@@ -1154,7 +1174,14 @@
       <option name="project" value="LOCAL" />
       <updated>1586402239892</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="add interface; imitate old jrif">
+      <created>1591073091489</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1591073091489</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1163,12 +1190,22 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="257350000" />
+    <option name="totallyTimeSpent" value="297596000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="85" y="23" width="1319" height="807" extended-state="0" />
+    <frame x="54" y="30" width="1319" height="798" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24745497" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19342208" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -1176,18 +1213,18 @@
       <window_info id="Capture Tool" order="5" />
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.39300698" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.36805555" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.18130311" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.46458924" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.09206799" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.3286119" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" />
+      <window_info anchor="bottom" id="Version Control" order="8" weight="0.3286119" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.2055944" />
+      <window_info anchor="bottom" id="Terminal" order="10" weight="0.62181306" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
-      <window_info anchor="bottom" id="Messages" order="12" weight="0.35040432" />
+      <window_info anchor="bottom" id="Messages" order="12" weight="0.34844193" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -1221,89 +1258,368 @@
     <option name="LAST_COMMIT_MESSAGE" value="add interface; imitate old jrif" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/jif-3.5.0/src/jif/ast/JifExtFactory.java">
+    <entry file="file://$PROJECT_DIR$/jrif/compiler/src/jrif/ast/KatAtomNode_c.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-289">
-          <caret line="18" column="24" lean-forward="true" selection-start-line="18" selection-start-column="24" selection-end-line="18" selection-end-column="24" />
+        <state relative-caret-position="420">
+          <caret line="38" column="87" selection-start-line="38" selection-start-column="87" selection-end-line="38" selection-end-column="87" />
         </state>
       </provider>
     </entry>
-    <entry file="jar://$PROJECT_DIR$/jrif/lib/jif.jar!/jif/ast/JifNodeFactory_c.class">
+    <entry file="file://$PROJECT_DIR$/jrif/compiler/src/jrif/ast/RifiPolicyNode_c.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="45" column="51" selection-start-line="45" selection-start-column="38" selection-end-line="45" selection-end-column="51" />
+        <state relative-caret-position="60">
+          <caret line="4" column="34" selection-start-line="4" selection-start-column="34" selection-end-line="4" selection-end-column="34" />
         </state>
       </provider>
     </entry>
-    <entry file="jar://$PROJECT_DIR$/jrif/lib/polyglot.jar!/polyglot/ast/NodeFactory_c.class">
+    <entry file="file://$PROJECT_DIR$/jrif/compiler/src/KATautomata/SyKAToperator/Delta.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1181">
-          <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+        <state relative-caret-position="390">
+          <caret line="35" selection-start-line="35" selection-end-line="35" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/jrif/compiler/src/jrif/parse/Grm.java">
+    <entry file="file://$PROJECT_DIR$/jrif/compiler/src/KATautomata/utility/SymDFA.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="36">
-          <caret line="9482" column="43" lean-forward="true" selection-start-line="9482" selection-start-column="43" selection-end-line="9482" selection-end-column="43" />
+        <state relative-caret-position="3495">
+          <caret line="251" column="29" selection-start-line="251" selection-start-column="18" selection-end-line="251" selection-end-column="32" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/polyglot/src/polyglot/frontend/Scheduler.java">
+    <entry file="file://$PROJECT_DIR$/jrif/compiler/src/jrif/types/label/RifJoinConfPolicy_c.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="148">
-          <caret line="635" column="71" lean-forward="true" selection-start-line="635" selection-start-column="71" selection-end-line="635" selection-end-column="71" />
+        <state relative-caret-position="885">
+          <caret line="89" column="13" selection-start-line="89" selection-start-column="13" selection-end-line="89" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jrif/compiler/src/jrif/ast/JrifNodeFactory_c.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1755">
+          <caret line="127" column="25" selection-start-line="127" selection-start-column="25" selection-end-line="127" selection-end-column="47" />
           <folding>
-            <element signature="e#10196#10197#0" expanded="true" />
-            <element signature="e#10250#10251#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jrif/compiler/src/jrif/ast/JrifExt.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jrif/compiler/src/jrif/ast/JrifLang.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="17" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jrif/compiler/src/jrif/ast/JrifLang_c.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/jrif/compiler/src/jrif/types/RifFSM.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="15" column="17" selection-start-line="15" selection-start-column="17" selection-end-line="15" selection-end-column="17" />
+        <state relative-caret-position="390">
+          <caret line="37" selection-start-line="37" selection-end-line="37" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/jrif/compiler/src/KATautomata/SyKAT/SyKATexpression.java">
+    <entry file="file://$PROJECT_DIR$/jrif/compiler/src/jrif/types/label/RifReaderPolicy_c.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="17" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
+        <state relative-caret-position="-201">
+          <caret line="64" column="28" selection-start-line="64" selection-start-column="28" selection-end-line="64" selection-end-column="28" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/jrif/compiler/src/jrif/ast/RifiPolicyNode.java">
+    <entry file="file://$PROJECT_DIR$/jrif/compiler/src/KATautomata/KAT/Action.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="6" column="17" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
+        <state relative-caret-position="30">
+          <caret line="2" selection-start-line="2" selection-end-line="2" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/jrif/compiler/src/jrif/parse/jrif_ppg.cup">
-      <provider selected="true" editor-type-id="text-editor" />
+    <entry file="file://$PROJECT_DIR$/jrif/compiler/src/KATautomata/KAToperator/Evaluation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" selection-start-line="1" selection-end-line="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jrif/compiler/src/KATautomata/KAToperator/Derivative.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" selection-start-line="1" selection-end-line="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jrif/compiler/src/KATautomata/KAToperator/PartialDerivative.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" selection-start-line="2" selection-end-line="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/polyglot/src/polyglot/filemanager/ExtFileManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="228">
+          <caret line="502" column="56" lean-forward="true" selection-start-line="502" selection-start-column="56" selection-end-line="502" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jif-3.5.0/config.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="68" lean-forward="true" selection-start-line="8" selection-start-column="68" selection-end-line="8" selection-end-column="68" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/jrif/lib/polyglot.jar!/polyglot/frontend/Compiler.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="283">
+          <caret line="130" selection-start-line="130" selection-end-line="130" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/jrif/lib/jif.jar!/jif/JifScheduler.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="159">
+          <caret line="252" selection-start-line="252" selection-end-line="252" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/jrif/lib/polyglot.jar!/polyglot/frontend/Scheduler.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="159">
+          <caret line="440" selection-start-line="440" selection-end-line="440" />
+          <folding>
+            <element signature="e#6556#6557#0" expanded="true" />
+            <element signature="e#6622#6623#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jrif/compiler/src/jrif/parse/Grm.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="3598" selection-start-line="3598" selection-end-line="3598" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/jrif/lib/polyglot.jar!/polyglot/parse/Grm.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="233">
+          <caret line="2248" column="43" lean-forward="true" selection-start-line="2248" selection-start-column="43" selection-end-line="2248" selection-end-column="43" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/jrif/lib/polyglot.jar!/polyglot/frontend/ParserPass.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="159">
+          <caret line="33" selection-start-line="33" selection-end-line="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/polyglot/src/polyglot/frontend/Compiler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="352">
+          <caret line="236" column="51" selection-start-line="236" selection-start-column="51" selection-end-line="236" selection-end-column="51" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/jrif/lib/polyglot.jar!/polyglot/filemanager/ExtFileManager.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="130">
+          <caret line="427" selection-start-line="427" selection-end-line="427" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/jrif/lib/polyglot.jar!/polyglot/parse/BaseParser.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="70">
+          <caret line="54" selection-start-line="54" selection-end-line="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jrif/bin/jrifc">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="16" selection-start-line="16" selection-end-line="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jrif/bin/jrif">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="23" column="30" selection-start-line="23" selection-start-column="30" selection-end-line="23" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/jrif/lib/java_cup.jar!/java_cup/runtime/lr_parser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="205">
+          <caret line="136" column="9" selection-start-line="136" selection-start-column="9" selection-end-line="136" selection-end-column="9" />
+          <folding>
+            <element signature="e#6974#6975#0" expanded="true" />
+            <element signature="e#7072#7073#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/polyglot/lib/java_cup.jar!/java_cup/runtime/lr_parser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-31">
+          <caret line="134" column="7" selection-start-line="134" selection-start-column="7" selection-end-line="134" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/polyglot/lib/polyglot.jar!/polyglot/parse/BaseParser.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="121">
+          <caret line="54" selection-start-line="54" selection-end-line="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jrif/compiler/src/jrif/types/label/RifConfPolicy.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="23" lean-forward="true" selection-start-line="7" selection-start-column="23" selection-end-line="7" selection-end-column="23" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-872">
+          <caret line="54" column="11" selection-start-line="54" selection-start-column="11" selection-end-line="54" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/polyglot/src/polyglot/frontend/goals/SignaturesResolved.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="207">
+          <caret line="55" column="31" selection-start-line="55" selection-start-column="31" selection-end-line="55" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jrif/compiler/src/jrif/types/JrifAbstractSolver.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="65" selection-start-line="11" selection-start-column="65" selection-end-line="11" selection-end-column="65" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jrif/buildSigLib.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="159">
+          <caret line="12" lean-forward="true" selection-start-line="11" selection-end-line="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/polyglot/lib/polyglot.jar!/polyglot/frontend/ParserPass.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="103">
+          <caret line="33" selection-start-line="33" selection-end-line="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/polyglot/src/polyglot/frontend/Scheduler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1622">
+          <caret line="730" column="56" lean-forward="true" selection-start-line="730" selection-start-column="56" selection-end-line="730" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jrif/compiler/src/jrif/types/JrifTypeSystem_c.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="85" column="17" lean-forward="true" selection-start-line="85" selection-start-column="17" selection-end-line="85" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jrif/sig-src/java/lang/Object.jrif">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/polyglot/lib/polyglot.jar!/polyglot/frontend/ParserlessJLExtensionInfo.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="157">
+          <caret line="23" selection-start-line="23" selection-end-line="23" />
+          <folding>
+            <element signature="e#0#2138#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/polyglot/lib/polyglot.jar!/polyglot/frontend/JLExtensionInfo.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="18" selection-start-line="18" selection-end-line="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/jif-3.5.0/lib/jif.jar!/jif/OutputExtensionInfo.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="32" selection-start-line="32" selection-end-line="32" />
+          <folding>
+            <element signature="e#992#993#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/jif-3.5.0/lib/jif.jar!/jif/ExtensionInfo.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="51" selection-start-line="51" selection-end-line="51" />
+          <folding>
+            <element signature="e#2023#2024#0" expanded="true" />
+            <element signature="e#2086#2087#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jrif/compiler/src/jrif/ExtensionInfo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="28" selection-start-line="28" selection-end-line="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/polyglot/src/polyglot/main/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="147">
+          <caret line="181" selection-start-line="181" selection-end-line="181" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/polyglot/lib/polyglot.jar!/polyglot/frontend/AbstractExtensionInfo.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="149">
+          <caret line="61" selection-start-line="61" selection-end-line="61" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/polyglot/lib/polyglot.jar!/polyglot/filemanager/ExtFileManager.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="89">
+          <caret line="377" selection-start-line="377" selection-end-line="377" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jrif/compiler/src/jrif/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" selection-start-line="10" selection-end-line="10" />
+        </state>
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/jrif/compiler/src/jrif/ast/KatActionNode.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -1312,277 +1628,35 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/jrif/compiler/src/jrif/ast/KatPlusNode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="48" selection-start-line="2" selection-start-column="48" selection-end-line="2" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jrif/compiler/src/jrif/ast/KatOrNode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="46" selection-start-line="2" selection-start-column="46" selection-end-line="2" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jrif/compiler/src/jrif/ast/KatStarNode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="48" selection-start-line="2" selection-start-column="48" selection-end-line="2" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jrif/compiler/src/jrif/ast/KatAndNode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="47" selection-start-line="2" selection-start-column="47" selection-end-line="2" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jrif/compiler/src/jrif/ast/KatOneNode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="47" selection-start-line="2" selection-start-column="47" selection-end-line="2" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/jrif/lib/polyglot.jar!/polyglot/ast/Node_c.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="359">
-          <caret line="155" column="9" lean-forward="true" selection-start-line="155" selection-start-column="9" selection-end-line="155" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jrif/compiler/src/jrif/extension/JrifLabelTypeCheckUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="690">
-          <caret line="71" column="17" selection-start-line="71" selection-start-column="17" selection-end-line="71" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jrif/compiler/src/jrif/parse/jrif.flex">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="127" column="15" selection-start-line="127" selection-start-column="12" selection-end-line="127" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jif-3.5.0/README">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1607" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jrif/compiler/src/KATautomata/KAT/PrimitiveTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="21" column="36" selection-start-line="21" selection-start-column="36" selection-end-line="21" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jrif/compiler/src/jrif/ast/RifPolicyNode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="6" column="17" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jrif/compiler/src/KATautomata/utility/SymDFA.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="35" column="33" lean-forward="true" selection-start-line="35" selection-start-column="33" selection-end-line="35" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/jrif/compiler/src/jrif/ast/KatActionNode_c.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="15" column="49" selection-start-line="15" selection-start-column="27" selection-end-line="15" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jrif/compiler/src/jrif/ast/RifiPolicyNode_c.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-76">
-          <caret line="51" column="19" lean-forward="true" selection-start-line="51" selection-start-column="19" selection-end-line="51" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jrif/compiler/src/jrif/ast/RifPolicyNode_c.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="28" column="45" selection-start-line="28" selection-start-column="45" selection-end-line="28" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jrif/compiler/src/jrif/ast/JrifExtFactory.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="73">
-          <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jrif/compiler/src/jrif/ast/JrifExtFactory_c.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jrif/compiler/src/jrif/ast/JrifAbstractExtFactory_c.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="501">
-          <caret line="192" column="25" selection-start-line="192" selection-start-column="25" selection-end-line="192" selection-end-column="25" />
+        <state relative-caret-position="45">
+          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/jrif/compiler/src/jrif/ast/KatAndNode_c.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="20" column="32" selection-start-line="20" selection-start-column="32" selection-end-line="20" selection-end-column="32" />
+        <state relative-caret-position="225">
+          <caret line="21" column="75" lean-forward="true" selection-start-line="21" selection-start-column="75" selection-end-line="21" selection-end-column="75" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/jrif/compiler/src/jrif/ast/KatConcatNode_c.java">
+    <entry file="jar://$PROJECT_DIR$/polyglot/lib/polyglot.jar!/polyglot/frontend/Compiler.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jrif/compiler/src/jrif/ast/KatPlusNode_c.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="17" selection-start-column="17" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jrif/compiler/src/jrif/ast/KatStarNode_c.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="12" column="50" selection-start-line="12" selection-start-column="50" selection-end-line="12" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jrif/compiler/src/jrif/ast/KatExprNode_c.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="7" column="50" selection-start-line="7" selection-start-column="44" selection-end-line="7" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jrif/compiler/src/jrif/ast/KatOneNode_c.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="23" selection-start-line="23" selection-end-line="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jrif/compiler/src/jrif/ast/JrifNodeFactory.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="22" column="56" selection-start-line="22" selection-start-column="56" selection-end-line="22" selection-end-column="56" />
+        <state relative-caret-position="207">
+          <caret line="95" selection-start-line="95" selection-end-line="95" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#3368#3539#0" expanded="true" />
+            <element signature="e#3538#3539#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/jrif/compiler/src/jrif/ast/KatNegateNode_c.java">
+    <entry file="jar://$PROJECT_DIR$/polyglot/lib/polyglot.jar!/polyglot/frontend/Scheduler.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="12" column="52" selection-start-line="12" selection-start-column="52" selection-end-line="12" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jrif/compiler/src/jrif/ast/KatZeroNode_c.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="9" column="71" lean-forward="true" selection-start-line="9" selection-start-column="71" selection-end-line="9" selection-end-column="71" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jrif/compiler/src/jrif/ast/JrifNodeFactory_c.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="172">
-          <caret line="127" column="25" selection-start-line="127" selection-start-column="25" selection-end-line="127" selection-end-column="47" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jrif/compiler/src/jrif/parse/jrif.ppg">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1455">
-          <caret line="97" column="57" selection-start-line="97" selection-start-column="57" selection-end-line="97" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jrif/compiler/src/jrif/ast/KatOrNode_c.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="12" column="64" selection-start-line="12" selection-start-column="64" selection-end-line="12" selection-end-column="64" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jrif/compiler/src/jrif/ast/KatZeroNode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="48" selection-start-line="2" selection-start-column="37" selection-end-line="2" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jrif/compiler/src/jrif/ast/KatAtomNode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" selection-start-line="4" selection-end-line="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jrif/compiler/src/jrif/ast/KatConcatNode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="50" selection-start-line="2" selection-start-column="50" selection-end-line="2" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jrif/compiler/src/jrif/ast/KatNegateNode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="50" selection-start-line="2" selection-start-column="50" selection-end-line="2" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jrif/compiler/src/jrif/ast/KatAtomNode_c.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="14" column="46" selection-start-line="14" selection-start-column="46" selection-end-line="14" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jrif/compiler/src/jrif/ast/KatTestNode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="4" column="55" selection-start-line="4" selection-start-column="42" selection-end-line="4" selection-end-column="55" />
-          <folding>
-            <element signature="e#210#211#0" expanded="true" />
-            <element signature="e#236#237#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jrif/compiler/src/jrif/ast/KatExprNode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" selection-start-line="4" selection-end-line="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/README">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1785">
-          <caret line="119" column="4" selection-start-line="119" selection-start-column="4" selection-end-line="119" selection-end-column="4" />
+        <state relative-caret-position="-607">
+          <caret line="374" column="20" lean-forward="true" selection-start-line="374" selection-start-column="20" selection-end-line="374" selection-end-column="20" />
         </state>
       </provider>
     </entry>
@@ -1643,7 +1717,6 @@
             <option name="proportions">
               <list>
                 <option value="0.2" />
-                <option value="0.6" />
               </list>
             </option>
           </splitter-proportions>

@@ -81,8 +81,8 @@ public class JrifTypeSystem_c extends JifTypeSystem_c implements JrifTypeSystem 
     }
 
     @Override
-    public RifConfPolicy rifreaderPolicy(Position pos, RifFSM dfa) {
-        RifConfPolicy t = new RifReaderPolicy_c((SymDFA)dfa, this, pos);
+    public RifConfPolicy rifreaderPolicy(Position pos, RifFSM fsm) {
+        RifConfPolicy t = new RifReaderPolicy_c(fsm, this, pos);
         return t;
     }
 //
@@ -128,12 +128,14 @@ public class JrifTypeSystem_c extends JifTypeSystem_c implements JrifTypeSystem 
 
     @Override
     public RifFSM topfsm(Position pos) {
+//        System.out.println("top");
         SyKATexpression e = Info.util.translate(new ZeroTest());
         return new SymDFA(Info.util, e);
     }
 //
     @Override
     public RifFSM bottomfsm(Position pos) {
+//        System.out.println("bottom");
         SyKATexpression e = Info.util.translate(new OneTest());
         return new SymDFA(Info.util, e);
     }
@@ -142,98 +144,29 @@ public class JrifTypeSystem_c extends JifTypeSystem_c implements JrifTypeSystem 
     @Override
     public ReaderPolicy readerPolicy(Position pos, Principal owner,
             Principal reader) {
-//        List<Principal> principals = new LinkedList<Principal>();
-//        principals.add(owner);
-//        principals.add(reader);
-//        HashMap<String, RifFSMstate> trans = new HashMap<String, RifFSMstate>();
-//        RifFSMstate state =
-//                new RifFSMstate_c(new Id_c(null, "q1"), principals, trans);
-//        Map<String, RifFSMstate> states = new HashMap<String, RifFSMstate>();
-//        states.put("q1", state);
-//        RifFSM fsm = new RifFSM_c(states, state);
-//        RifConfPolicy t = new RifReaderPolicy_c(fsm, this, pos);
-//        return t;
+        System.out.println("readPolicy");
         return new RifReaderPolicy_c(bottomfsm(pos), this, pos);
-
-//        TestExpr o = KatFactory.getPrimTest(owner, true);
-//        TestExpr r = KatFactory.getPrimTest(reader, true);
-//        SyKATexpression e = Info.util.translate(KatFactory.ConcatTest(o, r));
-//        SymDFA dfa = new SymDFA(Info.util, e);
-//        return new RifReaderPolicy_c(dfa, this, pos);
     }
 
     @Override
     public ReaderPolicy readerPolicy(Position pos, Principal owner,
             Collection<Principal> readers) {
-//        List<Principal> principals = new LinkedList<Principal>();
-//        principals.add(owner);
-//        for (Principal p : readers) {
-//            principals.add(p);
-//        }
-//        HashMap<String, RifFSMstate> trans = new HashMap<String, RifFSMstate>();
-//        RifFSMstate state =
-//                new RifFSMstate_c(new Id_c(null, "q1"), principals, trans);
-//        Map<String, RifFSMstate> states = new HashMap<String, RifFSMstate>();
-//        states.put("q1", state);
-//        RifFSM fsm = new RifFSM_c(states, state);
-//        RifConfPolicy t = new RifReaderPolicy_c(fsm, this, pos);
-//        return t;
-        TestExpr o = KatFactory.getPrimTest(owner, true);
-        for(Principal p : readers) {
-            o = KatFactory.ConcatTest(o, KatFactory.getPrimTest(p, true));
-        }
-        SyKATexpression e = Info.util.translate(o);
-        SymDFA dfa = new SymDFA(Info.util, e);
-        return new RifReaderPolicy_c(dfa, this, pos);
+        System.out.println("readPolicy");
+        return new RifReaderPolicy_c(bottomfsm(pos), this, pos);
     }
 
     @Override
     public WriterPolicy writerPolicy(Position pos, Principal owner,
             Principal writer) {
-//        List<Principal> principals = new LinkedList<Principal>();
-//        principals.add(owner);
-//        principals.add(writer);
-//        HashMap<String, RifFSMstate> trans = new HashMap<String, RifFSMstate>();
-//        RifFSMstate state =
-//                new RifFSMstate_c(new Id_c(null, "q1"), principals, trans);
-//        Map<String, RifFSMstate> states = new HashMap<String, RifFSMstate>();
-//        states.put("q1", state);
-//        RifFSM fsm = new RifFSM_c(states, state);
-//        RifIntegPolicy t = new RifWriterPolicy_c(fsm, this, pos);
-//        return t;
-        TestExpr o = KatFactory.getPrimTest(owner, false);
-        TestExpr w = KatFactory.getPrimTest(writer, false);
-        SyKATexpression e = Info.util.translate(KatFactory.ConcatTest(o, w));
-        SymDFA dfa = new SymDFA(Info.util, e);
-        return new RifWriterPolicy_c(dfa, this, pos);
+        System.out.println("writePolicy");
+        return new RifWriterPolicy_c(topfsm(pos), this, pos);
     }
 
     @Override
     public WriterPolicy writerPolicy(Position pos, Principal owner,
             Collection<Principal> writers) {
-//        List<Principal> principals = new LinkedList<Principal>();
-//        principals.add(owner);
-//        for (Principal p : writers) {
-//            principals.add(p);
-//        }
-//        HashMap<String, RifFSMstate> trans = new HashMap<String, RifFSMstate>();
-//        RifFSMstate state =
-//                new RifFSMstate_c(new Id_c(null, "q1"), principals, trans);
-//        Map<String, RifFSMstate> states = new HashMap<String, RifFSMstate>();
-//        states.put("q1", state);
-//        RifFSM fsm = new RifFSM_c(states, state);
-//        RifIntegPolicy t = new RifWriterPolicy_c(fsm, this, pos);
-//        return t;
-
-        return new RifWriterPolicy_c(bottomfsm(pos), this, pos);
-
-//        TestExpr o = KatFactory.getPrimTest(owner, false);
-//        for(Principal p : writers) {
-//            o = KatFactory.ConcatTest(o, KatFactory.getPrimTest(p, false));
-//        }
-//        SyKATexpression e = Info.util.translate(o);
-//        SymDFA dfa = new SymDFA(Info.util, e);
-//        return new RifWriterPolicy_c(dfa, this, pos);
+        System.out.println("writePolicy" + owner + writers);
+        return new RifWriterPolicy_c(topfsm(pos), this, pos);
     }
 
     @Override
@@ -278,6 +211,7 @@ public class JrifTypeSystem_c extends JifTypeSystem_c implements JrifTypeSystem 
 
 
     public RifFSM fsmConjunction(RifFSM dfa1, RifFSM dfa2) {
+        System.out.println("fsmConjunction");
 //        HashMap<String, RifFSMstate> states;
 //        RifFSMstate newcurrentstate = null;
 //
@@ -340,6 +274,7 @@ public class JrifTypeSystem_c extends JifTypeSystem_c implements JrifTypeSystem 
     }
 
     public RifFSM fsmDisjunction(RifFSM dfa1, RifFSM dfa2) {
+        System.out.println("fsmDisjunction");
 //        HashMap<String, RifFSMstate> states;
 //        RifFSMstate newcurrentstate = null;
 //

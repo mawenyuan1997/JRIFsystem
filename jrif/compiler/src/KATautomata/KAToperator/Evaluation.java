@@ -1,7 +1,5 @@
 package KATautomata.KAToperator;
 
-import KAT.*;
-
 import java.util.HashMap;
 /*
 public class Evaluation implements KATexpressionVisitor {

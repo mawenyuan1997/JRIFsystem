@@ -1,10 +1,5 @@
 package KATautomata.KAToperator;
 
-import KAT.*;
-
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.stream.Collectors;
 /*
 public class PartialDerivative implements KATexpressionVisitor{
 

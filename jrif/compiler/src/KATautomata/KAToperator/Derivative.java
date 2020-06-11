@@ -1,6 +1,5 @@
 package KATautomata.KAToperator;
 
-import KAT.*;
 
 import java.util.HashMap;
 /*

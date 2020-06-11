@@ -8,7 +8,6 @@ import jif.ast.PolicyNode_c;
 import jrif.types.JrifTypeSystem;
 import jrif.types.KatExprType;
 import jif.types.label.Policy;
-import jrif.types.RifComponent;
 import polyglot.ast.Node;
 import polyglot.types.SemanticException;
 import polyglot.util.*;
