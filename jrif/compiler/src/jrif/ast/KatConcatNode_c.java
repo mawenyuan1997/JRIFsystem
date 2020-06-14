@@ -6,9 +6,11 @@ import jrif.types.KatExprType;
 import polyglot.ast.Node;
 import polyglot.types.SemanticException;
 import polyglot.util.Position;
+import polyglot.util.SerialVersionUID;
 import polyglot.visit.AmbiguityRemover;
 
 public class KatConcatNode_c extends KatExprNode_c implements KatConcatNode {
+    private static final long serialVersionUID = SerialVersionUID.generate();
 
     KatExprNode left, right;
     public KatConcatNode_c(Position pos, KatExprNode e1, KatExprNode e2) {

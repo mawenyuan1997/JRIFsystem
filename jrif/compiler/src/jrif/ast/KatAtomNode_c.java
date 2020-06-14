@@ -7,12 +7,14 @@ import jrif.types.KatExprType;
 import polyglot.ast.Node;
 import polyglot.types.SemanticException;
 import polyglot.util.Position;
+import polyglot.util.SerialVersionUID;
 import polyglot.visit.AmbiguityRemover;
 
 import java.util.LinkedList;
 import java.util.List;
 
 public class KatAtomNode_c extends KatTestNode implements KatAtomNode {
+    private static final long serialVersionUID = SerialVersionUID.generate();
     List<PrincipalNode> principals;
 
     public KatAtomNode_c(Position pos, List<PrincipalNode> l) {

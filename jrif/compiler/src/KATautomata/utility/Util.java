@@ -5,10 +5,11 @@ import KATautomata.SyKAT.*;
 import KATautomata.SyKAT.BDD.BDD;
 import KATautomata.SyKAT.BDD.BooleanFunction;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.HashSet;
 
-public class Util {
+public class Util implements Serializable {
     public String[] primTests;
     public String[] primActions;
     // mapping from primitive test to its index in primTest

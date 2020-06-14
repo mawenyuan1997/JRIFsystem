@@ -5,9 +5,11 @@ import jrif.types.KatExprType;
 import polyglot.ast.Node;
 import polyglot.types.SemanticException;
 import polyglot.util.Position;
+import polyglot.util.SerialVersionUID;
 import polyglot.visit.AmbiguityRemover;
 
 public class KatZeroNode_c extends KatTestNode implements KatZeroNode {
+    private static final long serialVersionUID = SerialVersionUID.generate();
     public KatZeroNode_c(Position pos) {
         super(pos);
     }

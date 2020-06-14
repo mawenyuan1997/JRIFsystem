@@ -4,11 +4,13 @@
  */
 package KATautomata.SyKAT.BDD;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Eric 'Siggy' Scott
  */
-public class Node<T>
+public class Node<T> implements Serializable
 {
     /* If you add fields, don't forget to update the copy constructor! */
     public int low; // Index for the table entry in BDDTree that points to the child

@@ -1,9 +1,12 @@
 package KATautomata.SyKAT;
 
 import KATautomata.SyKAToperator.SyKATexpressionVisitor;
+import polyglot.util.SerialVersionUID;
 
-public class Concat implements SyKATexpression {
+import java.io.Serializable;
 
+public class Concat implements SyKATexpression, Serializable {
+    private static final long serialVersionUID = SerialVersionUID.generate();
     public SyKATexpression left,right;
 
     public Concat(SyKATexpression l, SyKATexpression r) {

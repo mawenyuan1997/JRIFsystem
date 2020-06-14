@@ -1,5 +1,6 @@
 package KATautomata.SyKAT.BDD;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.ArrayList;
 
@@ -12,7 +13,7 @@ import java.util.ArrayList;
  * 
  * @author Eric 'Siggy' Scott
  */
-public class BDDTree<T>
+public class BDDTree<T> implements Serializable
 {
     /* If you add fields, don't forget to update the copy constructor! */
     public ArrayList<Node<T>> nodes;

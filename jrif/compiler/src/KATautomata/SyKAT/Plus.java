@@ -1,9 +1,12 @@
 package KATautomata.SyKAT;
 
 import KATautomata.SyKAToperator.SyKATexpressionVisitor;
+import polyglot.util.SerialVersionUID;
 
-public class Plus implements SyKATexpression {
+import java.io.Serializable;
 
+public class Plus implements SyKATexpression, Serializable {
+    private static final long serialVersionUID = SerialVersionUID.generate();
     public SyKATexpression left,right;
 
     public Plus(SyKATexpression l, SyKATexpression r) {

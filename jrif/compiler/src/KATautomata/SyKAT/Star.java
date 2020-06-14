@@ -1,9 +1,12 @@
 package KATautomata.SyKAT;
 
 import KATautomata.SyKAToperator.SyKATexpressionVisitor;
+import polyglot.util.SerialVersionUID;
 
-public class Star implements SyKATexpression {
+import java.io.Serializable;
 
+public class Star implements SyKATexpression, Serializable {
+    private static final long serialVersionUID = SerialVersionUID.generate();
     public SyKATexpression p;
 
     public Star(SyKATexpression expr) {p = expr;}

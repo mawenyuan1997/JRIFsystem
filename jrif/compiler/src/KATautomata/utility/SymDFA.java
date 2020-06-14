@@ -17,12 +17,14 @@ import polyglot.ast.Id;
 import polyglot.types.SemanticException;
 import polyglot.types.Type;
 import polyglot.types.TypeSystem;
+import polyglot.util.SerialVersionUID;
 
 import java.util.*;
 
 
 public class SymDFA implements RifFSM {
 
+    private static final long serialVersionUID = SerialVersionUID.generate();
     public Util util;
     public HashMap<State, BDD<State>> transition; // map a state to its delta tree
     public HashMap<State, BDD<Boolean>> states;   // map a state to its epsilon bdd tree
@@ -274,7 +276,7 @@ public class SymDFA implements RifFSM {
 
     @Override
     public boolean isCanonical() {
-        return false;
+        return true;
     }
 
     @Override

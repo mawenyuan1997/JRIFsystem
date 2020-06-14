@@ -25,7 +25,7 @@ public interface RifFSM extends Serializable {
 
     boolean isCanonical();
 
-    boolean isRuntimeRepresentable();
+    boolean isRuntimeRepresentable(); // each state each principal
 
     List<Type> throwTypes(TypeSystem ts);
 

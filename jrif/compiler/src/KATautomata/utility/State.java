@@ -1,10 +1,13 @@
 package KATautomata.utility;
 
 import KATautomata.SyKAT.SyKATexpression;
+import polyglot.util.SerialVersionUID;
 
+import java.io.Serializable;
 import java.util.HashSet;
 
-public class State {
+public class State implements Serializable {
+    private static final long serialVersionUID = SerialVersionUID.generate();
     public HashSet<SyKATexpression> s;
 
     public State(HashSet<SyKATexpression> ss) {
