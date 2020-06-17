@@ -16,6 +16,11 @@ public class ConcatTest extends TestExpr {
     }
 
     @Override
+    public boolean isCanonical() {
+        return left.isCanonical() && right.isCanonical();
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (o == this) return true;
         if (!(o instanceof ConcatTest)) return false;

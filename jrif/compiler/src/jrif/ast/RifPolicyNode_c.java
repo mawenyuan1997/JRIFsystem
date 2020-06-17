@@ -32,8 +32,7 @@ public class RifPolicyNode_c extends PolicyNode_c implements RifPolicyNode {
 
 
     protected Policy producePolicy(JrifTypeSystem ts, KatExpr expr) {
-        SyKATexpression sy = util.translate(expr);
-        this.automata = new SymDFA(util, sy);
+        this.automata = new SymDFA(util, expr);
         return ts.rifreaderPolicy(position(), this.automata);
     }
 
@@ -55,8 +54,7 @@ public class RifPolicyNode_c extends PolicyNode_c implements RifPolicyNode {
 
     protected Policy producePolicy(JrifTypeSystem ts,
                                    KatExprNode_c expr) {
-        SyKATexpression sykat = util.translate(expr.getType().getExpr());
-        return ts.rifreaderPolicy(position(), new SymDFA(util,sykat));
+        return ts.rifreaderPolicy(position(), new SymDFA(util, expr.getType().getExpr()));
     }
 
     @Override

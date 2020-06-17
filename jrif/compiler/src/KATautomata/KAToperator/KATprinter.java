@@ -47,7 +47,7 @@ public class KATprinter implements KATexpressionVisitor {
 
     @Override
     public Object visit(PrimitiveTest expr) {
-        return expr.id;
+        return expr.getString();
     }
 
     @Override

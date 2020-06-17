@@ -11,6 +11,11 @@ public class PlusExpr implements KatExpr {
     }
 
     @Override
+    public boolean isCanonical() {
+        return left.isCanonical() && right.isCanonical();
+    }
+
+    @Override
     public Object accept(KATexpressionVisitor visitor) {
         return visitor.visit(this);
     }

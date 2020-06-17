@@ -69,7 +69,7 @@ public class Util implements Serializable {
         if (test instanceof PrimitiveTest) {
             return new BooleanFunction("prim", n, 1) {
                 public Boolean execute(boolean[] input) {
-                    String testId = ((PrimitiveTest) test).id;
+                    String testId = ((PrimitiveTest) test).getString();
                     return input[primTestMapping.get(testId)];
                 }
             };

@@ -38,7 +38,7 @@ public class KatAtomNode_c extends KatTestNode implements KatAtomNode {
                 l.add(r.principal());
             }
         }
-        this.type = new KatExprType(KatFactory.OneTest()); // TODO convert to real test
+        this.type = new KatExprType(KatFactory.getTest(l));
         return this;
     }
 

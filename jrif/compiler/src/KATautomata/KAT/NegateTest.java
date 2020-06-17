@@ -15,6 +15,11 @@ public class NegateTest extends TestExpr {
     }
 
     @Override
+    public boolean isCanonical() {
+        return test.isCanonical();
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (o == this) return true;
         if (!(o instanceof NegateTest)) return false;

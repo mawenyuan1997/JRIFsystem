@@ -10,6 +10,11 @@ public class OneTest extends TestExpr {
     }
 
     @Override
+    public boolean isCanonical() {
+        return true;
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (o == this) return true;
         if (o instanceof OneTest) return true;

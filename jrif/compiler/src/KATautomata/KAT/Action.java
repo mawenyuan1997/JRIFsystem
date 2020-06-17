@@ -1,6 +1,7 @@
 package KATautomata.KAT;
 
 import KATautomata.KAToperator.KATexpressionVisitor;
+import jif.types.principal.Principal;
 
 import java.util.HashSet;
 import java.util.List;
@@ -17,6 +18,11 @@ public class Action implements KatExpr {
     }
 
     @Override
+    public boolean isCanonical() {
+        return true;
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (o == this) return true;
         if (!(o instanceof Action)) return false;
@@ -28,4 +34,6 @@ public class Action implements KatExpr {
     public int hashCode() {
         return primActions.hashCode();
     }
+
+
 }

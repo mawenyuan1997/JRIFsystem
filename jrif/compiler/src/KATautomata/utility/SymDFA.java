@@ -1,5 +1,6 @@
 package KATautomata.utility;
 
+import KATautomata.KAT.KatExpr;
 import KATautomata.SyKAT.BDD.BDD;
 import KATautomata.SyKAT.BDD.BDDTree;
 import KATautomata.SyKAT.BDD.Node;
@@ -25,22 +26,20 @@ import java.util.*;
 public class SymDFA implements RifFSM {
 
     private static final long serialVersionUID = SerialVersionUID.generate();
-    public Util util;
-    public HashMap<State, BDD<State>> transition; // map a state to its delta tree
-    public HashMap<State, BDD<Boolean>> states;   // map a state to its epsilon bdd tree
-    State initial;
-    State current;
-    SyKATexpression expr;
+    private Util util;
+    private HashMap<State, BDD<State>> transition; // map a state to its delta tree
+    private HashMap<State, BDD<Boolean>> states;   // map a state to its epsilon bdd tree
+    private State initial;
+    private State current;
+    private KatExpr expr;
+    private boolean hasBuilt;
 
-    public SymDFA(Util u, SyKATexpression expr) {
+    public SymDFA(Util u, KatExpr expr) {
         util = u;
         transition = new HashMap<>();
         states = new HashMap<>();
-        initial = new State(expr);
-        current = initial;
+        hasBuilt = false;
         this.expr = expr;
-        addState(initial);
-        buildFrom(initial);
     }
 
     /**
@@ -95,6 +94,15 @@ public class SymDFA implements RifFSM {
      * @return
      */
     public boolean isSmallerThan(SymDFA dfa) {
+        if (!hasBuilt) {
+            SyKATexpression syExpr = util.translate(this.expr);
+            initial = new State(syExpr);
+            current = initial;
+            addState(initial);
+            buildFrom(initial);
+            hasBuilt = true;
+        }
+
         // simple algorithm
 //        HashSet<StatePair> r = new HashSet<>();
 //        Queue<StatePair> todo = new LinkedList<>();
@@ -266,7 +274,7 @@ public class SymDFA implements RifFSM {
 
     @Override
     public boolean equalsFSM(RifFSM other, List<String> visited) {
-        return false;
+        return leqFSM(other, visited) && other.leqFSM(this, visited);
     }
 
     @Override
@@ -276,7 +284,7 @@ public class SymDFA implements RifFSM {
 
     @Override
     public boolean isCanonical() {
-        return true;
+        return expr.isCanonical();
     }
 
     @Override
@@ -319,6 +327,6 @@ public class SymDFA implements RifFSM {
         return false;
     }
 
-    public SyKATexpression getExpr() { return expr;}
+    public KatExpr getExpr() { return expr;}
 }
 

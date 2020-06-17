@@ -11,6 +11,11 @@ public class PlusTest extends TestExpr {
         right = q;
     }
 
+    @Override
+    public boolean isCanonical() {
+        return left.isCanonical() && right.isCanonical();
+    }
+
     public Object accept(KATexpressionVisitor visitor) {
         return visitor.visit(this);
     }

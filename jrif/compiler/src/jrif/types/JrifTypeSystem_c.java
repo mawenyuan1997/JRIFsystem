@@ -129,15 +129,13 @@ public class JrifTypeSystem_c extends JifTypeSystem_c implements JrifTypeSystem 
     @Override
     public RifFSM topfsm(Position pos) {
 //        System.out.println("top");
-        SyKATexpression e = Info.util.translate(new ZeroTest());
-        return new SymDFA(Info.util, e);
+        return new SymDFA(Info.util, KatFactory.ZeroTest());
     }
 //
     @Override
     public RifFSM bottomfsm(Position pos) {
 //        System.out.println("bottom");
-        SyKATexpression e = Info.util.translate(new OneTest());
-        return new SymDFA(Info.util, e);
+        return new SymDFA(Info.util, KatFactory.OneTest());
     }
 
 
@@ -270,7 +268,7 @@ public class JrifTypeSystem_c extends JifTypeSystem_c implements JrifTypeSystem 
 //        }
 
 //        return new RifFSM_c(states, newcurrentstate);
-        return new SymDFA(Info.util, new Concat(((SymDFA) dfa1).getExpr(), ((SymDFA) dfa2).getExpr()));
+        return new SymDFA(Info.util, new ConcatExpr(((SymDFA) dfa1).getExpr(), ((SymDFA) dfa2).getExpr()));
     }
 
     public RifFSM fsmDisjunction(RifFSM dfa1, RifFSM dfa2) {
@@ -331,7 +329,7 @@ public class JrifTypeSystem_c extends JifTypeSystem_c implements JrifTypeSystem 
 //        }
 //
 //        return new RifFSM_c(states, newcurrentstate);
-        return new SymDFA(Info.util, new Plus(((SymDFA) dfa1).getExpr(), ((SymDFA) dfa2).getExpr()));
+        return new SymDFA(Info.util, new PlusExpr(((SymDFA) dfa1).getExpr(), ((SymDFA) dfa2).getExpr()));
     }
 
 

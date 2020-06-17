@@ -17,6 +17,11 @@ public class ConcatExpr implements KatExpr {
     }
 
     @Override
+    public boolean isCanonical() {
+        return left.isCanonical() && right.isCanonical();
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (o == this) return true;
         if (!(o instanceof ConcatExpr)) return false;

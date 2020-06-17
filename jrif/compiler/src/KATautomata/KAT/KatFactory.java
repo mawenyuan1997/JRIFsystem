@@ -1,5 +1,6 @@
 package KATautomata.KAT;
 
+import jif.ast.PrincipalNode;
 import jif.types.principal.DynamicPrincipal;
 import jif.types.principal.ExternalPrincipal;
 import jif.types.principal.Principal;
@@ -10,21 +11,21 @@ public class KatFactory {
     public static OneTest one = new OneTest();
     public static ZeroTest zero = new ZeroTest();
 
-    public static TestExpr getPrimTest(Principal p, boolean isReader) {
-        if (p.isBottomPrincipal()) {
-            return isReader?OneTest() : ZeroTest();
-        } else if (p.isTopPrincipal()) {
-            return isReader?ZeroTest() : OneTest();
-        } else {
-            return KatFactory.PrimitiveTest(p.getClass().getName());
+    public static TestExpr getTest(List<Principal> principals) {
+        if (principals.size() == 0)
+            return KatFactory.ZeroTest();
+        TestExpr t = KatFactory.PrimitiveTest(principals.get(0));
+        for(int i=1; i<principals.size(); i++) {
+            t = KatFactory.PlusTest(t, KatFactory.PrimitiveTest(principals.get(i)));
         }
+        return t;
     }
 
     public static OneTest OneTest() { return one; }
 
     public static ZeroTest ZeroTest() { return zero; }
 
-    public static PrimitiveTest PrimitiveTest(String name) {
+    public static PrimitiveTest PrimitiveTest(Principal name) {
         return new PrimitiveTest(name);
     }
 

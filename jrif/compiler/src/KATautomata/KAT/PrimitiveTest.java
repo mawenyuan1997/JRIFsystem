@@ -1,13 +1,16 @@
 package KATautomata.KAT;
 
 import KATautomata.KAToperator.KATexpressionVisitor;
+import jif.types.principal.Principal;
+
+import java.util.List;
 
 public class PrimitiveTest extends TestExpr {
 
-    public String id;
+    private Principal principal;
 
-    public PrimitiveTest(String str) {
-        id = str;
+    public PrimitiveTest(Principal p) {
+        principal = p;
     }
 
     public Object accept(KATexpressionVisitor visitor) {
@@ -15,15 +18,28 @@ public class PrimitiveTest extends TestExpr {
     }
 
     @Override
+    public boolean isCanonical() {
+        if (this.principal == null) return true;
+        if (!principal.isCanonical()) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (o == this) return true;
         if (!(o instanceof PrimitiveTest)) return false;
         PrimitiveTest e = (PrimitiveTest) o;
-        return this.id.equals(e.id);
+        return this.principal.equals(e.principal);
     }
 
     @Override
     public int hashCode() {
-        return id.hashCode();
+        return principal.hashCode();
+    }
+
+    public String getString() {
+        return principal.toString();
     }
 }

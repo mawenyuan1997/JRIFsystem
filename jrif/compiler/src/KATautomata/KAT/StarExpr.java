@@ -11,6 +11,11 @@ public class StarExpr implements KatExpr {
     }
 
     @Override
+    public boolean isCanonical() {
+        return p.isCanonical();
+    }
+
+    @Override
     public Object accept(KATexpressionVisitor visitor) {
         return visitor.visit(this);
     }
