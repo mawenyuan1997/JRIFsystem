@@ -1,6 +1,6 @@
 package KATautomata.utility;
 
-import KATautomata.SyKAT.SyKATexpression;
+import KATautomata.SyKAT.SyKatExpr;
 import polyglot.util.SerialVersionUID;
 
 import java.io.Serializable;
@@ -8,13 +8,13 @@ import java.util.HashSet;
 
 public class State implements Serializable {
     private static final long serialVersionUID = SerialVersionUID.generate();
-    public HashSet<SyKATexpression> s;
+    public HashSet<SyKatExpr> s;
 
-    public State(HashSet<SyKATexpression> ss) {
+    public State(HashSet<SyKatExpr> ss) {
         s = ss;
     }
 
-    public State(SyKATexpression e) {
+    public State(SyKatExpr e) {
         s = new HashSet<>();
         s.add(e);
     }
@@ -36,16 +36,16 @@ public class State implements Serializable {
     }
 
     public State merge(State y) {
-        HashSet<SyKATexpression> temp = new HashSet<>(s);
+        HashSet<SyKatExpr> temp = new HashSet<>(s);
         temp.addAll(y.getSet());
         return new State(temp);
     }
 
-    public HashSet<SyKATexpression> getSet() {
+    public HashSet<SyKatExpr> getSet() {
         return s;
     }
 
-    public boolean has(SyKATexpression e) {
+    public boolean has(SyKatExpr e) {
         return s.contains(e);
     }
 

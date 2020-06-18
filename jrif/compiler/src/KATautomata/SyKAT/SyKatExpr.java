@@ -2,6 +2,6 @@ package KATautomata.SyKAT;
 
 import KATautomata.SyKAToperator.SyKATexpressionVisitor;
 
-public interface SyKATexpression {
+public interface SyKatExpr {
     Object accept(SyKATexpressionVisitor visitor);
 }

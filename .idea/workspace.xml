@@ -294,22 +294,17 @@
       <change beforePath="$PROJECT_DIR$/jrif/compiler/classes/jrif/types/label/RifIntegPolicy.class" beforeDir="false" afterPath="$PROJECT_DIR$/jrif/compiler/classes/jrif/types/label/RifIntegPolicy.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/jrif/compiler/classes/jrif/types/label/RifVarLabel.class" beforeDir="false" afterPath="$PROJECT_DIR$/jrif/compiler/classes/jrif/types/label/RifVarLabel.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/jrif/compiler/classes/jrif/visit/JrifLabelChecker.class" beforeDir="false" afterPath="$PROJECT_DIR$/jrif/compiler/classes/jrif/visit/JrifLabelChecker.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jrif/compiler/src/KATautomata/KAT/Action.java" beforeDir="false" afterPath="$PROJECT_DIR$/jrif/compiler/src/KATautomata/KAT/Action.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jrif/compiler/src/KATautomata/KAT/ConcatExpr.java" beforeDir="false" afterPath="$PROJECT_DIR$/jrif/compiler/src/KATautomata/KAT/ConcatExpr.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jrif/compiler/src/KATautomata/KAT/ConcatTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/jrif/compiler/src/KATautomata/KAT/ConcatTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jrif/compiler/src/KATautomata/KAT/KatExpr.java" beforeDir="false" afterPath="$PROJECT_DIR$/jrif/compiler/src/KATautomata/KAT/KatExpr.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jrif/compiler/src/KATautomata/KAT/KatFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/jrif/compiler/src/KATautomata/KAT/KatFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jrif/compiler/src/KATautomata/KAT/NegateTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/jrif/compiler/src/KATautomata/KAT/NegateTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jrif/compiler/src/KATautomata/KAT/OneTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/jrif/compiler/src/KATautomata/KAT/OneTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jrif/compiler/src/KATautomata/KAT/PlusExpr.java" beforeDir="false" afterPath="$PROJECT_DIR$/jrif/compiler/src/KATautomata/KAT/PlusExpr.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jrif/compiler/src/KATautomata/KAT/PlusTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/jrif/compiler/src/KATautomata/KAT/PlusTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/jrif/compiler/src/KATautomata/KAT/PrimitiveTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/jrif/compiler/src/KATautomata/KAT/PrimitiveTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jrif/compiler/src/KATautomata/KAT/StarExpr.java" beforeDir="false" afterPath="$PROJECT_DIR$/jrif/compiler/src/KATautomata/KAT/StarExpr.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jrif/compiler/src/KATautomata/KAT/ZeroTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/jrif/compiler/src/KATautomata/KAT/ZeroTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jrif/compiler/src/KATautomata/KAToperator/KATprinter.java" beforeDir="false" afterPath="$PROJECT_DIR$/jrif/compiler/src/KATautomata/KAToperator/KATprinter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jrif/compiler/src/KATautomata/SyKAT/BDD/BDD.java" beforeDir="false" afterPath="$PROJECT_DIR$/jrif/compiler/src/KATautomata/SyKAT/BDD/BDD.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jrif/compiler/src/KATautomata/SyKAT/Concat.java" beforeDir="false" afterPath="$PROJECT_DIR$/jrif/compiler/src/KATautomata/SyKAT/Concat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jrif/compiler/src/KATautomata/SyKAT/Plus.java" beforeDir="false" afterPath="$PROJECT_DIR$/jrif/compiler/src/KATautomata/SyKAT/Plus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jrif/compiler/src/KATautomata/SyKAT/Star.java" beforeDir="false" afterPath="$PROJECT_DIR$/jrif/compiler/src/KATautomata/SyKAT/Star.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jrif/compiler/src/KATautomata/SyKAT/SyKATexpression.java" beforeDir="false" afterPath="$PROJECT_DIR$/jrif/compiler/src/KATautomata/SyKAT/SyKatExpr.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jrif/compiler/src/KATautomata/SyKAToperator/Delta.java" beforeDir="false" afterPath="$PROJECT_DIR$/jrif/compiler/src/KATautomata/SyKAToperator/Delta.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jrif/compiler/src/KATautomata/SyKAToperator/Epsilon.java" beforeDir="false" afterPath="$PROJECT_DIR$/jrif/compiler/src/KATautomata/SyKAToperator/Epsilon.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jrif/compiler/src/KATautomata/utility/State.java" beforeDir="false" afterPath="$PROJECT_DIR$/jrif/compiler/src/KATautomata/utility/State.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/jrif/compiler/src/KATautomata/utility/SymDFA.java" beforeDir="false" afterPath="$PROJECT_DIR$/jrif/compiler/src/KATautomata/utility/SymDFA.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/jrif/compiler/src/KATautomata/utility/Util.java" beforeDir="false" afterPath="$PROJECT_DIR$/jrif/compiler/src/KATautomata/utility/Util.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jrif/compiler/src/jrif/ast/KatAtomNode_c.java" beforeDir="false" afterPath="$PROJECT_DIR$/jrif/compiler/src/jrif/ast/KatAtomNode_c.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/jrif/compiler/src/jrif/ast/RifPolicyNode_c.java" beforeDir="false" afterPath="$PROJECT_DIR$/jrif/compiler/src/jrif/ast/RifPolicyNode_c.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/jrif/compiler/src/jrif/ast/RifiPolicyNode_c.java" beforeDir="false" afterPath="$PROJECT_DIR$/jrif/compiler/src/jrif/ast/RifiPolicyNode_c.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/jrif/compiler/src/jrif/parse/Grm.java" beforeDir="false" afterPath="$PROJECT_DIR$/jrif/compiler/src/jrif/parse/Grm.java" afterDir="false" />
@@ -334,30 +329,6 @@
       <change beforePath="$PROJECT_DIR$/jrif/examples/rif_calendar/TimeOfDay.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/jrif/examples/rif_calendar/rifList.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/jrif/examples/rif_calendar/rifList.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jrif/lib-classes/jif/lang/ExternalPrincipal.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jrif/lib-classes/jif/lang/ExternalPrincipal.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jrif/lib-classes/jif/lang/Hashable.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jrif/lib-classes/jif/lang/Hashable.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jrif/lib-classes/jif/lang/Hashable_JIF_IMPL.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jrif/lib-classes/jif/lang/Hashable_JIF_IMPL.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jrif/lib-classes/jif/lang/IDComparable.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jrif/lib-classes/jif/lang/IDComparable.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jrif/lib-classes/jif/lang/IDComparable_JIF_IMPL.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jrif/lib-classes/jif/lang/IDComparable_JIF_IMPL.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jrif/lib-classes/jif/lang/JifInteger.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jrif/lib-classes/jif/lang/JifInteger.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jrif/lib-classes/jif/lang/JifObject.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jrif/lib-classes/jif/lang/JifObject.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jrif/lib-classes/jif/lang/JifObjectWrapper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jrif/lib-classes/jif/lang/JifObjectWrapper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jrif/lib-classes/jif/lang/JifObject_JIF_IMPL.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jrif/lib-classes/jif/lang/JifObject_JIF_IMPL.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jrif/lib-classes/jif/lang/JifString.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jrif/lib-classes/jif/lang/JifString.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jrif/lib-classes/jif/lang/ToStringable.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jrif/lib-classes/jif/lang/ToStringable.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jrif/lib-classes/jif/lang/ToStringable_JIF_IMPL.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jrif/lib-classes/jif/lang/ToStringable_JIF_IMPL.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/jrif/lib-classes/jif/util/AbstractCollection.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/jrif/lib-classes/jif/util/AbstractCollection.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/jrif/lib-classes/jif/util/AbstractCollection2.class" beforeDir="false" />
@@ -602,6 +573,10 @@
       <change beforePath="$PROJECT_DIR$/jrif/sig-classes/jif/net/SocketUtil.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/jrif/sig-classes/jif/runtime/Runtime.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/jrif/sig-classes/jif/runtime/Runtime.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jrif/tests/KatAutomata/BDDtest.java" beforeDir="false" afterPath="$PROJECT_DIR$/jrif/compiler/src/test/KatAutomata/BDDtest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jrif/tests/KatAutomata/KATtest.java" beforeDir="false" afterPath="$PROJECT_DIR$/jrif/compiler/src/test/KatAutomata/KATtest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jrif/tests/KatAutomata/SykatTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/jrif/compiler/src/test/KatAutomata/SykatTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jrif/tests/KatAutomata/SymDFAtest.java" beforeDir="false" afterPath="$PROJECT_DIR$/jrif/compiler/src/test/KatAutomata/SymDFAtest.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -627,33 +602,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/jrif/compiler/src/KATautomata/KAT/PrimitiveTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="254">
-              <caret line="42" column="36" selection-start-line="42" selection-start-column="36" selection-end-line="42" selection-end-column="36" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#959#960#0" expanded="true" />
-                <element signature="e#990#991#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/jrif/compiler/src/jrif/types/JrifTypeSystem_c.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-3715">
-              <caret line="325" column="55" selection-start-line="325" selection-start-column="55" selection-end-line="325" selection-end-column="55" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/jrif/compiler/src/KATautomata/utility/SymDFA.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="220">
-              <caret line="99" selection-start-line="99" selection-end-line="99" />
+            <state relative-caret-position="762">
+              <caret line="105" column="60" lean-forward="true" selection-start-line="105" selection-start-column="60" selection-end-line="105" selection-end-column="60" />
               <folding>
                 <element signature="e#9775#9776#0" expanded="true" />
                 <element signature="e#9827#9828#0" expanded="true" />
@@ -664,11 +616,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/jrif/tests/KatAutomata/SymDFAtest.java">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/jrif/compiler/src/test/KatAutomata/SymDFAtest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="2" selection-start-line="2" selection-end-line="2" />
+            <state relative-caret-position="164">
+              <caret line="39" selection-start-line="39" selection-end-line="39" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -677,31 +629,12 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/jrif/compiler/src/KATautomata/utility/Util.java">
+        <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_144.jdk/Contents/Home/src.zip!/java/util/HashMap.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="280">
-              <caret line="71" column="70" selection-start-line="71" selection-start-column="70" selection-end-line="71" selection-end-column="70" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/jrif/compiler/src/KATautomata/utility/State.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="184">
-              <caret line="40" column="31" selection-start-line="40" selection-start-column="31" selection-end-line="40" selection-end-column="31" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/jrif/compiler/src/KATautomata/KAToperator/KATprinter.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="49" column="31" selection-start-line="49" selection-start-column="31" selection-end-line="49" selection-end-column="31" />
+            <state relative-caret-position="154">
+              <caret line="594" selection-start-line="594" selection-end-line="594" />
               <folding>
-                <element signature="e#1193#1194#0" expanded="true" />
-                <element signature="e#1232#1233#0" expanded="true" />
+                <element signature="e#23651#23652#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -720,10 +653,67 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/jrif/compiler/src/KATautomata/KAT/KatFactory.java">
+        <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_144.jdk/Contents/Home/src.zip!/java/util/HashSet.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="87">
-              <caret line="20" column="17" selection-start-line="20" selection-start-column="17" selection-end-line="20" selection-end-column="17" />
+            <state relative-caret-position="161">
+              <caret line="202" selection-start-line="202" selection-end-line="202" />
+              <folding>
+                <element signature="e#7437#7438#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/jrif/compiler/src/test/KatAutomata/SykatTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="600">
+              <caret line="40" column="47" selection-start-line="40" selection-start-column="47" selection-end-line="40" selection-end-column="47" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/jrif/compiler/src/test/KatAutomata/BDDtest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="105">
+              <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/jrif/compiler/src/test/KatAutomata/KATtest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="215">
+              <caret line="20" column="96" selection-start-line="20" selection-start-column="96" selection-end-line="20" selection-end-column="96" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/jrif/compiler/src/KATautomata/utility/Util.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="735">
+              <caret line="60" column="56" selection-start-line="60" selection-start-column="56" selection-end-line="60" selection-end-column="56" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/jrif/compiler/src/KATautomata/utility/State.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="178">
+              <caret line="40" column="31" selection-start-line="40" selection-start-column="31" selection-end-line="40" selection-end-column="31" />
             </state>
           </provider>
         </entry>
@@ -740,12 +730,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>RifWriterPolicy_c</find>
-      <find>topfsm</find>
-      <find>rifreader</find>
-      <find>ONE</find>
-      <find>unsupport</find>
-      <find>principal_set</find>
       <find>principal_list</find>
       <find>RifiPolicyNode</find>
       <find>Possible infinite loop detected trying to run a pass for</find>
@@ -770,11 +754,27 @@
       <find>SignaturesDisambiguated</find>
       <find>Unable to serialize class information</find>
       <find>Auto-endorse cannot downgrade confidentiality</find>
+      <find>TestExpression</find>
+      <find>new Action(action1)</find>
+      <find>action2</find>
+      <find>ConcatExpression</find>
+      <find>KATautomata.test.SymDFAtest</find>
+      <find>new</find>
     </findStrings>
     <replaceStrings>
       <replace>{A}</replace>
       <replace>{B}</replace>
       <replace>{C}</replace>
+      <replace>TestExpr</replace>
+      <replace>a2</replace>
+      <replace>e1</replace>
+      <replace>e2</replace>
+      <replace>r</replace>
+      <replace>l</replace>
+      <replace>PlusExpr</replace>
+      <replace>StarExpr</replace>
+      <replace>a1</replace>
+      <replace>ConcatExpr</replace>
     </replaceStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$</dir>
@@ -786,11 +786,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/jrif/compiler/src/jrif/ast/KatStarNode.java" />
-        <option value="$PROJECT_DIR$/jrif/compiler/src/jrif/ast/KatExprNode.java" />
-        <option value="$PROJECT_DIR$/jrif/compiler/src/jrif/ast/KatExprNode_c.java" />
-        <option value="$PROJECT_DIR$/jrif/compiler/src/jrif/extension/JrifLabelTypeCheckUtil.java" />
-        <option value="$PROJECT_DIR$/jrif/compiler/src/jrif/ast/JrifNodeFactory_c.java" />
         <option value="$PROJECT_DIR$/jrif/compiler/src/jrif/ast/JrifNodeFactory.java" />
         <option value="$PROJECT_DIR$/jrif/compiler/src/jrif/ast/KatTestNode.java" />
         <option value="$PROJECT_DIR$/jrif/compiler/src/jrif/ast/KatAtomNode.java" />
@@ -820,7 +815,6 @@
         <option value="$PROJECT_DIR$/jrif/compiler/src/jrif/ast/RifiPolicyNode_c.java" />
         <option value="$PROJECT_DIR$/jrif/compiler/src/jrif/ast/RifPolicyNode_c.java" />
         <option value="$PROJECT_DIR$/jrif/compiler/src/KATautomata/utility/State.java" />
-        <option value="$PROJECT_DIR$/jrif/compiler/src/KATautomata/utility/SymDFA.java" />
         <option value="$PROJECT_DIR$/jrif/compiler/src/KATautomata/KAT/KatExpr.java" />
         <option value="$PROJECT_DIR$/jrif/compiler/src/KATautomata/KAT/Action.java" />
         <option value="$PROJECT_DIR$/jrif/compiler/src/jrif/ast/KatAtomNode_c.java" />
@@ -834,15 +828,21 @@
         <option value="$PROJECT_DIR$/jrif/compiler/src/KATautomata/KAT/StarExpr.java" />
         <option value="$PROJECT_DIR$/jrif/compiler/src/KATautomata/KAT/ZeroTest.java" />
         <option value="$PROJECT_DIR$/jrif/compiler/src/jrif/types/JrifTypeSystem_c.java" />
-        <option value="$PROJECT_DIR$/jrif/compiler/src/KATautomata/KAT/PrimitiveTest.java" />
         <option value="$PROJECT_DIR$/jrif/compiler/src/KATautomata/utility/Util.java" />
         <option value="$PROJECT_DIR$/jrif/compiler/src/KATautomata/KAToperator/KATprinter.java" />
+        <option value="$PROJECT_DIR$/jrif/tests/KatAutomata/SymDFAtest.java" />
+        <option value="$PROJECT_DIR$/jrif/compiler/src/test/KatAutomata/BDDtest.java" />
+        <option value="$PROJECT_DIR$/jrif/compiler/src/test/KatAutomata/KATtest.java" />
+        <option value="$PROJECT_DIR$/jrif/compiler/src/KATautomata/KAT/PrimitiveTest.java" />
+        <option value="$PROJECT_DIR$/jrif/compiler/src/test/KatAutomata/SykatTest.java" />
+        <option value="$PROJECT_DIR$/jrif/compiler/src/test/KatAutomata/SymDFAtest.java" />
+        <option value="$PROJECT_DIR$/jrif/compiler/src/KATautomata/utility/SymDFA.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="147" />
-    <option name="y" value="46" />
+    <option name="x" value="66" />
+    <option name="y" value="39" />
     <option name="width" value="1319" />
     <option name="height" value="798" />
   </component>
@@ -899,51 +899,7 @@
               <item name="jrif" type="462c0819:PsiDirectoryNode" />
               <item name="compiler" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="jrif" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="JRIFsystem" type="b2602c69:ProjectViewProjectNode" />
-              <item name="JRIFsystem" type="462c0819:PsiDirectoryNode" />
-              <item name="jrif" type="462c0819:PsiDirectoryNode" />
-              <item name="compiler" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="jrif" type="462c0819:PsiDirectoryNode" />
-              <item name="ast" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="JRIFsystem" type="b2602c69:ProjectViewProjectNode" />
-              <item name="JRIFsystem" type="462c0819:PsiDirectoryNode" />
-              <item name="jrif" type="462c0819:PsiDirectoryNode" />
-              <item name="compiler" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="jrif" type="462c0819:PsiDirectoryNode" />
-              <item name="types" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="JRIFsystem" type="b2602c69:ProjectViewProjectNode" />
-              <item name="JRIFsystem" type="462c0819:PsiDirectoryNode" />
-              <item name="jrif" type="462c0819:PsiDirectoryNode" />
-              <item name="compiler" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="jrif" type="462c0819:PsiDirectoryNode" />
-              <item name="visit" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="JRIFsystem" type="b2602c69:ProjectViewProjectNode" />
-              <item name="JRIFsystem" type="462c0819:PsiDirectoryNode" />
-              <item name="jrif" type="462c0819:PsiDirectoryNode" />
-              <item name="compiler" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="KATautomata" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="JRIFsystem" type="b2602c69:ProjectViewProjectNode" />
-              <item name="JRIFsystem" type="462c0819:PsiDirectoryNode" />
-              <item name="jrif" type="462c0819:PsiDirectoryNode" />
-              <item name="compiler" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="KATautomata" type="462c0819:PsiDirectoryNode" />
-              <item name="KAT" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="JRIFsystem" type="b2602c69:ProjectViewProjectNode" />
@@ -967,14 +923,15 @@
               <item name="JRIFsystem" type="b2602c69:ProjectViewProjectNode" />
               <item name="JRIFsystem" type="462c0819:PsiDirectoryNode" />
               <item name="jrif" type="462c0819:PsiDirectoryNode" />
-              <item name="tests" type="462c0819:PsiDirectoryNode" />
+              <item name="compiler" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="KatAutomata" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="JRIFsystem" type="b2602c69:ProjectViewProjectNode" />
               <item name="JRIFsystem" type="462c0819:PsiDirectoryNode" />
               <item name="jrif" type="462c0819:PsiDirectoryNode" />
               <item name="tests" type="462c0819:PsiDirectoryNode" />
-              <item name="KatAutomata" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="JRIFsystem" type="b2602c69:ProjectViewProjectNode" />
@@ -1003,7 +960,7 @@
     <property name="Repository.Attach.Sources" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1592423840312" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1592442641099" />
     <property name="go.gopath.indexing.explicitly.defined" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
@@ -1014,15 +971,15 @@
     <property name="project.structure.side.proportion" value="0.2" />
   </component>
   <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="jrif.ast" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/jrif/compiler/src/test" />
       <recent name="$PROJECT_DIR$/jrif/tests/KatAutomata" />
       <recent name="$PROJECT_DIR$/jrif/tests" />
       <recent name="$PROJECT_DIR$/jrif/KatAutomata" />
       <recent name="$PROJECT_DIR$/jrif/compiler/src" />
-      <recent name="$PROJECT_DIR$/jrif/lib" />
-    </key>
-    <key name="CreateClassDialog.RecentsKey">
-      <recent name="jrif.ast" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -1037,7 +994,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.SymDFAtest">
+  <component name="RunManager" selected="JUnit.SymDFAtest (2)">
     <configuration name="Main" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="ALTERNATIVE_JRE_PATH" value="1.8.0_144" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
@@ -1058,6 +1015,21 @@
       </extension>
       <option name="PACKAGE_NAME" value="test" />
       <option name="MAIN_CLASS_NAME" value="test.SymDFAtest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SymDFAtest (2)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="JRIFsystem" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="test.KatAutomata.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="test.KatAutomata" />
+      <option name="MAIN_CLASS_NAME" value="test.KatAutomata.SymDFAtest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -1084,9 +1056,11 @@
       <item itemvalue="Application.Main" />
       <item itemvalue="JUnit.SymDFAtest" />
       <item itemvalue="JUnit.SymDFAtest (1)" />
+      <item itemvalue="JUnit.SymDFAtest (2)" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.SymDFAtest (2)" />
         <item itemvalue="JUnit.SymDFAtest" />
         <item itemvalue="JUnit.SymDFAtest (1)" />
       </list>
@@ -1137,7 +1111,7 @@
       <workItem from="1591064856644" duration="3847000" />
       <workItem from="1591313742952" duration="5963000" />
       <workItem from="1591473179891" duration="44954000" />
-      <workItem from="1592078348601" duration="21092000" />
+      <workItem from="1592078348601" duration="26531000" />
     </task>
     <task id="LOCAL-00001" summary="update test">
       <created>1581050586816</created>
@@ -1251,7 +1225,14 @@
       <option name="project" value="LOCAL" />
       <updated>1592145503018</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="add isCanonical; delay automata creation">
+      <created>1592423989625</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1592423989625</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1261,9 +1242,33 @@
     <history-entry file="SymDFAtest - 2020.06.17 at 15h 51m 44s.xml">
       <configuration name="SymDFAtest" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="SymDFAtest - 2020.06.17 at 18h 47m 17s.xml">
+      <configuration name="SymDFAtest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="SymDFAtest_(2) - 2020.06.17 at 18h 48m 33s.xml">
+      <configuration name="SymDFAtest (2)" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="SymDFAtest_(2) - 2020.06.17 at 21h 06m 22s.xml">
+      <configuration name="SymDFAtest (2)" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="SymDFAtest_(2) - 2020.06.17 at 21h 06m 27s.xml">
+      <configuration name="SymDFAtest (2)" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="SymDFAtest_(2) - 2020.06.17 at 21h 07m 29s.xml">
+      <configuration name="SymDFAtest (2)" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="SymDFAtest_(2) - 2020.06.17 at 21h 07m 35s.xml">
+      <configuration name="SymDFAtest (2)" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="SymDFAtest_(2) - 2020.06.17 at 21h 08m 26s.xml">
+      <configuration name="SymDFAtest (2)" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="SymDFAtest_(2) - 2020.06.17 at 21h 10m 22s.xml">
+      <configuration name="SymDFAtest (2)" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="332437000" />
+    <option name="totallyTimeSpent" value="337876000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1275,7 +1280,8 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="147" y="46" width="1319" height="798" extended-state="0" />
+    <frame x="66" y="39" width="1319" height="798" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26624903" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -1287,7 +1293,7 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.29461756" />
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49960846" visible="true" weight="0.2776204" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.305949" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.34135976" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3286119" />
@@ -1329,7 +1335,8 @@
     <MESSAGE value="create ast node in jrif.ppg" />
     <MESSAGE value="top bottom fsm" />
     <MESSAGE value="add serialization" />
-    <option name="LAST_COMMIT_MESSAGE" value="add serialization" />
+    <MESSAGE value="add isCanonical; delay automata creation" />
+    <option name="LAST_COMMIT_MESSAGE" value="add isCanonical; delay automata creation" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1390,25 +1397,25 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/jrif/compiler/src/jrif/ast/RifiPolicyNode_c.java</url>
-          <line>28</line>
+          <line>24</line>
           <properties />
           <option name="timeStamp" value="21" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/jrif/compiler/src/jrif/ast/RifPolicyNode_c.java</url>
-          <line>28</line>
+          <line>27</line>
           <properties />
           <option name="timeStamp" value="22" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/jrif/compiler/src/jrif/types/JrifTypeSystem_c.java</url>
-          <line>78</line>
+          <line>75</line>
           <properties />
           <option name="timeStamp" value="23" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/jrif/compiler/src/jrif/types/JrifTypeSystem_c.java</url>
-          <line>96</line>
+          <line>93</line>
           <properties />
           <option name="timeStamp" value="26" />
         </line-breakpoint>
@@ -1426,7 +1433,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/jrif/compiler/src/KATautomata/SyKAT/BDD/BDD.java</url>
-          <line>26</line>
+          <line>24</line>
           <properties />
           <option name="timeStamp" value="36" />
         </line-breakpoint>
@@ -1438,37 +1445,20 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/jrif/compiler/src/KATautomata/utility/SymDFA.java</url>
-          <line>281</line>
+          <line>289</line>
           <properties />
           <option name="timeStamp" value="38" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/jrif/compiler/src/KATautomata/utility/SymDFA.java</url>
+          <line>132</line>
+          <properties />
+          <option name="timeStamp" value="40" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/jif-3.5.0/src/jif/types/principal/DynamicPrincipal_c.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jif-3.5.0/src/jif/types/principal/DisjunctivePrincipal_c.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jif-3.5.0/src/jif/types/principal/BottomPrincipal_c.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jrif/compiler/src/jrif/ast/KatExprNode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="17" selection-start-line="3" selection-start-column="17" selection-end-line="3" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jrif/compiler/src/jrif/ast/KatAndNode_c.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="12" column="77" selection-start-line="12" selection-start-column="77" selection-end-line="12" selection-end-column="77" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/jrif/compiler/src/jrif/ast/KatConcatNode_c.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
@@ -1654,7 +1644,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/jrif/compiler/src/KATautomata/SyKAT/SyKATexpression.java">
+    <entry file="file://$PROJECT_DIR$/jrif/compiler/src/KATautomata/SyKAT/SyKatExpr.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
           <caret line="6" selection-start-line="6" selection-end-line="6" />
@@ -1797,26 +1787,7 @@
     <entry file="file://$PROJECT_DIR$/jrif/compiler/src/jrif/types/JrifTypeSystem_c.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-3715">
-          <caret line="325" column="55" selection-start-line="325" selection-start-column="55" selection-end-line="325" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jrif/compiler/src/KATautomata/KAT/PrimitiveTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="254">
-          <caret line="42" column="36" selection-start-line="42" selection-start-column="36" selection-end-line="42" selection-end-column="36" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#959#960#0" expanded="true" />
-            <element signature="e#990#991#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jrif/compiler/src/KATautomata/utility/Util.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="71" column="70" selection-start-line="71" selection-start-column="70" selection-end-line="71" selection-end-column="70" />
+          <caret line="322" column="55" selection-start-line="322" selection-start-column="55" selection-end-line="322" selection-end-column="55" />
         </state>
       </provider>
     </entry>
@@ -1831,10 +1802,77 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/jrif/compiler/src/KATautomata/KAT/PrimitiveTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="16" selection-start-line="16" selection-end-line="16" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jrif/compiler/src/KATautomata/utility/Util.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="735">
+          <caret line="60" column="56" selection-start-line="60" selection-start-column="56" selection-end-line="60" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/jrif/compiler/src/KATautomata/utility/State.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
+        <state relative-caret-position="178">
           <caret line="40" column="31" selection-start-line="40" selection-start-column="31" selection-end-line="40" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jrif/compiler/src/test/KatAutomata/KATtest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="215">
+          <caret line="20" column="96" selection-start-line="20" selection-start-column="96" selection-end-line="20" selection-end-column="96" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jrif/compiler/src/test/KatAutomata/BDDtest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_144.jdk/Contents/Home/src.zip!/java/util/HashSet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="161">
+          <caret line="202" selection-start-line="202" selection-end-line="202" />
+          <folding>
+            <element signature="e#7437#7438#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_144.jdk/Contents/Home/src.zip!/java/util/HashMap.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="594" selection-start-line="594" selection-end-line="594" />
+          <folding>
+            <element signature="e#23651#23652#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jrif/compiler/src/test/KatAutomata/SymDFAtest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="164">
+          <caret line="39" selection-start-line="39" selection-end-line="39" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1850,8 +1888,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/jrif/compiler/src/KATautomata/utility/SymDFA.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="99" selection-start-line="99" selection-end-line="99" />
+        <state relative-caret-position="762">
+          <caret line="105" column="60" lean-forward="true" selection-start-line="105" selection-start-column="60" selection-end-line="105" selection-end-column="60" />
           <folding>
             <element signature="e#9775#9776#0" expanded="true" />
             <element signature="e#9827#9828#0" expanded="true" />
@@ -1861,10 +1899,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/jrif/tests/KatAutomata/SymDFAtest.java">
+    <entry file="file://$PROJECT_DIR$/jrif/compiler/src/test/KatAutomata/SykatTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" selection-start-line="2" selection-end-line="2" />
+        <state relative-caret-position="600">
+          <caret line="40" column="47" selection-start-line="40" selection-start-column="47" selection-end-line="40" selection-end-column="47" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

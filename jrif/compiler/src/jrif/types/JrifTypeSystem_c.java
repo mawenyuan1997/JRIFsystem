@@ -1,9 +1,6 @@
 package jrif.types;
 
 import KATautomata.KAT.*;
-import KATautomata.SyKAT.Concat;
-import KATautomata.SyKAT.Plus;
-import KATautomata.SyKAT.SyKATexpression;
 import MetaData.Info;
 import jif.types.JifTypeSystem_c;
 import polyglot.types.TypeSystem;

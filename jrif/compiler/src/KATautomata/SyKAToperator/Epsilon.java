@@ -5,8 +5,6 @@ import KATautomata.SyKAT.BDD.Operator;
 import KATautomata.SyKAT.Concat;
 import KATautomata.SyKAT.Plus;
 import KATautomata.SyKAT.Star;
-import KATautomata.SyKAT.BDD.BooleanBDDutil;
-import KATautomata.SyKAT.SyKATexpression;
 
 import static KATautomata.SyKAT.BDD.BooleanBDDutil.singleBooleanBDD;
 

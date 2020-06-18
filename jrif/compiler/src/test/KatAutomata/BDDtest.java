@@ -1,7 +1,7 @@
-package KATautomata.test;
+package test.KatAutomata;
 
-import SyKAT.BDD.BDD;
-import SyKAT.BDD.BooleanFunction;
+import KATautomata.SyKAT.BDD.BDD;
+import KATautomata.SyKAT.BDD.BooleanFunction;
 import org.junit.jupiter.api.Test;
 import java.util.HashMap;
 

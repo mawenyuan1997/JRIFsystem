@@ -5,11 +5,11 @@ import polyglot.util.SerialVersionUID;
 
 import java.io.Serializable;
 
-public class Star implements SyKATexpression, Serializable {
+public class Star implements SyKatExpr, Serializable {
     private static final long serialVersionUID = SerialVersionUID.generate();
-    public SyKATexpression p;
+    public SyKatExpr p;
 
-    public Star(SyKATexpression expr) {p = expr;}
+    public Star(SyKatExpr expr) {p = expr;}
 
     @Override
     public Object accept(SyKATexpressionVisitor visitor) { return visitor.visit(this); }

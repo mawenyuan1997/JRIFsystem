@@ -1,9 +1,7 @@
 package jrif.ast;
 
 import KATautomata.KAT.KatExpr;
-import KATautomata.SyKAT.SyKATexpression;
 import KATautomata.utility.SymDFA;
-import MetaData.Info;
 import jif.ast.PolicyNode_c;
 import jrif.types.JrifTypeSystem;
 import jrif.types.KatExprType;
@@ -14,8 +12,6 @@ import polyglot.util.*;
 import polyglot.visit.AmbiguityRemover;
 import polyglot.visit.NodeVisitor;
 import polyglot.visit.PrettyPrinter;
-
-import java.util.List;
 
 import static MetaData.Info.util;
 

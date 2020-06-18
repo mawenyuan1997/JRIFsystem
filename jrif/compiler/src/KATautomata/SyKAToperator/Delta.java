@@ -4,7 +4,7 @@ import KATautomata.SyKAT.BDD.*;
 import KATautomata.SyKAT.Concat;
 import KATautomata.SyKAT.Plus;
 import KATautomata.SyKAT.Star;
-import KATautomata.SyKAT.SyKATexpression;
+import KATautomata.SyKAT.SyKatExpr;
 import KATautomata.utility.State;
 
 import java.util.*;
@@ -25,7 +25,7 @@ public class Delta implements SyKATexpressionVisitor {
     public Object visit(BDD bdd) {
         if (!bdd.isAction()) {
             BDDTree<State> tree = new BDDTree<>(this.numInputs);
-            HashSet<SyKATexpression> empty = new HashSet<SyKATexpression>();
+            HashSet<SyKatExpr> empty = new HashSet<SyKatExpr>();
             tree.addNode(new Node<>(new State(empty), this.numInputs));
             return new BDD<>(tree);
         }
@@ -36,7 +36,7 @@ public class Delta implements SyKATexpressionVisitor {
 
     private int build(boolean[] input, int inputIndex, BDD<Boolean> bdd, BDDTree<State> deriBDDtree) {
         if (inputIndex == this.numInputs) {
-            HashSet<SyKATexpression> set = new HashSet<>();
+            HashSet<SyKatExpr> set = new HashSet<>();
             if (bdd.execute(Arrays.copyOfRange(input, numAtom, numInputs))) {
                 set.add(singleBooleanBDD(true, numAtom));
             }
@@ -56,8 +56,8 @@ public class Delta implements SyKATexpressionVisitor {
 
     @Override
     public Object visit(Concat expr) {
-        SyKATexpression x = expr.left;
-        SyKATexpression y = expr.right;
+        SyKatExpr x = expr.left;
+        SyKatExpr y = expr.right;
         BDD<State> dx = (BDD<State>) x.accept(this);
         BDD<State> dy = (BDD<State>) y.accept(this);
         Epsilon eps = new Epsilon(numAtom);
@@ -78,21 +78,21 @@ public class Delta implements SyKATexpressionVisitor {
     @Override
     public Object visit(Star expr) {
         BDD<State> dx = (BDD<State>) expr.p.accept(this);
-        SyKATexpression xstar = new Star(expr.p);
+        SyKatExpr xstar = new Star(expr.p);
         return squareDot(dx, xstar);
     }
 
     private BDD<State> squareDot(
                                           BDD<State> dx,
-                                          SyKATexpression y
+                                          SyKatExpr y
                                           ) {
         BDDTree<State> bddTree = dx.getTree();
         BDDTree<State> dxytree = new BDDTree<>(this.numInputs);
         for(Node<State> node : bddTree.nodes) {
             Node n;
             if (node.isTerminal()) {
-                HashSet<SyKATexpression> set = new HashSet<>();
-                for(SyKATexpression xp : node.terminalValue.getSet()) {
+                HashSet<SyKatExpr> set = new HashSet<>();
+                for(SyKatExpr xp : node.terminalValue.getSet()) {
                     set.add(new Concat(xp, y));
                 }
                 n = new Node<>(new State(set), node.inputIndex);
@@ -118,7 +118,7 @@ public class Delta implements SyKATexpressionVisitor {
             Node<State> n;
             Node<Boolean> t = eps.nodes.get(i);
             if (t.isTerminal()) {
-                HashSet<SyKATexpression> s = new HashSet<>();
+                HashSet<SyKatExpr> s = new HashSet<>();
                 if (t.terminalValue) {
                     s.add(singleBooleanBDD(true, dy.getTree().numInputs));
                 }
@@ -138,7 +138,7 @@ public class Delta implements SyKATexpressionVisitor {
 
     private BDD<State> union(BDD<State> l, BDD<State> r) {
         Operator<State> op = (x, y) -> {
-            HashSet<SyKATexpression> temp = new HashSet<>(x.getSet());
+            HashSet<SyKatExpr> temp = new HashSet<>(x.getSet());
             temp.addAll(y.getSet());
             return new State(temp);
         };

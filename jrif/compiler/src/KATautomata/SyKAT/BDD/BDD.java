@@ -5,12 +5,10 @@
  */
 package KATautomata.SyKAT.BDD;
 
-import KATautomata.SyKAT.SyKATexpression;
+import KATautomata.SyKAT.SyKatExpr;
 import KATautomata.SyKAToperator.SyKATexpressionVisitor;
-import polyglot.util.SerialVersionUID;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
@@ -22,7 +20,7 @@ import java.util.HashMap;
  * 
  * @author Eric 'Siggy' Scott
  */
-public class BDD<T> extends Executable<T> implements SyKATexpression, Serializable
+public class BDD<T> extends Executable<T> implements SyKatExpr, Serializable
 {
 //    private static final long serialVersionUID = SerialVersionUID.generate();
     /* If you add fields, don't forget to update the copy constructor! */

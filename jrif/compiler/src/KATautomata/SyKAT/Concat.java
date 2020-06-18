@@ -5,11 +5,11 @@ import polyglot.util.SerialVersionUID;
 
 import java.io.Serializable;
 
-public class Concat implements SyKATexpression, Serializable {
+public class Concat implements SyKatExpr, Serializable {
     private static final long serialVersionUID = SerialVersionUID.generate();
-    public SyKATexpression left,right;
+    public SyKatExpr left,right;
 
-    public Concat(SyKATexpression l, SyKATexpression r) {
+    public Concat(SyKatExpr l, SyKatExpr r) {
         left = l;
         right = r;
     }

@@ -5,7 +5,7 @@ import KATautomata.SyKAT.BDD.BDD;
 import KATautomata.SyKAT.BDD.BDDTree;
 import KATautomata.SyKAT.BDD.Node;
 import KATautomata.SyKAT.BDD.Operator;
-import KATautomata.SyKAT.SyKATexpression;
+import KATautomata.SyKAT.SyKatExpr;
 import KATautomata.SyKAToperator.Delta;
 import KATautomata.SyKAToperator.Epsilon;
 import MetaData.Info;
@@ -50,7 +50,7 @@ public class SymDFA implements RifFSM {
         Epsilon eps = new Epsilon(util.numOfTest);
         BDD<Boolean> total = null;
         Operator<Boolean> op = (x, y) -> x || y;
-        for(SyKATexpression expr : s.getSet()) {
+        for(SyKatExpr expr : s.getSet()) {
             BDD<Boolean> bdd = (BDD<Boolean>) expr.accept(eps);
             if (total == null)
                 total = bdd;
@@ -70,7 +70,7 @@ public class SymDFA implements RifFSM {
         BDD<State> total = null;
         Operator<State> op = (x, y) -> x.merge(y);
         Delta del = new Delta(util.numOfTest, util.numOfAction);
-        for(SyKATexpression expr : currState.getSet()) {
+        for(SyKatExpr expr : currState.getSet()) {
             BDD<State> bdd = (BDD<State>) expr.accept(del);
             if (total == null)
                 total = bdd;
@@ -95,12 +95,20 @@ public class SymDFA implements RifFSM {
      */
     public boolean isSmallerThan(SymDFA dfa) {
         if (!hasBuilt) {
-            SyKATexpression syExpr = util.translate(this.expr);
+            SyKatExpr syExpr = util.translate(this.expr);
             initial = new State(syExpr);
             current = initial;
             addState(initial);
             buildFrom(initial);
             hasBuilt = true;
+        }
+        if (!dfa.hasBuilt) {
+            SyKatExpr syExpr = dfa.util.translate(dfa.expr);
+            dfa.initial = new State(syExpr);
+            dfa.current = dfa.initial;
+            dfa.addState(dfa.initial);
+            dfa.buildFrom(dfa.initial);
+            dfa.hasBuilt = true;
         }
 
         // simple algorithm
@@ -328,5 +336,18 @@ public class SymDFA implements RifFSM {
     }
 
     public KatExpr getExpr() { return expr;}
+
+    public HashMap<State, BDD<Boolean>> getStates() {
+        if (!hasBuilt) {
+            SyKatExpr syExpr = util.translate(this.expr);
+            initial = new State(syExpr);
+            current = initial;
+            addState(initial);
+            buildFrom(initial);
+            hasBuilt = true;
+        }
+
+        return states;
+    }
 }
 

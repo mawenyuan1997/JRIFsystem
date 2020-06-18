@@ -104,19 +104,19 @@ public class Util implements Serializable {
      * @param expr
      * @return
      */
-    public SyKATexpression translate(KatExpr expr) {
+    public SyKatExpr translate(KatExpr expr) {
         if (expr instanceof ConcatExpr) {
-            SyKATexpression l = translate(((ConcatExpr) expr).left);
-            SyKATexpression r = translate(((ConcatExpr) expr).right);
+            SyKatExpr l = translate(((ConcatExpr) expr).left);
+            SyKatExpr r = translate(((ConcatExpr) expr).right);
             return new Concat(l, r);
         }
         if (expr instanceof PlusExpr) {
-            SyKATexpression l = translate(((PlusExpr) expr).left);
-            SyKATexpression r = translate(((PlusExpr) expr).right);
+            SyKatExpr l = translate(((PlusExpr) expr).left);
+            SyKatExpr r = translate(((PlusExpr) expr).right);
             return new Plus(l, r);
         }
         if (expr instanceof StarExpr) {
-            SyKATexpression p = translate(((StarExpr) expr).p);
+            SyKatExpr p = translate(((StarExpr) expr).p);
             return new Star(p);
         }
         if (expr instanceof Action) {

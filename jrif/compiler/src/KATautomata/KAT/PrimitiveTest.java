@@ -9,9 +9,13 @@ public class PrimitiveTest extends TestExpr {
 
     private Principal principal;
 
+    private String str; // only for testing
+
     public PrimitiveTest(Principal p) {
         principal = p;
     }
+
+    public PrimitiveTest(String s) {str = s;}
 
     public Object accept(KATexpressionVisitor visitor) {
         return visitor.visit(this);
@@ -40,6 +44,7 @@ public class PrimitiveTest extends TestExpr {
     }
 
     public String getString() {
+        if (principal == null) return str;
         return principal.toString();
     }
 }
