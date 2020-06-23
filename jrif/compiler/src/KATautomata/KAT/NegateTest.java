@@ -1,9 +1,15 @@
 package KATautomata.KAT;
 
 import KATautomata.KAToperator.KATexpressionVisitor;
+import jif.types.principal.Principal;
+import polyglot.types.Type;
+import polyglot.types.TypeSystem;
+import polyglot.util.SerialVersionUID;
+
+import java.util.List;
 
 public class NegateTest extends TestExpr {
-
+    private static final long serialVersionUID = SerialVersionUID.generate();
     public TestExpr test;
 
     public NegateTest(TestExpr expr) {
@@ -15,8 +21,8 @@ public class NegateTest extends TestExpr {
     }
 
     @Override
-    public boolean isCanonical() {
-        return test.isCanonical();
+    public List<Principal> principals() {
+        return test.principals();
     }
 
     @Override

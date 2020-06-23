@@ -2,12 +2,16 @@ package KATautomata.KAT;
 
 import KATautomata.KAToperator.KATexpressionVisitor;
 import jif.types.principal.Principal;
+import polyglot.types.Type;
+import polyglot.types.TypeSystem;
+import polyglot.util.SerialVersionUID;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
 public class Action implements KatExpr {
-
+    private static final long serialVersionUID = SerialVersionUID.generate();
     public HashSet<String> primActions;
 
     public Action(List<String> primActionlist) { this.primActions = new HashSet<>(primActionlist); }
@@ -18,8 +22,8 @@ public class Action implements KatExpr {
     }
 
     @Override
-    public boolean isCanonical() {
-        return true;
+    public List<Principal> principals() {
+        return new ArrayList<>();
     }
 
     @Override

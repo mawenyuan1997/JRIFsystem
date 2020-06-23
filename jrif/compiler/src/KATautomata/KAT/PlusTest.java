@@ -1,19 +1,20 @@
 package KATautomata.KAT;
 
 import KATautomata.KAToperator.KATexpressionVisitor;
+import jif.types.principal.Principal;
+import polyglot.types.Type;
+import polyglot.types.TypeSystem;
+import polyglot.util.SerialVersionUID;
+
+import java.util.List;
 
 public class PlusTest extends TestExpr {
-
+    private static final long serialVersionUID = SerialVersionUID.generate();
     public TestExpr left, right;
 
     public PlusTest(TestExpr p, TestExpr q) {
         left = p;
         right = q;
-    }
-
-    @Override
-    public boolean isCanonical() {
-        return left.isCanonical() && right.isCanonical();
     }
 
     public Object accept(KATexpressionVisitor visitor) {
@@ -27,6 +28,13 @@ public class PlusTest extends TestExpr {
         PlusTest e = (PlusTest) o;
         return this.left.equals(e.left) && this.right.equals(e.right) ||
                 this.left.equals(e.right) && this.right.equals(e.left);
+    }
+
+    @Override
+    public List<Principal> principals() {
+        List<Principal> l = left.principals();
+        l.addAll(right.principals());
+        return l;
     }
 
     @Override

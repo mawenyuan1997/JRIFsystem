@@ -60,6 +60,11 @@ public class SymDFAtest {
         assert !dfa.isSmallerThan(dfa3);
         assert !dfa2.isSmallerThan(dfa3);
         assert !dfa3.isSmallerThan(dfa2);
+
+        SymDFA zero = new SymDFA(util, KatFactory.ZeroTest());
+        assert zero.isSmallerThan(zero);
+        SymDFA one = new SymDFA(util, KatFactory.OneTest());
+        assert one.isSmallerThan(one);
     }
 
     @org.junit.jupiter.api.Test

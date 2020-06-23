@@ -1,5 +1,6 @@
 package KATautomata.KAT;
 
+import KATautomata.utility.Util;
 import jif.ast.PrincipalNode;
 import jif.types.principal.DynamicPrincipal;
 import jif.types.principal.ExternalPrincipal;
@@ -10,6 +11,11 @@ import java.util.List;
 public class KatFactory {
     public static OneTest one = new OneTest();
     public static ZeroTest zero = new ZeroTest();
+    private Util util;
+
+    public KatFactory(Util u) {
+        util = u;
+    }
 
     public static TestExpr getTest(List<Principal> principals) {
         if (principals.size() == 0)
@@ -56,4 +62,18 @@ public class KatFactory {
     public static StarExpr StarExpr(KatExpr p) {
         return new StarExpr(p);
     }
+
+//    public KatExpr bottomfsm() {
+//         ConcatExpr(zero, StarExpr(ConcatExpr()))
+//    }
+
+//    public KatExpr allActions() {
+//        if (util.getNumOfAction() == 0)
+//            return OneTest();
+//        TestExpr t = KatFactory.PrimitiveTest(principals.get(0));
+//        for(int i=1; i<principals.size(); i++) {
+//            t = KatFactory.PlusTest(t, KatFactory.PrimitiveTest(principals.get(i)));
+//        }
+//        return t;
+//    }
 }

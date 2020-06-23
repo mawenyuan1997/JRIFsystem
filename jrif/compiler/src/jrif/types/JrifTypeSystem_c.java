@@ -153,14 +153,14 @@ public class JrifTypeSystem_c extends JifTypeSystem_c implements JrifTypeSystem 
     @Override
     public WriterPolicy writerPolicy(Position pos, Principal owner,
             Principal writer) {
-        System.out.println("writePolicy");
+        System.out.println("writePolicy "+owner.getClass().getName()+"  "+writer.getClass().getName());
+        //return new RifWriterPolicy_c(new SymDFA(Info.util, KatFactory.PlusTest(KatFactory.PrimitiveTest(owner), KatFactory.PrimitiveTest(writer))), this, pos);
         return new RifWriterPolicy_c(topfsm(pos), this, pos);
     }
 
     @Override
     public WriterPolicy writerPolicy(Position pos, Principal owner,
             Collection<Principal> writers) {
-        System.out.println("writePolicy" + owner + writers);
         return new RifWriterPolicy_c(topfsm(pos), this, pos);
     }
 

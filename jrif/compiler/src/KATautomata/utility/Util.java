@@ -10,14 +10,14 @@ import java.util.HashMap;
 import java.util.HashSet;
 
 public class Util implements Serializable {
-    public String[] primTests;
-    public String[] primActions;
+    private String[] primTests;
+    private String[] primActions;
     // mapping from primitive test to its index in primTest
-    public HashMap<String, Integer> primTestMapping;
+    private HashMap<String, Integer> primTestMapping;
     // mapping from primitive action to its index in primActions
-    public HashMap<String, Integer> primActionMapping;
-    public int numOfTest;   // length of primTests
-    public int numOfAction; // length of primActions
+    private HashMap<String, Integer> primActionMapping;
+    private int numOfTest;   // length of primTests
+    private int numOfAction; // length of primActions
 
     public Util(String[] tests, String[] actions) {
         primTests = tests.clone();
@@ -140,4 +140,10 @@ public class Util implements Serializable {
         final BooleanFunction f = getFunction((TestExpr) expr);
         return new BDD(f, false);
     }
+
+    public int getNumOfAction() { return numOfAction; }
+
+    public int getNumOfTest() { return numOfTest; }
+
+    public String[] getPrimActions() { return primActions; }
 }

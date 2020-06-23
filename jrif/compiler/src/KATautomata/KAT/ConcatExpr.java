@@ -1,9 +1,15 @@
 package KATautomata.KAT;
 
 import KATautomata.KAToperator.KATexpressionVisitor;
+import jif.types.principal.Principal;
+import polyglot.types.Type;
+import polyglot.types.TypeSystem;
+import polyglot.util.SerialVersionUID;
+
+import java.util.List;
 
 public class ConcatExpr implements KatExpr {
-
+    private static final long serialVersionUID = SerialVersionUID.generate();
     public KatExpr left,right;
 
     public ConcatExpr(KatExpr p, KatExpr q) {
@@ -17,8 +23,10 @@ public class ConcatExpr implements KatExpr {
     }
 
     @Override
-    public boolean isCanonical() {
-        return left.isCanonical() && right.isCanonical();
+    public List<Principal> principals() {
+        List<Principal> l = left.principals();
+        l.addAll(right.principals());
+        return l;
     }
 
     @Override

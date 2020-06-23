@@ -1,6 +1,8 @@
 package KATautomata.KAT;
 
-public abstract class TestExpr implements KatExpr {
+import java.io.Serializable;
+
+public abstract class TestExpr implements KatExpr, Serializable {
 
 
 }

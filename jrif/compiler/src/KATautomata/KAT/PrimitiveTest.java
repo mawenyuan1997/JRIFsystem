@@ -2,11 +2,15 @@ package KATautomata.KAT;
 
 import KATautomata.KAToperator.KATexpressionVisitor;
 import jif.types.principal.Principal;
+import polyglot.types.Type;
+import polyglot.types.TypeSystem;
+import polyglot.util.SerialVersionUID;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class PrimitiveTest extends TestExpr {
-
+    private static final long serialVersionUID = SerialVersionUID.generate();
     private Principal principal;
 
     private String str; // only for testing
@@ -22,12 +26,10 @@ public class PrimitiveTest extends TestExpr {
     }
 
     @Override
-    public boolean isCanonical() {
-        if (this.principal == null) return true;
-        if (!principal.isCanonical()) {
-            return false;
-        }
-        return true;
+    public List<Principal> principals() {
+        List<Principal> l = new ArrayList<>();
+        l.add(principal);
+        return l;
     }
 
     @Override

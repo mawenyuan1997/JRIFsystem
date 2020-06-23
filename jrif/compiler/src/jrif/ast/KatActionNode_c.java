@@ -24,8 +24,8 @@ public class KatActionNode_c extends KatExprNode_c implements KatActionNode {
     public Node disambiguate(AmbiguityRemover ar) throws SemanticException {
         int ascii = (int)id.charAt(0);
         List<String> prims = new ArrayList<>();
-        for(int i=0; i<Info.util.numOfAction; i++) {
-            if (ascii % 2 == 1) prims.add(Info.util.primActions[i]);
+        for(int i=0; i<Info.util.getNumOfAction(); i++) {
+            if (ascii % 2 == 1) prims.add(Info.util.getPrimActions()[i]);
             ascii = ascii / 2;
             if (ascii == 0) break;
         }

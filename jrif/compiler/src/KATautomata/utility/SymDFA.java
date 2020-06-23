@@ -1,6 +1,7 @@
 package KATautomata.utility;
 
 import KATautomata.KAT.KatExpr;
+import KATautomata.KAT.KatFactory;
 import KATautomata.SyKAT.BDD.BDD;
 import KATautomata.SyKAT.BDD.BDDTree;
 import KATautomata.SyKAT.BDD.Node;
@@ -12,6 +13,7 @@ import MetaData.Info;
 import jif.types.JifContext;
 import jif.types.LabelSubstitution;
 import jif.types.PathMap;
+import jif.types.principal.Principal;
 import jif.visit.LabelChecker;
 import jrif.types.RifFSM;
 import polyglot.ast.Id;
@@ -47,7 +49,7 @@ public class SymDFA implements RifFSM {
      * @param s
      */
     private void addState(State s) {
-        Epsilon eps = new Epsilon(util.numOfTest);
+        Epsilon eps = new Epsilon(util.getNumOfTest());
         BDD<Boolean> total = null;
         Operator<Boolean> op = (x, y) -> x || y;
         for(SyKatExpr expr : s.getSet()) {
@@ -69,7 +71,7 @@ public class SymDFA implements RifFSM {
         if (transition.containsKey(currState) || currState.isEmpty()) return;
         BDD<State> total = null;
         Operator<State> op = (x, y) -> x.merge(y);
-        Delta del = new Delta(util.numOfTest, util.numOfAction);
+        Delta del = new Delta(util.getNumOfTest(), util.getNumOfAction());
         for(SyKatExpr expr : currState.getSet()) {
             BDD<State> bdd = (BDD<State>) expr.accept(del);
             if (total == null)
@@ -192,7 +194,7 @@ public class SymDFA implements RifFSM {
      */
     private void addNext(Queue<StatePair> todo, SymDFA dfa, State x, State y
             , boolean[] input, int index) {
-        if (index == util.numOfAction+util.numOfTest) {
+        if (index == util.getNumOfAction() + util.getNumOfTest()) {
             State xnext, ynext;
             if (x.isEmpty())
                 xnext = new State();
@@ -269,8 +271,8 @@ public class SymDFA implements RifFSM {
     @Override
     public SymDFA takeTransition(Id action) {
         int ascii = (int)action.id().charAt(0);
-        boolean[] prims = new boolean[Info.util.numOfAction];
-        for(int i = 0; i< Info.util.numOfAction; i++) {
+        boolean[] prims = new boolean[Info.util.getNumOfAction()];
+        for(int i = 0; i< Info.util.getNumOfAction(); i++) {
             if (ascii % 2 == 1) prims[i] = true;
             else prims[i] = false;
             ascii = ascii / 2;
@@ -292,27 +294,41 @@ public class SymDFA implements RifFSM {
 
     @Override
     public boolean isCanonical() {
-        return expr.isCanonical();
+        for (Principal p : this.expr.principals()) {
+            if (!p.isCanonical()) {
+                return false;
+            }
+        }
+        return true;
     }
 
     @Override
     public boolean isRuntimeRepresentable() {
-        return false;
+        for (Principal p : this.expr.principals()) {
+            if (!p.isRuntimeRepresentable()) {
+                return false;
+            }
+        }
+        return true;
     }
 
     @Override
     public List<Type> throwTypes(TypeSystem ts) {
-        return null;
+        List<Type> throwTypes = new ArrayList<Type>();
+        for (Principal p : this.expr.principals()) {
+            throwTypes.addAll(p.throwTypes(ts));
+        }
+        return throwTypes;
     }
 
     @Override
     public boolean isBottomConfidentiality() {
-        return false;
+        return expr.equals(KatFactory.one);
     }
 
     @Override
     public boolean isTopConfidentiality() {
-        return false;
+        return expr.equals(KatFactory.zero);
     }
 
     @Override
@@ -322,7 +338,20 @@ public class SymDFA implements RifFSM {
 
     @Override
     public PathMap labelCheck(JifContext A, LabelChecker lc) {
-        return null;
+        int check = 0;
+        PathMap X;
+        PathMap Xtot = null;
+        for (Principal p : this.expr.principals()) {
+            X = p.labelCheck(A, lc);
+            A.setPc(X.N(), lc);
+            if (check == 0) {
+                Xtot = X;
+            } else {
+                Xtot = Xtot.join(X);
+                check = 1;
+            }
+        }
+        return Xtot;
     }
 
     @Override
@@ -348,6 +377,10 @@ public class SymDFA implements RifFSM {
         }
 
         return states;
+    }
+
+    public String toString() {
+        return expr.toString();
     }
 }
 
