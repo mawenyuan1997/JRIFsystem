@@ -2,9 +2,7 @@ package KATautomata.KAT;
 
 import KATautomata.utility.Util;
 import jif.ast.PrincipalNode;
-import jif.types.principal.DynamicPrincipal;
-import jif.types.principal.ExternalPrincipal;
-import jif.types.principal.Principal;
+import jif.types.principal.*;
 
 import java.util.List;
 
@@ -31,8 +29,10 @@ public class KatFactory {
 
     public static ZeroTest ZeroTest() { return zero; }
 
-    public static PrimitiveTest PrimitiveTest(Principal name) {
-        return new PrimitiveTest(name);
+    public static TestExpr PrimitiveTest(Principal p) {
+        if (p instanceof BottomPrincipal) return OneTest();
+        else if (p instanceof TopPrincipal) return ZeroTest();
+        return new PrimitiveTest(p);
     }
 
     public static Action Action(List<String> primActionlist) {
@@ -62,18 +62,4 @@ public class KatFactory {
     public static StarExpr StarExpr(KatExpr p) {
         return new StarExpr(p);
     }
-
-//    public KatExpr bottomfsm() {
-//         ConcatExpr(zero, StarExpr(ConcatExpr()))
-//    }
-
-//    public KatExpr allActions() {
-//        if (util.getNumOfAction() == 0)
-//            return OneTest();
-//        TestExpr t = KatFactory.PrimitiveTest(principals.get(0));
-//        for(int i=1; i<principals.size(); i++) {
-//            t = KatFactory.PlusTest(t, KatFactory.PrimitiveTest(principals.get(i)));
-//        }
-//        return t;
-//    }
 }

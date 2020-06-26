@@ -8,6 +8,7 @@ import KATautomata.SyKAToperator.Delta;
 import KATautomata.utility.State;
 import KATautomata.utility.SymDFA;
 import KATautomata.utility.Util;
+import MetaData.Info;
 
 import java.util.Arrays;
 
@@ -218,5 +219,26 @@ public class SymDFAtest {
         dfa2 = new SymDFA(util, KatFactory.OneTest());
         assert dfa1.isSmallerThan(dfa2);
         assert !dfa2.isSmallerThan(dfa1);
+    }
+
+    @org.junit.jupiter.api.Test
+    void testCompare11() {
+        KatExpr a = KatFactory.ConcatExpr(
+                KatFactory.OneTest(),
+                KatFactory.StarExpr(KatFactory.ConcatExpr(Action.allAction, KatFactory.OneTest())));
+        KatExpr b = KatFactory.ConcatExpr(
+                KatFactory.OneTest(),
+                KatFactory.StarExpr(KatFactory.ConcatExpr(Action.allAction, KatFactory.OneTest())));
+        SymDFA dfa1 = new SymDFA(Info.util, a);
+        SymDFA dfa2 = new SymDFA(Info.util, b);
+        assert dfa1.isSmallerThan(dfa2);
+        KatExpr c = KatFactory.ConcatExpr(
+                KatFactory.ZeroTest(),
+                KatFactory.StarExpr(KatFactory.ConcatExpr(Action.allAction, KatFactory.ZeroTest())));
+        SymDFA dfa3 = new SymDFA(Info.util, c);
+        assert !dfa1.isSmallerThan(dfa3);
+        assert dfa3.isSmallerThan(dfa1);
+        SymDFA dfa4 = new SymDFA(Info.util, c);
+        assert dfa3.isSmallerThan(dfa4);
     }
 }

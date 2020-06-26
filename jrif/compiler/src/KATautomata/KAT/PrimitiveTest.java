@@ -19,6 +19,7 @@ public class PrimitiveTest extends TestExpr {
         principal = p;
     }
 
+    // for testing
     public PrimitiveTest(String s) {str = s;}
 
     public Object accept(KATexpressionVisitor visitor) {
@@ -47,6 +48,6 @@ public class PrimitiveTest extends TestExpr {
 
     public String getString() {
         if (principal == null) return str;
-        return principal.toString();
+        return principal.getClass().toString();
     }
 }

@@ -1,5 +1,6 @@
 package KATautomata.utility;
 
+import KATautomata.KAT.Action;
 import KATautomata.KAT.KatExpr;
 import KATautomata.KAT.KatFactory;
 import KATautomata.SyKAT.BDD.BDD;
@@ -323,12 +324,18 @@ public class SymDFA implements RifFSM {
 
     @Override
     public boolean isBottomConfidentiality() {
-        return expr.equals(KatFactory.one);
+        return expr.equals(KatFactory.OneTest());
+//        return expr.equals(KatFactory.ConcatExpr(
+//                KatFactory.OneTest(),
+//                KatFactory.StarExpr(KatFactory.ConcatExpr(Action.allAction, KatFactory.OneTest()))));
     }
 
     @Override
     public boolean isTopConfidentiality() {
-        return expr.equals(KatFactory.zero);
+        return expr.equals(KatFactory.ZeroTest());
+//        return expr.equals(KatFactory.ConcatExpr(
+//                KatFactory.ZeroTest(),
+//                KatFactory.StarExpr(KatFactory.ConcatExpr(Action.allAction, KatFactory.ZeroTest()))));
     }
 
     @Override
@@ -354,11 +361,12 @@ public class SymDFA implements RifFSM {
         return Xtot;
     }
 
+    // not in use
     @Override
     public boolean isBottom(List<String> newvisited) {
         return false;
     }
-
+    // not in use
     @Override
     public boolean isTop(List<String> visited) {
         return false;

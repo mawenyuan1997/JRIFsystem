@@ -6,9 +6,12 @@ import jif.types.principal.Principal;
 import jrif.types.KatExprType;
 import polyglot.ast.Node;
 import polyglot.types.SemanticException;
+import polyglot.util.CollectionUtil;
+import polyglot.util.ListUtil;
 import polyglot.util.Position;
 import polyglot.util.SerialVersionUID;
 import polyglot.visit.AmbiguityRemover;
+import polyglot.visit.NodeVisitor;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -31,6 +34,7 @@ public class KatAtomNode_c extends KatTestNode implements KatAtomNode {
         else {
             for (PrincipalNode r : this.principals) {
                 if (!r.isDisambiguated()) {
+                    System.out.println(r);
                     ar.job().extensionInfo().scheduler().currentGoal()
                             .setUnreachableThisRun();
                     return this;
@@ -47,4 +51,14 @@ public class KatAtomNode_c extends KatTestNode implements KatAtomNode {
         return this.type != null;
     }
 
+    @Override
+    public Node visitChildren(NodeVisitor v) {
+        List<PrincipalNode> p = visitList(this.principals, v);
+        if (!CollectionUtil.equals(p, this.principals)) {
+            KatAtomNode_c n = (KatAtomNode_c) copy();
+            n.principals = ListUtil.copy(p, true);
+            return n;
+        }
+        return this;
+    }
 }

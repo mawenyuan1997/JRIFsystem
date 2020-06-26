@@ -121,19 +121,28 @@ public class Util implements Serializable {
         }
         if (expr instanceof Action) {
             int n = numOfAction;
-            // input of the function is a boolean array with values both
-            // for primTest and primAction (primTest first)
-            BooleanFunction f = new BooleanFunction("action", n, 1) {
-                public Boolean execute(boolean[] input) {
-                    HashSet<String> primSet = ((Action) expr).primActions;
-                    //boolean[] actionInput = Arrays.copyOfRange(input, numOfTest, n);
-                    for(int i=0; i<primActions.length; i++) {
-                        if (primSet.contains(primActions[i]) != input[i])
-                            return false;
+            BooleanFunction f;
+            if (expr == Action.allAction) {
+                f = new BooleanFunction("action", n, 1) {
+                    public Boolean execute(boolean[] input) {
+                        return true;
                     }
-                    return true;
-                }
-            };
+                };
+            } else {
+                // input of the function is a boolean array with values both
+                // for primTest and primAction (primTest first)
+                f = new BooleanFunction("action", n, 1) {
+                    public Boolean execute(boolean[] input) {
+                        HashSet<String> primSet = ((Action) expr).getPrimActions();
+                        //boolean[] actionInput = Arrays.copyOfRange(input, numOfTest, n);
+                        for (int i = 0; i < primActions.length; i++) {
+                            if (primSet.contains(primActions[i]) != input[i])
+                                return false;
+                        }
+                        return true;
+                    }
+                };
+            }
             return new BDD(f, true);
         }
         // if expr instanceof TestExpr

@@ -8,6 +8,7 @@ import polyglot.types.SemanticException;
 import polyglot.util.Position;
 import polyglot.util.SerialVersionUID;
 import polyglot.visit.AmbiguityRemover;
+import polyglot.visit.NodeVisitor;
 
 public class KatAndNode_c extends KatTestNode implements KatAndNode{
     private static final long serialVersionUID = SerialVersionUID.generate();
@@ -33,4 +34,16 @@ public class KatAndNode_c extends KatTestNode implements KatAndNode{
         return this.type != null;
     }
 
+    @Override
+    public Node visitChildren(NodeVisitor v) {
+        KatTestNode lnew = visitChild(left, v);
+        KatTestNode rnew = visitChild(right, v);
+        if (!left.equals(lnew) || !right.equals(rnew)) {
+            KatAndNode_c n = (KatAndNode_c) copy();
+            n.left = lnew;
+            n.right = rnew;
+            return n;
+        }
+        return this;
+    }
 }

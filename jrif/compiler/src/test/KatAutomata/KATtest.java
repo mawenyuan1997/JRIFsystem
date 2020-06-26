@@ -40,4 +40,16 @@ class KATtest {
         assert (new StatePair(new State(s1), new State(s2))).equals(new StatePair(new State(s3), new State(s4)));
         System.out.println((new State(s1)));
     }
+
+    @org.junit.jupiter.api.Test
+    void testAllAction() {
+        KatExpr a = KatFactory.ConcatExpr(
+                KatFactory.OneTest(),
+                KatFactory.StarExpr(KatFactory.ConcatExpr(Action.allAction, KatFactory.OneTest())));
+        KatExpr b = KatFactory.ConcatExpr(
+                KatFactory.OneTest(),
+                KatFactory.StarExpr(KatFactory.ConcatExpr(Action.allAction, KatFactory.OneTest())));
+        assert a.equals(b);
+
+    }
 }

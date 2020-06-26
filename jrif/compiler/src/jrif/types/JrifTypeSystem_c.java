@@ -62,7 +62,6 @@ public class JrifTypeSystem_c extends JifTypeSystem_c implements JrifTypeSystem 
 //
 	public JrifTypeSystem_c(TypeSystem jlts) {
 		super(jlts);
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
@@ -125,36 +124,39 @@ public class JrifTypeSystem_c extends JifTypeSystem_c implements JrifTypeSystem 
 
     @Override
     public RifFSM topfsm(Position pos) {
-//        System.out.println("top");
-        return new SymDFA(Info.util, KatFactory.ZeroTest());
+        return new SymDFA(Info.util,  KatFactory.ZeroTest());
+//        return new SymDFA(Info.util,  KatFactory.ConcatExpr(
+//                KatFactory.ZeroTest(),
+//                KatFactory.StarExpr(KatFactory.ConcatExpr(Action.allAction, KatFactory.ZeroTest()))));
     }
-//
+
     @Override
     public RifFSM bottomfsm(Position pos) {
-//        System.out.println("bottom");
-        return new SymDFA(Info.util, KatFactory.OneTest());
+        return new SymDFA(Info.util,  KatFactory.OneTest());
+//        return new SymDFA(Info.util, KatFactory.ConcatExpr(
+//                                    KatFactory.OneTest(),
+//                                    KatFactory.StarExpr(KatFactory.ConcatExpr(Action.allAction, KatFactory.OneTest()))));
     }
 
 
     @Override
     public ReaderPolicy readerPolicy(Position pos, Principal owner,
             Principal reader) {
-        System.out.println("readPolicy");
         return new RifReaderPolicy_c(bottomfsm(pos), this, pos);
     }
 
     @Override
     public ReaderPolicy readerPolicy(Position pos, Principal owner,
             Collection<Principal> readers) {
-        System.out.println("readPolicy");
         return new RifReaderPolicy_c(bottomfsm(pos), this, pos);
     }
 
     @Override
     public WriterPolicy writerPolicy(Position pos, Principal owner,
             Principal writer) {
-        System.out.println("writePolicy "+owner.getClass().getName()+"  "+writer.getClass().getName());
-        //return new RifWriterPolicy_c(new SymDFA(Info.util, KatFactory.PlusTest(KatFactory.PrimitiveTest(owner), KatFactory.PrimitiveTest(writer))), this, pos);
+//        return new RifWriterPolicy_c(new SymDFA(Info.util, KatFactory.PlusTest(
+//                                        KatFactory.PrimitiveTest(owner),
+//                                        KatFactory.PrimitiveTest(writer))), this, pos);
         return new RifWriterPolicy_c(topfsm(pos), this, pos);
     }
 

@@ -5,7 +5,7 @@ import KATautomata.KAT.*;
 public class KATprinter implements KATexpressionVisitor {
     @Override
     public Object visit(Action expr) {
-        return expr.primActions.toString();
+        return expr.getPrimActions().toString();
     }
 
     @Override
