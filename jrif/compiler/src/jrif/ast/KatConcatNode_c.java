@@ -1,12 +1,10 @@
 package jrif.ast;
 
 import KATautomata.KAT.ConcatExpr;
-import KATautomata.KAT.ConcatTest;
-import KATautomata.KAT.TestExpr;
-import jrif.types.KatExprType;
+import KATautomata.KAT.KatExpr;
+import KATautomata.KAT.KatFactory;
 import polyglot.ast.Node;
 import polyglot.types.SemanticException;
-import polyglot.util.ListUtil;
 import polyglot.util.Position;
 import polyglot.util.SerialVersionUID;
 import polyglot.visit.AmbiguityRemover;
@@ -24,9 +22,9 @@ public class KatConcatNode_c extends KatExprNode_c implements KatConcatNode {
 
     @Override
     public Node disambiguate(AmbiguityRemover ar) throws SemanticException {
-        KatExprType l = ((KatExprNode_c) left.disambiguate(ar)).getType();
-        KatExprType r = ((KatExprNode_c) right.disambiguate(ar)).getType();
-        this.type = new KatExprType(new ConcatExpr(l.getExpr(), r.getExpr()));
+        KatExpr l = ((KatExprNode_c) left.disambiguate(ar)).getType();
+        KatExpr r = ((KatExprNode_c) right.disambiguate(ar)).getType();
+        this.type = KatFactory.ConcatExpr(l, r);
         return this;
     }
 

@@ -118,7 +118,7 @@ public final class Date[covariant label L] implements JifObject[L] {
      */
     public Date() {
         final principal p = PrincipalUtil.nullPrincipal();
-		final label lbl = new label {rif[q1*:{p},q2:{_},f0:q1->q2];rifi[q1*:{p},q2:{},f4:q1->q2]};
+		final label lbl = new label {rif[p^((~f0)^p)*+p^((~f0)^p)*^f0^1^(P^1)*];rifi[p^((~f0)^p)*+p^((~f0)^p)*^f0^0^(P^0)*]};
         this.year = Runtime[p,lbl].currentYear();
         this.month = Runtime[p,lbl].currentMonth();
         this.day = Runtime[p,lbl].currentDayOfMonth();

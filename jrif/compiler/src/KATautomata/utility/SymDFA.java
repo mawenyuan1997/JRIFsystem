@@ -340,7 +340,8 @@ public class SymDFA implements RifFSM {
 
     @Override
     public RifFSM subst(LabelSubstitution substitution) throws SemanticException {
-        return null;
+        this.expr.subst(substitution);
+        return this;
     }
 
     @Override

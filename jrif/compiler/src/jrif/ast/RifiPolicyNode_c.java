@@ -4,7 +4,6 @@ import KATautomata.KAT.KatExpr;
 import KATautomata.utility.SymDFA;
 import jif.ast.PolicyNode_c;
 import jrif.types.JrifTypeSystem;
-import jrif.types.KatExprType;
 import jif.types.label.Policy;
 import polyglot.ast.Node;
 import polyglot.types.SemanticException;
@@ -31,10 +30,10 @@ public class RifiPolicyNode_c extends PolicyNode_c implements RifiPolicyNode {
         return ts.rifreaderPolicy(position(), this.automata);
     }
 
-    protected RifiPolicyNode_c reconstruct(KatExprNode expr) {
-        if (!expr.equals(this.child)) {
+    protected RifiPolicyNode_c reconstruct(KatExprNode katNode) {
+        if (!katNode.equals(this.child)) {
             RifiPolicyNode_c n = (RifiPolicyNode_c) copy();
-            n.child = expr;
+            n.child = katNode;
             return n;
         }
 
@@ -47,11 +46,6 @@ public class RifiPolicyNode_c extends PolicyNode_c implements RifiPolicyNode {
         return reconstruct(kat);
     }
 
-    protected Policy producePolicy(JrifTypeSystem ts,
-                                   KatExprNode_c expr) {
-        return ts.rifwriterPolicy(position(), new SymDFA(util, expr.getType().getExpr()));
-    }
-
     @Override
     public Node disambiguate(AmbiguityRemover ar) throws SemanticException {
         JrifTypeSystem ts = (JrifTypeSystem) ar.typeSystem();
@@ -61,8 +55,8 @@ public class RifiPolicyNode_c extends PolicyNode_c implements RifiPolicyNode {
             return this;
         }
 
-        KatExprType expr = ((KatExprNode_c) child.disambiguate(ar)).getType();
-        this.policy = producePolicy(ts, expr.getExpr());
+        KatExpr expr = ((KatExprNode_c) child.disambiguate(ar)).getType();
+        this.policy = producePolicy(ts, expr);
         return this;
     }
 

@@ -1,7 +1,7 @@
 package jrif.ast;
 
+import KATautomata.KAT.KatFactory;
 import KATautomata.KAT.OneTest;
-import jrif.types.KatExprType;
 import polyglot.ast.Node;
 import polyglot.types.SemanticException;
 import polyglot.util.Position;
@@ -16,7 +16,7 @@ public class KatOneNode_c extends KatTestNode implements KatOneNode {
     }
 
     public Node disambiguate(AmbiguityRemover ar) throws SemanticException {
-        this.type = new KatExprType(new OneTest());
+        this.type = KatFactory.OneTest();
         return this;
     }
 

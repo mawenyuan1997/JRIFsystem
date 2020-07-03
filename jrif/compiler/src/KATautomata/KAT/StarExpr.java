@@ -1,7 +1,9 @@
 package KATautomata.KAT;
 
 import KATautomata.KAToperator.KATexpressionVisitor;
+import jif.types.LabelSubstitution;
 import jif.types.principal.Principal;
+import polyglot.types.SemanticException;
 import polyglot.types.Type;
 import polyglot.types.TypeSystem;
 import polyglot.util.SerialVersionUID;
@@ -32,6 +34,11 @@ public class StarExpr implements KatExpr {
     @Override
     public List<Principal> principals() {
         return p.principals();
+    }
+
+    @Override
+    public void subst(LabelSubstitution substitution) throws SemanticException {
+        p.subst(substitution);
     }
 
     @Override

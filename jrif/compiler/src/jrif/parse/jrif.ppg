@@ -28,7 +28,6 @@ terminal Token RECLASSIFY;
 terminal Token RIF;
 terminal Token RIFI;
 terminal Token TR;
-terminal IntegerLiteral NUMBER;
 
 
 non terminal RifPolicyNode rif_label;
@@ -87,13 +86,15 @@ kat_expr ::=
     | LPAREN kat_expr:p RPAREN          {: RESULT = p; :}
     | boolean:b                        {: RESULT = b; :}
     | IDENTIFIER:p                     {: RESULT = parser.nf.KatActionNode(parser.pos(p), p.getIdentifier()); :}
+    | COMP IDENTIFIER:p                {: RESULT = parser.nf.KatActionNode(parser.pos(p), p.getIdentifier()); :}
     ;
 
 boolean ::=
       principal_set:p                 {: RESULT = parser.nf.KatAtomNode(parser.pos(p), p); :}
-    | NUMBER:p                            {:
-                                        int val = p.symbol();
+    | INTEGER_LITERAL:p                            {:
+                                        int val = p.getValue().intValue();
                                         if (val != 0 && val != 1) {
+                                            System.out.println("----------------------");
                                             parser.report_error ("Expected 0 or 1", parser.pos(p));
                                             if (true) throw new Exception();
                                         }

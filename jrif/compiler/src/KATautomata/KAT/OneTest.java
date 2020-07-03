@@ -1,6 +1,7 @@
 package KATautomata.KAT;
 
 import KATautomata.KAToperator.KATexpressionVisitor;
+import jif.types.LabelSubstitution;
 import jif.types.principal.Principal;
 import polyglot.types.Type;
 import polyglot.types.TypeSystem;
@@ -27,6 +28,10 @@ public class OneTest extends TestExpr {
     @Override
     public List<Principal> principals() {
         return new ArrayList<>();
+    }
+
+    @Override
+    public void subst(LabelSubstitution substitution) {
     }
 
     @Override

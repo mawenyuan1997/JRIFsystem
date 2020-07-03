@@ -1,9 +1,9 @@
 package jrif.ast;
 
 import KATautomata.KAT.*;
+import jif.ast.AmbPrincipalNode;
 import jif.ast.PrincipalNode;
 import jif.types.principal.Principal;
-import jrif.types.KatExprType;
 import polyglot.ast.Node;
 import polyglot.types.SemanticException;
 import polyglot.util.CollectionUtil;
@@ -34,15 +34,15 @@ public class KatAtomNode_c extends KatTestNode implements KatAtomNode {
         else {
             for (PrincipalNode r : this.principals) {
                 if (!r.isDisambiguated()) {
-                    System.out.println(r);
-                    ar.job().extensionInfo().scheduler().currentGoal()
-                            .setUnreachableThisRun();
-                    return this;
+                    System.out.println(r.getClass().toString());
+//                    ar.job().extensionInfo().scheduler().currentGoal()
+//                            .setUnreachableThisRun();
+//                    return this;
                 }
                 l.add(r.principal());
             }
         }
-        this.type = new KatExprType(KatFactory.getTest(l));
+        this.type = KatFactory.getTest(l);
         return this;
     }
 
@@ -53,12 +53,12 @@ public class KatAtomNode_c extends KatTestNode implements KatAtomNode {
 
     @Override
     public Node visitChildren(NodeVisitor v) {
-        List<PrincipalNode> p = visitList(this.principals, v);
-        if (!CollectionUtil.equals(p, this.principals)) {
-            KatAtomNode_c n = (KatAtomNode_c) copy();
-            n.principals = ListUtil.copy(p, true);
-            return n;
-        }
+//        List<PrincipalNode> p = visitList(this.principals, v);
+//        if (!CollectionUtil.equals(p, this.principals)) {
+//            KatAtomNode_c n = (KatAtomNode_c) copy();
+//            n.principals = ListUtil.copy(p, true);
+//            return n;
+//        }
         return this;
     }
 }

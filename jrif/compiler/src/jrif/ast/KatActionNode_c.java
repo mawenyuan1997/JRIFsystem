@@ -1,8 +1,6 @@
 package jrif.ast;
 import KATautomata.KAT.Action;
-import jif.ast.PrincipalNode;
-import jrif.types.KatExprType;
-import polyglot.ast.Id;
+import KATautomata.KAT.KatFactory;
 import polyglot.ast.Node;
 import polyglot.types.SemanticException;
 import polyglot.util.Position;
@@ -22,7 +20,7 @@ public class KatActionNode_c extends KatExprNode_c implements KatActionNode {
         super(pos);
         id = s;
         if (id.equals("P")) {
-            this.type = new KatExprType(Action.allAction);
+            this.type = Action.allAction;
         } else {
             int ascii = (int) id.charAt(0);
             List<String> prims = new ArrayList<>();
@@ -31,7 +29,7 @@ public class KatActionNode_c extends KatExprNode_c implements KatActionNode {
                 ascii = ascii / 2;
                 if (ascii == 0) break;
             }
-            this.type = new KatExprType(new Action(prims));
+            this.type = KatFactory.Action(prims);
         }
     }
 

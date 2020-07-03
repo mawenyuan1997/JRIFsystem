@@ -5,12 +5,11 @@
 public class katstring{
     
    public static void main(String[] args) throws Exception{
-
-       //int {rif[f]} x;
-      int {rif[{Alice}^f^{Bob}]} x;
+       int {rif[{Alice}]} x;
+       //int {rif[{Alice}^f^{Bob}]} x;
 //		int {rif:{A}^{B}^(~{C})^(g+h)*^{A}^{B}^(~{C})^f^{A}^(~{B})^(~{C})^(f+g+h)*^{A}^(~{B})^(~{C})} y;
 //		int {rif:f} a;
-//		int {rif:0} b;
+//		int {rif[0]} b;
 //		int {rif:0^(f+g)} c;
 //		int {rif:~[{A}|{B}]} d;
 //		int {rif:1} e;

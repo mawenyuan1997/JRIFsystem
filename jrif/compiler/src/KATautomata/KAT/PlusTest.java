@@ -1,7 +1,9 @@
 package KATautomata.KAT;
 
 import KATautomata.KAToperator.KATexpressionVisitor;
+import jif.types.LabelSubstitution;
 import jif.types.principal.Principal;
+import polyglot.types.SemanticException;
 import polyglot.types.Type;
 import polyglot.types.TypeSystem;
 import polyglot.util.SerialVersionUID;
@@ -19,6 +21,12 @@ public class PlusTest extends TestExpr {
 
     public Object accept(KATexpressionVisitor visitor) {
         return visitor.visit(this);
+    }
+
+    @Override
+    public void subst(LabelSubstitution substitution) throws SemanticException {
+        left.subst(substitution);
+        right.subst(substitution);
     }
 
     @Override

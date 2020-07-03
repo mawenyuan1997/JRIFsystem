@@ -1,7 +1,9 @@
 package KATautomata.KAT;
 
 import KATautomata.KAToperator.KATexpressionVisitor;
+import jif.types.LabelSubstitution;
 import jif.types.principal.Principal;
+import polyglot.types.SemanticException;
 import polyglot.types.Type;
 import polyglot.types.TypeSystem;
 import polyglot.util.SerialVersionUID;
@@ -23,6 +25,11 @@ public class NegateTest extends TestExpr {
     @Override
     public List<Principal> principals() {
         return test.principals();
+    }
+
+    @Override
+    public void subst(LabelSubstitution substitution) throws SemanticException {
+        test.subst(substitution);
     }
 
     @Override

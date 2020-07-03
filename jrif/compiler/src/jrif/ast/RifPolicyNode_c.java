@@ -1,7 +1,5 @@
 package jrif.ast;
 
-import jrif.types.KatExprType;
-
 import KATautomata.KAT.KatExpr;
 import jrif.types.JrifTypeSystem;
 import jif.ast.PolicyNode_c;
@@ -35,10 +33,10 @@ public class RifPolicyNode_c extends PolicyNode_c implements RifPolicyNode {
         return ts.rifreaderPolicy(position(), this.automata);
     }
 
-    protected RifPolicyNode_c reconstruct(KatExprNode expr) {
-        if (!expr.equals(this.child)) {
+    protected RifPolicyNode_c reconstruct(KatExprNode kat) {
+        if (!kat.equals(this.child)) {
             RifPolicyNode_c n = (RifPolicyNode_c) copy();
-            n.child = expr;
+            n.child = kat;
             return n;
         }
 
@@ -51,11 +49,6 @@ public class RifPolicyNode_c extends PolicyNode_c implements RifPolicyNode {
         return reconstruct(kat);
     }
 
-    protected Policy producePolicy(JrifTypeSystem ts,
-                                   KatExprNode_c expr) {
-        return ts.rifreaderPolicy(position(), new SymDFA(util, expr.getType().getExpr()));
-    }
-
     @Override
     public Node disambiguate(AmbiguityRemover ar) throws SemanticException {
         JrifTypeSystem ts = (JrifTypeSystem) ar.typeSystem();
@@ -64,9 +57,7 @@ public class RifPolicyNode_c extends PolicyNode_c implements RifPolicyNode {
                     .setUnreachableThisRun();
             return this;
         }
-
-        KatExprType expr = ((KatExprNode_c) child.disambiguate(ar)).getType();
-        this.policy = producePolicy(ts, expr.getExpr());
+        this.policy = producePolicy(ts, child.getType());
         return this;
     }
 
