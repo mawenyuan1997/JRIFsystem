@@ -19,7 +19,6 @@ import static MetaData.Info.util;
 public class RifPolicyNode_c extends PolicyNode_c implements RifPolicyNode {
     private static final long serialVersionUID = SerialVersionUID.generate();
     private KatExprNode child;
-    private Policy policy;
     private SymDFA automata;
 
     public RifPolicyNode_c(Position pos, KatExprNode expr) {

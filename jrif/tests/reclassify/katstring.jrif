@@ -5,18 +5,18 @@
 public class katstring{
     
    public static void main(String[] args) throws Exception{
-       int {rif[{Alice}]} x;
-       //int {rif[{Alice}^f^{Bob}]} x;
-//		int {rif:{A}^{B}^(~{C})^(g+h)*^{A}^{B}^(~{C})^f^{A}^(~{B})^(~{C})^(f+g+h)*^{A}^(~{B})^(~{C})} y;
-//		int {rif:f} a;
-//		int {rif[0]} b;
-//		int {rif:0^(f+g)} c;
-//		int {rif:~[{A}|{B}]} d;
-//		int {rif:1} e;
-//		int {rif:[{A}&[~{B}]&[~{C}]]^h*^[{A}&[~{B}]&[~{C}]]^f^[[~{A}]&[{B}]&[~{C}]]+[{A}&[~{B}]&[~{C}]]^h*^[{A}&[~{B}]&[~{C}]]^g^[[~{A}]&[~{B}]&[{C}]]} g;
-//		int {rif:{Alice,Bob}^h^{Alice}} k;
-//		x = 96;
-//		y = 96;
+       int {rif[{Alice}]} x1;
+       int {rif[{Alice}^f^{Bob}]} x2;
+       //int {rif[{Alice}^{Bob}^(~{C})^(g+h)*^{Alice}^{B}^(~{C})^f^{Alice}^(~{B})^(~{C})^(f+g+h)*^{Alice}^(~{B})^(~{C})]} y;
+       int {rif[f]} a;
+       int {rif[0]} b;
+       int {rif[0^(f+g)]} c;
+		int {rif[~[{Alice}|{Bob}]]} d;
+		int {rif[1]} e;
+//		int {rif[p^((~f0)^p)*+p^((~f0)^p)*^f0^1^(P^1)*];rifi[p^((~f0)^p)*+p^((~f0)^p)*^f0^0^(P^0)*]} g;
+		int {rif[{Alice,Bob}^h^{Alice}]} k;
+		x1 = 96;
+		x2 = 96;
 		throw new Exception("Result: ok");
     }
 }

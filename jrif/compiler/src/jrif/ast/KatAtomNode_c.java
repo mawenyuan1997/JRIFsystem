@@ -23,6 +23,7 @@ public class KatAtomNode_c extends KatTestNode implements KatAtomNode {
     public KatAtomNode_c(Position pos, List<PrincipalNode> l) {
         super(pos);
         principals = l;
+        type = null;
     }
 
     @Override
@@ -34,10 +35,9 @@ public class KatAtomNode_c extends KatTestNode implements KatAtomNode {
         else {
             for (PrincipalNode r : this.principals) {
                 if (!r.isDisambiguated()) {
-                    System.out.println(r.getClass().toString());
-//                    ar.job().extensionInfo().scheduler().currentGoal()
-//                            .setUnreachableThisRun();
-//                    return this;
+                    ar.job().extensionInfo().scheduler().currentGoal()
+                            .setUnreachableThisRun();
+                    return this;
                 }
                 l.add(r.principal());
             }
@@ -53,12 +53,12 @@ public class KatAtomNode_c extends KatTestNode implements KatAtomNode {
 
     @Override
     public Node visitChildren(NodeVisitor v) {
-//        List<PrincipalNode> p = visitList(this.principals, v);
-//        if (!CollectionUtil.equals(p, this.principals)) {
-//            KatAtomNode_c n = (KatAtomNode_c) copy();
-//            n.principals = ListUtil.copy(p, true);
-//            return n;
-//        }
+        List<PrincipalNode> p = visitList(this.principals, v);
+        if (!CollectionUtil.equals(p, this.principals)) {
+            KatAtomNode_c n = (KatAtomNode_c) copy();
+            n.principals = ListUtil.copy(p, true);
+            return n;
+        }
         return this;
     }
 }

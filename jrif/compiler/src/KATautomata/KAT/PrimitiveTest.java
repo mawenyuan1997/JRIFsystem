@@ -2,6 +2,7 @@ package KATautomata.KAT;
 
 import KATautomata.KAToperator.KATexpressionVisitor;
 import jif.types.LabelSubstitution;
+import jif.types.principal.ExternalPrincipal;
 import jif.types.principal.Principal;
 import polyglot.types.SemanticException;
 import polyglot.types.Type;
@@ -55,6 +56,9 @@ public class PrimitiveTest extends TestExpr {
 
     public String getString() {
         if (principal == null) return str;
+        if (principal instanceof ExternalPrincipal) {
+            return ((ExternalPrincipal) principal).name();
+        }
         return principal.getClass().toString();
     }
 }

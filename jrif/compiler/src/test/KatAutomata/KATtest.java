@@ -16,9 +16,9 @@ class KATtest {
         String[] primTests = new String[]{"A", "B", "C"};
         String[] primActions = new String[]{"p1","p2","p3"};
         Util util = new Util(primTests, primActions);
-        String[] action1 = new String[]{"p1"};
-        String[] action2 = new String[]{"p1", "p2"};
-        KatExpr pp = new ConcatExpr(new Action(Arrays.asList(action1)), new Action(Arrays.asList(action1)));
+        boolean[] action1 = new boolean[]{true, false, false};
+        boolean[] action2 = new boolean[]{true, true, false};
+        KatExpr pp = new ConcatExpr(new Action(action1), new Action(action1));
         SyKatExpr sy1 = util.translate(pp);
         SyKatExpr sy2 = util.translate(pp);
         assert sy1.equals(sy2);

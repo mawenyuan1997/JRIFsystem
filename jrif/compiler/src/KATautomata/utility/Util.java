@@ -133,10 +133,9 @@ public class Util implements Serializable {
                 // for primTest and primAction (primTest first)
                 f = new BooleanFunction("action", n, 1) {
                     public Boolean execute(boolean[] input) {
-                        HashSet<String> primSet = ((Action) expr).getPrimActions();
                         //boolean[] actionInput = Arrays.copyOfRange(input, numOfTest, n);
                         for (int i = 0; i < primActions.length; i++) {
-                            if (primSet.contains(primActions[i]) != input[i])
+                            if (((Action) expr).getPrimActions()[i] != input[i])
                                 return false;
                         }
                         return true;

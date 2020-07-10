@@ -42,7 +42,7 @@ non terminal RifPolicyNode rif_policy;
 
 precedence left PLUS, OR;
 precedence left XOR, AND;
-precedence left COMP;
+precedence left COMP, MULT;
 start with goal;
 
 rif_label ::=

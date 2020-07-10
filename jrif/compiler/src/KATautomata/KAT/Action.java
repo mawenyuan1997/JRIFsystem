@@ -13,13 +13,13 @@ import java.util.List;
 
 public class Action implements KatExpr {
     private static final long serialVersionUID = SerialVersionUID.generate();
-    private HashSet<String> primActions;
+    private boolean[] primActions;
     public static Action allAction = new Action();
 
     private Action() {}
 
-    public Action(List<String> primActionlist) {
-        this.primActions = new HashSet<>(primActionlist);
+    public Action(boolean[] truthValue) {
+        this.primActions = truthValue;
     }
 
     @Override
@@ -52,8 +52,7 @@ public class Action implements KatExpr {
         return primActions.hashCode();
     }
 
-
-    public HashSet<String> getPrimActions() {
+    public boolean[] getPrimActions() {
         return primActions;
     }
 }

@@ -271,15 +271,17 @@ public class SymDFA implements RifFSM {
 
     @Override
     public SymDFA takeTransition(Id action) {
-        int ascii = (int)action.id().charAt(0);
-        boolean[] prims = new boolean[Info.util.getNumOfAction()];
-        for(int i = 0; i< Info.util.getNumOfAction(); i++) {
-            if (ascii % 2 == 1) prims[i] = true;
-            else prims[i] = false;
-            ascii = ascii / 2;
-            if (ascii == 0) break;
+        if (!hasBuilt) {
+            SyKatExpr syExpr = util.translate(this.expr);
+            initial = new State(syExpr);
+            current = initial;
+            addState(initial);
+            buildFrom(initial);
+            hasBuilt = true;
         }
-        current = transition.get(current).execute(prims);
+
+        boolean[] prims = Info.actionToPrims.get(action.id());
+//        current = transition.get(current).execute(prims);
         return this;
     }
 

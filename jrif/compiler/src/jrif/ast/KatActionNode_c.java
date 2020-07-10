@@ -22,14 +22,7 @@ public class KatActionNode_c extends KatExprNode_c implements KatActionNode {
         if (id.equals("P")) {
             this.type = Action.allAction;
         } else {
-            int ascii = (int) id.charAt(0);
-            List<String> prims = new ArrayList<>();
-            for (int i = 0; i < Info.util.getNumOfAction(); i++) {
-                if (ascii % 2 == 1) prims.add(Info.util.getPrimActions()[i]);
-                ascii = ascii / 2;
-                if (ascii == 0) break;
-            }
-            this.type = KatFactory.Action(prims);
+            this.type = KatFactory.Action(Info.actionToPrims.get(id));
         }
     }
 

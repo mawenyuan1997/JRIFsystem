@@ -35,8 +35,8 @@ public class KatFactory {
         return new PrimitiveTest(p);
     }
 
-    public static Action Action(List<String> primActionlist) {
-        return new Action(primActionlist);
+    public static Action Action(boolean[] truthValue) {
+        return new Action(truthValue);
     }
 
     public static ConcatExpr ConcatExpr(KatExpr p, KatExpr q) {

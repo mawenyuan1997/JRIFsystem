@@ -18,16 +18,16 @@ public class SymDFAtest {
     String[] primTests = new String[]{"A", "B", "C"};
     String[] primActions = new String[]{"p1","p2","p3"};
     Util util = new Util(primTests, primActions);
-    String[] action1 = new String[]{"p1"};
-    String[] action2 = new String[]{"p1", "p2"};
-    KatExpr a1 = KatFactory.Action(Arrays.asList(action1));
-    KatExpr a2 = KatFactory.Action(Arrays.asList(action2));
+    boolean[] action1 = new boolean[]{true, false, false};
+    boolean[] action2 = new boolean[]{true, true, false};
+    KatExpr a1 = KatFactory.Action(action1);
+    KatExpr a2 = KatFactory.Action(action2);
     KatExpr expr = KatFactory.PlusExpr(
             KatFactory.ConcatExpr(
                     new PrimitiveTest("A"),
-                    KatFactory.Action(Arrays.asList(action1))
+                    KatFactory.Action(action1)
             ),
-            new Action(Arrays.asList(action2))
+            new Action(action2)
     );
     SyKatExpr sy = util.translate(expr);
     BDD<Boolean> trueBdd = singleBooleanBDD(true, 3);
