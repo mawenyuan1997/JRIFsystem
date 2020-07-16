@@ -1,0 +1,6 @@
+*.class
+pthScript.results
+pthOutput*
+insensTest
+out
+/java-out

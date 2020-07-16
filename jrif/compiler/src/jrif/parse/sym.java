@@ -87,7 +87,6 @@ public class sym {
   public static final int LABEL = 111;
   public static final int TRY = 55;
   public static final int SYNCHRONIZED = 32;
-  public static final int NUMBER = 136;
   public static final int CHARACTER_LITERAL = 101;
   public static final int INVARIANT = 113;
   public static final int FOR = 50;
@@ -281,8 +280,7 @@ public class sym {
   "RECLASSIFY",
   "RIF",
   "RIFI",
-  "TR",
-  "NUMBER"
+  "TR"
   };
 }
 

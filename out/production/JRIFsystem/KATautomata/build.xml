@@ -1,0 +1,9 @@
+<project default="compile">
+    <target name="compile">
+        <mkdir dir="bin"/>
+        <javac srcdir="src" destdir="bin"/>
+    </target>
+    <target name="jar">
+        <jar destfile="KATautomata.jar" basedir="bin/"/>
+    </target>
+</project>

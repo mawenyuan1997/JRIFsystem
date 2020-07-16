@@ -1,0 +1,151 @@
+// Assumes jif.jar is in classpath
+include "jif/parse/jif.ppg"
+
+package jrif.parse;
+
+import jrif.types.JrifTypeSystem;
+import jrif.ast.*;
+import jif.parse.*;
+import KATautomata.KAT.*;
+import KATautomata.KAToperator.*;
+import KATautomata.SyKAT.*;
+import KATautomata.SyKAToperator.*;
+import KATautomata.utility.*;
+import polyglot.lex.IntegerLiteral;
+
+parser Grm extends jif.parse.Grm {:
+    public final JrifTypeSystem ts;
+    public final JrifNodeFactory nf;
+
+    public Grm(Lexer l, JrifTypeSystem t, JrifNodeFactory n, ErrorQueue q) {
+        super(l, t, n, q);
+        ts = t;
+        nf = n;
+    }
+:};
+
+terminal Token RECLASSIFY;
+terminal Token RIF;
+terminal Token RIFI;
+terminal Token TR;
+
+
+non terminal RifPolicyNode rif_label;
+non terminal RifiPolicyNode rifi_label;
+non terminal KatExprNode kat_expr;
+non terminal KatExprNode boolean;
+non terminal List principal_set;
+non terminal List rif_join_list;
+non terminal ReclassifyExpr reclassify;
+non terminal RifPolicyNode rif_policy;
+
+
+precedence left PLUS, OR;
+precedence left XOR, AND;
+precedence left COMP, MULT;
+start with goal;
+
+rif_label ::=
+     RIF:x LBRACK rif_policy:a RBRACK:y
+                {: RESULT = a; :}
+     ;
+
+rifi_label ::=
+     RIFI LBRACK kat_expr:a RBRACK
+     {:RESULT = parser.nf.RifiPolicyNode(parser.pos(a), a); :}
+   ;
+
+rif_join_list ::=
+        rif_policy:a
+           {: List l = new LinkedList<RifPolicyNode>();
+              l.add(a);
+              RESULT = l; :}
+   |    rif_join_list:a SEMICOLON rif_policy:b
+            {: RESULT = a;
+               a.add(b); :}
+    ;
+
+rif_policy ::=
+     kat_expr:a
+         {:RESULT = parser.nf.RifPolicyNode(parser.pos(a), a); :}
+    ;
+
+principal_set ::=
+         LBRACE:x RBRACE:y
+            {: List l = new LinkedList<PrincipalNode>();
+               l.add(parser.nf.CanonicalPrincipalNode(parser.pos(x), parser.ts.topPrincipal(parser.pos(x))));
+               RESULT = l; :}
+    |    LBRACE:x principal_list:a RBRACE:y
+            {: RESULT = a; :}
+    ;
+
+kat_expr ::=
+      kat_expr:p1 PLUS kat_expr:p2        {: RESULT = parser.nf.KatPlusNode(parser.pos(p1,p2), p1, p2); :}
+    | kat_expr:p1 XOR kat_expr:p2         {: RESULT = parser.nf.KatConcatNode(parser.pos(p1,p2), p1, p2); :}
+    | kat_expr:p MULT                   {: RESULT = parser.nf.KatStarNode(parser.pos(p), p); :}
+    | LPAREN kat_expr:p RPAREN          {: RESULT = p; :}
+    | boolean:b                        {: RESULT = b; :}
+    | IDENTIFIER:p                     {: RESULT = parser.nf.KatActionNode(parser.pos(p), p.getIdentifier()); :}
+    | COMP IDENTIFIER:p                {: RESULT = parser.nf.KatActionNode(parser.pos(p), p.getIdentifier()); :}
+    ;
+
+boolean ::=
+      principal_set:p                 {: RESULT = parser.nf.KatAtomNode(parser.pos(p), p); :}
+    | INTEGER_LITERAL:p                            {:
+                                        int val = p.getValue().intValue();
+                                        if (val != 0 && val != 1) {
+                                            System.out.println("----------------------");
+                                            parser.report_error ("Expected 0 or 1", parser.pos(p));
+                                            if (true) throw new Exception();
+                                        }
+                                        if (val == 0) RESULT = parser.nf.KatZeroNode(parser.pos(p));
+                                        else RESULT = parser.nf.KatOneNode(parser.pos(p));
+                                       :}
+    | boolean:b1 OR boolean:b2        {: RESULT = parser.nf.KatOrNode(parser.pos(b1,b2), (KatTestNode)b1, (KatTestNode)b2); :}
+    | boolean:b1 AND boolean:b2       {: RESULT = parser.nf.KatAndNode(parser.pos(b1,b2), (KatTestNode)b1, (KatTestNode)b2); :}
+    | LBRACK boolean:b RBRACK         {: RESULT = b; :}
+    | COMP boolean:b                  {: RESULT = parser.nf.KatNegateNode(parser.pos(b), (KatTestNode)b); :}
+    ;
+
+extend primary_no_array ::=
+        reclassify:a
+            {: RESULT = a; :}
+    ;
+
+reclassify ::=
+        // ReclassifyExpr
+        RECLASSIFY:x LPAREN expression:a COMMA IDENTIFIER:b RPAREN:y
+            {: RESULT = parser.nf.ReclassifyExpr(parser.pos(x,y), a, parser.nf.Id(parser.pos(b), b.getIdentifier())); :}
+    ;
+
+extend label_component ::=
+        rif_label:a
+            {: RESULT = a; :}
+    |   rifi_label:a
+            {: RESULT = a; :}
+    |   TR:x LPAREN label:l COMMA IDENTIFIER:b RPAREN:y
+            {: LabelNode ln;
+               ln = parser.nf.AmbRifDynamicLabelNode(parser.pos(x, y), parser.nf.Id(parser.pos(b), b.getIdentifier()),l);
+               RESULT = ln; :}
+    ;
+
+extend dynamic_label ::=
+        TR:x LPAREN dynamic_label:b COMMA IDENTIFIER:a RPAREN:y
+            {: RESULT = parser.nf.AmbRifDynamicLabelNode(parser.pos(x,y), parser.nf.Id(parser.pos(a), a.getIdentifier()), b); :}
+    ;
+
+extend primary ::=
+        NEW:n LABEL TR:x LPAREN dynamic_label:b COMMA IDENTIFIER:a RPAREN:y
+            {: LabelNode ln;
+               ln = parser.nf.AmbRifDynamicLabelNode(parser.pos(x,y), parser.nf.Id(parser.pos(a), a.getIdentifier()), b);
+               RESULT = parser.nf.NewLabel(parser.pos(n, y), ln); :}
+
+            //the inside L should be param or path of final fields
+    ;
+
+
+
+
+
+
+ 

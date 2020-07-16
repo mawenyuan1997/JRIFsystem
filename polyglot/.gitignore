@@ -1,0 +1,17 @@
+jlc
+jlcd
+Defs.mk
+polyglot.jar
+classes
+cup-classes
+dist
+.classpath
+.project
+SyncToy*
+/bin_
+polyglot-?.?.?-src*
+.*.sw?
+/tmp/
+/.idea/
+/polyglot.iml
+/bin1/

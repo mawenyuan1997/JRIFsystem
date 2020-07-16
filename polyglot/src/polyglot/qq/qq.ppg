@@ -1,0 +1,257 @@
+/*******************************************************************************
+ * This file is part of the Polyglot extensible compiler framework.
+ *
+ * Copyright (c) 2000-2012 Polyglot project group, Cornell University
+ * Copyright (c) 2006-2012 IBM Corporation
+ * All rights reserved.
+ *
+ * This program and the accompanying materials are made available under
+ * the terms of the Eclipse Public License v1.0 which accompanies this
+ * distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * This program and the accompanying materials are made available under
+ * the terms of the Lesser GNU Public License v2.0 which accompanies this
+ * distribution.
+ * 
+ * The development of the Polyglot project has been supported by a
+ * number of funding sources, including DARPA Contract F30602-99-1-0533,
+ * monitored by USAF Rome Laboratory, ONR Grants N00014-01-1-0968 and
+ * N00014-09-1-0652, NSF Grants CNS-0208642, CNS-0430161, CCF-0133302,
+ * and CCF-1054172, AFRL Contract FA8650-10-C-7022, an Alfred P. Sloan 
+ * Research Fellowship, and an Intel Research Ph.D. Fellowship.
+ *
+ * See README for contributors.
+ ******************************************************************************/
+
+include "polyglot/parse/java12.cup"
+
+package polyglot.qq;
+
+import java_cup.runtime.Symbol;
+
+import polyglot.parse.Name;
+import polyglot.parse.VarDeclarator;
+import polyglot.lex.Lexer;
+
+parser Grm extends polyglot.parse.Grm implements QQParser {:
+    public Grm(Lexer l, TypeSystem t, NodeFactory n, ErrorQueue eq) {
+	super(l, t, n, eq);
+    }
+
+  /**
+   * Override the default CUP routine.
+   */
+  @Override
+  public void syntax_error(java_cup.runtime.Symbol current) {
+    Position p = ((Token) current.value).getPosition();
+    System.out.println("p = " + p);
+    if (current.sym == sym.EOF)
+	report_error ("Unexpected end of file.", p);
+    else
+	report_error ("Syntax error.", p);
+  }
+:};
+
+terminal QQNodeToken COMMA_EXPR;
+terminal QQNodeToken COMMA_FORM;
+terminal QQNodeToken COMMA_STMT;
+terminal QQNodeToken COMMA_TYPE;
+terminal QQNodeToken COMMA_DECL;
+terminal QQNodeToken COMMA_MEMB;
+terminal QQListToken COMMA_LIST;
+
+non terminal Expr qq_expr;
+non terminal Stmt qq_stmt;
+non terminal TypeNode qq_type;
+non terminal ClassDecl qq_decl;
+non terminal SourceFile qq_file;
+non terminal ClassMember qq_member;
+
+/* The 1st name is the non terminal; the 2nd is the name of the parse method. */
+start with qq_expr qq_expr;
+start with qq_stmt qq_stmt;
+start with qq_type qq_type;
+start with qq_decl qq_decl;
+start with qq_file qq_file;
+start with qq_member qq_member;
+
+drop { goal }
+
+qq_expr ::=
+	expression:a
+	    {: RESULT = a; :}
+    ;
+
+qq_stmt ::=
+    	block_statement:a
+     	    {: if (a.size() == 1) {
+                RESULT = a.get(0);
+               }
+               else {
+                RESULT = parser.nf.Block(parser.pos(a), a);
+               }
+            :}
+    ;
+
+qq_type ::=
+    	type:a
+     	    {: RESULT = a; :}
+    ;
+
+qq_decl ::=
+    	type_declaration:a
+     	    {: RESULT = a; :}
+    ;
+
+qq_file ::=
+    	compilation_unit:a
+	    {: RESULT = a; :}
+    ;
+
+qq_member ::=
+     	method_declaration:a
+     	    {: RESULT = a; :}
+     /* Simplified version of field_declaration with only one declarator. */
+    |	modifiers_opt:a type:b variable_declarator:d SEMICOLON
+	    {: RESULT = parser.nf.FieldDecl(parser.pos(b), 
+					    a, parser.array(b, d.dims),
+					    d.name, d.init); :}
+	|   constructor_declaration:a
+			{: RESULT = a; :}
+	|   static_initializer:a
+			{: RESULT = parser.nf.Initializer(parser.pos(a),
+			                                  Flags.STATIC, a); :}
+	|   block:a
+	                {: RESULT = parser.nf.Initializer(parser.pos(a),
+	                                                  Flags.NONE, a); :}
+    ;
+
+extend left_hand_side ::=
+	COMMA_EXPR:a
+		{: RESULT = (Expr) a.node(); :}
+	;
+	
+extend primary_no_new_array ::=
+	COMMA_EXPR:a
+	    {: RESULT = (Expr) a.node(); :}
+    ;
+
+extend statement_expression ::=
+	COMMA_EXPR:a
+	    {: RESULT = (Expr) a.node(); :}
+    ;
+
+extend cast_expression ::=
+        // Cast
+        LPAREN COMMA_TYPE:a RPAREN unary_expression:b
+            {: RESULT = parser.nf.Cast(parser.pos(a), (TypeNode) a.node(), b); :}
+    ;
+
+extend statement ::=
+	COMMA_STMT:a
+	    {: RESULT = (Stmt) a.node(); :}
+    ;
+
+extend statement ::=
+	explicit_constructor_invocation:a
+		{: RESULT = a; :}
+	;
+
+// now ambiguous
+drop {
+    constructor_body ::= LBRACE explicit_constructor_invocation block_statements RBRACE
+                       | LBRACE explicit_constructor_invocation RBRACE
+                       | LBRACE block_statements RBRACE;
+}
+
+extend constructor_body ::=
+	LBRACE:n block_statements:a RBRACE:d
+        {: RESULT = parser.nf.Block(parser.pos(n, d), a); :}
+    ;
+
+extend class_or_interface_type ::=
+	COMMA_TYPE:a
+	    {: RESULT = (TypeNode) a.node(); :}
+    ;
+
+extend array_type ::=
+	COMMA_TYPE:a dims:b
+	    {: RESULT = parser.array((TypeNode) a.node(), b.intValue()); :}
+    ;
+
+extend type_declaration ::=
+	COMMA_DECL:a
+	    {: RESULT = (ClassDecl) a.node(); :}
+    ;
+
+extend class_member_declaration ::=
+	COMMA_MEMB:a
+	    {: List<ClassMember> l = new ArrayList<>(1);
+	       l.add((ClassMember) a.node());
+	       RESULT = l; :}
+    ;
+
+switch_block_statement_groups ::=
+        COMMA_LIST:a
+            {: RESULT = a.<SwitchElement> list(); :}
+    ;
+
+block_statements ::=
+        COMMA_LIST:a
+            {: RESULT = a.<Stmt> list(); :}
+    ;
+
+extend interface_member_declarations ::=
+        COMMA_LIST:a
+	    {: RESULT = a.<ClassMember> list(); :}
+    ;
+
+extend class_body_declarations ::=
+        COMMA_LIST:a
+	    {: RESULT = a.<ClassMember> list(); :}
+    ;
+
+extend field_access ::=
+        COMMA_TYPE:a DOT IDENTIFIER:b
+            {: RESULT = parser.nf.Field(parser.pos(a, b, b), (TypeNode)a.node(), parser.nf.Id(parser.pos(b), b.getIdentifier())); :}
+    ;
+extend method_invocation ::=
+        COMMA_TYPE:a DOT IDENTIFIER:b LPAREN argument_list_opt:c RPAREN:d
+        {: RESULT = parser.nf.Call(parser.pos(a,d), (TypeNode)a.node(), parser.nf.Id(parser.pos(b), b.getIdentifier()), c); :}
+    ;
+
+extend array_creation_expression ::=
+        NEW:n COMMA_TYPE:a array_initializer:c
+        {: RESULT = parser.nf.NewArray(parser.pos(n,c), (TypeNode)a.node(), 0, c); :}
+    ;
+    
+extend formal_parameter_list ::=
+	COMMA_LIST:a
+	    {: RESULT = a.<Formal> list(); :}
+    ;
+
+extend formal_parameter ::=
+        COMMA_FORM:a
+	    {: RESULT = (Formal) a.node(); :}
+    ;
+
+extend throws ::=
+	COMMA_LIST:a
+	    {: RESULT = a.<TypeNode> list(); :}
+    ;
+
+extend class_type_list ::=
+	COMMA_LIST:a
+	    {: RESULT = a.<TypeNode> list(); :}
+    ;
+
+extend argument_list ::=
+	COMMA_LIST:a
+	    {: RESULT = a.<Expr> list(); :}
+    ;
+
+extend variable_initializers ::=
+        COMMA_LIST:a
+            {: RESULT = a.<Expr> list(); :}
+    ;

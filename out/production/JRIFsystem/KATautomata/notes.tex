@@ -1,0 +1,40 @@
+\documentclass[10pt]{article}
+\usepackage{mathtools} 
+
+\title{KAT in Jrif}
+
+\begin{document}
+\maketitle
+\begin{itemize}
+\item We use KAT expressions to specify reactive information flow policies. KAT expressions are more expressive than RIF automata, which are used in the Jrif implementation.
+\item Because the input alphabet of a KAT automaton is exponentially large (w.r.t., primitive tests),a simple equivalence algorithm (that goes through all alphabet) is not tractable in practice. Instead we need to use its symbolic version.
+\item We use the Antimirov's algorithm to convert KAT expressions into symbolic automata. See ``Symbolic Algorithms for Language Equivalence and Kleene Algebra with Tests'' (pous.pdf) and ``Partial derivatives of regular expressions and finite automaton constructions" (antimirov.pdf). With this algorithm, we do not need to normalize expressions.
+\item There is not an algorithm that creates linear forms of KAT expressions, in an analogous way that Antimirov (antimirov.pdf) computes linear forms for regular expression, in order to compute partial derivatives. But the Pous algorithm for symbolic partial derivatives for KAT expressions seems to have the same desirable effect: isolates atoms and actions that actually appear in the KAT expression, instead of performing exhaustive search on all possible atom-action pairs (as it is being done with the derivatives algorithm).
+\item This algorithm is based on the idea of derivatives: ``Regular-expression derivatives reexamined'' (re-deriv.pdf).
+\item  The algorithm of Brzozowski derivatives are slower than Antimirov's algorithm, because it searches the entire spece of atom-action pairs to compute derivatives and needs a notion of equivalence of expressions to decrease the number of states in the resulting automaton.
+\item We first convert KAT expressions into symbolic automata and then compare the restrictiveness of these automata.
+\item We follow Pous paper (``Symbolic Algorithms for Language Equivalence and Kleene Algebra with Tests'').
+\begin{itemize}
+\item Implemented function KAT$\rightarrow$SyKAT. We used code from the link below to  converts expressions on tests to Boolean BDDs in Java : https://github.com/SigmaX/LightBDD/.
+\begin{itemize}
+\item To convert a boolean expression into a boolean SyKAT.BDD we used Figure 2 of pous.pdf inductively on the boolean expression. See 19-bdds.pdf for a nice schematic explanation of the algorithm.
+\item Initially, we assumed that actions are exponentially many, too (similar to atoms being exponentially many). So, we assumed there is a set $\Sigma'$ of \emph{letters} that are combined to form actions. In particular, an action is a subset of $2^{\Sigma'}$. Consequently an action in a KAT expression should be translated into a  Boolean BDD, too.  Later, we can optimize the algorithm to treat actions in a different (more efficient) way than atoms.
+\end{itemize}
+\item Used Section 4.2 from Pous to make the conversion algorithm (from KAt expressions to NFAs) symbolic.
+\item Used Section 3.2 from Pous and Section 4.2 from Antimirov to extend the conversion algorithm to produce DFAs.
+\item Used Section 3.2 from Pous to compare DFAs.
+\end{itemize}
+\item We use hashconsing of expressions to achieve a faster syntactic equivalence routine. For example, when using sets of expressions, we need to decide if a new element is already in the set to avoid duplication.
+\item We could compute the product of syntactic automata as an ``apply'' function on BDDs.
+\item For an assignment $x:=y$, if the type of $x$ is $\{e_1,e_2\}$ and the type of $y$ is $e_y$, then the check $(e_1\geq e_y)\;\wedge\;(e_2\geq e_y)$ is more conservative than the check $e_1\sqcup e_2\geq e_y$.
+\item We are interested in the performance of the compilation. So, we could keep the first Brzozowski implementation for comparison reasons.
+\end{itemize}
+
+\section*{TODO}
+\begin{itemize}
+\item Port the code that converts KAT expressions to symbolic automata into JRIF.
+\item For the conversion of expressions to automata we need to use ``smart constructors''. For example, when converting \emph{1e}, it suffices to convert \emph{e} and when converting \emph{0e}, it suffices to convert \emph{0}.
+\item Enrich notes with the theoretical background for KAT and authorization strings.
+\item Come up with policies that take advantage of the expressive power of KAT. We need to show that non-determinism is useful. If non-determinism is not useful, then we could restrict the syntax of KAT (i.e., guarded KAT) and get more efficient procedures for converting to automata and for comparison.
+\end{itemize}
+\end{document}
