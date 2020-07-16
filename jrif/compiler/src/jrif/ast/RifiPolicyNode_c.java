@@ -17,7 +17,6 @@ import static MetaData.Info.util;
 public class RifiPolicyNode_c extends PolicyNode_c implements RifiPolicyNode {
     private static final long serialVersionUID = SerialVersionUID.generate();
     private KatExprNode child;
-    private Policy policy;
     private SymDFA automata;
 
     public RifiPolicyNode_c(Position pos, KatExprNode expr) {
@@ -27,13 +26,13 @@ public class RifiPolicyNode_c extends PolicyNode_c implements RifiPolicyNode {
 
     protected Policy producePolicy(JrifTypeSystem ts, KatExpr expr) {
         this.automata = new SymDFA(util, expr);
-        return ts.rifreaderPolicy(position(), this.automata);
+        return ts.rifwriterPolicy(position(), this.automata);
     }
 
-    protected RifiPolicyNode_c reconstruct(KatExprNode katNode) {
-        if (!katNode.equals(this.child)) {
+    protected RifiPolicyNode_c reconstruct(KatExprNode kat) {
+        if (!kat.equals(this.child)) {
             RifiPolicyNode_c n = (RifiPolicyNode_c) copy();
-            n.child = katNode;
+            n.child = kat;
             return n;
         }
 
@@ -54,9 +53,7 @@ public class RifiPolicyNode_c extends PolicyNode_c implements RifiPolicyNode {
                     .setUnreachableThisRun();
             return this;
         }
-
-        KatExpr expr = ((KatExprNode_c) child.disambiguate(ar)).getType();
-        this.policy = producePolicy(ts, expr);
+        this.policy = producePolicy(ts, child.getType());
         return this;
     }
 
