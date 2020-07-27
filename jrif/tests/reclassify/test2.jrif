@@ -11,7 +11,7 @@ public class test2{
 //	   int {rif[q1*:{Alice},q2:{Alice,Bob},f1:q1->q2];rifi[q1*:{Alice}]} y;
        int {rifi[{Alice}^(P^{Alice})*]} z=0; // {rifi[q1*:{Alice}]}
 
-        res =z;
+        res =z+z;
 //	    x = 96;
 //	    y = 45;
 	    
