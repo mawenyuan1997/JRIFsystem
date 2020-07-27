@@ -1,0 +1,29 @@
+
+\documentclass[12pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{semantic}
+
+\begin{document}
+We assume there is a restrictiveness relation $\sqsubseteq$ that compares labels in terms
+of the restrictions they impose. We write $l\sqsubseteq l'$ to denote that $l'$ is at least as
+restrictive as $l$. In our case, $l'$ is a subset of $l$.
+
+Restrictiveness relation $\sqsubseteq$ essentially define allowed flows between labels. If $l\sqsubseteq l'$
+, then values in variables tagged with $l$ are allowed to flow to variables
+tagged with $l'$.
+\[
+\inference{\Gamma\vdash x:l_x, ctx\sqcup l_x\sqcup a^$p^*$\sqsubseteq \Gamma(y), l_x\sqcup a^$p^*$\neq 0}{\Gamma, ctx\vdash y:=reclassify(x, a)}
+\]
+$ap^*$ represents all KAT strings starting with atom $a$ (with any actions after).
+
+Explanation: $l_x\sqsubseteq ctx\sqcup l_x\sqcup ap^{*}\sqsubseteq \Gamma(y)$, $ap^{*}\sqsubseteq ctx\sqcup l_x\sqcup ap^{*}\sqsubseteq \Gamma(y)$, $\Gamma(y)$ is the subset of both $l_x$ and $ap*$, so it is equivalent to say $\Gamma(y)$ is all KAT strings in $l_x$ with $a$ as its head.
+$$
+    \delta_p(E)&=\sum_{\alpha} \delta_{\alpha p}(E)
+$$
+\[
+\inference{\Gamma\vdash y:l_y, ctx\sqcup \delta_f(l_y)\sqsubseteq \Gamma(z), \delta_f(l_y)\neq 0}{\Gamma, ctx\vdash z:=reclassify(y, f)}
+\]
+
+Explanation: since $l_y$ already starts with a certain $\alpha$, summing across all atoms will be the same as $\alpha f$
+
+\end{document}
