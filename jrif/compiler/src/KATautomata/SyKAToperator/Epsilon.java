@@ -8,6 +8,11 @@ import KATautomata.SyKAT.Star;
 
 import static KATautomata.SyKAT.BDD.BooleanBDDutil.singleBooleanBDD;
 
+/**
+ * Symbolic KAT epsilon function
+ *
+ * author: Wenyuan Ma   date:2020-06-17
+ */
 public class Epsilon implements SyKATexpressionVisitor {
     int numInputs;
     public Epsilon(int num) {numInputs = num;}

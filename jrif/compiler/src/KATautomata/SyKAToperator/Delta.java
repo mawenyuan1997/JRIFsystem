@@ -11,6 +11,11 @@ import java.util.*;
 
 import static KATautomata.SyKAT.BDD.BooleanBDDutil.singleBooleanBDD;
 
+/**
+ * Symbolic KAT delta function
+ *
+ * author: Wenyuan Ma   date:2020-06-17
+ */
 public class Delta implements SyKATexpressionVisitor {
     int numAtom;
     int numAction;

@@ -11,6 +11,11 @@ import polyglot.util.SerialVersionUID;
 import polyglot.visit.AmbiguityRemover;
 import polyglot.visit.NodeVisitor;
 
+/**
+ * AST node for KAT Or operation
+ *
+ * author: Wenyuan Ma   date:2020-06-26
+ */
 public class KatOrNode_c extends KatTestNode implements KatOrNode {
     private static final long serialVersionUID = SerialVersionUID.generate();
     KatTestNode left, right;

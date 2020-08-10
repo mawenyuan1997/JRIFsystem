@@ -12,6 +12,11 @@ import polyglot.visit.NodeVisitor;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * AST node for KAT action
+ *
+ * author: Wenyuan Ma   date:2020-06-26
+ */
 public class KatActionNode_c extends KatExprNode_c implements KatActionNode {
     private static final long serialVersionUID = SerialVersionUID.generate();
     String id;

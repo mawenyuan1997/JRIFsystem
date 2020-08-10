@@ -10,6 +10,11 @@ import polyglot.util.SerialVersionUID;
 
 import java.util.List;
 
+/**
+ * KAT Negate class
+ *
+ * author: Wenyuan Ma   date:2020-07-03
+ */
 public class NegateTest extends TestExpr {
     private static final long serialVersionUID = SerialVersionUID.generate();
     public TestExpr test;

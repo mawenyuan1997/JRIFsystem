@@ -25,7 +25,11 @@ import polyglot.util.SerialVersionUID;
 
 import java.util.*;
 
-
+/**
+ * Symbolic KAT automata
+ *
+ * author: Wenyuan Ma   date:2020-07-09
+ */
 public class SymDFA implements RifFSM {
 
     private static final long serialVersionUID = SerialVersionUID.generate();

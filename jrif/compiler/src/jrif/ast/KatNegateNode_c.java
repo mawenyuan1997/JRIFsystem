@@ -11,6 +11,11 @@ import polyglot.util.SerialVersionUID;
 import polyglot.visit.AmbiguityRemover;
 import polyglot.visit.NodeVisitor;
 
+/**
+ * AST node for KAT Negate operation
+ *
+ * author: Wenyuan Ma   date:2020-06-26
+ */
 public class KatNegateNode_c extends KatTestNode implements KatNegateNode {
     private static final long serialVersionUID = SerialVersionUID.generate();
     private KatTestNode test;

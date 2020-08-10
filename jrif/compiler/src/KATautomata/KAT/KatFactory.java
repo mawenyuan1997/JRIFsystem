@@ -6,6 +6,11 @@ import jif.types.principal.*;
 
 import java.util.List;
 
+/**
+ * KAT factory class that creates KAT instance
+ *
+ * author: Wenyuan Ma   date:2020-07-09
+ */
 public class KatFactory {
     public static OneTest one = new OneTest();
     public static ZeroTest zero = new ZeroTest();

@@ -6,6 +6,11 @@ import polyglot.util.SerialVersionUID;
 import java.io.Serializable;
 import java.util.HashSet;
 
+/**
+ * State class of symbolic KAT automata
+ *
+ * author: Wenyuan Ma   date:2020-06-17
+ */
 public class State implements Serializable {
     private static final long serialVersionUID = SerialVersionUID.generate();
     public HashSet<SyKatExpr> s;

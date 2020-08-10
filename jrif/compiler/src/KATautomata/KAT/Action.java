@@ -11,6 +11,11 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
+/**
+ * KAT action class
+ *
+ * author: Wenyuan Ma   date:2020-07-09
+ */
 public class Action implements KatExpr {
     private static final long serialVersionUID = SerialVersionUID.generate();
     private boolean[] primActions;

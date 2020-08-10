@@ -5,6 +5,11 @@ import polyglot.util.SerialVersionUID;
 
 import java.io.Serializable;
 
+/**
+ * Symbolic KAT Concat class
+ *
+ * author: Wenyuan Ma   date:2020-06-17
+ */
 public class Concat implements SyKatExpr, Serializable {
     private static final long serialVersionUID = SerialVersionUID.generate();
     public SyKatExpr left,right;

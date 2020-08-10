@@ -5,6 +5,11 @@ import polyglot.util.SerialVersionUID;
 
 import java.io.Serializable;
 
+/**
+ * Symbolic KAT Plus class
+ *
+ * author: Wenyuan Ma   date:2020-06-17
+ */
 public class Plus implements SyKatExpr, Serializable {
     private static final long serialVersionUID = SerialVersionUID.generate();
     public SyKatExpr left,right;

@@ -11,6 +11,11 @@ import polyglot.util.SerialVersionUID;
 import polyglot.visit.AmbiguityRemover;
 import polyglot.visit.NodeVisitor;
 
+/**
+ * AST node for AND operation
+ *
+ * author: Wenyuan Ma   date:2020-06-26
+ */
 public class KatAndNode_c extends KatTestNode implements KatAndNode{
     private static final long serialVersionUID = SerialVersionUID.generate();
     KatTestNode left, right;

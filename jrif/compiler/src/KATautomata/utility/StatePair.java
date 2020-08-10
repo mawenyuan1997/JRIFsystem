@@ -1,5 +1,10 @@
 package KATautomata.utility;
 
+/**
+ * A pair of states of symbolic KAT automata
+ *
+ * author: Wenyuan Ma   date:2020-01-11
+ */
 public class StatePair {
     public State e1, e2;
     public StatePair(State s1, State s2) {

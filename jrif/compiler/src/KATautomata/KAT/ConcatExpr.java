@@ -10,6 +10,11 @@ import polyglot.util.SerialVersionUID;
 
 import java.util.List;
 
+/**
+ * KAT concatenation for expression
+ *
+ * author: Wenyuan Ma   date:2020-07-03
+ */
 public class ConcatExpr implements KatExpr {
     private static final long serialVersionUID = SerialVersionUID.generate();
     public KatExpr left,right;

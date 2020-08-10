@@ -16,6 +16,11 @@ import polyglot.visit.NodeVisitor;
 import java.util.LinkedList;
 import java.util.List;
 
+/**
+ * AST node for KAT atom
+ *
+ * author: Wenyuan Ma   date:2020-06-26
+ */
 public class KatAtomNode_c extends KatTestNode implements KatAtomNode {
     private static final long serialVersionUID = SerialVersionUID.generate();
     List<PrincipalNode> principals;

@@ -5,6 +5,11 @@ import polyglot.util.SerialVersionUID;
 
 import java.io.Serializable;
 
+/**
+ * Symbolic KAT Star class
+ *
+ * author: Wenyuan Ma   date:2020-06-17
+ */
 public class Star implements SyKatExpr, Serializable {
     private static final long serialVersionUID = SerialVersionUID.generate();
     public SyKatExpr p;

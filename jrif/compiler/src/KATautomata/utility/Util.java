@@ -9,6 +9,11 @@ import java.io.Serializable;
 import java.util.HashMap;
 import java.util.HashSet;
 
+/**
+ * Utility functions of symbolic KAT automata
+ *
+ * author: Wenyuan Ma   date:2020-07-09
+ */
 public class Util implements Serializable {
     private String[] primTests;
     private String[] primActions;

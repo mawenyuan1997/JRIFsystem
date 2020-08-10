@@ -10,6 +10,11 @@ import polyglot.util.SerialVersionUID;
 
 import java.util.List;
 
+/**
+ * KAT Plus class
+ *
+ * author: Wenyuan Ma   date:2020-07-03
+ */
 public class PlusTest extends TestExpr {
     private static final long serialVersionUID = SerialVersionUID.generate();
     public TestExpr left, right;
